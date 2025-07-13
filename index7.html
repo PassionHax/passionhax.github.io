@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passion Hax - Temukan & Transformasi Passionmu</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12,1L3,5v6c0,5.55,3.84,10.74,9,12c5.16-1.26,9-6.45,9-12V5L12,1z M12,11.99h7c-0.53,4.12-3.28,7.79-7,8.94V12H5V6.3l7-3.11V11.99z' fill='%23FF8C42'/%3E%3C/svg%3E">
+    <style>
+        /* VARIABLES & RESET */
+        :root {
+            --primary: #333333;
+            --secondary: #FF8C42;
+            --accent: #FFB563;
+            --dark: #1A1A1A;
+            --light: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #777777;
+            --student: #FFD166;
+            --professional: #06D6A0;
+            --all: #118AB2;
+            --student-text: #FF9E00;
+            --professional-text: #049F7A;
+            --all-text: #0A5F7A;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        h1 { 
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+        h2 { 
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        p { 
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        /* LAYOUT COMPONENTS */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        section {
+            padding: 5rem 0;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: #ffecd1;
+        }
+
+        /* HEADER & NAV */
+        header {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 0.3rem 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem 0;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .logo-image {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f0f0f0;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+            padding: 5px 0;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        .nav-links .cta-button {
+            color: white !important;
+            background: var(--secondary);
+            padding: 0.5rem 1.3rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+            font-size: 0.95rem;
+        }
+        .nav-links .cta-button:hover {
+            background: transparent;
+            color: var(--secondary) !important;
+        }
+        .nav-links .cta-button:after {
+            display: none;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            position: relative;
+            z-index: 101;
+        }
+        .mobile-menu-btn.active {
+            display: none;
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-150%);
+            transition: transform 0.4s ease;
+            z-index: 100;
+            overflow-y: auto;
+        }
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+        .mobile-menu a {
+            display: block;
+            padding: 0.8rem 0;
+            text-decoration: none;
+            color: var(--text-light);
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 1.1rem;
+        }
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+        .mobile-menu .cta-button {
+            display: block;
+            margin-top: 1rem;
+            color: white !important;
+            background: var(--secondary);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            width: 100%;
+            text-align: center;
+        }
+        .mobile-close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-light);
+            cursor: pointer;
+            z-index: 102;
+        }
+
+        /* HERO SECTION */
+        #hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to bottom, #ffffff, #fcfcfc);
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        .mentor-section {
+            text-align: center;
+            flex: 1;
+            max-width: 350px;
+        }
+        .mentor-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #ff9d00, #ffd166);
+        }
+        .mentor-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .mentor-title {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 500;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+        .mentor-title strong {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--secondary);
+        }
+        .cta-button:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 140, 66, 0.2);
+        }
+
+        /* RESET FRAMEWORK SECTION */
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .step-card {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .step-card h3 i {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .step-number {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--secondary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(255, 140, 66, 0.3);
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(255, 140, 66, 0.2);
+            border-color: var(--accent);
+        }
+        .step-card:hover h3 i {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--accent);
+        }
+        .step-card:hover .step-number {
+            transform: scale(1.1);
+            background: var(--accent);
+            box-shadow: 0 8px 20px rgba(255, 140, 66, 0.4);
+        }
+
+        /* PRODUCTS SECTION */
+        .product-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .product-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border-top: 4px solid var(--secondary);
+        }
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .product-card h3 {
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .product-card .cta-button {
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.8rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(255, 140, 66, 0.2);
+            border-color: var(--accent);
+        }
+        .product-card:hover .product-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--accent);
+        }
+        .product-card:hover h3 {
+            color: var(--secondary);
+        }
+        .product-card .cta-button:hover {
+            background: transparent !important;
+            color: var(--secondary) !important;
+            border-color: var(--secondary) !important;
+        }
+        
+        /* Pricing Styles */
+        .product-price {
+            display: inline-block;
+            background: #f8f9fa;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover .product-price {
+            background: #fff4eb;
+            transform: scale(1.05);
+        }
+        .free-price {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .free-price:before {
+            content: "🔥 ";
+        }
+
+        /* NEW PRODUCT STYLES */
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-segment {
+            background: rgba(255,255,255,0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .product-benefits {
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .benefit-item i {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        .product-card-student {
+            border-top: 4px solid var(--student);
+        }
+
+        .product-card-professional {
+            border-top: 4px solid var(--professional);
+        }
+
+        .product-card-all {
+            border-top: 4px solid var(--all);
+        }
+
+        .product-card-student .product-segment {
+            color: var(--student-text);
+            border: 1px solid var(--student);
+        }
+
+        .product-card-professional .product-segment {
+            color: var(--professional-text);
+            border: 1px solid var(--professional);
+        }
+
+        .product-card-all .product-segment {
+            color: var(--all-text);
+            border: 1px solid var(--all);
+        }
+        
+        .free-text {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        /* NEW CTA BUTTON */
+        .cta-bonus-container {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #fff8f1, #fff0e4);
+            border-radius: 16px;
+            border: 2px dashed var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-bonus-container:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, 
+                rgba(255, 140, 66, 0.1) 0%, 
+                rgba(255, 140, 66, 0.05) 50%, 
+                rgba(255, 140, 66, 0.1) 100%);
+            z-index: 0;
+            border-radius: 20px;
+        }
+        
+        .bonus-cta {
+            background: var(--secondary);
+            color: white !important;
+            font-size: 1.2rem;
+            padding: 1.2rem 2.8rem;
+            box-shadow: 0 8px 20px rgba(255, 140, 66, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
+            border: 2px solid var(--secondary);
+        }
+
+        .bonus-cta:hover {
+            background: var(--accent) !important;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 140, 66, 0.4);
+            border-color: var(--accent);
+        }
+
+        .bonus-subtext {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .bonus-icon {
+            background: white;
+            color: var(--secondary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+            color: white;
+            text-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+        .cta-section h2 {
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section h2:after {
+            background: var(--secondary);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.8);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section .cta-button {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section .cta-button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255,140,66,0.1), transparent 70%);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.1);
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .footer-logo .logo {
+            color: white;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 3rem;
+            }
+            .mentor-section {
+                max-width: 100%;
+            }
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .step-card {
+                padding: 2rem 1.5rem;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            header {
+                padding: 0.2rem 0;
+            }
+            nav {
+                padding: 0.2rem 0;
+            }
+            .logo {
+                font-size: 1.4rem;
+            }
+            .logo-image {
+                width: 32px;
+                height: 32px;
+            }
+            .product-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .cta-section {
+                padding: 3rem 1.5rem;
+            }
+            .mobile-menu {
+                padding-top: 1rem;
+                top: 56px;
+            }
+            .product-card {
+                padding: 2rem 1.5rem;
+            }
+            .bonus-cta {
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo-container">
+                    <div class="logo-image">PH</div>
+                    <div class="logo">Passion Hax</div>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#framework">Framework</a>
+                    <a href="#products">Produk</a>
+                    <a href="#resources">Resources</a>
+                    <a href="#testimonials">Testimoni</a>
+                    <a href="#contact">Kontak</a>
+                    <a href="#quiz" class="cta-button">Free Quiz</a>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <button class="mobile-close-btn" id="mobileCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <a href="#framework">Framework</a>
+                <a href="#products">Produk</a>
+                <a href="#resources">Resources</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#contact">Kontak</a>
+                <a href="#quiz" class="cta-button">Free Quiz</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="mentor-section">
+                    <div class="mentor-image"></div>
+                    <div class="mentor-name">Halo, aku Rafa Liandra</div>
+                    <div class="mentor-title"><strong>Founder Passion Hax | Sociopreneur</strong></div>
+                    <br>
+                    <div class="mentor-title">Selamat datang di komunitas pengembangan diri bersama mentor praktisi berpengalaman yang tepat untukmu</div>
+                </div>
+                
+                <div class="hero-text">
+                    <h1>Transformasi Passion Jadi Karier & Hidup Impianmu</h1>
+                    <p>Metode 5 langkah RESET Framework telah membantu berbagai kalangan anak muda Indonesia - dari <i><u>pelajar</u>, <u>mahasiswa</u>, <u>fresh graduate</u>,</i> hingga <i><u>profesional muda</u></i> - menemukan passion sejati dan membangun hidup bermakna dengan pendekatan yang terstruktur dan personal.</p>
+                    <p><strong>Apakah kamu siap menjadi success story berikutnya? Ukur kesiapanmu sekarang dengan kuis gratis!</strong></p>
+                    <a href="#quiz" class="cta-button">
+                        <i class="fas fa-play-circle"></i> Mulai Passion Readiness Quiz
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESET Framework Section -->
+    <section id="framework">
+        <div class="container">
+            <h2>RESET Framework</h2>
+            <p>5 Tahap Terstruktur Menemukan dan Mengeksekusi Passion</p>
+            
+            <div class="framework-grid">
+                <div class="card step-card">
+                    <div class="step-number">1</div>
+                    <h3><i class="fas fa-brain"></i> R - Reflect</h3>
+                    <p>Kenali nilai hidup, minat, dan pengalaman masa lalu melalui panduan terstruktur</p>
+                </div>
+                
+                <div class="card step-card">
+                    <div class="step-number">2</div>
+                    <h3><i class="fas fa-flask"></i> E - Experiment</h3>
+                    <p>Coba berbagai aktivitas baru dengan modal minimal untuk eksplorasi passion</p>
+                </div>
+                
+                <div class="card step-card">
+                    <div class="step-number">3</div>
+                    <h3><i class="fas fa-puzzle-piece"></i> S - Synthesize</h3>
+                    <p>Identifikasi pola dan validasi passion sebelum lanjut ke eksekusi passion</p>
+                </div>
+                
+                <div class="card step-card">
+                    <div class="step-number">4</div>
+                    <h3><i class="fas fa-cogs"></i> E - Establish</h3>
+                    <p>Bangun aset dan sistem pendukung passion</p>
+                </div>
+                
+                <div class="card step-card">
+                    <div class="step-number">5</div>
+                    <h3><i class="fas fa-rocket"></i> T - Transform</h3>
+                    <p>Ciptakan dampak berkelanjutan dan berkembang melalui passion yang konsisten</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products">
+        <div class="container">
+            <h2>Produk Unggulan</h2>
+            <p>Program spesial untuk setiap tahap perjalanan passionmu</p>
+            
+            <div class="product-cards">
+                <!-- Product 1 - Untuk Mahasiswa/Pelajar -->
+                <div class="card product-card product-card-student">
+                    <div class="product-header">
+                        <div class="product-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="product-segment">
+                            <i class="fas fa-graduation-cap"></i> Mahasiswa/Pelajar
+                        </div>
+                    </div>
+                    <h3>Passion Discovery Blueprint</h3>
+                    <p>Temukan passion sejati melalui RES Framework (Reflect, Experiment, Synthesize)</p>
+                    <div class="product-benefits">
+                        <div class="benefit-item"><i class="fas fa-check-circle"></i> Cocok untuk usia 15-22 tahun</div>
+                        <div class="benefit-item"><i class="fas fa-check-circle"></i> Harga: <strong>Rp287.000</strong></div>
+                    </div>
+                    <a href="#pdb" class="cta-button">Selengkapnya</a>
+                </div>
+                
+                <!-- Product 2 - Untuk Profesional Muda -->
+                <div class="card product-card product-card-professional">
+                    <div class="product-header">
+                        <div class="product-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="product-segment">
+                            <i class="fas fa-briefcase"></i> Profesional Muda
+                        </div>
+                    </div>
+                    <h3>Passion Transformation Blueprint</h3>
+                    <p>Eksekusi passion dan bangun sistem pendukung dengan ET Framework (Establish, Transform)</p>
+                    <div class="product-benefits">
+                        <div class="benefit-item"><i class="fas fa-check-circle"></i> Cocok untuk usia 23-30 tahun</div>
+                        <div class="benefit-item"><i class="fas fa-check-circle"></i> Harga: <strong>Rp987.000</strong></div>
+                    </div>
+                    <a href="#ptb" class="cta-button">Selengkapnya</a>
+                </div>
+                
+                <!-- Product 3 - Untuk Semua Kalangan -->
+                <div class="card product-card product-card-all">
+                    <div class="product-header">
+                        <div class="product-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="product-segment">
+                            <i class="fas fa-users"></i> Semua Kalangan
+                        </div>
+                    </div>
+                    <h3>Passion Shield Projects</h3>
+                    <p>Bangun '<u>cash armor</u>' untuk mendanai kebutuhan dasar hidupmu sambil mengejar passion</p>
+                    <div class="product-benefits">
+                        <div class="benefit-item"><i class="fas fa-check-circle"></i> Fleksibel untuk semua usia</div>
+                        <div class="benefit-item"><i class="fas fa-check-circle"></i> <span class="free-text">🔥 Gratis, Kuota Terbatas!</span></div>
+                    </div>
+                    <a href="#psp" class="cta-button">Selengkapnya</a>
+                </div>
+            </div>
+            
+            <!-- New CTA Button -->
+            <div class="cta-bonus-container">
+                <a href="#quiz" class="cta-button bonus-cta">
+                    <span class="bonus-icon"><i class="fas fa-chart-pie"></i></span>
+                    Mulai Passion Readiness Quiz
+                </a>
+                <p class="bonus-subtext">Dapatkan Hasil Analisis Gratis!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="quiz">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Passion Readiness Quiz</h2>
+                <p>Tes 5 menit untuk mengukur kesiapan passion-mu dan dapatkan laporan personalisasi gratis</p>
+                <a href="#" class="cta-button">
+                    <i class="fas fa-play"></i> Mulai Quiz Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <div class="footer-logo-image">PH</div>
+                <div class="logo">Passion Hax</div>
+            </div>
+            <p>Transformasi Passion Jadi Karier & Hidup Impianmu</p>
+            
+            <div class="footer-links">
+                <a href="#framework">Framework</a>
+                <a href="#products">Produk</a>
+                <a href="#resources">Resources</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#contact">Kontak</a>
+            </div>
+            
+            <p class="copyright">© 2025 Passion Hax. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+        
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.add('active');
+            mobileMenuBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target) && 
+                mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Prevent closing when clicking inside menu
+        mobileMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Close mobile menu if open
+                    mobileMenu.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    document.body.style.overflow = '';
+                    
+                    // Scroll to target
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
