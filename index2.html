@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passion Hax - Temukan & Transformasi Passionmu</title>
+    <style>
+        /* VARIABLES & RESET */
+        :root {
+            --primary: #333333;  /* Hitam soft */
+            --secondary: #FF8C42; /* Oranye soft */
+            --accent: #FFB563;   /* Oranye lebih muda */
+            --dark: #1A1A1A;     /* Hitam lebih gelap */
+            --light: #F8F9FA;    /* Abu-abu sangat muda */
+            --text-dark: #333333;
+            --text-light: #777777;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        h1 { 
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+        h2 { 
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        p { 
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        /* LAYOUT COMPONENTS */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        section {
+            padding: 5rem 0;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: #ffecd1;
+        }
+
+        /* HEADER & NAV */
+        header {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0; /* Reduced padding */
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .logo-image {
+            width: 40px; /* Slightly smaller */
+            height: 40px; /* Slightly smaller */
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f0f0f0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+            padding: 5px 0; /* Added padding for better hover area */
+        }
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0; /* Moved closer to text */
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        .nav-links .cta-button {
+            color: white !important; /* White text for Free Quiz */
+            background: var(--secondary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+        }
+        .nav-links .cta-button:hover {
+            background: transparent;
+            color: var(--secondary) !important;
+        }
+        .nav-links .cta-button:after {
+            display: none; /* Remove underline effect for button */
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-150%);
+            transition: transform 0.4s ease;
+            z-index: 99;
+        }
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+        .mobile-menu a {
+            display: block;
+            padding: 0.8rem 0;
+            text-decoration: none;
+            color: var(--text-light);
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+        .mobile-menu .cta-button {
+            display: inline-block;
+            margin-top: 1rem;
+            color: white !important;
+            background: var(--secondary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+        }
+
+        /* HERO SECTION */
+        #hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to bottom, #ffffff, #fcfcfc);
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        .mentor-section {
+            text-align: center;
+            flex: 1;
+            max-width: 350px;
+        }
+        .mentor-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+        .mentor-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .mentor-title {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--secondary);
+        }
+        .cta-button:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 140, 66, 0.2);
+        }
+
+        /* RESET FRAMEWORK SECTION */
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .step-card {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .step-card h3 i {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            display: block;
+        }
+        .step-number {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--secondary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(255, 140, 66, 0.3);
+        }
+
+        /* PRODUCTS SECTION */
+        .product-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        .product-card {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            display: inline-block;
+        }
+        .product-card h3 {
+            margin-bottom: 1.5rem;
+        }
+        .product-card .cta-button {
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.8rem;
+            font-size: 0.9rem;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+            color: white;
+            text-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+        .cta-section h2 {
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section h2:after {
+            background: var(--secondary);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.8);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section .cta-button {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section .cta-button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255,140,66,0.1), transparent 70%);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-logo-image {
+            width: 40px; /* Consistent with header */
+            height: 40px; /* Consistent with header */
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        .footer-logo .logo {
+            color: white;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 3rem;
+            }
+            .mentor-section {
+                max-width: 100%;
+            }
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .step-card {
+                padding: 2rem 1.5rem;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .cta-section {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <img src="https://via.placeholder.com/50x50?text=PH" alt="Passion Hax Logo" class="logo-image">
+                    <div class="logo">Passion Hax</div>
+                </div>
+                
+                <div class="nav-links">
+                    <a href="#framework">Framework</a>
+                    <a href="#products">Produk</a>
+                    <a href="#resources">Resources</a>
+                    <a href="#testimonials">Testimoni</a>
+                    <a href="#contact" class="cta-button">Free Quiz</a>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#framework">Framework</a>
+                <a href="#products">Produk</a>
+                <a href="#resources">Resources</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#contact" class="cta-button">Free Quiz</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="mentor-section">
+                    <img src="https://via.placeholder.com/400x400?text=Rafa+Liandra" alt="Rafa Liandra" class="mentor-image">
+                    <div class="mentor-name">Rafa Liandra</div>
+                    <div class="mentor-title">Your Passionate Mentor</div>
+                </div>
+                
+                <div class="hero-text">
+                    <h1>Transformasi Passion Jadi Karya & Pendapatan</h1>
+                    <p>Metode RESET Framework terbukti membantu ribuan anak muda Indonesia menemukan passion sejati dan membangun hidup bermakna dengan pendekatan yang terstruktur dan personal.</p>
+                    <a href="#quiz" class="cta-button">
+                        <i class="fas fa-play-circle"></i> Mulai Passion Readiness Quiz
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESET Framework Section -->
+    <section id="framework">
+        <div class="container">
+            <h2>RESET Framework</h2>
+            <p>5 Tahap Terstruktur Menemukan dan Mengeksekusi Passion</p>
+            
+            <div class="framework-grid">
+                <div class="card step-card">
+                    <div class="step-number">1</div>
+                    <h3><i class="fas fa-brain"></i> R - Reflect</h3>
+                    <p>Kenali nilai hidup, minat, dan pengalaman masa lalu melalui panduan terstruktur</p>
+                </div>
+                
+                <div class="card step-card">
+                    <div class="step-number">2</div>
+                    <h3><i class="fas fa-flask"></i> E - Experiment</h3>
+                    <p>Coba berbagai aktivitas baru dengan modal minimal untuk eksplorasi passion</p>
+                </div>
+                
+                <div class="card step-card">
+                    <div class="step-number">3</div>
+                    <h3><i class="fas fa-puzzle-piece"></i> S - Synthesize</h3>
+                    <p>Identifikasi pola dan validasi diri sebelum lanjut ke eksekusi</p>
+                </div>
+                
+                <div class="card step-card">
+                    <div class="step-number">4</div>
+                    <h3><i class="fas fa-cogs"></i> E - Establish</h3>
+                    <p>Bangun aset dan sistem pendukung passion</p>
+                </div>
+                
+                <div class="card step-card">
+                    <div class="step-number">5</div>
+                    <h3><i class="fas fa-rocket"></i> T - Transform</h3>
+                    <p>Buat dampak dan berkembang melalui passion yang konsisten</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products">
+        <div class="container">
+            <h2>Produk Unggulan</h2>
+            <p>Program spesial untuk setiap tahap perjalanan passionmu</p>
+            
+            <div class="product-cards">
+                <div class="card product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Passion Discovery Blueprint</h3>
+                    <p>Temukan passion sejati melalui RES Framework (Reflect, Experiment, Synthesize)</p>
+                    <a href="#pdb" class="cta-button">Selengkapnya</a>
+                </div>
+                
+                <div class="card product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Passion Transformation Blueprint</h3>
+                    <p>Eksekusi passion dengan ET Framework (Establish, Transform) dan sistem pendukung</p>
+                    <a href="#ptb" class="cta-button">Selengkapnya</a>
+                </div>
+                
+                <div class="card product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Passion Shield Projects</h3>
+                    <p>Bangun cash armor untuk mendanai kebutuhan dasar sambil mengejar passion</p>
+                    <a href="#psp" class="cta-button">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="quiz">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Passion Readiness Quiz</h2>
+                <p>Tes 5 menit untuk mengukur kesiapan passionmu dan dapatkan laporan personalisasi gratis</p>
+                <a href="#start-quiz" class="cta-button">
+                    <i class="fas fa-play"></i> Mulai Quiz Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="https://via.placeholder.com/50x50?text=PH" alt="Passion Hax Logo" class="footer-logo-image">
+                <div class="logo">Passion Hax</div>
+            </div>
+            <p>Transformasi Passion Jadi Karya & Pendapatan</p>
+            
+            <div class="footer-links">
+                <a href="#framework">Framework</a>
+                <a href="#products">Produk</a>
+                <a href="#resources">Resources</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#contact">Kontak</a>
+            </div>
+            
+            <p class="copyright">© 2023 Passion Hax. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            
+            // Change icon
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target) && 
+                mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Close mobile menu if open
+                    mobileMenu.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    
+                    // Scroll to target
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
