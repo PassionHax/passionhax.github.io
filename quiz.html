@@ -267,6 +267,27 @@
             text-align: center;
         }
         
+        .rec-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .tag-financial {
+            background: rgba(255, 140, 66, 0.1);
+            color: var(--secondary);
+            border: 1px solid rgba(255, 140, 66, 0.3);
+        }
+        
+        .tag-passion {
+            background: rgba(6, 214, 160, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(6, 214, 160, 0.3);
+        }
+        
         /* CTA BUTTON */
         .cta-button {
             display: inline-block;
@@ -286,6 +307,37 @@
             color: var(--secondary);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(255, 140, 66, 0.2);
+        }
+        
+        .outline-button {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        .outline-button:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* FINANCIAL SECTION */
+        .financial-box {
+            background: linear-gradient(to right, #f9f9f9, #fff8f4);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid #ffecd1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .financial-box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--secondary);
         }
         
         /* FOOTER */
@@ -452,9 +504,26 @@
                     </div>
                 </div>
                 
+                <div class="financial-box">
+                    <h3>Analisis Kondisi Finansial</h3>
+                    <p>Berdasarkan jawabanmu, kondisi finansialmu saat ini berada pada level <strong>Stabil dengan Perlindungan Dasar</strong>.</p>
+                    <p>Kami merekomendasikan untuk mengambil langkah berikut:</p>
+                    
+                    <div class="recommendation-card">
+                        <div class="rec-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Financial Protection Check Up</h4>
+                            <p>Lakukan pengecekan perlindungan finansial untuk memastikan kamu terlindungi dengan baik.</p>
+                            <div class="rec-tag tag-financial">Rekomendasi Finansial</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="recommendations">
-                    <h3>Rekomendasi untuk Pengembangan Passion</h3>
-                    <p>Berdasarkan hasilmu, kami merekomendasikan langkah-langkah berikut:</p>
+                    <h3>Rekomendasi Program Passion Hax</h3>
+                    <p>Berdasarkan hasilmu, kami merekomendasikan program-program berikut:</p>
                     
                     <div class="recommendation-card">
                         <div class="rec-icon">
@@ -463,6 +532,7 @@
                         <div>
                             <h4>Eksplorasi Passion Terstruktur</h4>
                             <p>Ikuti program Passion Discovery Blueprint untuk menemukan passion sejati melalui metode terstruktur.</p>
+                            <div class="rec-tag tag-passion">Rekomendasi Utama</div>
                         </div>
                     </div>
                     
@@ -471,8 +541,9 @@
                             <i class="fas fa-chart-line"></i>
                         </div>
                         <div>
-                            <h4>Pengembangan Eksekusi</h4>
-                            <p>Gabung Passion Transformation Blueprint untuk membangun sistem pendukung dan eksekusi passion.</p>
+                            <h4>Passion Shield Projects</h4>
+                            <p>Bangun '<u>cash armor</u>' untuk mendanai kebutuhan dasar hidupmu sambil mengejar passion.</p>
+                            <div class="rec-tag tag-financial">Rekomendasi Finansial</div>
                         </div>
                     </div>
                     
@@ -483,12 +554,14 @@
                         <div>
                             <h4>Komunitas Pendukung</h4>
                             <p>Bergabung dengan komunitas Passion Hax untuk mendapatkan dukungan dan inspirasi dari sesama pencari passion.</p>
+                            <div class="rec-tag tag-passion">Komunitas</div>
                         </div>
                     </div>
                 </div>
                 
                 <div style="text-align: center; margin-top: 3rem;">
                     <a href="#products" class="cta-button">Lihat Program Rekomendasi</a>
+                    <a href="#financial" class="cta-button outline-button" style="margin-left: 1rem;">Check Up Finansial Gratis</a>
                     <p style="margin-top: 1rem;"><small>Atau bagikan hasilmu dengan teman-teman:</small></p>
                     <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
                         <a href="#" style="color: #3b5998; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
@@ -528,7 +601,7 @@
             // Ganti YOUR_TYPEFORM_URL dengan URL Typeform Anda
             window.typeformEmbed.makeWidget(
                 document.getElementById('typeform-embed'),
-                'https://form.typeform.com/to/hH3TXXr4', // Ganti dengan ID form Typeform Anda
+                'https://form.typeform.com/to/YOUR_FORM_ID', // Ganti dengan ID form Typeform Anda
                 {
                     hideHeaders: true,
                     hideFooter: true,
@@ -544,6 +617,27 @@
                         setTimeout(() => {
                             progressBar.style.width = '72%';
                         }, 100);
+                        
+                        // Ambil data dari Typeform (simulasi)
+                        const financialCondition = "stabil"; // Ini akan diambil dari jawaban Typeform
+                        
+                        // Sesuaikan rekomendasi berdasarkan kondisi finansial
+                        const recPassionShield = document.querySelector('.recommendation-card:nth-child(2) h4');
+                        const recFinancialCheck = document.querySelector('.financial-box .recommendation-card h4');
+                        
+                        if(financialCondition === "membutuhkan") {
+                            recPassionShield.innerHTML = "Passion Shield Projects";
+                            recPassionShield.nextElementSibling.innerHTML = "Bangun '<u>cash armor</u>' untuk mendanai kebutuhan dasar hidupmu sambil mengejar passion";
+                            
+                            recFinancialCheck.innerHTML = "Passion Shield Projects";
+                            recFinancialCheck.nextElementSibling.innerHTML = "Mulai bangun pendapatan dasar dengan program khusus Passion Shield";
+                        } else if(financialCondition === "stabil") {
+                            recPassionShield.innerHTML = "Financial Protection Check Up";
+                            recPassionShield.nextElementSibling.innerHTML = "Pastikan perlindungan finansialmu sudah memadai dengan konsultasi gratis";
+                            
+                            recFinancialCheck.innerHTML = "Financial Protection Check Up";
+                            recFinancialCheck.nextElementSibling.innerHTML = "Lakukan pengecekan perlindungan finansial untuk memastikan kamu terlindungi dengan baik";
+                        }
                         
                         // Scroll ke hasil
                         document.getElementById('result-container').scrollIntoView({ behavior: 'smooth' });
