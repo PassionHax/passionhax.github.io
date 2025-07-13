@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passion Readiness Quiz - Passion Hax</title>
+    <link rel="icon" type="image/x-icon" href="Passion Hax Logo.png">
+    <style>
+        /* VARIABLES & RESET */
+        :root {
+            --primary: #333333;
+            --secondary: #FF8C42;
+            --accent: #FFB563;
+            --dark: #1A1A1A;
+            --light: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #777777;
+            --success: #06D6A0;
+            --warning: #FFD166;
+            --info: #118AB2;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #f9f9f9;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        h1 { 
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+        h2 { 
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        p { 
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        /* LAYOUT */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        section {
+            padding: 5rem 0;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        
+        /* HEADER & NAV */
+        header {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 0.3rem 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem 0;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .logo-image {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f0f0f0;
+        }
+        
+        /* QUIZ SECTION */
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .quiz-header {
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .quiz-steps {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            gap: 1rem;
+        }
+        
+        .quiz-step {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-step.active {
+            background: var(--secondary);
+            transform: scale(1.3);
+        }
+        
+        .typeform-embed {
+            width: 100%;
+            height: 600px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* RESULT SECTION */
+        .result-container {
+            display: none;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .result-score {
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 1rem 0;
+            line-height: 1;
+        }
+        
+        .result-category {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+        
+        .category-explorer {
+            background: var(--warning);
+            color: #333;
+        }
+        
+        .category-developer {
+            background: var(--info);
+            color: white;
+        }
+        
+        .category-achiever {
+            background: var(--success);
+            color: white;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background: #f0f0f0;
+            border-radius: 10px;
+            height: 20px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--secondary);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .result-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .result-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .recommendations {
+            margin: 3rem 0;
+        }
+        
+        .recommendation-card {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: white;
+            margin: 1.5rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .rec-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-right: 1.5rem;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        /* CTA BUTTON */
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--secondary);
+        }
+        .cta-button:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 140, 66, 0.2);
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        .footer-logo .logo {
+            color: white;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .typeform-embed {
+                height: 500px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            
+            .typeform-embed {
+                height: 400px;
+            }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .recommendation-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .rec-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .typeform-embed {
+                height: 350px;
+            }
+            
+            .result-score {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://embed.typeform.com/embed.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://passionhax.github.io" class="logo-container">
+                    <img src="Passion Hax Logo.png" alt="Passion Hax Logo" class="logo-image">
+                    <div class="logo">Passion Hax</div>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Quiz Section -->
+    <section id="quiz">
+        <div class="container">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h1>Passion Readiness Quiz</h1>
+                    <p>Tes 5 menit untuk mengukur kesiapan passion-mu dan dapatkan laporan personalisasi gratis</p>
+                    
+                    <div class="quiz-steps">
+                        <div class="quiz-step active"></div>
+                        <div class="quiz-step"></div>
+                        <div class="quiz-step"></div>
+                        <div class="quiz-step"></div>
+                        <div class="quiz-step"></div>
+                    </div>
+                </div>
+                
+                <div id="typeform-embed" class="typeform-embed"></div>
+            </div>
+            
+            <div id="result-container" class="result-container">
+                <div class="result-header">
+                    <h2>Hasil Analisis Passion Readiness Quiz</h2>
+                    <p>Berdasarkan jawabanmu, berikut adalah hasil analisis kesiapan passion-mu:</p>
+                    
+                    <div class="result-score">72<span style="font-size: 2rem; color: var(--text-light);">/100</span></div>
+                    <div class="result-category category-developer">Passion Developer</div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar" style="width: 72%"></div>
+                    </div>
+                    
+                    <p>Kamu berada di jalur yang tepat! Kamu sudah memiliki pemahaman yang baik tentang passion-mu, tetapi masih perlu pengembangan lebih lanjut untuk mencapai potensi penuh.</p>
+                </div>
+                
+                <div class="result-grid">
+                    <div class="result-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>Self-Reflection</h3>
+                        <p><strong>85%</strong></p>
+                        <p>Kamu memiliki pemahaman yang sangat baik tentang nilai hidup dan minat pribadimu.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <i class="fas fa-flask"></i>
+                        <h3>Experimentation</h3>
+                        <p><strong>65%</strong></p>
+                        <p>Perlu lebih banyak mencoba aktivitas baru untuk menemukan passion yang belum terungkap.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Execution</h3>
+                        <p><strong>60%</strong></p>
+                        <p>Butuh pengembangan dalam eksekusi dan konsistensi dalam mengejar passion.</p>
+                    </div>
+                </div>
+                
+                <div class="recommendations">
+                    <h3>Rekomendasi untuk Pengembangan Passion</h3>
+                    <p>Berdasarkan hasilmu, kami merekomendasikan langkah-langkah berikut:</p>
+                    
+                    <div class="recommendation-card">
+                        <div class="rec-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div>
+                            <h4>Eksplorasi Passion Terstruktur</h4>
+                            <p>Ikuti program Passion Discovery Blueprint untuk menemukan passion sejati melalui metode terstruktur.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendation-card">
+                        <div class="rec-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h4>Pengembangan Eksekusi</h4>
+                            <p>Gabung Passion Transformation Blueprint untuk membangun sistem pendukung dan eksekusi passion.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendation-card">
+                        <div class="rec-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h4>Komunitas Pendukung</h4>
+                            <p>Bergabung dengan komunitas Passion Hax untuk mendapatkan dukungan dan inspirasi dari sesama pencari passion.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#products" class="cta-button">Lihat Program Rekomendasi</a>
+                    <p style="margin-top: 1rem;"><small>Atau bagikan hasilmu dengan teman-teman:</small></p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+                        <a href="#" style="color: #3b5998; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: #1da1f2; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #0077b5; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" style="color: #25d366; font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="Passion Hax Logo.png" alt="Passion Hax Logo" class="footer-logo-image">
+                <div class="logo">Passion Hax</div>
+            </div>
+            <p>Transformasi Passion Jadi Karier & Hidup Impianmu</p>
+            
+            <div class="footer-links">
+                <a href="#framework">Framework</a>
+                <a href="#products">Produk</a>
+                <a href="#resources">Resources</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#contact">Kontak</a>
+            </div>
+            
+            <p class="copyright">© 2025 Passion Hax. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Inisialisasi Typeform
+        window.addEventListener('DOMContentLoaded', function() {
+            // Ganti YOUR_TYPEFORM_URL dengan URL Typeform Anda
+            window.typeformEmbed.makeWidget(
+                document.getElementById('typeform-embed'),
+                'https://form.typeform.com/to/YOUR_FORM_ID', // Ganti dengan ID form Typeform Anda
+                {
+                    hideHeaders: true,
+                    hideFooter: true,
+                    opacity: 0,
+                    onSubmit: function() {
+                        // Ketika formulir disubmit, sembunyikan Typeform dan tampilkan hasil
+                        document.getElementById('typeform-embed').style.display = 'none';
+                        document.getElementById('result-container').style.display = 'block';
+                        
+                        // Animasi progress bar
+                        const progressBar = document.getElementById('progress-bar');
+                        progressBar.style.width = '0%';
+                        setTimeout(() => {
+                            progressBar.style.width = '72%';
+                        }, 100);
+                        
+                        // Scroll ke hasil
+                        document.getElementById('result-container').scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            );
+            
+            // Animasi step indicator
+            const steps = document.querySelectorAll('.quiz-step');
+            let currentStep = 0;
+            
+            setInterval(() => {
+                steps.forEach(step => step.classList.remove('active'));
+                
+                steps[currentStep].classList.add('active');
+                
+                currentStep = (currentStep + 1) % steps.length;
+            }, 800);
+        });
+    </script>
+</body>
+</html>
