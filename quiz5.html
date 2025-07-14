@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passion Readiness Quiz - Passion Hax</title>
+    <link rel="icon" type="image/x-icon" href="Passion Hax Logo.png">
+    <style>
+        /* VARIABLES & RESET */
+        :root {
+            --primary: #333333;
+            --secondary: #FF8C42;
+            --accent: #FFB563;
+            --dark: #1A1A1A;
+            --light: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #777777;
+            
+            /* Financial Status Colors */
+            --survival: #EF476F;
+            --stable: #118AB2;
+            --boosted: #06D6A0;
+            --freedom: #FFD166;
+            
+            /* Passion Status Colors */
+            --seeker: #5E60CE;
+            --developer: #48BFE3;
+            --hacker: #80FFDB;
+            
+            /* Network Status Colors */
+            --solo: #FF9F1C;
+            --explorer: #4361EE;
+            --linked: #7209B7;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #f9f9f9;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        h1 { 
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+        h2 { 
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        p { 
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        /* LAYOUT */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        } 
+        section {
+            padding: 5rem 0;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        
+        /* HEADER & NAV */
+        header {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 0.3rem 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem 0;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .logo-image {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f0f0f0;
+        }
+        
+        /* QUIZ SECTION */
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .quiz-header {
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .quiz-steps {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .quiz-step {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-step.active {
+            background: var(--secondary);
+            transform: scale(1.3);
+        }
+        
+        .question-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .question-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .option-item {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem;
+            border-radius: 10px;
+            background: #f9f9f9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: left;
+        }
+        
+        .option-item:hover {
+            background: #fff5ef;
+            border-color: #ffecd1;
+        }
+        
+        .option-item.selected {
+            background: #fff5ef;
+            border-color: var(--secondary);
+            box-shadow: 0 5px 15px rgba(255, 140, 66, 0.15);
+        }
+        
+        .option-item input {
+            margin-right: 1rem;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .option-label {
+            flex: 1;
+            cursor: pointer;
+        }
+        
+        .quiz-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        /* RESULT SECTION */
+        .result-container {
+            display: none;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: 12px;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+        }
+        
+        .combined-status {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .status-card {
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 220px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .financial-status {
+            background: linear-gradient(135deg, #f9f9f9, #fff8f4);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .passion-status {
+            background: linear-gradient(135deg, #f9f9f9, #f0f9ff);
+            border-left: 4px solid var(--seeker);
+        }
+        
+        .network-status {
+            background: linear-gradient(135deg, #f9f9f9, #f9f0ff);
+            border-left: 4px solid var(--solo);
+        }
+        
+        .status-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .status-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0.5rem 0;
+            line-height: 1.2;
+        }
+        
+        .overall-status {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .overall-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            line-height: 1.2;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background: #f0f0f0;
+            border-radius: 10px;
+            height: 20px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .result-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .result-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .recommendations {
+            margin: 3rem 0;
+        }
+        
+        .recommendation-card {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: white;
+            margin: 1.5rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .rec-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-right: 1.5rem;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .rec-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .tag-high {
+            background: rgba(239, 71, 111, 0.1);
+            color: #EF476F;
+            border: 1px solid rgba(239, 71, 111, 0.3);
+        }
+        
+        .tag-medium {
+            background: rgba(17, 138, 178, 0.1);
+            color: #118AB2;
+            border: 1px solid rgba(17, 138, 178, 0.3);
+        }
+        
+        .tag-low {
+            background: rgba(6, 214, 160, 0.1);
+            color: #06D6A0;
+            border: 1px solid rgba(6, 214, 160, 0.3);
+        }
+        
+        /* OPENING SECTION */
+        .opening-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .metric-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .metric-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            padding: 2rem;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .metric-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            display: inline-block;
+            transition: all 0.5s ease;
+        }
+        
+        .metric-card:hover .metric-icon {
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* INPUT SECTION */
+        .input-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2);
+        }
+        
+        /* BUTTON GROUP */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        /* CTA BUTTON */
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--secondary);
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 140, 66, 0.2);
+        }
+        
+        .outline-button {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        .outline-button:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .action-button {
+            padding: 0.8rem 1.8rem;
+            margin: 0.5rem;
+            min-width: 200px;
+        }
+        
+        .rec-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+            margin-top: 1rem;
+        }
+        .rec-button:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        /* FINANCIAL SECTION */
+        .financial-box {
+            background: linear-gradient(to right, #f9f9f9, #fff8f4);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid #ffecd1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .financial-box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--secondary);
+        }
+        
+        .profile-identity {
+            background: linear-gradient(135deg, #f0f9ff, #f9f0ff);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #e0e0ff;
+            position: relative;
+            text-align: center;
+        }
+        
+        .profile-identity:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--seeker);
+        }
+        
+        .profile-label {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .profile-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .overall-score {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--seeker), var(--developer));
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        .footer-logo .logo {
+            color: white;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .question-container {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .combined-status {
+                flex-direction: column;
+            }
+            
+            .recommendation-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .rec-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .quiz-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .quiz-buttons button {
+                width: 100%;
+            }
+            
+            .status-card {
+                min-width: 100%;
+            }
+            
+            .metric-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .profile-label {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .overall-name {
+                font-size: 1.8rem;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .status-name {
+                font-size: 1.5rem;
+            }
+            
+            .cta-button {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .profile-label {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://passionhax.github.io" class="logo-container">
+                    <img src="Passion Hax Logo.png" alt="Passion Hax Logo" class="logo-image">
+                    <div class="logo">Passion Hax</div>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Quiz Section -->
+    <section id="quiz">
+        <div class="container">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h1>Passion Readiness Quiz</h1>
+                    <p>Tes 5 menit untuk mengukur kesiapan passion-mu dan dapatkan laporan personalisasi gratis</p>
+                    
+                    <div class="quiz-steps">
+                        <!-- Steps will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Opening Section -->
+                <div id="opening-container" class="opening-container">
+                    <div class="card">
+                        <h2>Informasi Dasar</h2>
+                        <p>Sebelum memulai, kami membutuhkan beberapa informasi dasar untuk personalisasi hasil</p>
+                        
+                        <div class="input-container">
+                            <div class="input-group">
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" id="name" placeholder="Masukkan nama lengkap">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="Masukkan alamat email">
+                            </div>
+                        </div>
+                        
+                        <button id="start-quiz" class="cta-button">Mulai Quiz <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Explanation Section -->
+                <div id="explanation-container" class="explanation-container" style="display: none;">
+                    <div class="card">
+                        <h2>Apa yang Diukur?</h2>
+                        <p>Quiz ini mengukur 3 pilar utama kesiapan passion Anda</p>
+                        
+                        <div class="metric-cards">
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <h3>Kesiapan Finansial</h3>
+                                <p>Seberapa kuat fondasi keuangan Anda untuk mendukung perjalanan passion</p>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h3>Kesiapan Mindset</h3>
+                                <p>Seberapa siap pola pikir dan komitmen Anda dalam mengejar passion</p>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3>Kesiapan Network</h3>
+                                <p>Seberapa kuat jaringan pendukung yang Anda miliki untuk membantu mencapai passion</p>
+                            </div>
+                        </div>
+                        
+                        <button id="start-questions" class="cta-button">Mulai Pertanyaan <i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Question Container -->
+                <div id="question-container" class="question-container" style="display: none;">
+                    <div class="question-text" id="question-text">
+                        Seberapa baik Anda memahami nilai-nilai hidup dan minat pribadi Anda?
+                    </div>
+                    
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="quiz-buttons">
+                        <button id="prev-btn" class="cta-button outline-button" style="display: none;">
+                            <i class="fas fa-arrow-left"></i> Pertanyaan Sebelumnya
+                        </button>
+                        <button id="next-btn" class="cta-button">
+                            Pertanyaan Berikutnya <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button id="submit-btn" class="cta-button" style="display: none;">
+                            <i class="fas fa-check-circle"></i> Lihat Hasil
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Result Container -->
+                <div id="result-container" class="result-container">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="Passion Hax Logo.png" alt="Passion Hax Logo" class="footer-logo-image">
+                <div class="logo">Passion Hax</div>
+            </div>
+            <p>Transformasi Passion Jadi Karier & Hidup Impianmu</p>
+            
+            <div class="footer-links">
+                <a href="#framework">Framework</a>
+                <a href="#products">Produk</a>
+                <a href="#resources">Resources</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#contact">Kontak</a>
+            </div>
+            
+            <p class="copyright">© 2025 Passion Hax. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Pertanyaan kuis
+        const questions = [
+            // Pertanyaan finansial (5 pertanyaan)
+            {
+                question: "Bagaimana kondisi keuangan Anda saat ini dalam mendukung pengembangan passion?",
+                options: [
+                    { text: "Sangat tidak stabil", value: 1 },
+                    { text: "Butuh perbaikan", value: 2 },
+                    { text: "Cukup stabil", value: 3 },
+                    { text: "Sangat stabil", value: 4 }
+                ],
+                category: "financial"
+            },
+            {
+                question: "Berapa besar pendapatan bulanan Anda saat ini?",
+                options: [
+                    { text: "< Rp 5 juta", value: 1 },
+                    { text: "Rp 5-10 juta", value: 2 },
+                    { text: "Rp 10-20 juta", value: 3 },
+                    { text: "> Rp 20 juta", value: 4 }
+                ],
+                category: "financial"
+            },
+            {
+                question: "Sudahkah Anda memiliki perlindungan finansial (asuransi, dana darurat, investasi)?",
+                options: [
+                    { text: "Sama sekali tidak", value: 1 },
+                    { text: "Sangat minim", value: 2 },
+                    { text: "Cukup memadai", value: 3 },
+                    { text: "Sangat baik", value: 4 },
+                    { text: "Lengkap dan optimal", value: 5 }
+                ],
+                category: "financial"
+            },
+            {
+                question: "Seberapa besar komitmen Anda untuk membangun kebebasan finansial dalam 5 tahun ke depan?",
+                options: [
+                    { text: "Belum memikirkan sama sekali", value: 1 },
+                    { text: "Sedang merencanakan", value: 2 },
+                    { text: "Sudah mulai mengambil langkah kecil", value: 3 },
+                    { text: "Aktif mengejar dengan strategi jelas", value: 4 },
+                    { text: "Sangat berkomitmen dan sudah mengalami kemajuan", value: 5 }
+                ],
+                category: "financial"
+            },
+            {
+                question: "Seberapa besar utang/kewajiban finansial yang Anda miliki?",
+                options: [
+                    { text: "Sangat besar, melebihi kemampuan bayar", value: 1 },
+                    { text: "Cukup besar, tetapi masih bisa dikelola", value: 2 },
+                    { text: "Sedang, masih dalam batas wajar", value: 3 },
+                    { text: "Minimal, hampir tidak ada utang", value: 4 },
+                    { text: "Tidak ada utang sama sekali", value: 5 }
+                ],
+                category: "financial"
+            },
+            
+            // Pertanyaan mindset (5 pertanyaan)
+            {
+                question: "Seberapa baik Anda memahami nilai-nilai hidup dan minat pribadi Anda?",
+                options: [
+                    { text: "Sangat tidak memahami", value: 1 },
+                    { text: "Kurang memahami", value: 2 },
+                    { text: "Cukup memahami", value: 3 },
+                    { text: "Memahami dengan baik", value: 4 },
+                    { text: "Sangat memahami", value: 5 }
+                ],
+                category: "mindset"
+            },
+            {
+                question: "Apakah Anda sudah memiliki aktivitas yang membuat Anda lupa waktu ketika melakukannya?",
+                options: [
+                    { text: "Belum sama sekali", value: 1 },
+                    { text: "Sangat jarang", value: 2 },
+                    { text: "Kadang-kadang", value: 3 },
+                    { text: "Sering", value: 4 },
+                    { text: "Sangat sering", value: 5 }
+                ],
+                category: "mindset"
+            },
+            {
+                question: "Seberapa besar Anda bersedia menginvestasikan sumber daya (waktu, uang) untuk passion?",
+                options: [
+                    { text: "Sangat kecil", value: 1 },
+                    { text: "Kecil", value: 2 },
+                    { text: "Sedang", value: 3 },
+                    { text: "Besar", value: 4 },
+                    { text: "Sangat besar", value: 5 }
+                ],
+                category: "mindset"
+            },
+            {
+                question: "Seberapa besar toleransi risiko Anda dalam mengejar passion?",
+                options: [
+                    { text: "Sangat rendah", value: 1 },
+                    { text: "Rendah", value: 2 },
+                    { text: "Sedang", value: 3 },
+                    { text: "Tinggi", value: 4 },
+                    { text: "Sangat tinggi", value: 5 }
+                ],
+                category: "mindset"
+            },
+            {
+                question: "Seberapa jelas visi Anda tentang peran passion dalam hidup Anda 5 tahun mendatang?",
+                options: [
+                    { text: "Sangat tidak jelas", value: 1 },
+                    { text: "Kurang jelas", value: 2 },
+                    { text: "Cukup jelas", value: 3 },
+                    { text: "Jelas", value: 4 },
+                    { text: "Sangat jelas", value: 5 }
+                ],
+                category: "mindset"
+            },
+            
+            // Pertanyaan network (5 pertanyaan)
+            {
+                question: "Seberapa luas jaringan profesional yang Anda miliki di bidang yang Anda minati?",
+                options: [
+                    { text: "Sangat terbatas", value: 1 },
+                    { text: "Terbatas", value: 2 },
+                    { text: "Cukup luas", value: 3 },
+                    { text: "Luas", value: 4 },
+                    { text: "Sangat luas", value: 5 }
+                ],
+                category: "network"
+            },
+            {
+                question: "Seberapa sering Anda terhubung dengan mentor atau orang yang lebih berpengalaman?",
+                options: [
+                    { text: "Hampir tidak pernah", value: 1 },
+                    { text: "Jarang", value: 2 },
+                    { text: "Kadang-kadang", value: 3 },
+                    { text: "Sering", value: 4 },
+                    { text: "Sangat sering", value: 5 }
+                ],
+                category: "network"
+            },
+            {
+                question: "Seberapa aktif Anda dalam komunitas yang relevan dengan minat Anda?",
+                options: [
+                    { text: "Tidak aktif sama sekali", value: 1 },
+                    { text: "Sangat jarang aktif", value: 2 },
+                    { text: "Cukup aktif", value: 3 },
+                    { text: "Sangat aktif", value: 4 },
+                    { text: "Menjadi pengurus/pengelola komunitas", value: 5 }
+                ],
+                category: "network"
+            },
+            {
+                question: "Seberapa mudah Anda mendapatkan dukungan atau saran ketika menghadapi masalah?",
+                options: [
+                    { text: "Sangat sulit", value: 1 },
+                    { text: "Sulit", value: 2 },
+                    { text: "Cukup mudah", value: 3 },
+                    { text: "Mudah", value: 4 },
+                    { text: "Sangat mudah", value: 5 }
+                ],
+                category: "network"
+            },
+            {
+                question: "Seberapa besar pengaruh jaringan Anda terhadap perkembangan karier/passion Anda?",
+                options: [
+                    { text: "Sangat kecil", value: 1 },
+                    { text: "Kecil", value: 2 },
+                    { text: "Sedang", value: 3 },
+                    { text: "Besar", value: 4 },
+                    { text: "Sangat besar", value: 5 }
+                ],
+                category: "network"
+            }
+        ];
+
+        // Profile descriptions
+        const profileDescriptions = {
+            // Survival Mode
+            "Survival Solo Passion Seeker": "Kamu sedang berada di tahap bertahan secara finansial. Setiap hari adalah perjuangan untuk mencukupi kebutuhan dasar. Saat ini kamu masih bergerak sendiri, mengandalkan diri sendiri dalam perjalananmu. Secara mindset, kamu sedang mencari apa yang benar-benar menjadi passion-mu. Fase ini penting untuk eksplorasi diri dan mengenal potensi pribadi.",
+            "Survival Explorer Passion Seeker": "Kamu berada dalam kondisi keuangan yang masih sulit. Namun, kamu mulai membuka diri untuk menjelajahi koneksi dan interaksi sosial. Di saat yang sama, kamu masih mencari arah passion dan potensi terbaikmu. Ini adalah momen eksploratif yang penuh peluang jika dijalani dengan kesadaran.",
+            "Survival Linked Passion Seeker": "Kamu sedang bertahan secara finansial namun telah memiliki jaringan sosial yang luas. Sekarang saatnya memanfaatkan koneksi tersebut untuk menemukan dan mengasah passion-mu. Kamu belum tahu pasti arahmu, tapi kamu tidak sendirian dalam proses ini.",
+            "Survival Solo Passion Developer": "Kamu masih dalam kondisi bertahan secara finansial dan belum punya dukungan sosial yang kuat. Namun, kamu mulai serius membangun passion-mu. Progres ini menunjukkan ketangguhan mental yang luar biasa, meski dalam kesulitan.",
+            "Survival Explorer Passion Developer": "Keuangan belum ideal, tapi kamu aktif menjelajah komunitas dan mulai membangun passion secara konsisten. Kamu sedang menyiapkan pondasi jangka panjang, meski dari titik nol.",
+            "Survival Linked Passion Developer": "Meski kondisi keuanganmu menantang, kamu punya jaringan yang kuat dan mulai mengembangkan passion-mu dengan serius. Ini kombinasi berbahaya—dalam arti positif—karena kamu tinggal butuh momentum.",
+            "Survival Solo Passion Hacker": "Dalam tekanan finansial dan berjalan sendirian, kamu sudah menguasai passion-mu. Ini bukan fase nyaman, tapi kamu punya fokus dan ketajaman yang jarang dimiliki di fase ini.",
+            "Survival Explorer Passion Hacker": "Kamu sedang dalam fase sulit, tapi memiliki mindset yang tajam dan aktif menjalin koneksi. Kamu tahu apa yang kamu cari, dan tahu ke mana harus melangkah—kamu hanya butuh daya dorong.",
+            "Survival Linked Passion Hacker": "Finansial belum bebas, tapi kamu punya dua kekuatan besar: jaringan solid dan kendali penuh atas passion-mu. Kombinasi ini bisa meledak jika diarahkan ke peluang yang tepat.",
+            
+            // Stable Ground
+            "Stable Solo Passion Seeker": "Kamu sudah berada di zona keuangan yang relatif stabil, tapi masih melangkah sendirian dan belum menemukan passion-mu secara utuh. Ini saat yang tepat untuk mulai mengeksplorasi diri lebih dalam.",
+            "Stable Explorer Passion Seeker": "Dengan kondisi keuangan yang stabil dan keinginan untuk berinteraksi sosial, kamu dalam momen tepat untuk menggali passion. Kamu terbuka terhadap peluang dan siap naik ke level berikutnya.",
+            "Stable Linked Passion Seeker": "Keuanganmu stabil dan kamu punya jaringan yang siap mendukungmu. Sekarang saatnya memanfaatkan itu semua untuk benar-benar menemukan dan memahami passion-mu.",
+            "Stable Solo Passion Developer": "Kamu punya kontrol finansial yang cukup, dan sedang membangun passion-mu dengan serius, meski masih sendirian. Ini adalah fase mandiri yang penuh potensi.",
+            "Stable Explorer Passion Developer": "Keuanganmu mantap, koneksimu berkembang, dan passion-mu mulai kamu bentuk dengan penuh kesadaran. Kamu sedang berada di jalur pertumbuhan yang sangat menjanjikan.",
+            "Stable Linked Passion Developer": "Kamu berada di titik solid: finansial aman, jaringan kuat, dan passion sedang berkembang. Ini fase pembangunan yang kokoh dan mengarah ke lompatan besar.",
+            "Stable Solo Passion Hacker": "Kamu sudah stabil secara keuangan dan punya mindset yang tajam. Walau belum banyak kolaborasi, kamu bisa menciptakan dampak dari passion yang telah kamu kuasai.",
+            "Stable Explorer Passion Hacker": "Kamu punya keuangan yang mantap, relasi yang aktif, dan kendali penuh atas passion-mu. Waktunya untuk menginspirasi dan membangun jejak nyata dari kekuatan tersebut.",
+            "Stable Linked Passion Hacker": "Kombinasi ideal di tahap pembangunan: keuangan stabil, jaringan siap pakai, dan passion yang telah dioptimalkan. Saatnya ekspansi dan memberi dampak nyata.",
+            
+            // Boosted (Wealth Climber)
+            "Boosted Solo Passion Seeker": "Kamu sedang mengalami pertumbuhan finansial, tapi belum terlalu terbuka terhadap koneksi sosial dan masih mencari passion. Ini masa penuh energi dan pencarian arah.",
+            "Boosted Explorer Passion Seeker": "Finansialmu sedang naik, kamu mulai menjelajah komunitas, dan sedang menggali apa yang benar-benar kamu cintai. Ini fase eksplorasi dengan daya dorong tinggi.",
+            "Boosted Linked Passion Seeker": "Asetmu berkembang, koneksi aktif, dan kamu dalam misi menemukan passion-mu. Kamu punya semua tools—tinggal fokus arahkan energimu.",
+            "Boosted Solo Passion Developer": "Kamu sedang membangun kekayaan dan passion sekaligus, meski masih dalam kesendirian. Ini fase sunyi namun kuat.",
+            "Boosted Explorer Passion Developer": "Dengan keuangan tumbuh dan jejaring yang meluas, kamu sedang merancang masa depan berbasis passion. Arahmu mulai jelas, tinggal perkuat fondasi.",
+            "Boosted Linked Passion Developer": "Finansial bertumbuh, koneksi solid, passion berkembang—kamu berada di fase akselerasi. Terus konsisten, dan kamu bisa loncat lebih jauh dari yang kamu bayangkan.",
+            "Boosted Solo Passion Hacker": "Kamu adalah mesin fokus. Keuangan naik, passion dikuasai, meski koneksi masih terbatas. Kamu independen dan visioner.",
+            "Boosted Explorer Passion Hacker": "Dengan aset yang berkembang, komunitas yang aktif, dan kendali penuh atas passion, kamu punya semua bahan untuk menciptakan pengaruh besar.",
+            "Boosted Linked Passion Hacker": "Kamu dalam fase emas: kekayaan naik, koneksi kuat, dan kamu tahu apa yang harus kamu lakukan dengan passion-mu. Waktunya mengeksekusi visi besar.",
+            
+            // Freedom
+            "Freedom Solo Passion Seeker": "Kamu sudah bebas secara finansial, tapi masih menjelajah arah hidup dan passion secara mandiri. Ini momen langka yang bisa jadi awal kebangkitan pribadi.",
+            "Freedom Explorer Passion Seeker": "Kamu punya kebebasan finansial dan keterbukaan sosial, tapi masih mencari makna dan arah. Waktunya gunakan kenyamananmu untuk eksplorasi mendalam.",
+            "Freedom Linked Passion Seeker": "Kamu punya segalanya secara eksternal—uang dan jaringan—sekarang saatnya menggali sisi terdalam dirimu dan menemukan panggilan hidupmu.",
+            "Freedom Solo Passion Developer": "Kamu bebas dari tekanan uang, dan sedang membentuk passion-mu dengan serius. Kamu tenang, tapi bergerak penuh arah.",
+            "Freedom Explorer Passion Developer": "Dengan kebebasan finansial dan jejaring yang hidup, kamu sedang menumbuhkan passion secara nyata. Kamu tidak hanya sukses, tapi juga bertumbuh.",
+            "Freedom Linked Passion Developer": "Kamu berada di fase optimal: bebas finansial, terkoneksi kuat, dan membangun passion yang bermakna. Potensi dampak sosialmu luar biasa.",
+            "Freedom Solo Passion Hacker": "Kamu bebas secara keuangan dan telah menguasai passion-mu, meski masih independen dalam bergerak. Kamu tidak membutuhkan validasi—kamu membangun makna.",
+            "Freedom Explorer Passion Hacker": "Kamu punya segalanya—uang, jejaring, dan passion yang solid. Saatnya menjadi pemimpin perubahan dan inspirasi yang hidup.",
+            "Freedom Linked Passion Hacker": "Ini adalah level tertinggi: kamu bebas secara finansial, punya jaringan kuat, dan passion-mu menjadi kekuatan besar yang menciptakan dampak luas. Kamu bukan hanya berhasil, tapi juga menggerakkan dunia."
+        };
+
+        // Variabel global
+        let currentQuestion = -1; // -1: opening, 0: explanation, 1-15: questions
+        let answers = {};
+        let financialScore = 0;
+        let mindsetScore = 0;
+        let networkScore = 0;
+        let userName = "";
+        let userEmail = "";
+
+        // Elemen DOM
+        const openingContainerEl = document.getElementById('opening-container');
+        const explanationContainerEl = document.getElementById('explanation-container');
+        const questionContainerEl = document.getElementById('question-container');
+        const questionTextEl = document.getElementById('question-text');
+        const optionsContainerEl = document.getElementById('options-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const quizStepsEl = document.querySelector('.quiz-steps');
+        const resultContainerEl = document.getElementById('result-container');
+        const startQuizBtn = document.getElementById('start-quiz');
+        const startQuestionsBtn = document.getElementById('start-questions');
+
+        // Fungsi untuk menginisialisasi step indicator
+        function initSteps() {
+            quizStepsEl.innerHTML = '';
+            for (let i = 0; i < questions.length; i++) {
+                const step = document.createElement('div');
+                step.className = 'quiz-step';
+                quizStepsEl.appendChild(step);
+            }
+        }
+
+        // Fungsi untuk menampilkan pertanyaan
+        function showQuestion() {
+            if (currentQuestion === -1) {
+                // Tampilkan halaman pembuka metrik
+                openingContainerEl.style.display = 'none';
+                explanationContainerEl.style.display = 'block';
+                questionContainerEl.style.display = 'none';
+                resultContainerEl.style.display = 'none';
+                return;
+            }
+            
+            if (currentQuestion >= 0 && currentQuestion < questions.length) {
+                const question = questions[currentQuestion];
+                questionTextEl.textContent = question.question;
+                optionsContainerEl.innerHTML = '';
+                
+                // Update step indicator
+                const steps = document.querySelectorAll('.quiz-step');
+                steps.forEach((step, index) => {
+                    if (index === currentQuestion) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+                
+                // Buat opsi jawaban
+                question.options.forEach((option, index) => {
+                    const optionEl = document.createElement('div');
+                    optionEl.className = 'option-item';
+                    
+                    // Cek apakah jawaban sudah dipilih sebelumnya
+                    const isSelected = answers[currentQuestion] === index;
+                    
+                    optionEl.innerHTML = `
+                        <input type="radio" name="answer" id="option-${index}" value="${index}" 
+                            ${isSelected ? 'checked' : ''}>
+                        <label for="option-${index}" class="option-label">${option.text}</label>
+                    `;
+                    
+                    optionEl.addEventListener('click', () => {
+                        // Hapus semua seleksi
+                        document.querySelectorAll('.option-item').forEach(item => {
+                            item.classList.remove('selected');
+                        });
+                        
+                        // Tandai yang dipilih
+                        optionEl.classList.add('selected');
+                        
+                        // Simpan jawaban
+                        answers[currentQuestion] = index;
+                        
+                        // Aktifkan tombol selanjutnya
+                        nextBtn.disabled = false;
+                    });
+                    
+                    optionsContainerEl.appendChild(optionEl);
+                });
+                
+                // Tampilkan tombol yang sesuai
+                prevBtn.style.display = currentQuestion === 0 ? 'none' : 'inline-block';
+                nextBtn.style.display = currentQuestion < questions.length - 1 ? 'inline-block' : 'none';
+                submitBtn.style.display = currentQuestion === questions.length - 1 ? 'inline-block' : 'none';
+                
+                // Tampilkan container pertanyaan
+                openingContainerEl.style.display = 'none';
+                explanationContainerEl.style.display = 'none';
+                questionContainerEl.style.display = 'block';
+                resultContainerEl.style.display = 'none';
+            }
+        }
+
+        // Fungsi untuk menentukan kategori finansial
+        function getFinancialCategory(score) {
+            if (score <= 10) {
+                return {
+                    name: "Survival",
+                    description: "Anda sedang berjuang memenuhi kebutuhan dasar",
+                    icon: "fas fa-umbrella-beach",
+                    color: "#EF476F",
+                    maxScore: 22
+                };
+            } else if (score <= 15) {
+                return {
+                    name: "Stable",
+                    description: "Anda memiliki stabilitas finansial dasar",
+                    icon: "fas fa-home",
+                    color: "#118AB2",
+                    maxScore: 22
+                };
+            } else if (score <= 19) {
+                return {
+                    name: "Boosted",
+                    description: "Anda sedang membangun kekuatan finansial",
+                    icon: "fas fa-chart-line",
+                    color: "#06D6A0",
+                    maxScore: 22
+                };
+            } else {
+                return {
+                    name: "Freedom",
+                    description: "Anda memiliki kebebasan finansial yang baik",
+                    icon: "fas fa-crown",
+                    color: "#FFD166",
+                    maxScore: 22
+                };
+            }
+        }
+
+        // Fungsi untuk menentukan kategori mindset
+        function getMindsetCategory(score) {
+            if (score <= 15) {
+                return {
+                    name: "Passion Seeker",
+                    description: "Anda sedang mencari passion yang tepat",
+                    icon: "fas fa-search",
+                    color: "#5E60CE",
+                    maxScore: 25
+                };
+            } else if (score <= 20) {
+                return {
+                    name: "Passion Developer",
+                    description: "Anda sedang mengembangkan passion",
+                    icon: "fas fa-seedling",
+                    color: "#48BFE3",
+                    maxScore: 25
+                };
+            } else {
+                return {
+                    name: "Passion Hacker",
+                    description: "Anda ahli dalam mengeksekusi passion",
+                    icon: "fas fa-rocket",
+                    color: "#80FFDB",
+                    maxScore: 25
+                };
+            }
+        }
+
+        // Fungsi untuk menentukan kategori network
+        function getNetworkCategory(score) {
+            if (score <= 12) {
+                return {
+                    name: "Solo",
+                    description: "Anda masih membangun jaringan pendukung",
+                    icon: "fas fa-user",
+                    color: "#FF9F1C",
+                    maxScore: 25
+                };
+            } else if (score <= 18) {
+                return {
+                    name: "Explorer",
+                    description: "Anda mulai aktif membangun jaringan",
+                    icon: "fas fa-users",
+                    color: "#4361EE",
+                    maxScore: 25
+                };
+            } else {
+                return {
+                    name: "Linked",
+                    description: "Anda memiliki jaringan pendukung yang kuat",
+                    icon: "fas fa-handshake",
+                    color: "#7209B7",
+                    maxScore: 25
+                };
+            }
+        }
+
+        // Fungsi untuk menghitung hasil
+        function calculateResults() {
+            financialScore = 0;
+            mindsetScore = 0;
+            networkScore = 0;
+            
+            // Hitung skor finansial (pertanyaan 0-4)
+            for (let i = 0; i < 5; i++) {
+                if (answers[i] !== undefined) {
+                    const optionValue = questions[i].options[answers[i]].value;
+                    financialScore += optionValue;
+                }
+            }
+            
+            // Hitung skor mindset (pertanyaan 5-9)
+            for (let i = 5; i < 10; i++) {
+                if (answers[i] !== undefined) {
+                    const optionValue = questions[i].options[answers[i]].value;
+                    mindsetScore += optionValue;
+                }
+            }
+            
+            // Hitung skor network (pertanyaan 10-14)
+            for (let i = 10; i < 15; i++) {
+                if (answers[i] !== undefined) {
+                    const optionValue = questions[i].options[answers[i]].value;
+                    networkScore += optionValue;
+                }
+            }
+            
+            // Dapatkan kategori
+            const financialCategory = getFinancialCategory(financialScore);
+            const mindsetCategory = getMindsetCategory(mindsetScore);
+            const networkCategory = getNetworkCategory(networkScore);
+            
+            // Hitung persentase
+            const financialPercentage = Math.round((financialScore / financialCategory.maxScore) * 100);
+            const mindsetPercentage = Math.round((mindsetScore / mindsetCategory.maxScore) * 100);
+            const networkPercentage = Math.round((networkScore / networkCategory.maxScore) * 100);
+            
+            // Hitung skor keseluruhan
+            const overallScore = Math.round((financialPercentage + mindsetPercentage + networkPercentage) / 3);
+            
+            // Generate profile key
+            const profileKey = `${financialCategory.name} ${networkCategory.name} ${mindsetCategory.name}`;
+            
+            return {
+                financialScore: financialScore,
+                financialCategory: financialCategory,
+                financialPercentage: financialPercentage,
+                
+                mindsetScore: mindsetScore,
+                mindsetCategory: mindsetCategory,
+                mindsetPercentage: mindsetPercentage,
+                
+                networkScore: networkScore,
+                networkCategory: networkCategory,
+                networkPercentage: networkPercentage,
+                
+                overallScore: overallScore,
+                profileKey: profileKey
+            };
+        }
+
+        // Fungsi untuk menampilkan hasil
+        function showResults() {
+            const results = calculateResults();
+            const userName = document.getElementById('name').value;
+            const profileDesc = profileDescriptions[results.profileKey] || "Profil Anda unik dan penuh potensi. Gunakan kekuatan finansial, jaringan, dan passion Anda untuk mencapai tujuan.";
+            
+            // Sembunyikan kontainer pertanyaan dan tampilkan hasil
+            questionContainerEl.style.display = 'none';
+            resultContainerEl.style.display = 'block';
+            openingContainerEl.style.display = 'none';
+            explanationContainerEl.style.display = 'none';
+            
+            // Isi hasil
+            resultContainerEl.innerHTML = `
+                <div class="result-header">
+                    <h2>Hasil Analisis Passion Readiness Quiz</h2>
+                    <p>Halo ${userName}, berikut analisis kesiapan passion Anda berdasarkan 3 pilar utama:</p>
+                </div>
+                
+                <div class="profile-identity">
+                    <div class="profile-label">${results.profileKey}</div>
+                    <div class="profile-description">${profileDesc}</div>
+                    <div class="overall-score">Skor Keseluruhan: ${results.overallScore}/100</div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: ${results.overallScore}%; background: var(--secondary);"></div>
+                    </div>
+                </div>
+                
+                <div class="combined-status">
+                    <div class="status-card financial-status">
+                        <div class="status-icon" style="color: ${results.financialCategory.color}">
+                            <i class="${results.financialCategory.icon}"></i>
+                        </div>
+                        <div class="status-title">Status Finansial</div>
+                        <div class="status-name" style="color: ${results.financialCategory.color}">
+                            ${results.financialCategory.name}
+                        </div>
+                        <p>${results.financialCategory.description}</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: ${results.financialPercentage}%; background: ${results.financialCategory.color}"></div>
+                        </div>
+                        <p><strong>Skor: ${results.financialScore}/${results.financialCategory.maxScore}</strong></p>
+                    </div>
+                    
+                    <div class="status-card passion-status">
+                        <div class="status-icon" style="color: ${results.mindsetCategory.color}">
+                            <i class="${results.mindsetCategory.icon}"></i>
+                        </div>
+                        <div class="status-title">Status Mindset</div>
+                        <div class="status-name" style="color: ${results.mindsetCategory.color}">
+                            ${results.mindsetCategory.name}
+                        </div>
+                        <p>${results.mindsetCategory.description}</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: ${results.mindsetPercentage}%; background: ${results.mindsetCategory.color}"></div>
+                        </div>
+                        <p><strong>Skor: ${results.mindsetScore}/${results.mindsetCategory.maxScore}</strong></p>
+                    </div>
+                    
+                    <div class="status-card network-status">
+                        <div class="status-icon" style="color: ${results.networkCategory.color}">
+                            <i class="${results.networkCategory.icon}"></i>
+                        </div>
+                        <div class="status-title">Status Network</div>
+                        <div class="status-name" style="color: ${results.networkCategory.color}">
+                            ${results.networkCategory.name}
+                        </div>
+                        <p>${results.networkCategory.description}</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: ${results.networkPercentage}%; background: ${results.networkCategory.color}"></div>
+                        </div>
+                        <p><strong>Skor: ${results.networkScore}/${results.networkCategory.maxScore}</strong></p>
+                    </div>
+                </div>
+                
+                <div class="financial-box">
+                    <h3>Rekomendasi Aksi</h3>
+                    <p>Berdasarkan profil Anda, kami merekomendasikan:</p>
+                    
+                    <div class="recommendation-card">
+                        <div class="rec-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div>
+                            <h4>Passion Shield Projects</h4>
+                            <p>Bangun sumber pendapatan dasar untuk mendukung perjalanan passion Anda</p>
+                            <div class="rec-tag ${results.financialScore <= 10 ? "tag-high" : results.financialScore <= 15 ? "tag-medium" : "tag-low"}">
+                                ${results.financialScore <= 10 ? "Sangat Dianjurkan" : results.financialScore <= 15 ? "Dianjurkan" : "Opsional"}
+                            </div>
+                            <a href="#psp" class="rec-button">Lihat Detail</a>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendation-card">
+                        <div class="rec-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h4>Financial Protection Check Up</h4>
+                            <p>Pastikan perlindungan finansial Anda memadai dengan konsultasi gratis</p>
+                            <div class="rec-tag ${results.financialScore <= 15 ? "tag-medium" : "tag-low"}">
+                                ${results.financialScore <= 15 ? "Dianjurkan" : "Opsional"}
+                            </div>
+                            <a href="#financial" class="rec-button">Jadwalkan Sekarang</a>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendation-card">
+                        <div class="rec-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div>
+                            <h4>${results.mindsetScore <= 15 ? "Passion Discovery Blueprint" : "Passion Transformation Blueprint"}</h4>
+                            <p>${results.mindsetScore <= 15 
+                                ? "Temukan passion sejati melalui metode RES Framework" 
+                                : "Temukan + eksekusi passion sejati dengan pendekatan full RESET Framework"}</p>
+                            <div class="rec-tag tag-high">Program Utama</div>
+                            <a href="${results.mindsetScore <= 15 ? '#pdb' : '#ptb'}" class="rec-button">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendation-card">
+                        <div class="rec-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h4>Passion Collaboration Network</h4>
+                            <p>Komunitas berbagai passion dengan peluang kolaborasi digital ataupun on ground</p>
+                            <div class="rec-tag ${results.networkScore <= 12 ? "tag-high" : "tag-medium"}">
+                                ${results.networkScore <= 12 ? "Sangat Dianjurkan" : "Dianjurkan"}
+                            </div>
+                            <a href="#pcn" class="rec-button">Gabung Komunitas</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button id="download-pdf" class="cta-button action-button">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                    <button id="send-email" class="cta-button action-button">
+                        <i class="fas fa-paper-plane"></i> Kirim ke Email
+                    </button>
+                    <p style="margin-top: 1rem;"><small>Atau bagikan hasilmu dengan teman-teman:</small></p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+                        <a href="#" style="color: #3b5998; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: #1da1f2; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #0077b5; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" style="color: #25d366; font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            `;
+            
+            // Animasi progress bar
+            setTimeout(() => {
+                document.querySelectorAll('.progress-bar').forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            }, 300);
+            
+            // Tambahkan event listener untuk tombol download PDF
+            document.getElementById('download-pdf').addEventListener('click', downloadPDF);
+            
+            // Tambahkan event listener untuk tombol kirim email
+            document.getElementById('send-email').addEventListener('click', sendEmail);
+        }
+
+        // Fungsi untuk download PDF
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Header
+            doc.setFontSize(20);
+            doc.text("Laporan Passion Readiness Quiz", 105, 20, null, null, 'center');
+            
+            // Informasi pengguna
+            doc.setFontSize(12);
+            doc.text(`Nama: ${document.getElementById('name').value}`, 20, 30);
+            doc.text(`Email: ${document.getElementById('email').value}`, 20, 38);
+            doc.text(`Tanggal: ${new Date().toLocaleDateString()}`, 20, 46);
+            
+            // Garis pemisah
+            doc.line(20, 50, 190, 50);
+            
+            // Konten laporan
+            doc.setFontSize(16);
+            doc.text("Ringkasan Hasil", 105, 60, null, null, 'center');
+            
+            const results = calculateResults();
+            const profileDesc = profileDescriptions[results.profileKey] || "Profil Anda unik dan penuh potensi.";
+            
+            // Profile identity
+            doc.setFontSize(14);
+            doc.setTextColor(0);
+            doc.text(`Profil Anda: ${results.profileKey}`, 20, 70);
+            doc.setFontSize(12);
+            doc.text(profileDesc, 20, 78, { maxWidth: 170 });
+            
+            // Overall score
+            doc.setFontSize(14);
+            doc.text(`Skor Keseluruhan: ${results.overallScore}/100`, 20, 100);
+            
+            // Financial
+            doc.setFontSize(12);
+            doc.setTextColor(results.financialCategory.color);
+            doc.text(`Finansial: ${results.financialCategory.name} (${results.financialScore}/${results.financialCategory.maxScore})`, 20, 110);
+            doc.setTextColor(0);
+            doc.text(results.financialCategory.description, 20, 118, { maxWidth: 170 });
+            
+            // Mindset
+            doc.setTextColor(results.mindsetCategory.color);
+            doc.text(`Mindset: ${results.mindsetCategory.name} (${results.mindsetScore}/${results.mindsetCategory.maxScore})`, 20, 130);
+            doc.setTextColor(0);
+            doc.text(results.mindsetCategory.description, 20, 138, { maxWidth: 170 });
+            
+            // Network
+            doc.setTextColor(results.networkCategory.color);
+            doc.text(`Network: ${results.networkCategory.name} (${results.networkScore}/${results.networkCategory.maxScore})`, 20, 150);
+            doc.setTextColor(0);
+            doc.text(results.networkCategory.description, 20, 158, { maxWidth: 170 });
+            
+            // Rekomendasi
+            doc.setFontSize(16);
+            doc.text("Rekomendasi Utama", 105, 170, null, null, 'center');
+            doc.setFontSize(12);
+            doc.text("- Passion Shield Projects", 20, 180);
+            doc.text("- Financial Protection Check Up", 20, 188);
+            doc.text("- Passion Collaboration Network", 20, 196);
+            
+            // Footer
+            doc.setFontSize(10);
+            doc.setTextColor(100);
+            doc.text("© 2025 Passion Hax - passionhax.github.io", 105, 280, null, null, 'center');
+            
+            // Simpan PDF
+            doc.save('passion-readiness-report.pdf');
+        }
+
+        // Fungsi untuk kirim email (simulasi)
+        function sendEmail() {
+            const email = document.getElementById('email').value;
+            if (!email) {
+                alert('Silakan masukkan alamat email yang valid');
+                return;
+            }
+            
+            // Simpan di localStorage sebagai simulasi
+            localStorage.setItem('quizReportEmail', email);
+            
+            // Tampilkan pesan sukses
+            alert(`Laporan berhasil dikirim ke ${email}. Silakan cek inbox Anda!`);
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', goToPrevQuestion);
+        nextBtn.addEventListener('click', goToNextQuestion);
+        submitBtn.addEventListener('click', showResults);
+        
+        // Event listener untuk mulai quiz
+        startQuizBtn.addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            if (!name || !email) {
+                alert('Silakan isi nama dan email terlebih dahulu');
+                return;
+            }
+            
+            userName = name;
+            userEmail = email;
+            
+            currentQuestion = -1;
+            showQuestion();
+        });
+        
+        // Event listener untuk mulai pertanyaan
+        startQuestionsBtn.addEventListener('click', function() {
+            currentQuestion = 0;
+            showQuestion();
+        });
+        
+        // Inisialisasi step indicator
+        initSteps();
+        
+        // Animasi step indicator
+        let currentStep = 0;
+        setInterval(() => {
+            const steps = document.querySelectorAll('.quiz-step');
+            steps.forEach(step => step.classList.remove('active'));
+            
+            if (steps.length > 0) {
+                steps[currentStep].classList.add('active');
+                currentStep = (currentStep + 1) % steps.length;
+            }
+        }, 800);
+        
+        // Mulai dengan halaman pembuka
+        openingContainerEl.style.display = 'block';
+        explanationContainerEl.style.display = 'none';
+        questionContainerEl.style.display = 'none';
+        resultContainerEl.style.display = 'none';
+    </script>
+</body>
+</html>
