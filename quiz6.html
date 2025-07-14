@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passion Readiness Quiz - Passion Hax</title>
+    <link rel="icon" type="image/x-icon" href="Passion Hax Logo.png">
+    <style>
+        /* VARIABLES & RESET */
+        :root {
+            --primary: #333333;
+            --secondary: #FF8C42;
+            --accent: #FFB563;
+            --dark: #1A1A1A;
+            --light: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #777777;
+            
+            /* Financial Status Colors */
+            --survival: #EF476F;
+            --stable: #118AB2;
+            --boosted: #06D6A0;
+            --freedom: #FFD166;
+            
+            /* Passion Status Colors */
+            --seeker: #5E60CE;
+            --developer: #48BFE3;
+            --hacker: #80FFDB;
+            
+            /* Network Status Colors */
+            --solo: #FF9F1C;
+            --explorer: #4361EE;
+            --linked: #7209B7;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #f9f9f9;
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 16px; /* Ukuran font dasar */
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        h1 { 
+            font-size: 2.2rem; /* Diperkecil */
+            line-height: 1.2;
+        }
+        h2 { 
+            font-size: 1.8rem; /* Diperkecil */
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        h3 {
+            font-size: 1.4rem; /* Diperkecil */
+        }
+        h4 {
+            font-size: 1.2rem; /* Diperkecil */
+        }
+        p { 
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-size: 1rem; /* Ukuran normal */
+        }
+
+        /* LAYOUT */
+        .container {
+            width: 95%; /* Lebar container diperbesar */
+            max-width: 1400px; /* Lebar maksimum diperbesar */
+            margin: 0 auto;
+            padding: 1.5rem 0; /* Padding diperkecil */
+        } 
+        section {
+            padding: 3rem 0; /* Padding diperkecil */
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem; /* Padding diperkecil */
+            margin: 1rem 0; /* Margin diperkecil */
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        
+        /* HEADER & NAV */
+        header {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 0.3rem 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem 0;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        .logo {
+            font-size: 1.4rem; /* Diperkecil */
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .logo-image {
+            width: 32px; /* Diperkecil */
+            height: 32px; /* Diperkecil */
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f0f0f0;
+        }
+        
+        /* QUIZ SECTION */
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .quiz-header {
+            margin-bottom: 1.5rem; /* Diperkecil */
+            max-width: 800px;
+        }
+        
+        .quiz-steps {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0; /* Diperkecil */
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .quiz-step {
+            width: 10px; /* Diperkecil */
+            height: 10px; /* Diperkecil */
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-step.active {
+            background: var(--secondary);
+            transform: scale(1.3);
+        }
+        
+        .question-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1.5rem; /* Diperkecil */
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .question-text {
+            font-size: 1.2rem; /* Diperkecil */
+            font-weight: 600;
+            margin-bottom: 1.5rem; /* Diperkecil */
+            color: var(--primary);
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem; /* Diperkecil */
+            margin-bottom: 1.5rem; /* Diperkecil */
+        }
+        
+        .option-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem; /* Diperkecil */
+            border-radius: 10px;
+            background: #f9f9f9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: left;
+            font-size: 0.95rem; /* Diperkecil */
+        }
+        
+        .option-item:hover {
+            background: #fff5ef;
+            border-color: #ffecd1;
+        }
+        
+        .option-item.selected {
+            background: #fff5ef;
+            border-color: var(--secondary);
+            box-shadow: 0 5px 15px rgba(255, 140, 66, 0.15);
+        }
+        
+        .option-item input {
+            margin-right: 0.8rem; /* Diperkecil */
+            width: 18px; /* Diperkecil */
+            height: 18px; /* Diperkecil */
+            cursor: pointer;
+        }
+        
+        .option-label {
+            flex: 1;
+            cursor: pointer;
+        }
+        
+        .quiz-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem; /* Diperkecil */
+        }
+        
+        /* RESULT SECTION */
+        .result-container {
+            display: none;
+            width: 100%;
+            max-width: 1200px; /* Lebar diperbesar */
+            margin: 0 auto;
+        }
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 2rem; /* Diperkecil */
+            padding: 1.5rem; /* Diperkecil */
+            border-radius: 12px;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+        }
+        
+        .combined-status {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Diperkecil */
+            margin: 1.5rem 0; /* Diperkecil */
+            flex-wrap: wrap;
+        }
+        
+        .status-card {
+            padding: 1.2rem; /* Diperkecil */
+            border-radius: 12px;
+            text-align: center;
+            min-width: 200px; /* Diperkecil */
+            flex: 1; /* Agar card memenuhi ruang */
+            max-width: 30%; /* Maksimal lebar 30% */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .financial-status {
+            background: linear-gradient(135deg, #f9f9f9, #fff8f4);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .passion-status {
+            background: linear-gradient(135deg, #f9f9f9, #f0f9ff);
+            border-left: 4px solid var(--seeker);
+        }
+        
+        .network-status {
+            background: linear-gradient(135deg, #f9f9f9, #f9f0ff);
+            border-left: 4px solid var(--solo);
+        }
+        
+        .status-icon {
+            font-size: 2rem; /* Diperkecil */
+            margin-bottom: 0.8rem; /* Diperkecil */
+        }
+        
+        .status-title {
+            font-size: 1.1rem; /* Diperkecil */
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-name {
+            font-size: 1.5rem; /* Diperkecil */
+            font-weight: 800;
+            margin: 0.3rem 0; /* Diperkecil */
+            line-height: 1.2;
+        }
+        
+        .overall-status {
+            background: white;
+            padding: 1.5rem; /* Diperkecil */
+            border-radius: 12px;
+            margin: 1.5rem 0; /* Diperkecil */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .overall-name {
+            font-size: 1.8rem; /* Diperkecil */
+            font-weight: 800;
+            margin: 0.8rem 0; /* Diperkecil */
+            line-height: 1.2;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background: #f0f0f0;
+            border-radius: 10px;
+            height: 16px; /* Diperkecil */
+            margin: 1rem 0; /* Diperkecil */
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Diperkecil */
+            gap: 1.5rem; /* Diperkecil */
+            margin: 2rem 0; /* Diperkecil */
+        }
+        
+        .result-card {
+            text-align: center;
+            padding: 1.5rem; /* Diperkecil */
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .result-card i {
+            font-size: 2rem; /* Diperkecil */
+            margin-bottom: 0.8rem; /* Diperkecil */
+        }
+        
+        .recommendations {
+            margin: 2rem 0; /* Diperkecil */
+        }
+        
+        .recommendation-card {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem; /* Diperkecil */
+            border-radius: 12px;
+            background: white;
+            margin: 1rem 0; /* Diperkecil */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .rec-icon {
+            font-size: 1.8rem; /* Diperkecil */
+            color: var(--secondary);
+            margin-right: 1.2rem; /* Diperkecil */
+            min-width: 45px; /* Diperkecil */
+            text-align: center;
+        }
+        
+        .rec-tag {
+            display: inline-block;
+            padding: 0.2rem 0.7rem; /* Diperkecil */
+            border-radius: 20px;
+            font-size: 0.75rem; /* Diperkecil */
+            font-weight: 600;
+            margin-top: 0.3rem; /* Diperkecil */
+        }
+        
+        .tag-high {
+            background: rgba(239, 71, 111, 0.1);
+            color: #EF476F;
+            border: 1px solid rgba(239, 71, 111, 0.3);
+        }
+        
+        .tag-medium {
+            background: rgba(17, 138, 178, 0.1);
+            color: #118AB2;
+            border: 1px solid rgba(17, 138, 178, 0.3);
+        }
+        
+        .tag-low {
+            background: rgba(6, 214, 160, 0.1);
+            color: #06D6A0;
+            border: 1px solid rgba(6, 214, 160, 0.3);
+        }
+        
+        /* OPENING SECTION */
+        .opening-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .metric-cards {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem; /* Diperkecil */
+            margin: 2rem 0; /* Diperkecil */
+            flex-wrap: wrap;
+        }
+        
+        .metric-card {
+            flex: 1;
+            min-width: 220px; /* Diperkecil */
+            max-width: 280px; /* Diperkecil */
+            padding: 1.5rem; /* Diperkecil */
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .metric-icon {
+            font-size: 3rem; /* Diperkecil */
+            margin-bottom: 1rem; /* Diperkecil */
+            color: var(--secondary);
+            display: inline-block;
+            transition: all 0.5s ease;
+        }
+        
+        .metric-card:hover .metric-icon {
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* INPUT SECTION */
+        .input-container {
+            background: white;
+            padding: 2rem; /* Diperkecil */
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .input-group {
+            margin-bottom: 1.2rem; /* Diperkecil */
+            text-align: left;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 0.4rem; /* Diperkecil */
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem; /* Diperkecil */
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 0.7rem 1rem; /* Diperkecil */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem; /* Diperkecil */
+            transition: all 0.3s ease;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2);
+        }
+        
+        /* BUTTON GROUP */
+        .button-group {
+            display: flex;
+            gap: 0.8rem; /* Diperkecil */
+            justify-content: center;
+            margin-top: 1.5rem; /* Diperkecil */
+            flex-wrap: wrap;
+        }
+        
+        /* CTA BUTTON */
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 2rem; /* Diperkecil */
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1.5rem; /* Diperkecil */
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--secondary);
+            cursor: pointer;
+            font-size: 0.95rem; /* Diperkecil */
+        }
+        .cta-button:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 140, 66, 0.2);
+        }
+        
+        .outline-button {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        .outline-button:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .action-button {
+            padding: 0.7rem 1.5rem; /* Diperkecil */
+            margin: 0.4rem; /* Diperkecil */
+            min-width: 180px; /* Diperkecil */
+        }
+        
+        .rec-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.2rem; /* Diperkecil */
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem; /* Diperkecil */
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+            margin-top: 0.8rem; /* Diperkecil */
+        }
+        .rec-button:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        /* FINANCIAL SECTION */
+        .financial-box {
+            background: linear-gradient(to right, #f9f9f9, #fff8f4);
+            border-radius: 12px;
+            padding: 1.5rem; /* Diperkecil */
+            margin: 2rem 0; /* Diperkecil */
+            border: 1px solid #ffecd1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .financial-box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--secondary);
+        }
+        
+        .profile-identity {
+            background: linear-gradient(135deg, #f0f9ff, #f9f0ff);
+            border-radius: 12px;
+            padding: 1.5rem; /* Diperkecil */
+            margin: 1.5rem 0; /* Diperkecil */
+            border: 1px solid #e0e0ff;
+            position: relative;
+            text-align: center;
+        }
+        
+        .profile-identity:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--seeker);
+        }
+        
+        .profile-intro {
+            font-size: 1.2rem; /* Diperkecil */
+            font-weight: 600;
+            margin-bottom: 0.5rem; /* Diperkecil */
+            color: var(--primary);
+        }
+        
+        .profile-label {
+            font-size: 1.8rem; /* Diperkecil */
+            font-weight: 800;
+            margin-bottom: 1rem; /* Diperkecil */
+            line-height: 1.2;
+            color: var(--secondary);
+        }
+        
+        .profile-description {
+            font-size: 1rem; /* Diperkecil */
+            line-height: 1.6;
+            margin-bottom: 1rem; /* Diperkecil */
+        }
+        
+        .profile-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Diperkecil */
+            margin: 1rem 0; /* Diperkecil */
+        }
+        
+        .profile-icon {
+            font-size: 2.5rem; /* Diperkecil */
+            width: 70px; /* Diperkecil */
+            height: 70px; /* Diperkecil */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 140, 66, 0.1);
+            border: 2px solid var(--secondary);
+        }
+        
+        .overall-score {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--seeker), var(--developer));
+            color: white;
+            padding: 0.6rem 1.5rem; /* Diperkecil */
+            border-radius: 50px;
+            font-size: 1.3rem; /* Diperkecil */
+            font-weight: 700;
+            margin: 0.5rem 0; /* Diperkecil */
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem; /* Diperkecil */
+            text-align: center;
+        }
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px; /* Diperkecil */
+            margin-bottom: 1rem; /* Diperkecil */
+        }
+        .footer-logo-image {
+            width: 36px; /* Diperkecil */
+            height: 36px; /* Diperkecil */
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        .footer-logo .logo {
+            color: white;
+            font-size: 1.3rem; /* Diperkecil */
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem; /* Diperkecil */
+            margin: 1.5rem 0; /* Diperkecil */
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem; /* Diperkecil */
+        }
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        .copyright {
+            margin-top: 1.5rem; /* Diperkecil */
+            opacity: 0.6;
+            font-size: 0.85rem; /* Diperkecil */
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .status-card {
+                min-width: 28%;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .question-container {
+                padding: 1.2rem; /* Diperkecil */
+            }
+            
+            .status-card {
+                min-width: 45%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+            h4 { font-size: 1.1rem; }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .combined-status {
+                flex-direction: column;
+            }
+            
+            .recommendation-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .rec-icon {
+                margin-right: 0;
+                margin-bottom: 0.8rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .quiz-buttons {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .quiz-buttons button {
+                width: 100%;
+            }
+            
+            .status-card {
+                min-width: 100%;
+            }
+            
+            .metric-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .profile-label {
+                font-size: 1.5rem;
+            }
+            
+            .profile-intro {
+                font-size: 1.1rem;
+            }
+            
+            .profile-icon {
+                font-size: 2rem;
+                width: 60px;
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .overall-name {
+                font-size: 1.5rem;
+            }
+            
+            .question-text {
+                font-size: 1.1rem;
+            }
+            
+            .status-name {
+                font-size: 1.3rem;
+            }
+            
+            .cta-button {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .profile-label {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://passionhax.github.io" class="logo-container">
+                    <img src="Passion Hax Logo.png" alt="Passion Hax Logo" class="logo-image">
+                    <div class="logo">Passion Hax</div>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Quiz Section -->
+    <section id="quiz">
+        <div class="container">
+            <div class="quiz-container">
+                <!-- ... (bagian lainnya tetap sama) ... -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="Passion Hax Logo.png" alt="Passion Hax Logo" class="footer-logo-image">
+                <div class="logo">Passion Hax</div>
+            </div>
+            <p>Transformasi Passion Jadi Karier & Hidup Impianmu</p>
+            
+            <div class="footer-links">
+                <a href="#framework">Framework</a>
+                <a href="#products">Produk</a>
+                <a href="#resources">Resources</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#contact">Kontak</a>
+            </div>
+            
+            <p class="copyright">© 2025 Passion Hax. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ... (kode JavaScript sebelumnya) ...
+
+            // Fungsi untuk menentukan kategori finansial (versi lengkap)
+            function getFinancialCategoryFull(score) {
+                if (score <= 10) {
+                    return {
+                        name: "Survival Mode",
+                        short: "Survival",
+                        description: "Anda sedang berjuang memenuhi kebutuhan dasar",
+                        icon: "fas fa-umbrella-beach",
+                        color: "#EF476F",
+                        maxScore: 22
+                    };
+                } else if (score <= 15) {
+                    return {
+                        name: "Stable Ground",
+                        short: "Stable",
+                        description: "Anda memiliki stabilitas finansial dasar",
+                        icon: "fas fa-home",
+                        color: "#118AB2",
+                        maxScore: 22
+                    };
+                } else if (score <= 19) {
+                    return {
+                        name: "Wealth Climber",
+                        short: "Boosted",
+                        description: "Anda sedang membangun kekuatan finansial",
+                        icon: "fas fa-chart-line",
+                        color: "#06D6A0",
+                        maxScore: 22
+                    };
+                } else {
+                    return {
+                        name: "Financial Freedom",
+                        short: "Freedom",
+                        description: "Anda memiliki kebebasan finansial yang baik",
+                        icon: "fas fa-crown",
+                        color: "#FFD166",
+                        maxScore: 22
+                    };
+                }
+            }
+
+            // Fungsi untuk menentukan kategori mindset (versi lengkap)
+            function getMindsetCategoryFull(score) {
+                if (score <= 15) {
+                    return {
+                        name: "Passion Seeker",
+                        short: "Passion Seeker",
+                        description: "Anda sedang mencari passion yang tepat",
+                        icon: "fas fa-search",
+                        color: "#5E60CE",
+                        maxScore: 25
+                    };
+                } else if (score <= 20) {
+                    return {
+                        name: "Passion Developer",
+                        short: "Passion Developer",
+                        description: "Anda sedang mengembangkan passion",
+                        icon: "fas fa-seedling",
+                        color: "#48BFE3",
+                        maxScore: 25
+                    };
+                } else {
+                    return {
+                        name: "Passion Hacker",
+                        short: "Passion Hacker",
+                        description: "Anda ahli dalam mengeksekusi passion",
+                        icon: "fas fa-rocket",
+                        color: "#80FFDB",
+                        maxScore: 25
+                    };
+                }
+            }
+
+            // Fungsi untuk menentukan kategori network (versi lengkap)
+            function getNetworkCategoryFull(score) {
+                if (score <= 12) {
+                    return {
+                        name: "Solo Player",
+                        short: "Solo",
+                        description: "Anda masih membangun jaringan pendukung",
+                        icon: "fas fa-user",
+                        color: "#FF9F1C",
+                        maxScore: 25
+                    };
+                } else if (score <= 18) {
+                    return {
+                        name: "Community Explorer",
+                        short: "Explorer",
+                        description: "Anda mulai aktif membangun jaringan",
+                        icon: "fas fa-users",
+                        color: "#4361EE",
+                        maxScore: 25
+                    };
+                } else {
+                    return {
+                        name: "Network Master",
+                        short: "Linked",
+                        description: "Anda memiliki jaringan pendukung yang kuat",
+                        icon: "fas fa-handshake",
+                        color: "#7209B7",
+                        maxScore: 25
+                    };
+                }
+            }
+
+            // Fungsi untuk menghitung hasil
+            function calculateResults() {
+                // ... (kode sebelumnya) ...
+                
+                // Dapatkan kategori versi lengkap
+                const financialCategory = getFinancialCategoryFull(financialScore);
+                const mindsetCategory = getMindsetCategoryFull(mindsetScore);
+                const networkCategory = getNetworkCategoryFull(networkScore);
+                
+                // ... (kode selanjutnya) ...
+            }
+
+            // Fungsi untuk menampilkan hasil
+            function showResults() {
+                const results = calculateResults();
+                const userName = document.getElementById('name').value;
+                const profileDesc = profileDescriptions[results.profileKey] || "Profil Anda unik dan penuh potensi. Gunakan kekuatan finansial, jaringan, dan passion Anda untuk mencapai tujuan.";
+                
+                // Sembunyikan kontainer pertanyaan dan tampilkan hasil
+                questionContainerEl.style.display = 'none';
+                resultContainerEl.style.display = 'block';
+                openingContainerEl.style.display = 'none';
+                explanationContainerEl.style.display = 'none';
+                
+                // Isi hasil
+                resultContainerEl.innerHTML = `
+                    <div class="result-header">
+                        <h2>Hasil Analisis Passion Readiness Quiz</h2>
+                        <p>Halo ${userName}, berikut analisis kesiapan passion Anda berdasarkan 3 pilar utama:</p>
+                    </div>
+                    
+                    <div class="profile-identity">
+                        <div class="profile-intro">Kamu adalah seorang</div>
+                        <div class="profile-label">${results.profileKey}</div>
+                        
+                        <div class="profile-icons">
+                            <div class="profile-icon" style="color: ${results.financialCategory.color}">
+                                <i class="${results.financialCategory.icon}"></i>
+                            </div>
+                            <div class="profile-icon" style="color: ${results.networkCategory.color}">
+                                <i class="${results.networkCategory.icon}"></i>
+                            </div>
+                            <div class="profile-icon" style="color: ${results.mindsetCategory.color}">
+                                <i class="${results.mindsetCategory.icon}"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-description">${profileDesc}</div>
+                        <div class="overall-score">Skor Keseluruhan: ${results.overallScore}/100</div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: ${results.overallScore}%; background: var(--secondary);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="combined-status">
+                        <div class="status-card financial-status">
+                            <div class="status-icon" style="color: ${results.financialCategory.color}">
+                                <i class="${results.financialCategory.icon}"></i>
+                            </div>
+                            <div class="status-title">Status Finansial</div>
+                            <div class="status-name" style="color: ${results.financialCategory.color}">
+                                ${results.financialCategory.name}
+                            </div>
+                            <p>${results.financialCategory.description}</p>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: ${results.financialPercentage}%; background: ${results.financialCategory.color}"></div>
+                            </div>
+                            <p><strong>Skor: ${results.financialScore}/${results.financialCategory.maxScore}</strong></p>
+                        </div>
+                        
+                        <div class="status-card passion-status">
+                            <div class="status-icon" style="color: ${results.mindsetCategory.color}">
+                                <i class="${results.mindsetCategory.icon}"></i>
+                            </div>
+                            <div class="status-title">Status Mindset</div>
+                            <div class="status-name" style="color: ${results.mindsetCategory.color}">
+                                ${results.mindsetCategory.name}
+                            </div>
+                            <p>${results.mindsetCategory.description}</p>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: ${results.mindsetPercentage}%; background: ${results.mindsetCategory.color}"></div>
+                            </div>
+                            <p><strong>Skor: ${results.mindsetScore}/${results.mindsetCategory.maxScore}</strong></p>
+                        </div>
+                        
+                        <div class="status-card network-status">
+                            <div class="status-icon" style="color: ${results.networkCategory.color}">
+                                <i class="${results.networkCategory.icon}"></i>
+                            </div>
+                            <div class="status-title">Status Network</div>
+                            <div class="status-name" style="color: ${results.networkCategory.color}">
+                                ${results.networkCategory.name}
+                            </div>
+                            <p>${results.networkCategory.description}</p>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: ${results.networkPercentage}%; background: ${results.networkCategory.color}"></div>
+                            </div>
+                            <p><strong>Skor: ${results.networkScore}/${results.networkCategory.maxScore}</strong></p>
+                        </div>
+                    </div>
+                    
+                    <!-- ... (bagian rekomendasi tetap sama) ... -->
+                `;
+                
+                // ... (kode selanjutnya) ...
+            }
+
+            // ... (kode JavaScript selanjutnya) ...
+        });
+    </script>
+</body>
+</html>
