@@ -803,7 +803,7 @@
                 <div id="explanation-container" class="explanation-container" style="display: none;">
                     <div class="card">
                         <h2>Apa yang Diukur?</h2>
-                        <p>Quiz ini mengukur 3 pilar utama kesiapan passion Anda</p>
+                        <p>Quiz ini mengukur 3 pilar utama kesiapan passion kamu</p>
                         
                         <div class="metric-cards">
                             <div class="metric-card">
@@ -811,7 +811,7 @@
                                     <i class="fas fa-coins"></i>
                                 </div>
                                 <h3>Kesiapan Finansial</h3>
-                                <p>Seberapa kuat fondasi keuangan Anda untuk mendukung perjalanan passion</p>
+                                <p>Seberapa kuat fondasi keuangan kamu untuk mendukung perjalanan passion</p>
                             </div>
                             
                             <div class="metric-card">
@@ -819,7 +819,7 @@
                                     <i class="fas fa-brain"></i>
                                 </div>
                                 <h3>Kesiapan Mindset</h3>
-                                <p>Seberapa siap pola pikir dan komitmen Anda dalam mengejar passion</p>
+                                <p>Seberapa siap pola pikir dan komitmen kamu dalam mengejar passion</p>
                             </div>
                             
                             <div class="metric-card">
@@ -827,7 +827,7 @@
                                     <i class="fas fa-users"></i>
                                 </div>
                                 <h3>Kesiapan Network</h3>
-                                <p>Seberapa kuat jaringan pendukung yang Anda miliki untuk membantu mencapai passion</p>
+                                <p>Seberapa kuat jaringan pendukung yang kamu miliki untuk membantu mencapai passion</p>
                             </div>
                         </div>
                         
@@ -838,7 +838,7 @@
                 <!-- Question Container -->
                 <div id="question-container" class="question-container" style="display: none;">
                     <div class="question-text" id="question-text">
-                        Seberapa baik Anda memahami nilai-nilai hidup dan minat pribadi Anda?
+                        Seberapa baik kamu memahami nilai-nilai hidup dan minat pribadi kamu?
                     </div>
                     
                     <div class="options-container" id="options-container">
@@ -893,7 +893,7 @@
             const questions = [
                 // Pertanyaan finansial (5 pertanyaan)
                 {
-                    question: "Bagaimana kondisi keuangan Anda saat ini dalam mendukung pengembangan passion?",
+                    question: "Bagaimana kondisi keuangan kamu saat ini dalam mendukung pengembangan passion?",
                     options: [
                         { text: "Sangat tidak stabil", value: 1 },
                         { text: "Butuh perbaikan", value: 2 },
@@ -903,7 +903,7 @@
                     category: "financial"
                 },
                 {
-                    question: "Berapa besar pendapatan bulanan Anda saat ini?",
+                    question: "Berapa besar pendapatan bulanan kamu saat ini?",
                     options: [
                         { text: "< Rp 5 juta", value: 1 },
                         { text: "Rp 5-10 juta", value: 2 },
@@ -913,7 +913,7 @@
                     category: "financial"
                 },
                 {
-                    question: "Sudahkah Anda memiliki perlindungan finansial (asuransi, dana darurat, investasi)?",
+                    question: "Sudahkah kamu memiliki perlindungan finansial (asuransi, dana darurat, investasi)?",
                     options: [
                         { text: "Sama sekali tidak", value: 1 },
                         { text: "Sangat minim", value: 2 },
@@ -924,7 +924,7 @@
                     category: "financial"
                 },
                 {
-                    question: "Seberapa besar komitmen Anda untuk membangun kebebasan finansial dalam 5 tahun ke depan?",
+                    question: "Seberapa besar komitmen kamu untuk membangun kebebasan finansial dalam 5 tahun ke depan?",
                     options: [
                         { text: "Belum memikirkan sama sekali", value: 1 },
                         { text: "Sedang merencanakan", value: 2 },
@@ -935,7 +935,7 @@
                     category: "financial"
                 },
                 {
-                    question: "Seberapa besar utang/kewajiban finansial yang Anda miliki?",
+                    question: "Seberapa besar utang/kewajiban finansial yang kamu miliki?",
                     options: [
                         { text: "Sangat besar, melebihi kemampuan bayar", value: 1 },
                         { text: "Cukup besar, tetapi masih bisa dikelola", value: 2 },
@@ -948,7 +948,7 @@
                 
                 // Pertanyaan mindset (5 pertanyaan)
                 {
-                    question: "Seberapa baik Anda memahami nilai-nilai hidup dan minat pribadi Anda?",
+                    question: "Seberapa baik kamu memahami nilai-nilai hidup dan minat pribadi kamu?",
                     options: [
                         { text: "Sangat tidak memahami", value: 1 },
                         { text: "Kurang memahami", value: 2 },
@@ -959,7 +959,7 @@
                     category: "mindset"
                 },
                 {
-                    question: "Apakah Anda sudah memiliki aktivitas yang membuat Anda lupa waktu ketika melakukannya?",
+                    question: "Apakah kamu sudah memiliki aktivitas yang membuat kamu lupa waktu ketika melakukannya?",
                     options: [
                         { text: "Belum sama sekali", value: 1 },
                         { text: "Sangat jarang", value: 2 },
@@ -970,7 +970,7 @@
                     category: "mindset"
                 },
                 {
-                    question: "Seberapa besar Anda bersedia menginvestasikan sumber daya (waktu, uang) untuk passion?",
+                    question: "Seberapa besar kamu bersedia menginvestasikan sumber daya (waktu, uang) untuk passion?",
                     options: [
                         { text: "Sangat kecil", value: 1 },
                         { text: "Kecil", value: 2 },
@@ -981,7 +981,7 @@
                     category: "mindset"
                 },
                 {
-                    question: "Seberapa besar toleransi risiko Anda dalam mengejar passion?",
+                    question: "Seberapa besar toleransi risiko kamu dalam mengejar passion?",
                     options: [
                         { text: "Sangat rendah", value: 1 },
                         { text: "Rendah", value: 2 },
@@ -992,7 +992,7 @@
                     category: "mindset"
                 },
                 {
-                    question: "Seberapa jelas visi Anda tentang peran passion dalam hidup Anda 5 tahun mendatang?",
+                    question: "Seberapa jelas visi kamu tentang peran passion dalam hidup kamu 5 tahun mendatang?",
                     options: [
                         { text: "Sangat tidak jelas", value: 1 },
                         { text: "Kurang jelas", value: 2 },
@@ -1005,7 +1005,7 @@
                 
                 // Pertanyaan network (5 pertanyaan)
                 {
-                    question: "Seberapa luas jaringan profesional yang Anda miliki di bidang yang Anda minati?",
+                    question: "Seberapa luas jaringan profesional yang kamu miliki di bidang yang kamu minati?",
                     options: [
                         { text: "Sangat terbatas", value: 1 },
                         { text: "Terbatas", value: 2 },
@@ -1016,7 +1016,7 @@
                     category: "network"
                 },
                 {
-                    question: "Seberapa sering Anda terhubung dengan mentor atau orang yang lebih berpengalaman?",
+                    question: "Seberapa sering kamu terhubung dengan mentor atau orang yang lebih berpengalaman?",
                     options: [
                         { text: "Hampir tidak pernah", value: 1 },
                         { text: "Jarang", value: 2 },
@@ -1027,7 +1027,7 @@
                     category: "network"
                 },
                 {
-                    question: "Seberapa aktif Anda dalam komunitas yang relevan dengan minat Anda?",
+                    question: "Seberapa aktif kamu dalam komunitas yang relevan dengan minat kamu?",
                     options: [
                         { text: "Tidak aktif sama sekali", value: 1 },
                         { text: "Sangat jarang aktif", value: 2 },
@@ -1038,7 +1038,7 @@
                     category: "network"
                 },
                 {
-                    question: "Seberapa mudah Anda mendapatkan dukungan atau saran ketika menghadapi masalah?",
+                    question: "Seberapa mudah kamu mendapatkan dukungan atau saran ketika menghadapi masalah?",
                     options: [
                         { text: "Sangat sulit", value: 1 },
                         { text: "Sulit", value: 2 },
@@ -1049,7 +1049,7 @@
                     category: "network"
                 },
                 {
-                    question: "Seberapa besar pengaruh jaringan Anda terhadap perkembangan karier/passion Anda?",
+                    question: "Seberapa besar pengaruh jaringan kamu terhadap perkembangan karier/passion kamu?",
                     options: [
                         { text: "Sangat kecil", value: 1 },
                         { text: "Kecil", value: 2 },
@@ -1064,7 +1064,7 @@
             // Profile descriptions
             const profileDescriptions = {
                 // Survival Mode
-                "Survival Solo Passion Seeker": "Kamu sedang berada di tahap bertahan secara finansial. Setiap hari adalah perjuangan untuk mencukupi kebutuhan dasar. Saat ini kamu masih bergerak sendiri, mengandalkan diri sendiri dalam perjalananmu. Secara mindset, kamu sedang mencari apa yang benar-benar menjadi passion-mu. Fase ini penting untuk eksplorasi diri dan mengenal potensi pribadi.",
+                "Survival Solo Passion Seeker": "Kamu sedang berada di tahap bertahan secara finansial. Setiap hari adalah perjuangan untuk mencukupi kebutuhan dasar. Saat ini kamu masih bergerak sendiri, mengkamulkan diri sendiri dalam perjalananmu. Secara mindset, kamu sedang mencari apa yang benar-benar menjadi passion-mu. Fase ini penting untuk eksplorasi diri dan mengenal potensi pribadi.",
                 "Survival Explorer Passion Seeker": "Kamu berada dalam kondisi keuangan yang masih sulit. Namun, kamu mulai membuka diri untuk menjelajahi koneksi dan interaksi sosial. Di saat yang sama, kamu masih mencari arah passion dan potensi terbaikmu. Ini adalah momen eksploratif yang penuh peluang jika dijalani dengan kesadaran.",
                 "Survival Linked Passion Seeker": "Kamu sedang bertahan secara finansial namun telah memiliki jaringan sosial yang luas. Sekarang saatnya memanfaatkan koneksi tersebut untuk menemukan dan mengasah passion-mu. Kamu belum tahu pasti arahmu, tapi kamu tidak sendirian dalam proses ini.",
                 "Survival Solo Passion Developer": "Kamu masih dalam kondisi bertahan secara finansial dan belum punya dukungan sosial yang kuat. Namun, kamu mulai serius membangun passion-mu. Progres ini menunjukkan ketangguhan mental yang luar biasa, meski dalam kesulitan.",
@@ -1189,7 +1189,7 @@
                                 item.classList.remove('selected');
                             });
                             
-                            // Tandai yang dipilih
+                            // Tkamui yang dipilih
                             optionEl.classList.add('selected');
                             
                             // Simpan jawaban
@@ -1236,7 +1236,7 @@
                 if (score <= 10) {
                     return {
                         name: "Survival",
-                        description: "Anda sedang berjuang memenuhi kebutuhan dasar",
+                        description: "kamu sedang berjuang memenuhi kebutuhan dasar",
                         icon: "fas fa-umbrella-beach",
                         color: "#EF476F",
                         maxScore: 22
@@ -1244,7 +1244,7 @@
                 } else if (score <= 15) {
                     return {
                         name: "Stable",
-                        description: "Anda memiliki stabilitas finansial dasar",
+                        description: "kamu memiliki stabilitas finansial dasar",
                         icon: "fas fa-home",
                         color: "#118AB2",
                         maxScore: 22
@@ -1252,7 +1252,7 @@
                 } else if (score <= 19) {
                     return {
                         name: "Boosted",
-                        description: "Anda sedang membangun kekuatan finansial",
+                        description: "kamu sedang membangun kekuatan finansial",
                         icon: "fas fa-chart-line",
                         color: "#06D6A0",
                         maxScore: 22
@@ -1260,7 +1260,7 @@
                 } else {
                     return {
                         name: "Freedom",
-                        description: "Anda memiliki kebebasan finansial yang baik",
+                        description: "kamu memiliki kebebasan finansial yang baik",
                         icon: "fas fa-crown",
                         color: "#FFD166",
                         maxScore: 22
@@ -1273,7 +1273,7 @@
                 if (score <= 15) {
                     return {
                         name: "Passion Seeker",
-                        description: "Anda sedang mencari passion yang tepat",
+                        description: "kamu sedang mencari passion yang tepat",
                         icon: "fas fa-search",
                         color: "#5E60CE",
                         maxScore: 25
@@ -1281,7 +1281,7 @@
                 } else if (score <= 20) {
                     return {
                         name: "Passion Developer",
-                        description: "Anda sedang mengembangkan passion",
+                        description: "kamu sedang mengembangkan passion",
                         icon: "fas fa-seedling",
                         color: "#48BFE3",
                         maxScore: 25
@@ -1289,7 +1289,7 @@
                 } else {
                     return {
                         name: "Passion Hacker",
-                        description: "Anda ahli dalam mengeksekusi passion",
+                        description: "kamu ahli dalam mengeksekusi passion",
                         icon: "fas fa-rocket",
                         color: "#80FFDB",
                         maxScore: 25
@@ -1302,7 +1302,7 @@
                 if (score <= 12) {
                     return {
                         name: "Solo",
-                        description: "Anda masih membangun jaringan pendukung",
+                        description: "kamu masih membangun jaringan pendukung",
                         icon: "fas fa-user",
                         color: "#FF9F1C",
                         maxScore: 25
@@ -1310,7 +1310,7 @@
                 } else if (score <= 18) {
                     return {
                         name: "Explorer",
-                        description: "Anda mulai aktif membangun jaringan",
+                        description: "kamu mulai aktif membangun jaringan",
                         icon: "fas fa-users",
                         color: "#4361EE",
                         maxScore: 25
@@ -1318,7 +1318,7 @@
                 } else {
                     return {
                         name: "Linked",
-                        description: "Anda memiliki jaringan pendukung yang kuat",
+                        description: "kamu memiliki jaringan pendukung yang kuat",
                         icon: "fas fa-handshake",
                         color: "#7209B7",
                         maxScore: 25
@@ -1394,7 +1394,7 @@
             function showResults() {
                 const results = calculateResults();
                 const userName = document.getElementById('name').value;
-                const profileDesc = profileDescriptions[results.profileKey] || "Profil Anda unik dan penuh potensi. Gunakan kekuatan finansial, jaringan, dan passion Anda untuk mencapai tujuan.";
+                const profileDesc = profileDescriptions[results.profileKey] || "Profil kamu unik dan penuh potensi. Gunakan kekuatan finansial, jaringan, dan passion kamu untuk mencapai tujuan.";
                 
                 // Sembunyikan kontainer pertanyaan dan tampilkan hasil
                 questionContainerEl.style.display = 'none';
@@ -1406,7 +1406,7 @@
                 resultContainerEl.innerHTML = `
                     <div class="result-header">
                         <h2>Hasil Analisis Passion Readiness Quiz</h2>
-                        <p>Halo ${userName}, berikut analisis kesiapan passion Anda berdasarkan 3 pilar utama:</p>
+                        <p>Halo ${userName}, berikut analisis kesiapan passion kamu berdasarkan 3 pilar utama:</p>
                     </div>
                     
                     <div class="profile-identity">
@@ -1467,7 +1467,7 @@
                     
                     <div class="financial-box">
                         <h3>Rekomendasi Aksi</h3>
-                        <p>Berdasarkan profil Anda, kami merekomendasikan:</p>
+                        <p>Berdasarkan profil kamu, kami merekomendasikan:</p>
                         
                         <div class="recommendation-card">
                             <div class="rec-icon">
@@ -1475,7 +1475,7 @@
                             </div>
                             <div>
                                 <h4>Passion Shield Projects</h4>
-                                <p>Bangun sumber pendapatan dasar untuk mendukung perjalanan passion Anda</p>
+                                <p>Bangun sumber pendapatan dasar untuk mendukung perjalanan passion kamu</p>
                                 <div class="rec-tag ${results.financialScore <= 10 ? "tag-high" : results.financialScore <= 15 ? "tag-medium" : "tag-low"}">
                                     ${results.financialScore <= 10 ? "Sangat Dianjurkan" : results.financialScore <= 15 ? "Dianjurkan" : "Opsional"}
                                 </div>
@@ -1489,7 +1489,7 @@
                             </div>
                             <div>
                                 <h4>Financial Protection Check Up</h4>
-                                <p>Pastikan perlindungan finansial Anda memadai dengan konsultasi gratis</p>
+                                <p>Pastikan perlindungan finansial kamu memadai dengan konsultasi gratis</p>
                                 <div class="rec-tag ${results.financialScore <= 15 ? "tag-medium" : "tag-low"}">
                                     ${results.financialScore <= 15 ? "Dianjurkan" : "Opsional"}
                                 </div>
@@ -1584,12 +1584,12 @@
                 doc.text("Ringkasan Hasil", 105, 60, null, null, 'center');
                 
                 const results = calculateResults();
-                const profileDesc = profileDescriptions[results.profileKey] || "Profil Anda unik dan penuh potensi.";
+                const profileDesc = profileDescriptions[results.profileKey] || "Profil kamu unik dan penuh potensi.";
                 
                 // Profile identity
                 doc.setFontSize(14);
                 doc.setTextColor(0);
-                doc.text(`Profil Anda: ${results.profileKey}`, 20, 70);
+                doc.text(`Profil kamu: ${results.profileKey}`, 20, 70);
                 doc.setFontSize(12);
                 doc.text(profileDesc, 20, 78, { maxWidth: 170 });
                 
@@ -1645,7 +1645,7 @@
                 localStorage.setItem('quizReportEmail', email);
                 
                 // Tampilkan pesan sukses
-                alert(`Laporan berhasil dikirim ke ${email}. Silakan cek inbox Anda!`);
+                alert(`Laporan berhasil dikirim ke ${email}. Silakan cek inbox kamu!`);
             }
         
             // Event listeners
