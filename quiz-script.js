@@ -174,11 +174,90 @@ document.addEventListener('DOMContentLoaded', function() {
     // Profile descriptions
     const profileDescriptions = {
         // ... [deskripsi profil] ...
+        // Survival Mode
+        "Survival Solo Passion Seeker": "Kamu sedang berada di tahap bertahan secara finansial. Setiap hari adalah perjuangan untuk mencukupi kebutuhan dasar. Saat ini kamu masih bergerak sendiri, mengandalkan diri sendiri dalam perjalananmu. Secara mindset, kamu sedang mencari apa yang benar-benar menjadi passion-mu. Fase ini penting untuk eksplorasi diri dan mengenal potensi pribadi.",
+        "Survival Explorer Passion Seeker": "Kamu berada dalam kondisi keuangan yang masih sulit. Namun, kamu mulai membuka diri untuk menjelajahi koneksi dan interaksi sosial. Di saat yang sama, kamu masih mencari arah passion dan potensi terbaikmu. Ini adalah momen eksploratif yang penuh peluang jika dijalani dengan kesadaran.",
+        "Survival Linked Passion Seeker": "Kamu sedang bertahan secara finansial namun telah memiliki jaringan sosial yang luas. Sekarang saatnya memanfaatkan koneksi tersebut untuk menemukan dan mengasah passion-mu. Kamu belum tahu pasti arahmu, tapi kamu tidak sendirian dalam proses ini.",
+        "Survival Solo Passion Developer": "Kamu masih dalam kondisi bertahan secara finansial dan belum punya dukungan sosial yang kuat. Namun, kamu mulai serius membangun passion-mu. Progres ini menunjukkan ketangguhan mental yang luar biasa, meski dalam kesulitan.",
+        "Survival Explorer Passion Developer": "Keuangan belum ideal, tapi kamu aktif menjelajah komunitas dan mulai membangun passion secara konsisten. Kamu sedang menyiapkan pondasi jangka panjang, meski dari titik nol.",
+        "Survival Linked Passion Developer": "Meski kondisi keuanganmu menantang, kamu punya jaringan yang kuat dan mulai mengembangkan passion-mu dengan serius. Ini kombinasi berbahaya—dalam arti positif—karena kamu tinggal butuh momentum.",
+        "Survival Solo Passion Hacker": "Dalam tekanan finansial dan berjalan sendirian, kamu sudah menguasai passion-mu. Ini bukan fase nyaman, tapi kamu punya fokus dan ketajaman yang jarang dimiliki di fase ini.",
+        "Survival Explorer Passion Hacker": "Kamu sedang dalam fase sulit, tapi memiliki mindset yang tajam dan aktif menjalin koneksi. Kamu tahu apa yang kamu cari, dan tahu ke mana harus melangkah—kamu hanya butuh daya dorong.",
+        "Survival Linked Passion Hacker": "Finansial belum bebas, tapi kamu punya dua kekuatan besar: jaringan solid dan kendali penuh atas passion-mu. Kombinasi ini bisa meledak jika diarahkan ke peluang yang tepat.",
+        
+        // Stable Ground
+        "Stable Solo Passion Seeker": "Kamu sudah berada di zona keuangan yang relatif stabil, tapi masih melangkah sendirian dan belum menemukan passion-mu secara utuh. Ini saat yang tepat untuk mulai mengeksplorasi diri lebih dalam.",
+        "Stable Explorer Passion Seeker": "Dengan kondisi keuangan yang stabil dan keinginan untuk berinteraksi sosial, kamu dalam momen tepat untuk menggali passion. Kamu terbuka terhadap peluang dan siap naik ke level berikutnya.",
+        "Stable Linked Passion Seeker": "Keuanganmu stabil dan kamu punya jaringan yang siap mendukungmu. Sekarang saatnya memanfaatkan itu semua untuk benar-benar menemukan dan memahami passion-mu.",
+        "Stable Solo Passion Developer": "Kamu punya kontrol finansial yang cukup, dan sedang membangun passion-mu dengan serius, meski masih sendirian. Ini adalah fase mandiri yang penuh potensi.",
+        "Stable Explorer Passion Developer": "Keuanganmu mantap, koneksimu berkembang, dan passion-mu mulai kamu bentuk dengan penuh kesadaran. Kamu sedang berada di jalur pertumbuhan yang sangat menjanjikan.",
+        "Stable Linked Passion Developer": "Kamu berada di titik solid: finansial aman, jaringan kuat, dan passion sedang berkembang. Ini fase pembangunan yang kokoh dan mengarah ke lompatan besar.",
+        "Stable Solo Passion Hacker": "Kamu sudah stabil secara keuangan dan punya mindset yang tajam. Walau belum banyak kolaborasi, kamu bisa menciptakan dampak dari passion yang telah kamu kuasai.",
+        "Stable Explorer Passion Hacker": "Kamu punya keuangan yang mantap, relasi yang aktif, dan kendali penuh atas passion-mu. Waktunya untuk menginspirasi dan membangun jejak nyata dari kekuatan tersebut.",
+        "Stable Linked Passion Hacker": "Kombinasi ideal di tahap pembangunan: keuangan stabil, jaringan siap pakai, dan passion yang telah dioptimalkan. Saatnya ekspansi dan memberi dampak nyata.",
+        
+        // Boosted (Wealth Climber)
+        "Boosted Solo Passion Seeker": "Kamu sedang mengalami pertumbuhan finansial, tapi belum terlalu terbuka terhadap koneksi sosial dan masih mencari passion. Ini masa penuh energi dan pencarian arah.",
+        "Boosted Explorer Passion Seeker": "Finansialmu sedang naik, kamu mulai menjelajah komunitas, dan sedang menggali apa yang benar-benar kamu cintai. Ini fase eksplorasi dengan daya dorong tinggi.",
+        "Boosted Linked Passion Seeker": "Asetmu berkembang, koneksi aktif, dan kamu dalam misi menemukan passion-mu. Kamu punya semua tools—tinggal fokus arahkan energimu.",
+        "Boosted Solo Passion Developer": "Kamu sedang membangun kekayaan dan passion sekaligus, meski masih dalam kesendirian. Ini fase sunyi namun kuat.",
+        "Boosted Explorer Passion Developer": "Dengan keuangan tumbuh dan jejaring yang meluas, kamu sedang merancang masa depan berbasis passion. Arahmu mulai jelas, tinggal perkuat fondasi.",
+        "Boosted Linked Passion Developer": "Finansial bertumbuh, koneksi solid, passion berkembang—kamu berada di fase akselerasi. Terus konsisten, dan kamu bisa loncat lebih jauh dari yang kamu bayangkan.",
+        "Boosted Solo Passion Hacker": "Kamu adalah mesin fokus. Keuangan naik, passion dikuasai, meski koneksi masih terbatas. Kamu independen dan visioner.",
+        "Boosted Explorer Passion Hacker": "Dengan aset yang berkembang, komunitas yang aktif, dan kendali penuh atas passion, kamu punya semua bahan untuk menciptakan pengaruh besar.",
+        "Boosted Linked Passion Hacker": "Kamu dalam fase emas: kekayaan naik, koneksi kuat, dan kamu tahu apa yang harus kamu lakukan dengan passion-mu. Waktunya mengeksekusi visi besar.",
+        
+        // Freedom
+        "Freedom Solo Passion Seeker": "Kamu sudah bebas secara finansial, tapi masih menjelajah arah hidup dan passion secara mandiri. Ini momen langka yang bisa jadi awal kebangkitan pribadi.",
+        "Freedom Explorer Passion Seeker": "Kamu punya kebebasan finansial dan keterbukaan sosial, tapi masih mencari makna dan arah. Waktunya gunakan kenyamananmu untuk eksplorasi mendalam.",
+        "Freedom Linked Passion Seeker": "Kamu punya segalanya secara eksternal—uang dan jaringan—sekarang saatnya menggali sisi terdalam dirimu dan menemukan panggilan hidupmu.",
+        "Freedom Solo Passion Developer": "Kamu bebas dari tekanan uang, dan sedang membentuk passion-mu dengan serius. Kamu tenang, tapi bergerak penuh arah.",
+        "Freedom Explorer Passion Developer": "Dengan kebebasan finansial dan jejaring yang hidup, kamu sedang menumbuhkan passion secara nyata. Kamu tidak hanya sukses, tapi juga bertumbuh.",
+        "Freedom Linked Passion Developer": "Kamu berada di fase optimal: bebas finansial, terkoneksi kuat, dan membangun passion yang bermakna. Potensi dampak sosialmu luar biasa.",
+        "Freedom Solo Passion Hacker": "Kamu bebas secara keuangan dan telah menguasai passion-mu, meski masih independen dalam bergerak. Kamu tidak membutuhkan validasi—kamu membangun makna.",
+        "Freedom Explorer Passion Hacker": "Kamu punya segalanya—uang, jejaring, dan passion yang solid. Saatnya menjadi pemimpin perubahan dan inspirasi yang hidup.",
+        "Freedom Linked Passion Hacker": "Ini adalah level tertinggi: kamu bebas secara finansial, punya jaringan kuat, dan passion-mu menjadi kekuatan besar yang menciptakan dampak luas. Kamu bukan hanya berhasil, tapi juga menggerakkan dunia."
     };
 
     // Mapping icon untuk 36 identitas
     const profileIcons = {
         // ... [icon profil] ...
+        "Survival Solo Passion Seeker": "fas fa-search",
+        "Survival Explorer Passion Seeker": "fas fa-compass",
+        "Survival Linked Passion Seeker": "fas fa-users",
+        "Survival Solo Passion Developer": "fas fa-seedling",
+        "Survival Explorer Passion Developer": "fas fa-tree",
+        "Survival Linked Passion Developer": "fas fa-hand-holding-heart",
+        "Survival Solo Passion Hacker": "fas fa-rocket",
+        "Survival Explorer Passion Hacker": "fas fa-satellite",
+        "Survival Linked Passion Hacker": "fas fa-network-wired",
+        "Stable Solo Passion Seeker": "fas fa-home",
+        "Stable Explorer Passion Seeker": "fas fa-map-marked",
+        "Stable Linked Passion Seeker": "fas fa-handshake",
+        "Stable Solo Passion Developer": "fas fa-chess-pawn",
+        "Stable Explorer Passion Developer": "fas fa-chess-knight",
+        "Stable Linked Passion Developer": "fas fa-chess-queen",
+        "Stable Solo Passion Hacker": "fas fa-chess-king",
+        "Stable Explorer Passion Hacker": "fas fa-chess-bishop",
+        "Stable Linked Passion Hacker": "fas fa-chess-rook",
+        "Boosted Solo Passion Seeker": "fas fa-chart-line",
+        "Boosted Explorer Passion Seeker": "fas fa-chart-bar",
+        "Boosted Linked Passion Seeker": "fas fa-chart-pie",
+        "Boosted Solo Passion Developer": "fas fa-briefcase",
+        "Boosted Explorer Passion Developer": "fas fa-suitcase",
+        "Boosted Linked Passion Developer": "fas fa-briefcase-medical",
+        "Boosted Solo Passion Hacker": "fas fa-gem",
+        "Boosted Explorer Passion Hacker": "fas fa-crown",
+        "Boosted Linked Passion Hacker": "fas fa-medal",
+        "Freedom Solo Passion Seeker": "fas fa-umbrella-beach",
+        "Freedom Explorer Passion Seeker": "fas fa-plane",
+        "Freedom Linked Passion Seeker": "fas fa-globe-americas",
+        "Freedom Solo Passion Developer": "fas fa-university",
+        "Freedom Explorer Passion Developer": "fas fa-graduation-cap",
+        "Freedom Linked Passion Developer": "fas fa-landmark",
+        "Freedom Solo Passion Hacker": "fas fa-infinity",
+        "Freedom Explorer Passion Hacker": "fas fa-atom",
+        "Freedom Linked Passion Hacker": "fas fa-globe"
     };
     
     // Variabel global
@@ -220,36 +299,265 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fungsi untuk menampilkan pertanyaan
     function showQuestion() {
         // ... [fungsi showQuestion] ...
+        if (currentQuestion === -1) {
+            // Tampilkan halaman pembuka metrik
+            openingContainerEl.style.display = 'none';
+            explanationContainerEl.style.display = 'block';
+            questionContainerEl.style.display = 'none';
+            resultContainerEl.style.display = 'none';
+            return;
+        }
+        
+        if (currentQuestion >= 0 && currentQuestion < questions.length) {
+            const question = questions[currentQuestion];
+            questionTextEl.textContent = question.question;
+            optionsContainerEl.innerHTML = '';
+            
+            // Update step indicator
+            const steps = document.querySelectorAll('.quiz-step');
+            steps.forEach((step, index) => {
+                if (index === currentQuestion) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+            
+            // Buat opsi jawaban
+            question.options.forEach((option, index) => {
+                const optionEl = document.createElement('div');
+                optionEl.className = 'option-item';
+                
+                // Cek apakah jawaban sudah dipilih sebelumnya
+                const isSelected = answers[currentQuestion] === index;
+                
+                optionEl.innerHTML = `
+                    <input type="radio" name="answer" id="option-${index}" value="${index}" 
+                        ${isSelected ? 'checked' : ''}>
+                    <label for="option-${index}" class="option-label">${option.text}</label>
+                `;
+                
+                optionEl.addEventListener('click', () => {
+                    // Hapus semua seleksi
+                    document.querySelectorAll('.option-item').forEach(item => {
+                        item.classList.remove('selected');
+                    });
+                    
+                    // Tandai yang dipilih
+                    optionEl.classList.add('selected');
+                    
+                    // Simpan jawaban
+                    answers[currentQuestion] = index;
+                    
+                    // Aktifkan tombol selanjutnya
+                    nextBtn.disabled = false;
+                });
+                
+                optionsContainerEl.appendChild(optionEl);
+            });
+            
+            // Tampilkan tombol yang sesuai
+            prevBtn.style.display = currentQuestion === 0 ? 'none' : 'inline-block';
+            nextBtn.style.display = currentQuestion < questions.length - 1 ? 'inline-block' : 'none';
+            submitBtn.style.display = currentQuestion === questions.length - 1 ? 'inline-block' : 'none';
+            
+            // Tampilkan container pertanyaan
+            openingContainerEl.style.display = 'none';
+            explanationContainerEl.style.display = 'none';
+            questionContainerEl.style.display = 'block';
+            resultContainerEl.style.display = 'none';
+        }
     }
     
     // Fungsi untuk berpindah ke pertanyaan berikutnya
     function goToNextQuestion() {
         // ... [fungsi goToNextQuestion] ...
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            showQuestion();
+        }
     }
     
     // Fungsi untuk kembali ke pertanyaan sebelumnya
     function goToPrevQuestion() {
         // ... [fungsi goToPrevQuestion] ...
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            showQuestion();
+        }
     }
     
     // Fungsi untuk menentukan kategori finansial
     function getFinancialCategory(score) {
         // ... [fungsi getFinancialCategory] ...
+        if (score <= 10) {
+            return {
+                name: "Survival Mode",
+                shortName: "Survival",
+                description: "kamu sedang berjuang memenuhi kebutuhan dasar",
+                icon: "fas fa-umbrella-beach",
+                color: "#EF476F",
+                maxScore: 22
+            };
+        } else if (score <= 15) {
+            return {
+                name: "Stable Ground",
+                shortName: "Stable",
+                description: "kamu memiliki stabilitas finansial dasar",
+                icon: "fas fa-home",
+                color: "#118AB2",
+                maxScore: 22
+            };
+        } else if (score <= 19) {
+            return {
+                name: "Wealth Climber",
+                shortName: "Boosted",
+                description: "kamu sedang membangun kekuatan finansial",
+                icon: "fas fa-chart-line",
+                color: "#06D6A0",
+                maxScore: 22
+            };
+        } else {
+            return {
+                name: "Financial Freedom",
+                shortName: "Freedom",
+                description: "kamu memiliki kebebasan finansial yang baik",
+                icon: "fas fa-crown",
+                color: "#FFD166",
+                maxScore: 22
+            };
+        }
     }
     
     // Fungsi untuk menentukan kategori mindset
     function getMindsetCategory(score) {
         // ... [fungsi getMindsetCategory] ...
+        if (score <= 15) {
+            return {
+                name: "Passion Seeker",
+                shortName: "Passion Seeker",
+                description: "kamu sedang mencari passion yang tepat",
+                icon: "fas fa-search",
+                color: "#5E60CE",
+                maxScore: 25
+            };
+        } else if (score <= 20) {
+            return {
+                name: "Passion Developer",
+                shortName: "Passion Developer",
+                description: "kamu sedang mengembangkan passion",
+                icon: "fas fa-seedling",
+                color: "#48BFE3",
+                maxScore: 25
+            };
+        } else {
+            return {
+                name: "Passion Hacker",
+                shortName: "Passion Hacker",
+                description: "kamu ahli dalam mengeksekusi passion",
+                icon: "fas fa-rocket",
+                color: "#80FFDB",
+                maxScore: 25
+            };
+        }
     }
     
     // Fungsi untuk menentukan kategori network
     function getNetworkCategory(score) {
         // ... [fungsi getNetworkCategory] ...
+        if (score <= 12) {
+            return {
+                name: "Solo Player",
+                shortName: "Solo",
+                description: "kamu masih membangun jaringan pendukung",
+                icon: "fas fa-user",
+                color: "#FF9F1C",
+                maxScore: 25
+            };
+        } else if (score <= 18) {
+            return {
+                name: "Community Explorer",
+                shortName: "Explorer",
+                description: "kamu mulai aktif membangun jaringan",
+                icon: "fas fa-users",
+                color: "#4361EE",
+                maxScore: 25
+            };
+        } else {
+            return {
+                name: "Network Master",
+                shortName: "Linked",
+                description: "kamu memiliki jaringan pendukung yang kuat",
+                icon: "fas fa-handshake",
+                color: "#7209B7",
+                maxScore: 25
+            };
+        }
     }
     
     // Fungsi untuk menghitung hasil
     function calculateResults() {
         // ... [fungsi calculateResults] ...
+        financialScore = 0;
+        mindsetScore = 0;
+        networkScore = 0;
+        
+        // Hitung skor finansial (pertanyaan 0-4)
+        for (let i = 0; i < 5; i++) {
+            if (answers[i] !== undefined) {
+                const optionValue = questions[i].options[answers[i]].value;
+                financialScore += optionValue;
+            }
+        }
+        
+        // Hitung skor mindset (pertanyaan 5-9)
+        for (let i = 5; i < 10; i++) {
+            if (answers[i] !== undefined) {
+                const optionValue = questions[i].options[answers[i]].value;
+                mindsetScore += optionValue;
+            }
+        }
+        
+        // Hitung skor network (pertanyaan 10-14)
+        for (let i = 10; i < 15; i++) {
+            if (answers[i] !== undefined) {
+                const optionValue = questions[i].options[answers[i]].value;
+                networkScore += optionValue;
+            }
+        }
+        
+        // Dapatkan kategori
+        const financialCategory = getFinancialCategory(financialScore);
+        const mindsetCategory = getMindsetCategory(mindsetScore);
+        const networkCategory = getNetworkCategory(networkScore);
+        
+        // Hitung persentase
+        const financialPercentage = Math.round((financialScore / financialCategory.maxScore) * 100);
+        const mindsetPercentage = Math.round((mindsetScore / mindsetCategory.maxScore) * 100);
+        const networkPercentage = Math.round((networkScore / networkCategory.maxScore) * 100);
+        
+        // Hitung skor keseluruhan
+        const overallScore = Math.round((financialPercentage + mindsetPercentage + networkPercentage) / 3);
+        
+        // Generate profile key
+        const profileKey = `${financialCategory.shortName} ${networkCategory.shortName} ${mindsetCategory.shortName}`;
+        
+        return {
+            financialScore: financialScore,
+            financialCategory: financialCategory,
+            financialPercentage: financialPercentage,
+            
+            mindsetScore: mindsetScore,
+            mindsetCategory: mindsetCategory,
+            mindsetPercentage: mindsetPercentage,
+            
+            networkScore: networkScore,
+            networkCategory: networkCategory,
+            networkPercentage: networkPercentage,
+            
+            overallScore: overallScore,
+            profileKey: profileKey
+        };
     }
     
     // Fungsi untuk menampilkan hasil
@@ -470,7 +778,70 @@ document.addEventListener('DOMContentLoaded', function() {
         const doc = new jsPDF();
         
         // ... [kode untuk membuat PDF] ...
+        // Header
+        doc.setFontSize(20);
+        doc.text("Laporan Passion Readiness Quiz", 105, 20, null, null, 'center');
         
+        // Informasi pengguna
+        doc.setFontSize(12);
+        doc.text(`Nama: ${document.getElementById('name').value}`, 20, 30);
+        doc.text(`Email: ${document.getElementById('email').value}`, 20, 38);
+        doc.text(`Tanggal: ${new Date().toLocaleDateString()}`, 20, 46);
+        
+        // Garis pemisah
+        doc.line(20, 50, 190, 50);
+        
+        // Konten laporan
+        doc.setFontSize(16);
+        doc.text("Ringkasan Hasil", 105, 60, null, null, 'center');
+        
+        const results = calculateResults();
+        const profileDesc = profileDescriptions[results.profileKey] || "Profil kamu unik dan penuh potensi.";
+        
+        // Profile identity
+        doc.setFontSize(14);
+        doc.setTextColor(0);
+        doc.text(`Profil kamu: ${results.profileKey}`, 20, 70);
+        doc.setFontSize(12);
+        doc.text(profileDesc, 20, 78, { maxWidth: 170 });
+        
+        // Overall score
+        doc.setFontSize(14);
+        doc.text(`Skor Keseluruhan: ${results.overallScore}/100`, 20, 100);
+        
+        // Financial
+        doc.setFontSize(12);
+        doc.setTextColor(results.financialCategory.color);
+        doc.text(`Finansial: ${results.financialCategory.name} (${results.financialScore}/${results.financialCategory.maxScore})`, 20, 110);
+        doc.setTextColor(0);
+        doc.text(results.financialCategory.description, 20, 118, { maxWidth: 170 });
+        
+        // Mindset
+        doc.setTextColor(results.mindsetCategory.color);
+        doc.text(`Mindset: ${results.mindsetCategory.name} (${results.mindsetScore}/${results.mindsetCategory.maxScore})`, 20, 130);
+        doc.setTextColor(0);
+        doc.text(results.mindsetCategory.description, 20, 138, { maxWidth: 170 });
+        
+        // Network
+        doc.setTextColor(results.networkCategory.color);
+        doc.text(`Network: ${results.networkCategory.name} (${results.networkScore}/${results.networkCategory.maxScore})`, 20, 150);
+        doc.setTextColor(0);
+        doc.text(results.networkCategory.description, 20, 158, { maxWidth: 170 });
+        
+        // Rekomendasi
+        doc.setFontSize(16);
+        doc.text("Rekomendasi Utama", 105, 170, null, null, 'center');
+        doc.setFontSize(12);
+        doc.text("- Passion Shield Projects", 20, 180);
+        doc.text("- Financial Protection Check Up", 20, 188);
+        doc.text("- Passion Collaboration Network", 20, 196);
+        
+        // Footer
+        doc.setFontSize(10);
+        doc.setTextColor(100);
+        doc.text("© 2025 Passion Hax - passionhax.github.io", 105, 280, null, null, 'center');
+        
+        // Simpan PDF        
         doc.save('passion-readiness-report.pdf');
     }
     
