@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passion Readiness Quiz - Passion Hax</title>
+    <link rel="icon" type="image/x-icon" href="Passion Hax Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="quiz-style.css">
+</head>
+<body>
+    <!-- Header dengan menu navigasi lengkap -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://passionhax.github.io" class="logo-container">
+                    <img src="Passion Hax Logo.png" alt="Passion Hax Logo" class="logo-image">
+                    <div class="logo">Passion Hax</div>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#framework">Framework</a>
+                    <a href="#products">Produk</a>
+                    <a href="#resources">Resources</a>
+                    <a href="#testimonials">Testimoni</a>
+                    <a href="#contact">Kontak</a>
+                    <a href="#quiz" class="cta-button">Free Quiz</a>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <button class="mobile-close-btn" id="mobileCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <a href="#framework">Framework</a>
+                <a href="#products">Produk</a>
+                <a href="#resources">Resources</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#contact">Kontak</a>
+                <a href="#quiz" class="cta-button">Free Quiz</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quiz Section -->
+    <section id="quiz">
+        <div class="container">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h1>Passion Readiness Quiz</h1>
+                    <p>Tes 5 menit untuk mengukur kesiapan passion-mu dan dapatkan laporan personalisasi gratis</p>
+                    
+                    <div class="quiz-steps">
+                        <!-- Steps will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Opening Section -->
+                <div id="opening-container" class="opening-container">
+                    <div class="card">
+                        <h2>Informasi Dasar</h2>
+                        <p>Sebelum memulai, kami membutuhkan beberapa informasi dasar untuk personalisasi hasil</p>
+                        
+                        <div class="input-container">
+                            <div class="input-group">
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" id="name" placeholder="Masukkan nama lengkap">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="Masukkan alamat email">
+                            </div>
+                        </div>
+                        
+                        <button id="start-quiz" class="cta-button">Mulai Quiz <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Explanation Section -->
+                <div id="explanation-container" class="explanation-container" style="display: none;">
+                    <div class="card">
+                        <h2>Apa yang Diukur?</h2>
+                        <p>Quiz ini mengukur 3 pilar utama kesiapan passion kamu</p>
+                        
+                        <div class="metric-cards">
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <h3>Kesiapan Finansial</h3>
+                                <p>Seberapa kuat fondasi keuangan kamu untuk mendukung perjalanan passion</p>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h3>Kesiapan Mindset</h3>
+                                <p>Seberapa siap pola pikir dan komitmen kamu dalam mengejar passion</p>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3>Kesiapan Network</h3>
+                                <p>Seberapa kuat jaringan pendukung yang kamu miliki untuk membantu mencapai passion</p>
+                            </div>
+                        </div>
+                        
+                        <button id="start-questions" class="cta-button">Mulai Pertanyaan <i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Question Container -->
+                <div id="question-container" class="question-container" style="display: none;">
+                    <div class="question-text" id="question-text">
+                        Seberapa baik kamu memahami nilai-nilai hidup dan minat pribadi kamu?
+                    </div>
+                    
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="quiz-buttons">
+                        <button id="prev-btn" class="cta-button outline-button" style="display: none;">
+                            <i class="fas fa-arrow-left"></i> Pertanyaan Sebelumnya
+                        </button>
+                        <button id="next-btn" class="cta-button">
+                            Pertanyaan Berikutnya <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button id="submit-btn" class="cta-button" style="display: none;">
+                            <i class="fas fa-check-circle"></i> Lihat Hasil
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Result Container -->
+                <div id="result-container" class="result-container">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="Passion Hax Logo.png" alt="Passion Hax Logo" class="footer-logo-image">
+                <div class="logo">Passion Hax</div>
+            </div>
+            <p>Transformasi Passion Jadi Karier & Hidup Impianmu</p>
+            
+            <div class="footer-links">
+                <a href="#framework">Framework</a>
+                <a href="#products">Produk</a>
+                <a href="#resources">Resources</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#contact">Kontak</a>
+            </div>
+            
+            <p class="copyright">© 2025 Passion Hax. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="quiz-script.js"></script>
+</body>
+</html>
