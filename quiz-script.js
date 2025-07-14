@@ -640,18 +640,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const bestRecHTML = `
             <div class="best-recommendation">
                 <h3 class="best-rec-title">Rekomendasi Terbaik untuk Perjalanan Passion Kamu</h3>
-                <p class="best-rec-subtitle">Berdasarkan hasil analisis, kami merekomendasikan paket lengkap berikut untuk mempercepat perjalanan passion kamu dengan harga terbaik:</p>
+                <p class="best-rec-subtitle">Berdasarkan hasil analisis, kami merekomendasikan program utama berikut dengan bonus spesial:</p>
                 
                 <div class="best-rec-container">
                     <div class="best-rec-card">
-                        <h4>Paket Lengkap Passion Hax</h4>
+                        <h4>${results.mindsetScore <= 15 ? 'Passion Discovery Blueprint' : 'Passion Transformation Blueprint'}</h4>
+                        <p class="best-rec-price">${mainProgramPrice}</p>
+                        <p>Program utama untuk ${results.mindsetScore <= 15 ? 'menemukan passion sejati' : 'mengubah passion menjadi karier'} dengan pendekatan terstruktur.</p>
+                        
+                        <h5 style="margin-top: 1.5rem; margin-bottom: 1rem;">Bonus Spesial:</h5>
                         <ul class="best-rec-list">
-                            <li><i class="fas fa-check"></i> ${results.mindsetScore <= 15 ? 'Passion Discovery Blueprint' : 'Passion Transformation Blueprint'}</li>
                             <li><i class="fas fa-check"></i> Passion Shield Projects</li>
                             <li><i class="fas fa-check"></i> Passion Collaboration Network</li>
                             <li><i class="fas fa-check"></i> Financial Protection Check Up</li>
                         </ul>
-                        <p class="best-rec-price">${mainProgramPrice}</p>
+                        
                         <p style="text-align: center; margin-bottom: 1.5rem;"><small>Kuota terbatas 100 peserta!</small></p>
                         <a href="#paket-lengkap" class="cta-button best-rec-cta">Dapatkan Paket Lengkap</a>
                     </div>
