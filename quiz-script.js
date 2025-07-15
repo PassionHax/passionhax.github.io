@@ -497,32 +497,37 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Fungsi untuk menghitung hasil
     function calculateResults() {
-        // ... [fungsi calculateResults] ...
         financialScore = 0;
         mindsetScore = 0;
         networkScore = 0;
         
-        // Hitung skor finansial (pertanyaan 0-4)
-        for (let i = 0; i < 5; i++) {
-            if (answers[i] !== undefined) {
-                const optionValue = questions[i].options[answers[i]].value;
-                financialScore += optionValue;
-            }
-        }
+        // Variabel untuk data spesifik
+        let monthlyIncome = '';
+        let financialProtection = '';
+        let financialDebt = '';
         
-        // Hitung skor mindset (pertanyaan 5-9)
-        for (let i = 5; i < 10; i++) {
+        // Hitung skor dan tangkap data spesifik
+        for (let i = 0; i < questions.length; i++) {
             if (answers[i] !== undefined) {
-                const optionValue = questions[i].options[answers[i]].value;
-                mindsetScore += optionValue;
-            }
-        }
-        
-        // Hitung skor network (pertanyaan 10-14)
-        for (let i = 10; i < 15; i++) {
-            if (answers[i] !== undefined) {
-                const optionValue = questions[i].options[answers[i]].value;
-                networkScore += optionValue;
+                const question = questions[i];
+                const optionValue = question.options[answers[i]].value;
+                const optionText = question.options[answers[i]].text;
+                
+                // Tangkap data spesifik berdasarkan pertanyaan
+                if (question.question.includes("pendapatan bulanan")) {
+                    monthlyIncome = optionText;
+                }
+                else if (question.question.includes("perlindungan finansial")) {
+                    financialProtection = optionText;
+                }
+                else if (question.question.includes("utang/kewajiban")) {
+                    financialDebt = optionText;
+                }
+                
+                // Hitung skor per kategori
+                if (i < 5) financialScore += optionValue;
+                else if (i < 10) mindsetScore += optionValue;
+                else networkScore += optionValue;
             }
         }
         
@@ -543,21 +548,39 @@ document.addEventListener('DOMContentLoaded', function() {
         const profileKey = `${financialCategory.shortName} ${networkCategory.shortName} ${mindsetCategory.shortName}`;
         
         return {
-            financialScore: financialScore,
-            financialCategory: financialCategory,
-            financialPercentage: financialPercentage,
-            
-            mindsetScore: mindsetScore,
-            mindsetCategory: mindsetCategory,
-            mindsetPercentage: mindsetPercentage,
-            
-            networkScore: networkScore,
-            networkCategory: networkCategory,
-            networkPercentage: networkPercentage,
-            
-            overallScore: overallScore,
-            profileKey: profileKey
+        financialScore: financialScore,
+        monthlyIncome: monthlyIncome, // Data baru
+        financialProtection: financialProtection, // Data baru
+        financialDebt: financialDebt, // Data baru
+        // ... properti lainnya ...
         };
+    }
+
+    // Fungsi untuk menyimpan lead ke Google Sheets
+    async function saveLead(results) {
+        const formData = new FormData();
+        formData.append('name', userName);
+        formData.append('email', userEmail);
+        formData.append('financialScore', results.financialScore);
+        formData.append('monthlyIncome', results.monthlyIncome); // Data baru
+        formData.append('financialProtection', results.financialProtection); // Data baru
+        formData.append('financialDebt', results.financialDebt); // Data baru
+        formData.append('mindsetScore', results.mindsetScore);
+        formData.append('networkScore', results.networkScore);
+        formData.append('profileKey', results.profileKey);
+        formData.append('timestamp', new Date().toISOString());
+        
+        try {
+            // Ganti dengan URL Google Sheets/Formspree Anda
+            const response = await fetch('https://forms.gle/FsuH8h61kupyWyGn8', {
+                method: 'POST',
+                body: formData
+            });
+            
+            // ... kode setelahnya ...
+        } catch (error) {
+            // ... error handling ...
+        }
     }
     
     // Fungsi untuk menampilkan hasil
@@ -566,6 +589,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const userName = document.getElementById('name').value;
         const profileDesc = profileDescriptions[results.profileKey] || "Profil kamu unik dan penuh potensi. Gunakan kekuatan finansial, jaringan, dan passion kamu untuk mencapai tujuan.";
         const profileIcon = profileIcons[results.profileKey] || 'fas fa-user';
+
+        // Simpan lead
+        saveLead(results);
         
         // Sembunyikan kontainer pertanyaan dan tampilkan hasil
         questionContainerEl.style.display = 'none';
