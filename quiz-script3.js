@@ -404,7 +404,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "kamu sedang berjuang memenuhi kebutuhan dasar",
                 icon: "fas fa-umbrella-beach",
                 color: "#EF476F",
-                maxScore: 22
+                maxScore: 22,
+                analysis: "Kondisi keuangan kamu masih dalam tahap bertahan. Fokus utama saat ini adalah memenuhi kebutuhan dasar sehari-hari. Untuk membangun passion, kamu perlu mencari sumber pendapatan tambahan atau memulai dengan modal kecil."
             };
         } else if (score <= 15) {
             return {
@@ -413,7 +414,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "kamu memiliki stabilitas finansial dasar",
                 icon: "fas fa-home",
                 color: "#118AB2",
-                maxScore: 22
+                maxScore: 22,
+                analysis: "Keuangan kamu sudah cukup stabil untuk mulai mengeksplorasi passion. Kamu bisa mengalokasikan 10-20% pendapatan untuk pengembangan diri dan passion. Fokus pada pembangunan dana darurat dan perlindungan dasar."
             };
         } else if (score <= 19) {
             return {
@@ -422,7 +424,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "kamu sedang membangun kekuatan finansial",
                 icon: "fas fa-chart-line",
                 color: "#06D6A0",
-                maxScore: 22
+                maxScore: 22,
+                analysis: "Kamu berada di jalur yang tepat menuju kebebasan finansial. Manfaatkan momentum ini untuk berinvestasi dalam pengembangan passion. Pertimbangkan untuk mengalokasikan 30% pendapatan untuk membangun bisnis atau karier berbasis passion."
             };
         } else {
             return {
@@ -431,7 +434,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "kamu memiliki kebebasan finansial yang baik",
                 icon: "fas fa-crown",
                 color: "#FFD166",
-                maxScore: 22
+                maxScore: 22,
+                analysis: "Kebebasan finansial memungkinkan kamu fokus sepenuhnya pada passion. Saatnya untuk scaling dan memberikan dampak lebih besar. Pertimbangkan untuk membangun tim, berkolaborasi, atau mengembangkan produk/jasa berbasis passion ke level berikutnya."
             };
         }
     }
@@ -445,7 +449,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "kamu sedang mencari passion yang tepat",
                 icon: "fas fa-search",
                 color: "#5E60CE",
-                maxScore: 25
+                maxScore: 25,
+                analysis: "Kamu masih dalam fase eksplorasi untuk menemukan passion sejati. Luangkan waktu untuk mencoba berbagai aktivitas baru tanpa tekanan. Fokus pada proses belajar dan penemuan diri daripada hasil akhir."
             };
         } else if (score <= 20) {
             return {
@@ -454,7 +459,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "kamu sedang mengembangkan passion",
                 icon: "fas fa-seedling",
                 color: "#48BFE3",
-                maxScore: 25
+                maxScore: 25,
+                analysis: "Kamu sudah menemukan passion dan sedang dalam proses mengembangkannya. Fokus pada konsistensi dan peningkatan keterampilan. Bangun sistem dan rutinitas yang mendukung perkembangan passion-mu."
             };
         } else {
             return {
@@ -463,7 +469,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "kamu ahli dalam mengeksekusi passion",
                 icon: "fas fa-rocket",
                 color: "#80FFDB",
-                maxScore: 25
+                maxScore: 25,
+                analysis: "Kamu sudah menguasai passion dan mampu mengeksekusi dengan baik. Tantangan berikutnya adalah scaling dan memberikan dampak lebih besar. Pertimbangkan untuk mengajar, berkolaborasi, atau menciptakan sistem yang bisa bekerja tanpa kehadiranmu langsung."
             };
         }
     }
@@ -477,7 +484,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "kamu masih membangun jaringan pendukung",
                 icon: "fas fa-user",
                 color: "#FF9F1C",
-                maxScore: 25
+                maxScore: 25,
+                analysis: "Jaringan profesional kamu masih terbatas. Mulailah dengan bergabung dalam komunitas online terkait minatmu. Hadiri 1-2 event setiap bulan untuk memperluas koneksi. Jangan ragu untuk memulai percakapan dengan profesional di bidangmu."
             };
         } else if (score <= 18) {
             return {
@@ -486,7 +494,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "kamu mulai aktif membangun jaringan",
                 icon: "fas fa-users",
                 color: "#4361EE",
-                maxScore: 25
+                maxScore: 25,
+                analysis: "Kamu sudah mulai aktif membangun jaringan. Tingkatkan kualitas koneksi dengan membangun hubungan yang mendalam. Fokus pada memberi nilai sebelum meminta bantuan. Pertimbangkan untuk mencari mentor yang bisa membimbing perjalanan passion-mu."
             };
         } else {
             return {
@@ -495,7 +504,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "kamu memiliki jaringan pendukung yang kuat",
                 icon: "fas fa-handshake",
                 color: "#7209B7",
-                maxScore: 25
+                maxScore: 25,
+                analysis: "Jaringan profesional kamu sudah kuat dan mendukung. Manfaatkan jaringan ini untuk kolaborasi dan peluang baru. Fokus pada menjadi penghubung (connector) bagi orang lain di jaringanmu. Pertimbangkan untuk membangun komunitasmu sendiri atau menjadi pemimpin dalam komunitas yang sudah ada."
             };
         }
     }
@@ -606,8 +616,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Error saving lead:", error);
             // Fallback: simpan di localStorage
             const leads = JSON.parse(localStorage.getItem('quizLeads') || '[]');
-            const newLeads = JSON.parse(leads);
-            newLeads.push({
+            leads.push({
                 name: userName,
                 email: userEmail,
                 financialScore: results.financialScore,
@@ -619,7 +628,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 profileKey: results.profileKey,
                 timestamp: new Date().toISOString()
             });
-            localStorage.setItem('quizLeads', JSON.stringify(newLeads));
+            localStorage.setItem('quizLeads', JSON.stringify(leads));
         }
     }
 
@@ -655,7 +664,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon: "fas fa-shield-alt",
                 tag: results.financialScore <= 10 ? "Sangat Dianjurkan" : results.financialScore <= 15 ? "Dianjurkan" : "Opsional",
                 priority: results.financialScore <= 10 ? 1 : results.financialScore <= 15 ? 2 : 3,
-                note: "<div class='psp-tag'>🔥 Gratis, dengan Commitment Fee, Kuota Sisa: 7 slot!</div>"
+                // PERUBAHAN: Teks promo Passion Shield Projects
+                note: "<div class='psp-tag'>🔥 Gratis, Melalui Seleksi, Kuota Terbatas!</div>"
             },
             {
                 title: "Financial Protection Check Up",
@@ -750,100 +760,182 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         
-        // Isi hasil
+        // Isi hasil dengan layout yang lebih baik
         resultContainerEl.innerHTML = `
-            <div class="result-header">
-                <h2>Hasil Analisis Passion Readiness Quiz</h2>
-                <p>Halo ${userName}, berikut analisis kesiapan passion kamu berdasarkan 3 pilar utama:</p>
-            </div>
-            
-            <div class="profile-identity">
-                <div class="profile-identity-header">Kamu adalah seorang...</div>
-                <div class="profile-icon">
-                    <i class="${profileIcon}"></i>
-                </div>
-                <div class="profile-label">${results.profileKey}</div>
-                <div class="profile-description">${profileDesc}</div>
-                <div class="overall-score">Skor Keseluruhan: ${results.overallScore}/100</div>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: ${results.overallScore}%; background: var(--secondary);"></div>
-                </div>
-            </div>
-            
-            ${financialDetailsHTML}
-            
-            <div class="combined-status">
-                <div class="status-card financial-status">
-                    <div class="status-icon" style="color: ${results.financialCategory.color}">
-                        <i class="${results.financialCategory.icon}"></i>
-                    </div>
-                    <div class="status-title">Status Finansial</div>
-                    <div class="status-name" style="color: ${results.financialCategory.color}">
-                        ${results.financialCategory.name}
-                    </div>
-                    <p>${results.financialCategory.description}</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" style="width: ${results.financialPercentage}%; background: ${results.financialCategory.color}"></div>
-                    </div>
-                    <p><strong>Skor: ${results.financialScore}/${results.financialCategory.maxScore}</strong></p>
+            <div class="result-content">
+                <div class="result-header">
+                    <h2>Hasil Analisis Passion Readiness Quiz</h2>
+                    <p>Halo ${userName}, berikut analisis kesiapan passion kamu berdasarkan 3 pilar utama:</p>
                 </div>
                 
-                <div class="status-card passion-status">
-                    <div class="status-icon" style="color: ${results.mindsetCategory.color}">
-                        <i class="${results.mindsetCategory.icon}"></i>
+                <div class="profile-identity">
+                    <div class="profile-identity-header">Kamu adalah seorang...</div>
+                    <div class="profile-icon">
+                        <i class="${profileIcon}"></i>
                     </div>
-                    <div class="status-title">Status Mindset</div>
-                    <div class="status-name" style="color: ${results.mindsetCategory.color}">
-                        ${results.mindsetCategory.name}
-                    </div>
-                    <p>${results.mindsetCategory.description}</p>
+                    <div class="profile-label">${results.profileKey}</div>
+                    <div class="profile-description">${profileDesc}</div>
+                    <div class="overall-score">Skor Keseluruhan: ${results.overallScore}/100</div>
                     <div class="progress-container">
-                        <div class="progress-bar" style="width: ${results.mindsetPercentage}%; background: ${results.mindsetCategory.color}"></div>
+                        <div class="progress-bar" style="width: ${results.overallScore}%; background: var(--secondary);"></div>
                     </div>
-                    <p><strong>Skor: ${results.mindsetScore}/${results.mindsetCategory.maxScore}</strong></p>
                 </div>
                 
-                <div class="status-card network-status">
-                    <div class="status-icon" style="color: ${results.networkCategory.color}">
-                        <i class="${results.networkCategory.icon}"></i>
-                    </div>
-                    <div class="status-title">Status Network</div>
-                    <div class="status-name" style="color: ${results.networkCategory.color}">
-                        ${results.networkCategory.name}
-                    </div>
-                    <p>${results.networkCategory.description}</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" style="width: ${results.networkPercentage}%; background: ${results.networkCategory.color}"></div>
-                    </div>
-                    <p><strong>Skor: ${results.networkScore}/${results.networkCategory.maxScore}</strong></p>
-                </div>
-            </div>
-            
-            <div class="financial-box">
-                <h3>Rekomendasi Aksi</h3>
-                <p>Berdasarkan profil kamu, kami merekomendasikan program-program berikut:</p>
+                ${financialDetailsHTML}
                 
-                ${recsHTML}
-            </div>
-            
-            ${bestRecHTML}
-            
-            <div style="text-align: center; margin-top: 2rem;">
-                <button id="download-pdf" class="cta-button action-button">
-                    <i class="fas fa-download"></i> Download PDF
-                </button>
-                <button id="send-email" class="cta-button action-button">
-                    <i class="fas fa-paper-plane"></i> Kirim ke Email
-                </button>
-                <button id="retry-quiz" class="cta-button action-button outline-button">
-                    <i class="fas fa-redo"></i> Tes Ulang
-                </button>
-                <p style="margin-top: 1rem;"><small>Atau bagikan hasilmu dengan teman-teman:</small></p>
-                <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
-                    <a href="#" style="color: #3b5998; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
-                    <a href="#" style="color: #1da1f2; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" style="color: #0077b5; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" style="color: #25d366; font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
+                <div class="combined-status">
+                    <div class="status-card financial-status">
+                        <div class="status-header">
+                            <div class="status-icon" style="color: ${results.financialCategory.color}">
+                                <i class="${results.financialCategory.icon}"></i>
+                            </div>
+                            <div>
+                                <div class="status-title">Status Finansial</div>
+                                <div class="status-name" style="color: ${results.financialCategory.color}">
+                                    ${results.financialCategory.name}
+                                </div>
+                            </div>
+                            <button class="expand-btn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <p>${results.financialCategory.description}</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: ${results.financialPercentage}%; background: ${results.financialCategory.color}"></div>
+                        </div>
+                        <p><strong>Skor: ${results.financialScore}/${results.financialCategory.maxScore}</strong></p>
+                        
+                        <div class="analysis-detail">
+                            <h4>Analisis Finansial</h4>
+                            <p>${results.financialCategory.analysis}</p>
+                            
+                            <div class="detail-grid">
+                                <div class="detail-item">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <div>
+                                        <strong>Pendapatan Bulanan</strong>
+                                        <p>${results.monthlyIncome}</p>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <div>
+                                        <strong>Perlindungan Finansial</strong>
+                                        <p>${results.financialProtection}</p>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-credit-card"></i>
+                                    <div>
+                                        <strong>Utang/Kewajiban</strong>
+                                        <p>${results.financialDebt}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="status-card passion-status">
+                        <div class="status-header">
+                            <div class="status-icon" style="color: ${results.mindsetCategory.color}">
+                                <i class="${results.mindsetCategory.icon}"></i>
+                            </div>
+                            <div>
+                                <div class="status-title">Status Mindset</div>
+                                <div class="status-name" style="color: ${results.mindsetCategory.color}">
+                                    ${results.mindsetCategory.name}
+                                </div>
+                            </div>
+                            <button class="expand-btn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <p>${results.mindsetCategory.description}</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: ${results.mindsetPercentage}%; background: ${results.mindsetCategory.color}"></div>
+                        </div>
+                        <p><strong>Skor: ${results.mindsetScore}/${results.mindsetCategory.maxScore}</strong></p>
+                        
+                        <div class="analysis-detail">
+                            <h4>Analisis Mindset</h4>
+                            <p>${results.mindsetCategory.analysis}</p>
+                            
+                            <div class="tips">
+                                <h5>Tips Pengembangan:</h5>
+                                <ul>
+                                    <li><i class="fas fa-lightbulb"></i> Luangkan waktu 30 menit setiap hari untuk refleksi diri</li>
+                                    <li><i class="fas fa-lightbulb"></i> Buat jurnal perkembangan passion mingguan</li>
+                                    <li><i class="fas fa-lightbulb"></i> Cari mentor yang sudah berhasil di bidang passionmu</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="status-card network-status">
+                        <div class="status-header">
+                            <div class="status-icon" style="color: ${results.networkCategory.color}">
+                                <i class="${results.networkCategory.icon}"></i>
+                            </div>
+                            <div>
+                                <div class="status-title">Status Network</div>
+                                <div class="status-name" style="color: ${results.networkCategory.color}">
+                                    ${results.networkCategory.name}
+                                </div>
+                            </div>
+                            <button class="expand-btn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <p>${results.networkCategory.description}</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: ${results.networkPercentage}%; background: ${results.networkCategory.color}"></div>
+                        </div>
+                        <p><strong>Skor: ${results.networkScore}/${results.networkCategory.maxScore}</strong></p>
+                        
+                        <div class="analysis-detail">
+                            <h4>Analisis Network</h4>
+                            <p>${results.networkCategory.analysis}</p>
+                            
+                            <div class="action-steps">
+                                <h5>Langkah Aksi:</h5>
+                                <ol>
+                                    <li>Identifikasi 3 komunitas relevan dan ikuti minimal 1 event per bulan</li>
+                                    <li>Buat target untuk terhubung dengan 5 profesional baru setiap bulan</li>
+                                    <li>Tawarkan bantuan/kontribusi sebelum meminta dukungan</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="financial-box">
+                    <h3>Rekomendasi Aksi</h3>
+                    <p>Berdasarkan profil kamu, kami merekomendasikan program-program berikut:</p>
+                    
+                    <div class="recommendations-container">
+                        ${recsHTML}
+                    </div>
+                </div>
+                
+                ${bestRecHTML}
+                
+                <div class="result-footer">
+                    <button id="download-pdf" class="cta-button action-button">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                    <button id="send-email" class="cta-button action-button">
+                        <i class="fas fa-paper-plane"></i> Kirim ke Email
+                    </button>
+                    <button id="retry-quiz" class="cta-button action-button outline-button">
+                        <i class="fas fa-redo"></i> Tes Ulang
+                    </button>
+                    <p class="share-text">Atau bagikan hasilmu dengan teman-teman:</p>
+                    <div class="social-share">
+                        <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
             </div>
         `;
@@ -859,10 +951,27 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, 300);
         
-        // Tambahkan event listener
-        document.getElementById('download-pdf').addEventListener('click', downloadPDF);
-        document.getElementById('send-email').addEventListener('click', sendEmail);
-        document.getElementById('retry-quiz').addEventListener('click', retryQuiz);
+        // Tambahkan event listener untuk tombol expand
+        document.querySelectorAll('.expand-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.status-card');
+                const detail = card.querySelector('.analysis-detail');
+                const icon = this.querySelector('i');
+                
+                if (detail.style.display === 'block') {
+                    detail.style.display = 'none';
+                    icon.className = 'fas fa-chevron-down';
+                } else {
+                    detail.style.display = 'block';
+                    icon.className = 'fas fa-chevron-up';
+                }
+            });
+        });
+        
+        // Tambahkan event listener lainnya
+        document.getElementById('download-pdf')?.addEventListener('click', downloadPDF);
+        document.getElementById('send-email')?.addEventListener('click', sendEmail);
+        document.getElementById('retry-quiz')?.addEventListener('click', retryQuiz);
     }
     
     // Fungsi untuk download PDF
