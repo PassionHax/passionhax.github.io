@@ -571,18 +571,18 @@ document.addEventListener('DOMContentLoaded', function() {
     async function saveLead(results) {
         // Ganti dengan entry IDs Anda
         const ENTRY_IDS = {
-            name: "entry.123456789",
-            email: "entry.987654321",
-            financialScore: "entry.111111111",
-            monthlyIncome: "entry.222222222",
-            financialProtection: "entry.333333333",
-            financialDebt: "entry.444444444",
-            mindsetScore: "entry.555555555",
-            networkScore: "entry.666666666",
-            profileKey: "entry.777777777"
+            name: "entry.1061851307",
+            email: "entry.1086178316",
+            financialScore: "entry.410714493",
+            monthlyIncome: "entry.1110431153",
+            financialProtection: "entry.1495113162",
+            financialDebt: "entry.429919187",
+            mindsetScore: "entry.1646428746",
+            networkScore: "entry.1218947954",
+            profileKey: "entry.1892433723"
         };
 
-        const formUrl = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
+        const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfP-O2rLl--qOANW8_T_vgHIXjnn1MLRnsXL_YlOLVR5X9kmw/formResponse";
         
         const formData = new URLSearchParams();
         formData.append(ENTRY_IDS.name, userName);
