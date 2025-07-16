@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    
     // Pertanyaan kuis
     const questions = [
         // Pertanyaan finansial (5 pertanyaan)
