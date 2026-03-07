@@ -10,11 +10,15 @@
 
 <link rel="stylesheet" href="career-tier-audit.css">
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
 
-<div class="cta-container">
+<div class="container">
+
+<!-- LANDING -->
 
 <section id="landing">
 
@@ -38,52 +42,52 @@ and the hidden income gap limiting your career growth.
 </div>
 
 <button class="startBtn" onclick="startAudit()">
-
 Start Career Tier Audit
-
 </button>
 
 <p class="timeNote">
-
 Takes ~3 minutes • 20 questions
-
 </p>
 
 </section>
 
 
-<div id="quizSection" class="hidden">
+<!-- QUIZ -->
 
-<div id="progress"></div>
+<section id="quizSection" class="hidden">
+
+<div class="progress-wrapper">
+
+<div class="progress-bar">
+<div id="progressFill"></div>
+</div>
+
+<p id="progressText"></p>
+
+</div>
 
 <h2 id="question"></h2>
 
 <div id="answers"></div>
 
-</div>
+</section>
 
 
-<div id="leadForm" class="hidden">
+<!-- LEAD FORM -->
+
+<section id="leadForm" class="hidden">
 
 <h2>Get Your Personalized Career Tier Report</h2>
 
 <input id="name" placeholder="Name">
+
 <input id="email" placeholder="Email">
+
 <input id="age" placeholder="Age">
+
 <input id="city" placeholder="City">
+
 <input id="role" placeholder="Current Role">
-
-<select id="industry">
-
-<option value="admin">Administrative</option>
-<option value="accounting">Accounting</option>
-<option value="marketing">Marketing</option>
-<option value="consulting">Consulting</option>
-<option value="tech">Tech</option>
-<option value="product">Product</option>
-<option value="ai">AI</option>
-
-</select>
 
 <select id="currentIncome">
 
@@ -97,16 +101,30 @@ Takes ~3 minutes • 20 questions
 
 <button onclick="submitLead()">See My Result</button>
 
-</div>
+</section>
 
 
-<div id="result" class="hidden">
+<!-- RESULT -->
+
+<section id="result" class="hidden">
 
 <h2>Your Career Tier</h2>
 
 <p id="tier"></p>
 <p id="income"></p>
 <p id="gap"></p>
+
+<canvas id="careerChart"></canvas>
+
+<div class="tier-ladder">
+
+<div>Survival</div>
+<div>Stability</div>
+<div id="tierMarker">YOU</div>
+<div>Strategic</div>
+<div>Frontier</div>
+
+</div>
 
 <p class="insight">
 
@@ -119,12 +137,10 @@ higher income tiers by repositioning into higher-leverage roles.
 </p>
 
 <a class="cta" href="https://calendly.com/" target="_blank">
-
 Book 1-on-1 Free Career Tier Strategy Call
-
 </a>
 
-</div>
+</section>
 
 </div>
 
