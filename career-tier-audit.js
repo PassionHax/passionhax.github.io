@@ -242,6 +242,19 @@ const incomeMap={5:3000000,10:7500000,20:15000000,40:30000000,80:60000000}
 let current=incomeMap[Number(currentIncome.value)]
 let gap=Math.max(0,income-current)
 
+// income comparison bars
+
+let maxIncome = Math.max(income, current)
+
+let currentPercent = (current / maxIncome) * 100
+let potentialPercent = (income / maxIncome) * 100
+
+document.getElementById("currentIncomeBar").style.width =
+currentPercent + "%"
+
+document.getElementById("potentialIncomeBar").style.width =
+potentialPercent + "%"
+
 let tierLevel=getTier(captured)
 tierMarker.style.left=getTierPosition(tierLevel)
 
