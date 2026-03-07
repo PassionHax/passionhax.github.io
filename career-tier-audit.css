@@ -164,3 +164,9 @@ border-radius:6px;
 width:0%;
 transition:width .6s ease;
 }
+
+#constraintHighlight{
+font-weight:700;
+margin-top:10px;
+color:#ff8a3d;
+}
