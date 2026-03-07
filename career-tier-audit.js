@@ -242,6 +242,20 @@ const incomeMap={5:3000000,10:7500000,20:15000000,40:30000000,80:60000000}
 let current=incomeMap[Number(currentIncome.value)]
 let gap=Math.max(0,income-current)
 
+let narrative=""
+
+if(gap>current){
+narrative="Your career income potential appears significantly higher than your current earnings."
+}
+else if(gap>current*0.5){
+narrative="Your career income potential is moderately higher than your current income."
+}
+else{
+narrative="Your current income appears relatively aligned with your estimated career value."
+}
+
+document.getElementById("resultNarrative").innerText=narrative
+
 // income comparison bars
 
 const currentBar = document.getElementById("currentIncomeBar")
