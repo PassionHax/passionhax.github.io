@@ -281,6 +281,8 @@ document.getElementById("tier").innerText="Career Tier: "+tierLevel
 
 document.getElementById("nextTier").innerText="Next Career Tier: "+nextTier
 
+document.getElementById("tierBenchmark").innerText=getTierBenchmark(tierLevel)
+
 document.getElementById("income").innerText="Estimated Income Potential: Rp "+Math.round(income).toLocaleString()
 
 document.getElementById("gap").innerText="Income Gap vs Current: Rp "+Math.round(gap).toLocaleString()
@@ -337,7 +339,9 @@ let opportunity=generateOpportunity(constraint)
 document.getElementById("opportunity").innerText=opportunity
 
 document.getElementById("frameworkExplain").innerText=
-"This audit estimates career value using a simple model: Created Value = System × Capability × Effort × Leverage, and Captured Value = Created Value × Capture Rate."
+"This audit estimates career value using a simple model:
+Captured Value = Created Value × Capture Rate.
+Created Value = System × Capability × Effort × Leverage"
 
 let ctaText=generateCTA(constraint)
 document.getElementById("ctaExplain").innerText=ctaText
@@ -472,4 +476,29 @@ return "In the Career Tier Strategy Call we will explore strategies to strengthe
 }
 
 return "In the Career Tier Strategy Call we will identify the fastest path to your next career tier."
+}
+
+function getTierBenchmark(t){
+
+if(t==="Survival"){
+return "Professionals in this tier often struggle to create sustainable career value."
+}
+
+if(t==="Stability"){
+return "Many professionals remain in the Stability tier for much of their careers."
+}
+
+if(t==="Professional"){
+return "Professionals in this tier typically develop strong skills but may still lack career leverage."
+}
+
+if(t==="Strategic"){
+return "Strategic tier professionals often influence larger systems, teams, or business outcomes."
+}
+
+if(t==="Frontier"){
+return "Frontier tier careers are rare and typically involve high leverage, ownership, or industry leadership."
+}
+
+return ""
 }
