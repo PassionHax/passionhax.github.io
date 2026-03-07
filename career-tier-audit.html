@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 
 <head>
 
@@ -18,22 +18,43 @@
 
 <div class="container">
 
+<!-- LANDING -->
+
 <section id="landing">
 
 <h1>Career Tier Audit</h1>
 
 <p class="subtitle">
-Discover your career tier, income potential, and hidden career value gap.
+Discover your current career tier, your true income potential,
+and the hidden career value gap limiting your growth.
 </p>
 
-<button class="startBtn" onclick="startAudit()">
+<div class="benefits">
+
+<p>✔ Identify your current <b>career tier</b></p>
+<p>✔ Estimate your <b>true income potential</b></p>
+<p>✔ Understand your <b>career leverage level</b></p>
+<p>✔ Reveal your hidden <b>career value gap</b></p>
+<p>✔ Discover what actually limits your career growth</p>
+
+</div>
+
+<p class="explain">
+Most professionals underestimate how much value they could actually create — 
+and capture — in their career.
+</p>
+
+<button id="startBtn" class="startBtn">
 Start Career Tier Audit
 </button>
 
-<p class="timeNote">~3 minutes • 20 questions</p>
+<p class="timeNote">
+~3 minutes • 20 questions
+</p>
 
 </section>
 
+<!-- QUIZ -->
 
 <section id="quizSection" class="hidden">
 
@@ -49,6 +70,7 @@ Start Career Tier Audit
 
 </section>
 
+<!-- LEAD FORM -->
 
 <section id="leadForm" class="hidden">
 
@@ -61,17 +83,22 @@ Start Career Tier Audit
 <input id="role" placeholder="Current Role">
 
 <select id="currentIncome">
+
 <option value="5">Under 5M</option>
 <option value="10">5–10M</option>
 <option value="20">10–20M</option>
 <option value="40">20–40M</option>
 <option value="80">40M+</option>
+
 </select>
 
-<button onclick="submitLead()">See My Result</button>
+<button id="seeResult">
+See My Result
+</button>
 
 </section>
 
+<!-- RESULT -->
 
 <section id="result" class="hidden">
 
@@ -79,9 +106,19 @@ Start Career Tier Audit
 
 <p id="tier"></p>
 <p id="income"></p>
-<p id="gap"></p>
+<p id="diagnosis"></p>
 
 <canvas id="careerChart"></canvas>
+
+<div class="tier-ladder">
+
+<div>Survival</div>
+<div>Stability</div>
+<div id="tierMarker">YOU</div>
+<div>Strategic</div>
+<div>Frontier</div>
+
+</div>
 
 <a class="cta" href="https://calendly.com/" target="_blank">
 Book 1-on-1 Free Career Tier Strategy Call
