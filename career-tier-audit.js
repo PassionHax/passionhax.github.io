@@ -244,10 +244,20 @@ let gap=Math.max(0,income-current)
 
 // income comparison bars
 
+const currentBar = document.getElementById("currentIncomeBar")
+const potentialBar = document.getElementById("potentialIncomeBar")
+
+if(currentBar && potentialBar){
+
 let maxIncome = Math.max(income, current)
 
 let currentPercent = (current / maxIncome) * 100
 let potentialPercent = (income / maxIncome) * 100
+
+currentBar.style.width = currentPercent + "%"
+potentialBar.style.width = potentialPercent + "%"
+
+}
 
 document.getElementById("currentIncomeBar").style.width =
 currentPercent + "%"
