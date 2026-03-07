@@ -259,12 +259,6 @@ potentialBar.style.width = potentialPercent + "%"
 
 }
 
-document.getElementById("currentIncomeBar").style.width =
-currentPercent + "%"
-
-document.getElementById("potentialIncomeBar").style.width =
-potentialPercent + "%"
-
 let tierLevel=getTier(captured)
 tierMarker.style.left=getTierPosition(tierLevel)
 
