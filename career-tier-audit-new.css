@@ -1,0 +1,93 @@
+body{
+font-family:Inter,Arial;
+background:#0f0f0f;
+color:white;
+display:flex;
+justify-content:center;
+margin:0;
+padding:40px;
+}
+
+.container{
+width:640px;
+max-width:95%;
+}
+
+.hidden{
+display:none;
+}
+
+.startBtn{
+padding:14px 22px;
+margin-top:20px;
+background:white;
+color:black;
+border:none;
+cursor:pointer;
+font-weight:600;
+}
+
+.progress-bar{
+height:6px;
+background:#333;
+margin-bottom:20px;
+}
+
+#progressFill{
+height:6px;
+background:#4caf50;
+width:0%;
+transition:width .3s;
+}
+
+.card{
+border:1px solid #333;
+padding:14px;
+margin:10px 0;
+cursor:pointer;
+}
+
+.card:hover{
+background:#1e1e1e;
+}
+
+.selected{
+border:1px solid #4caf50;
+background:#1e1e1e;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:8px 0;
+background:#1e1e1e;
+border:1px solid #333;
+color:white;
+}
+
+.tier-ladder{
+display:flex;
+justify-content:space-between;
+margin-top:40px;
+position:relative;
+}
+
+#tierMarker{
+position:absolute;
+top:-22px;
+transform:translateX(-50%);
+color:#4caf50;
+font-weight:700;
+transition:left .4s ease;
+}
+
+.cta{
+display:block;
+margin-top:30px;
+background:#4caf50;
+padding:14px;
+text-align:center;
+text-decoration:none;
+color:white;
+font-weight:600;
+}
