@@ -326,6 +326,9 @@ function generateDiagnosis(s,c,l,b,o){
 
 let constraint=findConstraint(s,c,l,b)
 
+let opportunity=generateOpportunity(constraint)
+document.getElementById("opportunity").innerText=opportunity
+
 if(constraint==="System"){
 return "Your industry or organizational system may limit how much value your work can generate. Careers in higher-growth industries or scalable systems tend to unlock significantly greater value creation."
 }
