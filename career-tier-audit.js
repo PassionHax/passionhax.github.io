@@ -1,4 +1,4 @@
-const scriptURL="PASTE_GOOGLE_SCRIPT_URL"
+const scriptURL="PASTE_GOOGLE_APPS_SCRIPT_URL"
 
 let index=0
 
@@ -9,7 +9,6 @@ let bargaining=[]
 let ownership=0
 
 let answersData=[]
-
 let industry="admin"
 
 const industryMultiplier={
@@ -20,7 +19,7 @@ digital:1.15,
 tech:1.3
 }
 
-document.getElementById("startBtn").onclick=()=>{
+document.getElementById("startBtn").onclick=function(){
 
 document.getElementById("landing").classList.add("hidden")
 document.getElementById("quizSection").classList.remove("hidden")
@@ -29,29 +28,29 @@ loadQuestion()
 
 }
 
-const questions=[ 
-    
+const questions=[
+
 {
 q:"Which industry best describes your work?",
 type:"industry",
 options:[
-{text:"Administrative / clerical",score:3,value:"admin"},
-{text:"Manufacturing / traditional corporate",score:5,value:"manufacturing"},
-{text:"Finance / professional services",score:6,value:"finance"},
-{text:"Digital business / ecommerce",score:8,value:"digital"},
-{text:"Technology / AI",score:9,value:"tech"}
+{text:"Administrative / clerical",score:3,val:"admin"},
+{text:"Manufacturing / corporate",score:5,val:"manufacturing"},
+{text:"Finance / professional services",score:6,val:"finance"},
+{text:"Digital business / ecommerce",score:8,val:"digital"},
+{text:"Technology / AI",score:9,val:"tech"}
 ]
 },
 
 {
 q:"What type of organization do you work in?",
-type:"systemModifier",
+type:"system",
 options:[
-{text:"Government / public sector",score:0},
-{text:"Nonprofit / NGO",score:-1},
-{text:"Established corporate",score:1},
-{text:"High growth startup",score:2},
-{text:"Entrepreneurial",score:3}
+{text:"Government / public sector",score:4},
+{text:"Nonprofit / NGO",score:4},
+{text:"Established corporate",score:6},
+{text:"High growth startup",score:8},
+{text:"Entrepreneurial / independent",score:9}
 ]
 },
 
@@ -224,7 +223,7 @@ options:[
 },
 
 {
-q:"How easily could you get a comparable job within 3 months?",
+q:"How easily could you get another comparable job within 3 months?",
 type:"bargaining",
 options:[
 {text:"Very difficult",score:0.1},
@@ -271,7 +270,7 @@ options:[
 ]
 }
 
-]/* 20 QUESTIONS SAMA SEPERTI VERSI SEBELUMNYA */ ]
+]
 
 function loadQuestion(){
 
@@ -286,17 +285,21 @@ document.getElementById("progressFill").style.width=
 ((index+1)/questions.length*100)+"%"
 
 const answers=document.getElementById("answers")
+
 answers.innerHTML=""
 
 q.options.forEach(o=>{
 
 const card=document.createElement("div")
+
 card.className="card"
+
 card.innerText=o.text
 
-card.onclick=()=>{
+card.onclick=function(){
 
 answersData.push(o.text)
+
 storeAnswer(q.type,o)
 
 index++
@@ -344,15 +347,19 @@ return arr.reduce((a,b)=>a+b,0)/arr.length
 function showLeadForm(){
 
 document.getElementById("quizSection").classList.add("hidden")
+
 document.getElementById("leadForm").classList.remove("hidden")
 
 }
 
-document.getElementById("seeResult").onclick=()=>{
+document.getElementById("seeResult").onclick=function(){
 
 const systemScore=avg(system)
+
 const capabilityScore=avg(capability)
+
 const leverageScore=avg(leverage)
+
 const bargainingPower=avg(bargaining)
 
 const effort=7
@@ -390,22 +397,21 @@ if(leverageScore<capabilityScore)
 diagnosis="Your capability appears stronger than your leverage."
 
 if(systemScore<capabilityScore)
-diagnosis="Your industry or economic system may limit your growth."
+diagnosis="Your industry or system may limit your growth."
 
 document.getElementById("leadForm").classList.add("hidden")
+
 document.getElementById("result").classList.remove("hidden")
 
 document.getElementById("tier").innerText="Career Tier: "+tier
+
 document.getElementById("income").innerText="Estimated Income Potential: Rp "+estimatedIncome.toLocaleString()
 
-document.getElementById("valueCreation").innerText=
-"Value Creation Score: "+createdValue.toFixed(1)
+document.getElementById("valueCreation").innerText="Value Creation Score: "+createdValue.toFixed(1)
 
-document.getElementById("captureRate").innerText=
-"Value Capture Rate: "+(captureRate*100).toFixed(1)+"%"
+document.getElementById("captureRate").innerText="Value Capture Rate: "+(captureRate*100).toFixed(1)+"%"
 
-document.getElementById("gap").innerText=
-"Estimated Income Gap: Rp "+incomeGap.toLocaleString()
+document.getElementById("gap").innerText="Estimated Income Gap: Rp "+incomeGap.toLocaleString()
 
 document.getElementById("diagnosis").innerText=diagnosis
 
@@ -449,7 +455,9 @@ labels:["System","Capability","Leverage","Capture"],
 datasets:[{data:[s,c,l,cr*10]}]
 },
 
-options:{scales:{r:{min:0,max:10}}}
+options:{
+scales:{r:{min:0,max:10}}
+}
 
 })
 
@@ -458,15 +466,10 @@ options:{scales:{r:{min:0,max:10}}}
 function sendToSheets(data){
 
 fetch(scriptURL,{
-
 method:"POST",
-
 mode:"no-cors",
-
-headers:{ "Content-Type":"application/json" },
-
+headers:{ "Content-Type":"application/json"},
 body:JSON.stringify(data)
-
 })
 
 }
