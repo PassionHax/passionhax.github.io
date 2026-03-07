@@ -298,7 +298,14 @@ document.getElementById("diagnosis").innerText=generateDiagnosis(s,c,l,b,ownersh
 
 renderChart(s,c,l,captureRate)
 
-sendLead()
+sendLead({
+tier:tierLevel,
+income:income,
+gap:gap,
+created:created,
+captureRate:captureRate,
+constraint:constraint
+})
 
 leadForm.classList.add("hidden")
 result.classList.remove("hidden")
@@ -360,20 +367,40 @@ options:{scales:{r:{min:0,max:10}}}
 })
 }
 
-function sendLead(){
+function sendLead(data){
+
+if(!scriptURL || scriptURL==="PASTE_GOOGLE_SCRIPT_URL") return
+
 fetch(scriptURL,{
 method:"POST",
 mode:"no-cors",
-headers:{"Content-Type":"application/json"},
+headers:{
+"Content-Type":"application/json"
+},
 body:JSON.stringify({
+
 name:nameInput.value,
 email:emailInput.value,
 age:ageInput.value,
 city:cityInput.value,
 role:roleInput.value,
+
+industry:industry,
+
+tier:data.tier,
+incomePotential:Math.round(data.income),
+incomeGap:Math.round(data.gap),
+
+valueCreation:data.created.toFixed(1),
+captureRate:(data.captureRate*100).toFixed(1),
+
+constraint:data.constraint,
+
 answers:answersData.join("|")
+
 })
 }).catch(()=>{})
+
 }
 
 function findConstraint(s,c,l,b){
