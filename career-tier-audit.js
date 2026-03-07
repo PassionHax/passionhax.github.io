@@ -340,14 +340,13 @@ answers:answersData.join("|")
 }).catch(()=>{})
 }
 
-function findConstraint(s,c,l,b,o){
+function findConstraint(s,c,l,b){
 
 let values={
 System:s,
 Capability:c,
 Leverage:l,
-Bargaining:b*20,
-Ownership:o*30
+Bargaining:b*20
 }
 
 return Object.keys(values)
