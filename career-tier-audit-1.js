@@ -1,3 +1,5 @@
+const scriptURL="PASTE_GOOGLE_APPS_SCRIPT_URL_HERE"
+
 let index=0
 
 let system=[]
@@ -28,7 +30,8 @@ loadQuestion()
 
 const questions=[
 
-{q:"Which industry best describes your work?",
+{
+q:"Which industry best describes your work?",
 type:"industry",
 options:[
 {text:"Administrative / clerical",score:3,val:"admin"},
@@ -36,9 +39,11 @@ options:[
 {text:"Finance / professional services",score:6,val:"finance"},
 {text:"Digital business / ecommerce",score:8,val:"digital"},
 {text:"Technology / AI",score:9,val:"tech"}
-]},
+]
+},
 
-{q:"What type of organization do you work in?",
+{
+q:"What type of organization do you work in?",
 type:"system",
 options:[
 {text:"Government / public sector",score:4},
@@ -46,9 +51,11 @@ options:[
 {text:"Established corporate",score:6},
 {text:"High growth startup",score:8},
 {text:"Entrepreneurial / independent",score:9}
-]},
+]
+},
 
-{q:"What is the geographic scope of your market?",
+{
+q:"What is the geographic scope of your market?",
 type:"system",
 options:[
 {text:"Local city",score:3},
@@ -56,9 +63,11 @@ options:[
 {text:"National",score:5},
 {text:"International",score:7},
 {text:"Global digital market",score:9}
-]},
+]
+},
 
-{q:"How directly does your role affect revenue?",
+{
+q:"How directly does your role affect revenue?",
 type:"system",
 options:[
 {text:"Internal support role",score:3},
@@ -66,9 +75,11 @@ options:[
 {text:"Indirect revenue contribution",score:6},
 {text:"Direct revenue contribution",score:8},
 {text:"Core value creation role",score:9}
-]},
+]
+},
 
-{q:"How scalable is the output of your industry?",
+{
+q:"How scalable is the output of your industry?",
 type:"system",
 options:[
 {text:"Mostly manual services",score:3},
@@ -76,9 +87,11 @@ options:[
 {text:"Moderate scalability",score:6},
 {text:"Technology-enabled scale",score:8},
 {text:"Massive digital scalability",score:10}
-]},
+]
+},
 
-{q:"How fast is your industry growing?",
+{
+q:"How fast is your industry growing?",
 type:"system",
 options:[
 {text:"Declining",score:2},
@@ -86,9 +99,11 @@ options:[
 {text:"Stable",score:6},
 {text:"Fast growth",score:8},
 {text:"Explosive growth",score:10}
-]},
+]
+},
 
-{q:"How many years of professional experience do you have?",
+{
+q:"How many years of professional experience do you have?",
 type:"capability",
 options:[
 {text:"<1 year",score:3},
@@ -96,9 +111,11 @@ options:[
 {text:"3–6 years",score:7},
 {text:"6–10 years",score:8},
 {text:"10+ years",score:9}
-]},
+]
+},
 
-{q:"How complex are the problems you solve?",
+{
+q:"How complex are the problems you solve?",
 type:"capability",
 options:[
 {text:"Routine tasks",score:3},
@@ -106,9 +123,11 @@ options:[
 {text:"Structured problem solving",score:6},
 {text:"Strategic decision making",score:8},
 {text:"System-level innovation",score:9}
-]},
+]
+},
 
-{q:"How rare are your core skills in the job market?",
+{
+q:"How rare are your core skills in the job market?",
 type:"capability",
 options:[
 {text:"Very common",score:3},
@@ -116,9 +135,11 @@ options:[
 {text:"Moderately scarce",score:6},
 {text:"Scarce",score:8},
 {text:"Extremely scarce",score:9}
-]},
+]
+},
 
-{q:"How much autonomy do you have in decision making?",
+{
+q:"How much autonomy do you have in decision making?",
 type:"capability",
 options:[
 {text:"None",score:3},
@@ -126,9 +147,11 @@ options:[
 {text:"Moderate",score:6},
 {text:"High",score:8},
 {text:"Very high",score:9}
-]},
+]
+},
 
-{q:"How often do others depend on your expertise?",
+{
+q:"How often do others depend on your expertise?",
 type:"capability",
 options:[
 {text:"Rarely",score:3},
@@ -136,19 +159,23 @@ options:[
 {text:"Regularly",score:6},
 {text:"Frequently",score:8},
 {text:"Critically",score:9}
-]},
+]
+},
 
-{q:"How many people are affected by your work output?",
+{
+q:"How many people are affected by your work output?",
 type:"leverage",
 options:[
-{text:"<5",score:3},
-{text:"5–20",score:5},
-{text:"20–100",score:7},
-{text:"100–1000",score:8},
-{text:"1000+",score:10}
-]},
+{text:"<5 people",score:3},
+{text:"5–20 people",score:5},
+{text:"20–100 people",score:7},
+{text:"100–1000 people",score:8},
+{text:"More than 1000 people",score:10}
+]
+},
 
-{q:"How much technology amplifies your work?",
+{
+q:"How much technology amplifies your work?",
 type:"leverage",
 options:[
 {text:"None",score:2},
@@ -156,9 +183,11 @@ options:[
 {text:"Moderate",score:6},
 {text:"High",score:8},
 {text:"Extreme",score:10}
-]},
+]
+},
 
-{q:"Do you manage or influence a team?",
+{
+q:"Do you manage or influence a team?",
 type:"leverage",
 options:[
 {text:"No",score:3},
@@ -166,19 +195,23 @@ options:[
 {text:"Medium team (5–20)",score:7},
 {text:"Large team (20+)",score:8},
 {text:"Organization-wide influence",score:9}
-]},
+]
+},
 
-{q:"How scalable is your work output?",
+{
+q:"How scalable is your work output?",
 type:"leverage",
 options:[
 {text:"Fully manual",score:2},
 {text:"Mostly manual",score:4},
 {text:"Some automation",score:6},
 {text:"Highly scalable",score:8},
-{text:"Platform level",score:10}
-]},
+{text:"Platform level scalability",score:10}
+]
+},
 
-{q:"If you stopped working for a week, how much output continues?",
+{
+q:"If you stopped working for a week, how much output continues?",
 type:"leverage",
 options:[
 {text:"None",score:2},
@@ -186,9 +219,11 @@ options:[
 {text:"Some",score:6},
 {text:"Significant",score:8},
 {text:"Almost everything",score:10}
-]},
+]
+},
 
-{q:"How easily could you get another comparable job within 3 months?",
+{
+q:"How easily could you get another comparable job within 3 months?",
 type:"bargaining",
 options:[
 {text:"Very difficult",score:0.1},
@@ -196,9 +231,11 @@ options:[
 {text:"Moderate",score:0.3},
 {text:"Easy",score:0.4},
 {text:"Very easy",score:0.5}
-]},
+]
+},
 
-{q:"How strong is your professional reputation?",
+{
+q:"How strong is your professional reputation?",
 type:"bargaining",
 options:[
 {text:"Unknown",score:0.1},
@@ -206,9 +243,11 @@ options:[
 {text:"Known locally",score:0.3},
 {text:"Known in industry",score:0.4},
 {text:"Strong personal brand",score:0.5}
-]},
+]
+},
 
-{q:"How many credible career options do you have?",
+{
+q:"How many credible career options do you have?",
 type:"bargaining",
 options:[
 {text:"Almost none",score:0.1},
@@ -216,9 +255,11 @@ options:[
 {text:"Several",score:0.3},
 {text:"Many",score:0.4},
 {text:"Very many",score:0.5}
-]},
+]
+},
 
-{q:"Do you have equity or ownership in a business?",
+{
+q:"Do you have equity or ownership in a business?",
 type:"ownership",
 options:[
 {text:"None",score:0},
@@ -226,7 +267,8 @@ options:[
 {text:"Stock compensation",score:0.05},
 {text:"Significant equity",score:0.1},
 {text:"Founder / partner",score:0.3}
-]}
+]
+}
 
 ]
 
@@ -243,12 +285,15 @@ document.getElementById("progressFill").style.width=
 ((index+1)/questions.length*100)+"%"
 
 const answers=document.getElementById("answers")
+
 answers.innerHTML=""
 
 q.options.forEach(o=>{
 
 const card=document.createElement("div")
+
 card.className="card"
+
 card.innerText=o.text
 
 card.onclick=function(){
@@ -259,8 +304,11 @@ storeAnswer(q.type,o)
 
 index++
 
-if(index<questions.length) loadQuestion()
-else showLeadForm()
+if(index<questions.length){
+loadQuestion()
+}else{
+showLeadForm()
+}
 
 }
 
@@ -289,5 +337,154 @@ function showLeadForm(){
 
 document.getElementById("quizSection").classList.add("hidden")
 document.getElementById("leadForm").classList.remove("hidden")
+
+}
+
+document.getElementById("seeResult").onclick=function(){
+
+const systemScore=avg(system)
+const capabilityScore=avg(capability)
+const leverageScore=avg(leverage)
+const bargainingPower=avg(bargaining)
+
+const effort=7
+
+const createdValue=
+systemScore*
+capabilityScore*
+effort*
+Math.sqrt(leverageScore)*
+industryMultiplier[industry]
+
+const capturePower=(1.2*bargainingPower)+(3*ownership)
+
+const captureRate=capturePower/(1+capturePower)
+
+const capturedValue=createdValue*captureRate
+
+const estimatedIncome=Math.round(capturedValue*80000)
+
+const incomeMap={
+5:3000000,
+10:7500000,
+20:15000000,
+40:30000000,
+80:60000000
+}
+
+const currentIncome=incomeMap[
+document.getElementById("currentIncome").value
+]
+
+const incomeGap=Math.max(0,estimatedIncome-currentIncome)
+const annualGap=incomeGap*12
+
+let tier="Survival"
+
+if(capturedValue>700)tier="Frontier"
+else if(capturedValue>300)tier="Strategic"
+else if(capturedValue>150)tier="Professional"
+else if(capturedValue>70)tier="Stability"
+
+let constraint="Capability"
+
+const minScore=Math.min(systemScore,capabilityScore,leverageScore)
+
+if(minScore===systemScore)constraint="System"
+if(minScore===leverageScore)constraint="Leverage"
+
+document.getElementById("leadForm").classList.add("hidden")
+document.getElementById("result").classList.remove("hidden")
+
+document.getElementById("tier").innerText="Career Tier: "+tier
+
+document.getElementById("income").innerText="Estimated Income Potential: Rp "+estimatedIncome.toLocaleString()
+
+document.getElementById("valueCreation").innerText="Value Creation Score: "+createdValue.toFixed(1)
+
+document.getElementById("captureRate").innerText="Value Capture Rate: "+(captureRate*100).toFixed(1)+"%"
+
+document.getElementById("gap").innerText="Potential Monthly Upside: Rp "+incomeGap.toLocaleString()
+
+document.getElementById("annualGap").innerText="Potential Annual Upside: Rp "+annualGap.toLocaleString()
+
+document.getElementById("constraint").innerText="Primary Constraint: "+constraint
+
+renderChart(systemScore,capabilityScore,leverageScore,captureRate)
+
+sendToSheets({
+
+timestamp:new Date().toISOString(),
+
+name:document.getElementById("name").value,
+email:document.getElementById("email").value,
+age:document.getElementById("age").value,
+city:document.getElementById("city").value,
+role:document.getElementById("role").value,
+
+industry,
+
+systemScore,
+capabilityScore,
+leverageScore,
+captureRate,
+
+careerTier:tier,
+estimatedIncome,
+incomeGap,
+
+answers:answersData.join(" | ")
+
+})
+
+}
+
+function renderChart(s,c,l,cr){
+
+new Chart(document.getElementById("careerChart"),{
+
+type:"radar",
+
+data:{
+labels:["System","Capability","Leverage","Capture"],
+datasets:[{data:[s,c,l,cr*10]}]
+},
+
+options:{
+scales:{r:{min:0,max:10}}
+}
+
+})
+
+}
+
+function sendToSheets(data){
+
+fetch(scriptURL,{
+method:"POST",
+mode:"no-cors",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify(data)
+})
+
+}
+
+document.getElementById("prevQuestion").onclick=function(){
+
+if(index>0){
+index--
+loadQuestion()
+}
+
+}
+
+document.getElementById("downloadReport").onclick=function(){
+
+const {jsPDF}=window.jspdf
+const doc=new jsPDF()
+
+doc.text("Career Tier Audit Report",20,20)
+
+doc.save("career-tier-report.pdf")
 
 }
