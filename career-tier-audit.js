@@ -329,6 +329,9 @@ let constraint=findConstraint(s,c,l,b)
 let opportunity=generateOpportunity(constraint)
 document.getElementById("opportunity").innerText=opportunity
 
+let ctaText=generateCTA(constraint)
+document.getElementById("ctaExplain").innerText=ctaText
+
 if(constraint==="System"){
 return "Your industry or organizational system may limit how much value your work can generate. Careers in higher-growth industries or scalable systems tend to unlock significantly greater value creation."
 }
@@ -418,4 +421,25 @@ return "Improving your professional positioning and reputation could help you ca
 }
 
 return "Strategic career repositioning could unlock higher value opportunities."
+}
+
+function generateCTA(c){
+
+if(c==="System"){
+return "In the Career Tier Strategy Call we will explore industries and environments where your skills can create significantly more value."
+}
+
+if(c==="Capability"){
+return "In the Career Tier Strategy Call we will identify the capabilities that could unlock your next career tier."
+}
+
+if(c==="Leverage"){
+return "In the Career Tier Strategy Call we will identify roles and career paths with greater leverage over systems, teams, or technology."
+}
+
+if(c==="Bargaining"){
+return "In the Career Tier Strategy Call we will explore strategies to strengthen your professional positioning and compensation leverage."
+}
+
+return "In the Career Tier Strategy Call we will identify the fastest path to your next career tier."
 }
