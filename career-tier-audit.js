@@ -274,9 +274,12 @@ potentialBar.style.width = potentialPercent + "%"
 }
 
 let tierLevel=getTier(captured)
+let nextTier=getNextTier(tierLevel)
 tierMarker.style.left=getTierPosition(tierLevel)
 
 document.getElementById("tier").innerText="Career Tier: "+tierLevel
+
+document.getElementById("nextTier").innerText="Next Career Tier: "+nextTier
 
 document.getElementById("income").innerText="Estimated Income Potential: Rp "+Math.round(income).toLocaleString()
 
@@ -378,5 +381,17 @@ Bargaining:b*20
 
 return Object.keys(values)
 .reduce((a,b)=>values[a]<values[b]?a:b)
+
+}
+
+function getNextTier(t){
+
+return{
+Survival:"Stability",
+Stability:"Professional",
+Professional:"Strategic",
+Strategic:"Frontier",
+Frontier:"Frontier"
+}[t]
 
 }
