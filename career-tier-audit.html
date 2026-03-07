@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Career Tier Audit</title>
+
+<link rel="stylesheet" href="career-tier-audit.css">
+
+</head>
+
+<body>
+
+<div class="cta-container">
+
+<section id="landing">
+
+<h1>Career Tier Audit</h1>
+
+<p class="subtitle">
+
+Discover your current career tier, value creation potential,
+and the hidden income gap limiting your career growth.
+
+</p>
+
+<div class="benefits">
+
+<p>✔ Your current <b>career tier</b></p>
+<p>✔ Your <b>value creation potential</b></p>
+<p>✔ Your <b>career leverage score</b></p>
+<p>✔ Your estimated <b>income potential</b></p>
+<p>✔ Your hidden <b>career value gap</b></p>
+
+</div>
+
+<button class="startBtn" onclick="startAudit()">
+
+Start Career Tier Audit
+
+</button>
+
+<p class="timeNote">
+
+Takes ~3 minutes • 20 questions
+
+</p>
+
+</section>
+
+
+<div id="quizSection" class="hidden">
+
+<div id="progress"></div>
+
+<h2 id="question"></h2>
+
+<div id="answers"></div>
+
+</div>
+
+
+<div id="leadForm" class="hidden">
+
+<h2>Get Your Personalized Career Tier Report</h2>
+
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<input id="age" placeholder="Age">
+<input id="city" placeholder="City">
+<input id="role" placeholder="Current Role">
+
+<select id="industry">
+
+<option value="admin">Administrative</option>
+<option value="accounting">Accounting</option>
+<option value="marketing">Marketing</option>
+<option value="consulting">Consulting</option>
+<option value="tech">Tech</option>
+<option value="product">Product</option>
+<option value="ai">AI</option>
+
+</select>
+
+<select id="currentIncome">
+
+<option value="5">Under 5M</option>
+<option value="10">5–10M</option>
+<option value="20">10–20M</option>
+<option value="40">20–40M</option>
+<option value="80">40M+</option>
+
+</select>
+
+<button onclick="submitLead()">See My Result</button>
+
+</div>
+
+
+<div id="result" class="hidden">
+
+<h2>Your Career Tier</h2>
+
+<p id="tier"></p>
+<p id="income"></p>
+<p id="gap"></p>
+
+<p class="insight">
+
+Your results suggest that your current career positioning
+may be limiting the value you capture from your capabilities.
+
+Many professionals with similar capability levels reach
+higher income tiers by repositioning into higher-leverage roles.
+
+</p>
+
+<a class="cta" href="https://calendly.com/" target="_blank">
+
+Book 1-on-1 Free Career Tier Strategy Call
+
+</a>
+
+</div>
+
+</div>
+
+<script src="career-tier-audit.js"></script>
+
+</body>
+</html>
