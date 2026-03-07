@@ -398,3 +398,24 @@ Frontier:"Frontier"
 }[t]
 
 }
+
+function generateOpportunity(c){
+
+if(c==="System"){
+return "Moving into higher-growth industries or scalable business environments could significantly increase the value your work creates."
+}
+
+if(c==="Capability"){
+return "Strengthening rare and high-impact skills may unlock higher-value career opportunities."
+}
+
+if(c==="Leverage"){
+return "Repositioning into roles with greater leverage over systems, teams, or technology could significantly increase your income potential."
+}
+
+if(c==="Bargaining"){
+return "Improving your professional positioning and reputation could help you capture more value from your work."
+}
+
+return "Strategic career repositioning could unlock higher value opportunities."
+}
