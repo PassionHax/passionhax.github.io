@@ -272,7 +272,7 @@ document.getElementById("valueCreation").innerText="Value Creation Score: "+crea
 
 document.getElementById("captureRate").innerText="Value Capture Rate: "+(captureRate*100).toFixed(1)+"%"
 
-let constraint=findConstraint(s,c,l,b,ownership)
+let constraint=findConstraint(s,c,l,b)
 
 document.getElementById("constraintHighlight").innerText=
 "Your biggest career constraint: "+constraint
