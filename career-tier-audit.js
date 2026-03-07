@@ -3,23 +3,24 @@ const scriptURL="PASTE_GOOGLE_SCRIPT_URL"
 let index=0
 
 let system=[]
-let systemModifier=0
 let capability=[]
 let leverage=[]
 let bargaining=[]
 let ownership=0
 
-let industryType="admin"
+let answersData=[]
+
+let industry="admin"
 
 const industryMultiplier={
 admin:0.6,
 manufacturing:0.8,
-finance:1.0,
+finance:1,
 digital:1.15,
 tech:1.3
 }
 
-function startAudit(){
+document.getElementById("startBtn").onclick=()=>{
 
 document.getElementById("landing").classList.add("hidden")
 document.getElementById("quizSection").classList.remove("hidden")
@@ -28,8 +29,8 @@ loadQuestion()
 
 }
 
-const questions=[
-
+const questions=[ 
+    
 {
 q:"Which industry best describes your work?",
 type:"industry",
@@ -270,36 +271,33 @@ options:[
 ]
 }
 
-]
+]/* 20 QUESTIONS SAMA SEPERTI VERSI SEBELUMNYA */ ]
 
 function loadQuestion(){
 
 const q=questions[index]
 
-const percent=((index+1)/questions.length)*100
-
-document.getElementById("progressFill").style.width=percent+"%"
+document.getElementById("question").innerText=q.q
 
 document.getElementById("progressText").innerText=
 "Question "+(index+1)+" / "+questions.length
 
-document.getElementById("question").innerText=q.q
+document.getElementById("progressFill").style.width=
+((index+1)/questions.length*100)+"%"
 
 const answers=document.getElementById("answers")
-
 answers.innerHTML=""
 
-q.options.forEach(option=>{
+q.options.forEach(o=>{
 
 const card=document.createElement("div")
-
 card.className="card"
-
-card.innerText=option.text
+card.innerText=o.text
 
 card.onclick=()=>{
 
-storeAnswer(q.type,option)
+answersData.push(o.text)
+storeAnswer(q.type,o)
 
 index++
 
@@ -321,19 +319,19 @@ answers.appendChild(card)
 
 }
 
-function storeAnswer(type,option){
+function storeAnswer(type,o){
 
-if(type==="industry"){
-industryType=option.value
-system.push(option.score)
-}
+if(type==="industry"){industry=o.val;system.push(o.score)}
 
-if(type==="system") system.push(option.score)
-if(type==="systemModifier") systemModifier=option.score
-if(type==="capability") capability.push(option.score)
-if(type==="leverage") leverage.push(option.score)
-if(type==="bargaining") bargaining.push(option.score)
-if(type==="ownership") ownership=option.score
+if(type==="system")system.push(o.score)
+
+if(type==="capability")capability.push(o.score)
+
+if(type==="leverage")leverage.push(o.score)
+
+if(type==="bargaining")bargaining.push(o.score)
+
+if(type==="ownership")ownership=o.score
 
 }
 
@@ -350,45 +348,125 @@ document.getElementById("leadForm").classList.remove("hidden")
 
 }
 
-function submitLead(){
+document.getElementById("seeResult").onclick=()=>{
 
-const systemScore=Math.min(Math.max(avg(system)+systemModifier,1),10)
-
-const capabilityScore=Math.min(avg(capability),8.5)
-
+const systemScore=avg(system)
+const capabilityScore=avg(capability)
 const leverageScore=avg(leverage)
-
 const bargainingPower=avg(bargaining)
 
 const effort=7
 
-const multiplier=industryMultiplier[industryType]
-
 const createdValue=
-systemScore*capabilityScore*effort*leverageScore*multiplier
+systemScore*
+capabilityScore*
+effort*
+leverageScore*
+industryMultiplier[industry]
 
-const capturePower=
-(1.2*bargainingPower)+(4*ownership)
+const capturePower=(1.2*bargainingPower)+(4*ownership)
 
 const captureRate=capturePower/(1+capturePower)
 
 const capturedValue=createdValue*captureRate
 
+const estimatedIncome=Math.round(capturedValue*100000)
+
+const currentIncome=
+parseInt(document.getElementById("currentIncome").value)*1000000
+
+const incomeGap=estimatedIncome-currentIncome
+
 let tier="Survival"
 
-if(capturedValue>700) tier="Frontier"
-else if(capturedValue>300) tier="Strategic"
-else if(capturedValue>150) tier="Professional"
-else if(capturedValue>70) tier="Stability"
+if(capturedValue>700)tier="Frontier"
+else if(capturedValue>300)tier="Strategic"
+else if(capturedValue>150)tier="Professional"
+else if(capturedValue>70)tier="Stability"
 
-const estimatedIncome=Math.round(capturedValue*100000)
+let diagnosis="Your current career positioning may limit your value capture."
+
+if(leverageScore<capabilityScore)
+diagnosis="Your capability appears stronger than your leverage."
+
+if(systemScore<capabilityScore)
+diagnosis="Your industry or economic system may limit your growth."
 
 document.getElementById("leadForm").classList.add("hidden")
 document.getElementById("result").classList.remove("hidden")
 
 document.getElementById("tier").innerText="Career Tier: "+tier
+document.getElementById("income").innerText="Estimated Income Potential: Rp "+estimatedIncome.toLocaleString()
 
-document.getElementById("income").innerText=
-"Estimated Income Potential: Rp "+estimatedIncome.toLocaleString()
+document.getElementById("valueCreation").innerText=
+"Value Creation Score: "+createdValue.toFixed(1)
+
+document.getElementById("captureRate").innerText=
+"Value Capture Rate: "+(captureRate*100).toFixed(1)+"%"
+
+document.getElementById("gap").innerText=
+"Estimated Income Gap: Rp "+incomeGap.toLocaleString()
+
+document.getElementById("diagnosis").innerText=diagnosis
+
+renderChart(systemScore,capabilityScore,leverageScore,captureRate)
+
+sendToSheets({
+
+timestamp:new Date().toISOString(),
+
+name:document.getElementById("name").value,
+email:document.getElementById("email").value,
+age:document.getElementById("age").value,
+city:document.getElementById("city").value,
+role:document.getElementById("role").value,
+
+industry,
+
+systemScore,
+capabilityScore,
+leverageScore,
+captureRate,
+
+careerTier:tier,
+estimatedIncome,
+incomeGap,
+
+answers:answersData.join(" | ")
+
+})
+
+}
+
+function renderChart(s,c,l,cr){
+
+new Chart(document.getElementById("careerChart"),{
+
+type:"radar",
+
+data:{
+labels:["System","Capability","Leverage","Capture"],
+datasets:[{data:[s,c,l,cr*10]}]
+},
+
+options:{scales:{r:{min:0,max:10}}}
+
+})
+
+}
+
+function sendToSheets(data){
+
+fetch(scriptURL,{
+
+method:"POST",
+
+mode:"no-cors",
+
+headers:{ "Content-Type":"application/json" },
+
+body:JSON.stringify(data)
+
+})
 
 }
