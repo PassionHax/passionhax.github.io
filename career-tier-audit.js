@@ -306,13 +306,26 @@ Frontier:"100%"
 }
 
 function generateDiagnosis(s,c,l,b,o){
-let values={System:s,Capability:c,Leverage:l,Bargaining:b*10,Ownership:o*10}
-let lowest=Object.keys(values).reduce((a,b)=>values[a]<values[b]?a:b)
-if(lowest==="System") return "Your industry system limits value creation."
-if(lowest==="Capability") return "Your capability depth may need strengthening."
-if(lowest==="Leverage") return "Your work relies mostly on direct labor."
-if(lowest==="Bargaining") return "Your bargaining power may limit compensation."
-return "Ownership structures could increase upside."
+
+let constraint=findConstraint(s,c,l,b)
+
+if(constraint==="System"){
+return "Your industry or organizational system may limit how much value your work can generate. Careers in higher-growth industries or scalable systems tend to unlock significantly greater value creation."
+}
+
+if(constraint==="Capability"){
+return "Your current capability depth may be limiting your ability to take on higher-value responsibilities. Developing rare or high-impact skills can significantly increase your career value."
+}
+
+if(constraint==="Leverage"){
+return "Your current role likely relies heavily on direct labor rather than scalable leverage. Higher-tier careers typically influence larger systems, teams, or technology platforms."
+}
+
+if(constraint==="Bargaining"){
+return "Your bargaining power may currently limit how much value you capture from your work. Stronger market positioning and reputation can significantly increase compensation outcomes."
+}
+
+return "Your career structure may benefit from strategic repositioning to unlock higher value."
 }
 
 function renderChart(s,c,l,cr){
