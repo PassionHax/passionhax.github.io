@@ -25,9 +25,8 @@ text-align:center;
 
 .subtitle{
 
-color:#666;
-margin-bottom:20px;
 text-align:center;
+color:#666;
 
 }
 
@@ -52,9 +51,8 @@ cursor:pointer;
 
 .timeNote{
 
-color:#888;
-font-size:14px;
 text-align:center;
+color:#888;
 
 }
 
@@ -131,6 +129,12 @@ cursor:pointer;
 
 /* RESULT */
 
+.hidden{
+
+display:none;
+
+}
+
 .cta{
 
 display:block;
@@ -144,27 +148,18 @@ text-decoration:none;
 
 }
 
-.hidden{
-
-display:none;
-
-}
-
-/* TIER LADDER */
-
 .tier-ladder{
 
 display:flex;
 justify-content:space-between;
 margin-top:20px;
-font-size:14px;
 
 }
 
 #tierMarker{
 
-color:#ff8a3d;
 font-weight:bold;
+color:#ff8a3d;
 
 }
 
