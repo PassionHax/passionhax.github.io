@@ -272,6 +272,11 @@ document.getElementById("valueCreation").innerText="Value Creation Score: "+crea
 
 document.getElementById("captureRate").innerText="Value Capture Rate: "+(captureRate*100).toFixed(1)+"%"
 
+let constraint=findConstraint(s,c,l,b,ownership)
+
+document.getElementById("constraintHighlight").innerText=
+"Your biggest career constraint: "+constraint
+
 document.getElementById("diagnosis").innerText=generateDiagnosis(s,c,l,b,ownership)
 
 renderChart(s,c,l,captureRate)
@@ -333,4 +338,19 @@ role:roleInput.value,
 answers:answersData.join("|")
 })
 }).catch(()=>{})
+}
+
+function findConstraint(s,c,l,b,o){
+
+let values={
+System:s,
+Capability:c,
+Leverage:l,
+Bargaining:b*10,
+Ownership:o*10
+}
+
+return Object.keys(values)
+.reduce((a,b)=>values[a]<values[b]?a:b)
+
 }
