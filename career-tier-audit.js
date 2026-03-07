@@ -336,6 +336,9 @@ let constraint=findConstraint(s,c,l,b)
 let opportunity=generateOpportunity(constraint)
 document.getElementById("opportunity").innerText=opportunity
 
+document.getElementById("frameworkExplain").innerText=
+"This audit estimates career value using a simple model: Created Value = System × Capability × Effort × Leverage, and Captured Value = Created Value × Capture Rate."
+
 let ctaText=generateCTA(constraint)
 document.getElementById("ctaExplain").innerText=ctaText
 
