@@ -1,5 +1,20 @@
 const scriptURL = "PASTE_GOOGLE_SCRIPT_URL"
 
+let index = 0
+
+let system = []
+let systemModifier = 0
+let capability = []
+let leverage = []
+let bargaining = []
+let ownership = 0
+
+let systemScore = 0
+let capabilityScore = 0
+let leverageScore = 0
+let bargainingPower = 0
+let captureRate = 0
+
 function startAudit(){
 
 document.getElementById("landing").classList.add("hidden")
@@ -13,13 +28,13 @@ const questions = [
 
 {
 q:"Which industry best describes your work?",
-type:"system",
+type:"industry",
 options:[
-{text:"Administrative / clerical",score:3},
-{text:"Manufacturing / traditional corporate",score:5},
-{text:"Finance / professional services",score:6},
-{text:"Digital business / ecommerce",score:8},
-{text:"Technology / AI",score:9}
+{text:"Administrative / clerical",score:3,value:"admin"},
+{text:"Manufacturing / traditional corporate",score:5,value:"manufacturing"},
+{text:"Finance / professional services",score:6,value:"finance"},
+{text:"Digital business / ecommerce",score:8,value:"digital"},
+{text:"Technology / AI",score:9,value:"tech"}
 ]
 },
 
@@ -253,20 +268,27 @@ options:[
 
 ]
 
-let index = 0
+let industryType = "admin"
 
-let system = []
-let systemModifier = 0
-let capability = []
-let leverage = []
-let bargaining = []
-let ownership = 0
+const industryMultiplier = {
+
+admin:0.6,
+manufacturing:0.8,
+finance:1.0,
+digital:1.15,
+tech:1.3
+
+}
 
 function loadQuestion(){
 
 const q = questions[index]
 
-document.getElementById("progress").innerText =
+const percent = ((index+1)/questions.length)*100
+
+document.getElementById("progressFill").style.width = percent + "%"
+
+document.getElementById("progressText").innerText =
 "Question " + (index+1) + " / " + questions.length
 
 document.getElementById("question").innerText = q.q
@@ -275,7 +297,7 @@ const answers = document.getElementById("answers")
 
 answers.innerHTML = ""
 
-q.options.forEach(option => {
+q.options.forEach(option=>{
 
 const card = document.createElement("div")
 
@@ -283,13 +305,13 @@ card.className = "card"
 
 card.innerText = option.text
 
-card.onclick = () => {
+card.onclick = ()=>{
 
-storeAnswer(q.type,option.score)
+storeAnswer(q.type,option)
 
 index++
 
-if(index < questions.length){
+if(index<questions.length){
 
 loadQuestion()
 
@@ -307,14 +329,26 @@ answers.appendChild(card)
 
 }
 
-function storeAnswer(type,score){
+function storeAnswer(type,option){
 
-if(type==="system") system.push(score)
-if(type==="systemModifier") systemModifier = score
-if(type==="capability") capability.push(score)
-if(type==="leverage") leverage.push(score)
-if(type==="bargaining") bargaining.push(score)
-if(type==="ownership") ownership = score
+if(type==="industry"){
+
+industryType = option.value
+system.push(option.score)
+
+}
+
+if(type==="system") system.push(option.score)
+
+if(type==="systemModifier") systemModifier = option.score
+
+if(type==="capability") capability.push(option.score)
+
+if(type==="leverage") leverage.push(option.score)
+
+if(type==="bargaining") bargaining.push(option.score)
+
+if(type==="ownership") ownership = option.score
 
 }
 
@@ -327,29 +361,60 @@ return arr.reduce((a,b)=>a+b,0)/arr.length
 function showLeadForm(){
 
 document.getElementById("quizSection").classList.add("hidden")
+
 document.getElementById("leadForm").classList.remove("hidden")
+
+}
+
+function detectBottleneck(){
+
+const minScore = Math.min(systemScore,capabilityScore,leverageScore)
+
+if(minScore===systemScore){
+
+return "Your current industry or economic system may be limiting your value creation potential."
+
+}
+
+if(minScore===leverageScore){
+
+return "Your capability appears strong, but your role currently has limited leverage."
+
+}
+
+if(minScore===capabilityScore){
+
+return "Your career growth may be constrained by capability development."
+
+}
 
 }
 
 function submitLead(){
 
-const systemScore = Math.min(Math.max(avg(system)+systemModifier,1),10)
+systemScore = Math.min(Math.max(avg(system)+systemModifier,1),10)
 
-const capabilityScore = Math.min(avg(capability),8.5)
+capabilityScore = Math.min(avg(capability),8.5)
 
-const leverageScore = avg(leverage)
+leverageScore = avg(leverage)
 
-const bargainingPower = avg(bargaining)
+bargainingPower = avg(bargaining)
 
 const effort = 7
 
+const multiplier = industryMultiplier[industryType]
+
 const createdValue =
-systemScore * capabilityScore * effort * leverageScore
+systemScore *
+capabilityScore *
+effort *
+leverageScore *
+multiplier
 
 const capturePower =
-bargainingPower + (3 * ownership)
+(1.2 * bargainingPower) + (4 * ownership)
 
-const captureRate =
+captureRate =
 capturePower / (1 + capturePower)
 
 const capturedValue =
@@ -380,7 +445,7 @@ email:document.getElementById("email").value,
 age:document.getElementById("age").value,
 city:document.getElementById("city").value,
 role:document.getElementById("role").value,
-industry:document.getElementById("industry").value,
+industry:industryType,
 
 currentIncome,
 systemScore,
@@ -412,6 +477,6 @@ document.getElementById("income").innerText =
 "Estimated Income Potential: Rp " + income.toLocaleString()
 
 document.getElementById("gap").innerText =
-"Potential Income Gap: Rp " + gap.toLocaleString()
+detectBottleneck()
 
 }
