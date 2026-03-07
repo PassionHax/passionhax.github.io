@@ -143,3 +143,24 @@ margin-top:20px;
 border-radius:8px;
 text-decoration:none;
 }
+
+#incomeBarContainer{
+margin-top:25px;
+}
+
+#currentIncomeBar{
+height:12px;
+background:#999;
+border-radius:6px;
+margin-bottom:10px;
+width:0%;
+transition:width .6s ease;
+}
+
+#potentialIncomeBar{
+height:12px;
+background:#ff8a3d;
+border-radius:6px;
+width:0%;
+transition:width .6s ease;
+}
