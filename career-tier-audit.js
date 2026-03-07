@@ -346,8 +346,8 @@ let values={
 System:s,
 Capability:c,
 Leverage:l,
-Bargaining:b*10,
-Ownership:o*10
+Bargaining:b*20,
+Ownership:o*30
 }
 
 return Object.keys(values)
