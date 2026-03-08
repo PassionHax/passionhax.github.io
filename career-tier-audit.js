@@ -347,6 +347,7 @@ document.getElementById("valueCreation").innerText="Value Creation Score: "+crea
 document.getElementById("captureRate").innerText="Value Capture Rate: "+(captureRate*100).toFixed(1)+"%"
 
 let constraint=findConstraint(s,c,l,b)
+renderDiagnosticSummary(tierLevel,constraint,gap,gapScore)
 
 document.getElementById("constraintHighlight").innerText=
 "Your biggest career constraint: "+constraint
@@ -654,6 +655,12 @@ document.getElementById("captureScore").classList.add("constraintHighlight")
 
 function renderDiagnosticSummary(tier,constraint,gap,gapScore){
 
+let el=document.getElementById("diagnosticSummary")
+
+if(!el){
+return
+}
+
 let text="<b>Career Diagnostic Summary</b><br><br>"
 
 text+="Current Career Tier: "+tier+"<br>"
@@ -661,6 +668,6 @@ text+="Primary Career Constraint: "+constraint+"<br>"
 text+="Estimated Monthly Income Gap: Rp "+Math.round(gap).toLocaleString()+"<br>"
 text+="Career Value Gap: "+gapScore.toFixed(0)+"%"
 
-document.getElementById("diagnosticSummary").innerHTML=text
+el.innerHTML=text
 
 }
