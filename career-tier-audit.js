@@ -660,7 +660,7 @@ if(!el){
 return
 }
 
-let text="<b>Career Diagnostic Summary</b><br><br>"
+let text="<b>Audit Summary</b><br><br>"
 
 text+="Current Career Tier: "+tier+"<br>"
 text+="Primary Career Constraint: "+constraint+"<br>"
