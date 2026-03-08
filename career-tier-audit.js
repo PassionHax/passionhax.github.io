@@ -242,6 +242,12 @@ const incomeMap={5:3000000,10:7500000,20:15000000,40:30000000,80:60000000}
 let current=incomeMap[Number(currentIncome.value)]
 let gap=Math.max(0,income-current)
 
+let gapScore = 0
+
+if(income>0){
+gapScore = Math.max(0, ((income-current)/income)*100)
+}
+
 let narrative=""
 
 if(gap>current){
@@ -283,9 +289,13 @@ document.getElementById("nextTier").innerText="Next Career Tier: "+nextTier
 
 document.getElementById("tierBenchmark").innerText=getTierBenchmark(tierLevel)
 
-document.getElementById("income").innerText="Estimated Income Potential: Rp "+Math.round(income).toLocaleString()
+document.getElementById("income").innerText="Estimated Income Potential: Rp "+Math.round(income).toLocaleString()+" / month"
 
-document.getElementById("gap").innerText="Income Gap vs Current: Rp "+Math.round(gap).toLocaleString()
+document.getElementById("currentIncomeDisplay").innerText="Current Income: Rp "+Math.round(current).toLocaleString()+" / month"
+
+document.getElementById("gap").innerText="Income Gap: Rp "+Math.round(gap).toLocaleString()+" / month"
+
+document.getElementById("gapScore").innerText="Career Value Gap: "+gapScore.toFixed(0)+"%"
 
 document.getElementById("valueCreation").innerText="Value Creation Score: "+created.toFixed(1)
 
