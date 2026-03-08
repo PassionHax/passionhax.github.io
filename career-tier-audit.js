@@ -292,6 +292,7 @@ potentialBar.style.width = potentialPercent + "%"
 
 let tierLevel=getTier(captured)
 let nextTier=getNextTier(tierLevel)
+renderTrajectoryProjection(nextTier,current)
 tierMarker.style.left=getTierPosition(tierLevel)
 
 document.getElementById("reportUser").innerText=
@@ -667,5 +668,34 @@ text+="Estimated Monthly Income Gap: Rp "+Math.round(gap).toLocaleString()+"<br>
 text+="Career Value Gap: "+gapScore.toFixed(0)+"%"
 
 el.innerHTML=text
+
+}
+
+function renderTrajectoryProjection(nextTier,currentIncome){
+
+let ranges={
+Survival:[3000000,6000000],
+Stability:[6000000,12000000],
+Professional:[10000000,20000000],
+Strategic:[20000000,50000000],
+Frontier:[50000000,120000000]
+}
+
+let r=ranges[nextTier]
+
+let min=r[0]
+let max=r[1]
+
+document.getElementById("projectionTier").innerText=
+"If you reach "+nextTier+" tier"
+
+document.getElementById("projectionIncome").innerText=
+"Typical income range: Rp "+min.toLocaleString()+" – Rp "+max.toLocaleString()+" / month"
+
+let upsideMin=Math.max(0,min-currentIncome)
+let upsideMax=Math.max(0,max-currentIncome)
+
+document.getElementById("projectionUpside").innerText=
+"Potential income upside: + Rp "+upsideMin.toLocaleString()+" – Rp "+upsideMax.toLocaleString()+" / month"
 
 }
