@@ -341,3 +341,13 @@ font-size:14px;
 color:#777;
 margin-bottom:20px;
 }
+
+#diagnosticSummary{
+margin-bottom:20px;
+padding:16px;
+background:#f9f9f9;
+border-left:4px solid #ff8a3d;
+border-radius:8px;
+font-size:14px;
+line-height:1.6;
+}
