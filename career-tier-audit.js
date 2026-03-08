@@ -393,8 +393,6 @@ function generateDiagnosis(s,c,l,b,o){
 
 let constraint=findConstraint(s,c,l,b)
 
-renderDiagnosticSummary(tierLevel,constraint,gap,gapScore)
-
 let opportunity=generateOpportunity(constraint)
 document.getElementById("opportunity").innerText=opportunity
 
