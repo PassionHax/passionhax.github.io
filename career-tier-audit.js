@@ -310,6 +310,18 @@ document.getElementById("gap").innerText="Estimated Income Gap: Rp "+Math.round(
 
 document.getElementById("gapScore").innerText="Career Value Gap: "+gapScore.toFixed(0)+"%"
 
+const gapBarFill=document.getElementById("gapBarFill")
+const gapBarText=document.getElementById("gapBarText")
+
+if(gapBarFill){
+
+let visualGap=Math.min(100,gapScore)
+
+gapBarFill.style.width=visualGap+"%"
+
+gapBarText.innerText="Your estimated career value gap is approximately "+visualGap.toFixed(0)+"%."
+}
+
 document.getElementById("valueCreation").innerText="Value Creation Score: "+created.toFixed(1)
 
 document.getElementById("captureRate").innerText="Value Capture Rate: "+(captureRate*100).toFixed(1)+"%"
