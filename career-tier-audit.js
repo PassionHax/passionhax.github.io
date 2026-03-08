@@ -250,14 +250,25 @@ gapScore = Math.max(0, ((income-current)/income)*100)
 
 let narrative=""
 
-if(gap>current){
+if(current>income){
+
+narrative="Your current compensation may exceed the structural value of your role. This can happen due to tenure, organizational context, or compensation structures."
+
+}
+else if(gap>current){
+
 narrative="Your career income potential appears significantly higher than your current earnings."
+
 }
 else if(gap>current*0.5){
+
 narrative="Your career income potential is moderately higher than your current income."
+
 }
 else{
+
 narrative="Your current income appears relatively aligned with your estimated career value."
+
 }
 
 document.getElementById("resultNarrative").innerText=narrative
