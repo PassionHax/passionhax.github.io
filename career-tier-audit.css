@@ -247,3 +247,23 @@ font-size:13px;
 color:#555;
 margin-top:6px;
 }
+
+#scorecardContainer{
+margin-top:20px;
+padding:15px;
+border:1px solid #eee;
+border-radius:10px;
+background:#fafafa;
+}
+
+.scoreRow{
+display:flex;
+justify-content:space-between;
+padding:6px 0;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+.scoreRow:last-child{
+border-bottom:none;
+}
