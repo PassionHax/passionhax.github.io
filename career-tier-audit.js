@@ -353,6 +353,10 @@ document.getElementById("valueCreation").innerText="Value Creation Score: "+crea
 document.getElementById("captureRate").innerText="Value Capture Rate: "+(captureRate*100).toFixed(1)+"%"
 
 let constraint=findConstraint(s,c,l,b)
+
+let strategy=generateStrategy(constraint)
+document.getElementById("strategyText").innerText=strategy
+
 renderDiagnosticSummary(tierLevel,constraint,gap,gapScore)
 
 document.getElementById("constraintHighlight").innerText=
@@ -519,6 +523,27 @@ return "Improving your professional positioning and reputation could help you ca
 }
 
 return "Strategic career repositioning could unlock higher value opportunities."
+}
+
+function generateStrategy(constraint){
+
+if(constraint==="System"){
+return "Your current industry or organizational system may be limiting the value your work can generate. Consider repositioning into higher-growth industries or more scalable environments such as technology, digital platforms, or high-growth startups."
+}
+
+if(constraint==="Capability"){
+return "Your next career tier likely requires deeper or rarer capabilities. Focus on developing high-leverage skills such as strategic problem solving, revenue impact skills, or technical expertise that are scarce in the job market."
+}
+
+if(constraint==="Leverage"){
+return "Your current role may rely too heavily on direct effort rather than scalable leverage. Consider moving into roles that influence systems, technology platforms, or larger teams where your output can impact hundreds or thousands of people."
+}
+
+if(constraint==="Bargaining"){
+return "Your bargaining power may be limiting how much value you capture from your work. Strengthening your professional positioning, reputation, and alternative career options can significantly improve compensation outcomes."
+}
+
+return "Strategic career repositioning may unlock significantly higher value creation and income potential."
 }
 
 function generateCTA(c){
