@@ -358,6 +358,7 @@ document.getElementById("constraintHighlight").innerText=
 document.getElementById("diagnosis").innerText=generateDiagnosis(s,c,l,b,ownership)
 
 renderChart(s,c,l,captureRate)
+renderScorecard(s,c,l,captureRate,constraint)
 
 sendLead({
 tier:tierLevel,
@@ -616,6 +617,38 @@ downloadBtn.onclick=function(){
 
 window.print()
 
+}
+
+}
+
+function renderScorecard(s,c,l,cr,constraint){
+
+let captureScore=cr*10
+
+document.getElementById("systemScore").innerText=s.toFixed(1)+" / 10"
+document.getElementById("capabilityScore").innerText=c.toFixed(1)+" / 10"
+document.getElementById("leverageScore").innerText=l.toFixed(1)+" / 10"
+document.getElementById("captureScore").innerText=captureScore.toFixed(1)+" / 10"
+
+document.getElementById("systemBar").style.width=(s*10)+"%"
+document.getElementById("capabilityBar").style.width=(c*10)+"%"
+document.getElementById("leverageBar").style.width=(l*10)+"%"
+document.getElementById("captureBar").style.width=(captureScore*10)+"%"
+
+if(constraint==="System"){
+document.getElementById("systemScore").classList.add("constraintHighlight")
+}
+
+if(constraint==="Capability"){
+document.getElementById("capabilityScore").classList.add("constraintHighlight")
+}
+
+if(constraint==="Leverage"){
+document.getElementById("leverageScore").classList.add("constraintHighlight")
+}
+
+if(constraint==="Bargaining"){
+document.getElementById("captureScore").classList.add("constraintHighlight")
 }
 
 }
