@@ -297,3 +297,23 @@ cursor:pointer;
 .downloadBtn:hover{
 background:#43a047;
 }
+
+@media print{
+
+.startBtn,
+.resetBtn,
+.downloadBtn,
+.cta{
+display:none;
+}
+
+body{
+background:white;
+}
+
+.container{
+box-shadow:none;
+margin-top:0;
+}
+
+}
