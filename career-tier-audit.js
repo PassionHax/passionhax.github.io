@@ -345,10 +345,6 @@ gapBarText.innerText=message
 document.getElementById("valueCreation").innerText="Value Creation Score: "+created.toFixed(1)
 
 document.getElementById("captureRate").innerText="Value Capture Rate: "+(captureRate*100).toFixed(1)+"%"
-document.getElementById("scoreSystem").innerText=s.toFixed(1)+" / 10"
-document.getElementById("scoreCapability").innerText=c.toFixed(1)+" / 10"
-document.getElementById("scoreLeverage").innerText=l.toFixed(1)+" / 10"
-document.getElementById("scoreCapture").innerText=(captureRate*10).toFixed(1)+" / 10"
 
 let constraint=findConstraint(s,c,l,b)
 
@@ -364,6 +360,7 @@ sendLead({
 tier:tierLevel,
 income:income,
 gap:gap,
+gapScore:gapScore,
 created:created,
 captureRate:captureRate,
 constraint:constraint
