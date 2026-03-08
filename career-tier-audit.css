@@ -376,3 +376,17 @@ color:#ff8a3d;
 font-weight:600;
 margin-top:5px;
 }
+
+#strategyBox{
+margin-top:20px;
+padding:16px;
+background:#f0f7ff;
+border-left:4px solid #2f80ed;
+border-radius:8px;
+}
+
+#strategyText{
+font-size:14px;
+line-height:1.6;
+color:#333;
+}
