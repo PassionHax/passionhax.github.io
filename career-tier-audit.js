@@ -294,19 +294,19 @@ let tierLevel=getTier(captured)
 let nextTier=getNextTier(tierLevel)
 tierMarker.style.left=getTierPosition(tierLevel)
 
-document.getElementById("tier").innerText="Career Tier: "+tierLevel
+document.getElementById("tier").innerText="Your Career Tier: "+tierLevel
 
-document.getElementById("nextTier").innerText="Next Career Tier: "+nextTier
+document.getElementById("nextTier").innerText="Your Next Career Tier: "+nextTier
 
 document.getElementById("tierBenchmark").innerText=getTierBenchmark(tierLevel)
 
 document.getElementById("marketSalary").innerText=getMarketSalary(tierLevel)
 
-document.getElementById("income").innerText="Estimated Income Potential: Rp "+Math.round(income).toLocaleString()+" / month"
+document.getElementById("income").innerText="Your Estimated Income Potential: Rp "+Math.round(income).toLocaleString()+" / month"
 
-document.getElementById("currentIncomeDisplay").innerText="Current Income: Rp "+Math.round(current).toLocaleString()+" / month"
+document.getElementById("currentIncomeDisplay").innerText="Your Estimated Current Income: Rp "+Math.round(current).toLocaleString()+" / month"
 
-document.getElementById("gap").innerText="Income Gap: Rp "+Math.round(gap).toLocaleString()+" / month"
+document.getElementById("gap").innerText="Estimated Income Gap: Rp "+Math.round(gap).toLocaleString()+" / month"
 
 document.getElementById("gapScore").innerText="Career Value Gap: "+gapScore.toFixed(0)+"%"
 
