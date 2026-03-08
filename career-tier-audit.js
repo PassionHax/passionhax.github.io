@@ -359,6 +359,8 @@ document.getElementById("captureRate").innerText="Value Capture Rate: "+(capture
 
 let constraint=findConstraint(s,c,l,b)
 
+let leadScore=calculateLeadScore(gapScore,c,l,b)
+
 let strategy=generateStrategy(constraint)
 document.getElementById("strategyText").innerText=strategy
 
@@ -379,7 +381,8 @@ gap:gap,
 gapScore:gapScore,
 created:created,
 captureRate:captureRate,
-constraint:constraint
+constraint:constraint,
+leadScore:leadScore
 })
 
 leadForm.classList.add("hidden")
@@ -475,6 +478,8 @@ valueCreation:data.created.toFixed(1),
 captureRate:(data.captureRate*100).toFixed(1),
 
 constraint:data.constraint,
+
+leadScore:data.leadScore,
 
 answers:answersData.join("|")
 
@@ -761,5 +766,25 @@ return "High Gap"
 }
 
 return "Extreme Gap"
+
+}
+
+function calculateLeadScore(gapScore,c,l,b){
+
+let score=0
+
+// gap importance
+score+=gapScore*0.5
+
+// capability
+score+=c*5
+
+// leverage
+score+=l*5
+
+// bargaining
+score+=b*40
+
+return Math.round(score)
 
 }
