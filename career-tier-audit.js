@@ -392,6 +392,8 @@ function generateDiagnosis(s,c,l,b,o){
 
 let constraint=findConstraint(s,c,l,b)
 
+renderDiagnosticSummary(tierLevel,constraint,gap,gapScore)
+
 let opportunity=generateOpportunity(constraint)
 document.getElementById("opportunity").innerText=opportunity
 
@@ -647,5 +649,18 @@ document.getElementById("leverageScore").classList.add("constraintHighlight")
 if(constraint==="Bargaining"){
 document.getElementById("captureScore").classList.add("constraintHighlight")
 }
+
+}
+
+function renderDiagnosticSummary(tier,constraint,gap,gapScore){
+
+let text="<b>Career Diagnostic Summary</b><br><br>"
+
+text+="Current Career Tier: "+tier+"<br>"
+text+="Primary Career Constraint: "+constraint+"<br>"
+text+="Estimated Monthly Income Gap: Rp "+Math.round(gap).toLocaleString()+"<br>"
+text+="Career Value Gap: "+gapScore.toFixed(0)+"%"
+
+document.getElementById("diagnosticSummary").innerHTML=text
 
 }
