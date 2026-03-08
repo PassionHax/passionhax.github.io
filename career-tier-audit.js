@@ -221,6 +221,11 @@ function avg(a){if(a.length===0) return 0; return a.reduce((x,y)=>x+y,0)/a.lengt
 
 document.getElementById("seeResult").onclick=function(){
 
+if(!nameInput.value || !emailInput.value){
+alert("Please fill in your name and email.")
+return
+}
+
 let s=avg(system)
 let c=avg(capability)
 let l=avg(leverage)
@@ -599,6 +604,11 @@ landing.classList.remove("hidden")
 
 resetQuiz()
 
+if(chart){
+chart.destroy()
+chart=null
+}
+
 window.scrollTo({
 top:0,
 behavior:"smooth"
@@ -621,6 +631,9 @@ window.print()
 }
 
 function renderScorecard(s,c,l,cr,constraint){
+
+document.querySelectorAll(".constraintHighlight")
+.forEach(el=>el.classList.remove("constraintHighlight"))
 
 let captureScore=cr*10
 
@@ -692,8 +705,11 @@ document.getElementById("projectionTier").innerText=
 document.getElementById("projectionIncome").innerText=
 "Typical income range: Rp "+min.toLocaleString()+" – Rp "+max.toLocaleString()+" / month"
 
-let upsideMin=Math.max(0,min-currentValue)
-let upsideMax=Math.max(0,max-currentValue)
+let upsideMin=min-currentValue
+let upsideMax=max-currentValue
+
+upsideMin=Math.max(0,upsideMin)
+upsideMax=Math.max(0,upsideMax)
 
 document.getElementById("projectionUpside").innerText=
 "Potential income upside: + Rp "+upsideMin.toLocaleString()+" – Rp "+upsideMax.toLocaleString()+" / month"
