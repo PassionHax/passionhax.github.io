@@ -671,7 +671,7 @@ el.innerHTML=text
 
 }
 
-function renderTrajectoryProjection(nextTier,currentIncome){
+function renderTrajectoryProjection(nextTier,currentValue){
 
 let ranges={
 Survival:[3000000,6000000],
@@ -692,8 +692,8 @@ document.getElementById("projectionTier").innerText=
 document.getElementById("projectionIncome").innerText=
 "Typical income range: Rp "+min.toLocaleString()+" – Rp "+max.toLocaleString()+" / month"
 
-let upsideMin=Math.max(0,min-currentIncome)
-let upsideMax=Math.max(0,max-currentIncome)
+let upsideMin=Math.max(0,min-currentValue)
+let upsideMax=Math.max(0,max-currentValue)
 
 document.getElementById("projectionUpside").innerText=
 "Potential income upside: + Rp "+upsideMin.toLocaleString()+" – Rp "+upsideMax.toLocaleString()+" / month"
