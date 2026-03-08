@@ -1,4 +1,4 @@
-const scriptURL="PASTE_GOOGLE_SCRIPT_URL"
+const scriptURL="https://script.google.com/macros/s/AKfycbycrnpRQ7ZnZqMnTlPPnHEyde89VCH1bjUKmudbUPnp_S-0ce0uWgojgSV-IsCShijJ/exec"
 
 const landing=document.getElementById("landing")
 const quizSection=document.getElementById("quizSection")
@@ -473,6 +473,7 @@ industry:industry,
 tier:data.tier,
 incomePotential:Math.round(data.income),
 incomeGap:Math.round(data.gap),
+gapScore:data.gapScore,
 
 valueCreation:data.created.toFixed(1),
 captureRate:(data.captureRate*100).toFixed(1),
