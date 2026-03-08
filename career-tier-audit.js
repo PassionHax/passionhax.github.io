@@ -583,3 +583,24 @@ return "Typical income range in Indonesia: Rp 50M+ / month"
 
 return ""
 }
+
+const resetBtn=document.getElementById("resetAuditBtn")
+
+if(resetBtn){
+
+resetBtn.onclick=function(){
+
+result.classList.add("hidden")
+
+landing.classList.remove("hidden")
+
+resetQuiz()
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+})
+
+}
+
+}
