@@ -319,6 +319,11 @@ document.getElementById("gap").innerText="Estimated Income Gap: Rp "+Math.round(
 
 document.getElementById("gapScore").innerText="Career Value Gap: "+gapScore.toFixed(0)+"%"
 
+let severity=getGapSeverity(gapScore)
+
+document.getElementById("gapSeverity").innerText=
+"Gap Severity Level: "+severity
+
 const gapBarFill=document.getElementById("gapBarFill")
 const gapBarText=document.getElementById("gapBarText")
 
@@ -738,5 +743,23 @@ upsideMax=Math.max(0,upsideMax)
 
 document.getElementById("projectionUpside").innerText=
 "Potential income upside: + Rp "+upsideMin.toLocaleString()+" – Rp "+upsideMax.toLocaleString()+" / month"
+
+}
+
+function getGapSeverity(gapScore){
+
+if(gapScore<20){
+return "Low Gap"
+}
+
+if(gapScore<40){
+return "Moderate Gap"
+}
+
+if(gapScore<70){
+return "High Gap"
+}
+
+return "Extreme Gap"
 
 }
