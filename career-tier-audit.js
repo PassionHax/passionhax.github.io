@@ -289,6 +289,8 @@ document.getElementById("nextTier").innerText="Next Career Tier: "+nextTier
 
 document.getElementById("tierBenchmark").innerText=getTierBenchmark(tierLevel)
 
+document.getElementById("marketSalary").innerText=getMarketSalary(tierLevel)
+
 document.getElementById("income").innerText="Estimated Income Potential: Rp "+Math.round(income).toLocaleString()+" / month"
 
 document.getElementById("currentIncomeDisplay").innerText="Current Income: Rp "+Math.round(current).toLocaleString()+" / month"
@@ -508,6 +510,31 @@ return "Strategic tier professionals often influence larger systems, teams, or b
 
 if(t==="Frontier"){
 return "Frontier tier careers are rare and typically involve high leverage, ownership, or industry leadership."
+}
+
+return ""
+}
+
+function getMarketSalary(t){
+
+if(t==="Survival"){
+return "Typical income range in Indonesia: Rp 3M – 6M / month"
+}
+
+if(t==="Stability"){
+return "Typical income range in Indonesia: Rp 6M – 12M / month"
+}
+
+if(t==="Professional"){
+return "Typical income range in Indonesia: Rp 10M – 20M / month"
+}
+
+if(t==="Strategic"){
+return "Typical income range in Indonesia: Rp 20M – 50M / month"
+}
+
+if(t==="Frontier"){
+return "Typical income range in Indonesia: Rp 50M+ / month"
 }
 
 return ""
