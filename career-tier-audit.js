@@ -294,6 +294,9 @@ let tierLevel=getTier(captured)
 let nextTier=getNextTier(tierLevel)
 tierMarker.style.left=getTierPosition(tierLevel)
 
+document.getElementById("reportUser").innerText=
+"Personalized report for: "+nameInput.value
+
 document.getElementById("tier").innerText="Your Career Tier: "+tierLevel
 
 document.getElementById("nextTier").innerText="Your Next Career Tier: "+nextTier
