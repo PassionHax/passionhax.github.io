@@ -313,23 +313,30 @@ document.getElementById("gapScore").innerText="Career Value Gap: "+gapScore.toFi
 const gapBarFill=document.getElementById("gapBarFill")
 const gapBarText=document.getElementById("gapBarText")
 
-if(visualGap>60){
-gapBarText.innerText+=" This suggests significant untapped career value."
-}
-else if(visualGap>30){
-gapBarText.innerText+=" There may be meaningful room for career repositioning."
-}
-else{
-gapBarText.innerText+=" Your income appears relatively aligned with your career value."
-}
-
 if(gapBarFill){
 
 let visualGap=Math.min(100,gapScore)
 
-gapBarFill.style.width=visualGap+"%"
+gapBarFill.style.width="0%"
 
-gapBarText.innerText="Your estimated career value gap is approximately "+visualGap.toFixed(0)+"%."
+setTimeout(()=>{
+gapBarFill.style.width=visualGap+"%"
+},300)
+
+let message="Your estimated career value gap is approximately "+visualGap.toFixed(0)+"%."
+
+if(visualGap>60){
+message+=" This suggests significant untapped career value."
+}
+else if(visualGap>30){
+message+=" There may be meaningful room for career repositioning."
+}
+else{
+message+=" Your income appears relatively aligned with your career value."
+}
+
+gapBarText.innerText=message
+
 }
 
 document.getElementById("valueCreation").innerText="Value Creation Score: "+created.toFixed(1)
