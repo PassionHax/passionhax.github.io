@@ -604,3 +604,15 @@ behavior:"smooth"
 }
 
 }
+
+const downloadBtn=document.getElementById("downloadReportBtn")
+
+if(downloadBtn){
+
+downloadBtn.onclick=function(){
+
+window.print()
+
+}
+
+}
