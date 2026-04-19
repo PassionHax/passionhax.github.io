@@ -458,7 +458,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <h2 class="card-title" id="questionText"></h2>
       <p class="card-hint" id="questionHint"></p>
       <div id="answerArea"></div>
-      <div class="error-msg" id="errorMsg">Mohon isi jawaban terlebih dahulu (minimal 20 karakter).</div>
+      <div class="error-msg" id="errorMsg" id="errorMsg">Mohon pilih atau isi jawaban terlebih dahulu.</div>
       <div class="nav-row">
         <button class="btn-prev" id="btnPrev" disabled title="Kembali">←</button>
         <button class="btn-next" id="btnNext" disabled>Lanjut →</button>
@@ -983,7 +983,7 @@ function loadQuestion() {
   btn.disabled   = true;
   btn.className  = 'btn-next';
 
-  if (q.type === 'mcq') {
+  if (q.type === 'mcq' || q.type === 'mcq_followup') {
     const list = document.createElement('div');
     list.className = 'options-list';
     q.options.forEach(opt => {
@@ -1084,8 +1084,8 @@ function updatePrevBtn() {
 
 document.getElementById('btnPrev').onclick = () => {
   // Save current answer if valid before going back
-  const q = QUESTIONS[currentQ];
-  if (q.type === 'open') {
+  const q = getActiveQuestions()[currentQ];
+  if (q && q.type === 'open') {
     const ta = document.querySelector('.answer-textarea');
     if (ta && ta.value.trim().length >= 20) {
       answers[q.id] = {text: ta.value.trim()};
@@ -1102,7 +1102,8 @@ document.getElementById('btnPrev').onclick = () => {
 };
 
 document.getElementById('btnNext').onclick = () => {
-  const q = QUESTIONS[currentQ];
+  const q = getActiveQuestions()[currentQ];
+  if (!q) return;
   if (q.type === 'open') {
     const ta = document.querySelector('.answer-textarea');
     if (!ta || ta.value.trim().length < 20) {
