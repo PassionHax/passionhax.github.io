@@ -1277,7 +1277,7 @@ async function analyzeWithAI() {
     consulting_top:    'firma',
     digital:           'platform/agensi',
     tech:              'startup/perusahaan tech'
-  }[effectiveInd] || 'organisasi';
+  }[industryVal] || 'organisasi';
 
   const openA = Object.entries(answers)
     .filter(([,v]) => v.text)
