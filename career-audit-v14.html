@@ -560,7 +560,10 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       </div>
 
       <div class="error-msg" id="formError">Mohon lengkapi nama, email, dan income.</div>
-      <button class="btn-next ready" id="btnSeeResult" style="margin-top:20px">Lihat Hasil Audit →</button>
+      <div style="display:flex;gap:10px;margin-top:20px">
+        <button class="btn-prev" id="btnLeadPrev" style="flex:0 0 auto">← Kembali</button>
+        <button class="btn-next ready" id="btnSeeResult" style="flex:1">Lihat Hasil Audit →</button>
+      </div>
     </div>
   </div>
 </div>
@@ -1234,6 +1237,8 @@ document.getElementById('btnSeeResult').onclick = async () => {
     const result = await analyzeWithAI();
     renderResult(result);
     showScreen('screen-result');
+    // Fire-and-forget: submit full result to Sheets (non-blocking)
+    submitToSheets(result).catch(err => console.warn('Sheets submit failed:', err));
   } catch(e) {
     console.error('AI error:', e);
     showScreen('screen-lead');
@@ -1418,6 +1423,82 @@ async function analyzeWithAI() {
 
   const captureDisp = Math.min(10, cr_d * 14);
   return { ...parsed, income, income_diag: income_d, captureDisp, isOverEarner };
+}
+
+// ── SHEETS SUBMISSION ────────────────────────────────
+async function submitToSheets(result) {
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') return;
+
+  const current      = userData.income || 0;
+  const potential    = result.income || 0;
+  const gap          = Math.max(0, potential - current);
+  const gapPct       = potential > 0 ? Math.max(0, ((potential - current) / potential) * 100) : 0;
+  const isOverEarner = result.isOverEarner || false;
+  const isZeroInc    = current === 0;
+
+  // Tier
+  const incomeForTier = isOverEarner ? current : potential;
+  let tier = 'Starter';
+  if      (incomeForTier >= 80000000) tier = 'Architect';
+  else if (incomeForTier >= 40000000) tier = 'Strategist';
+  else if (incomeForTier >= 20000000) tier = 'Specialist';
+  else if (incomeForTier >= 10000000) tier = 'Executor';
+
+  // Raw answers: all open-ended
+  const rawOpen = Object.entries(answers)
+    .filter(([, v]) => v.text)
+    .map(([k, v]) => {
+      const q = QUESTIONS.find(q => q.id === k);
+      return `[${k}] ${q ? q.q : k}: ${v.text}`;
+    }).join('\n');
+
+  // Raw answers: all MCQ
+  const rawMcq = Object.entries(answers)
+    .filter(([, v]) => v.val !== undefined && !v.text)
+    .map(([k, v]) => `[${k}] ${v.text || v.val} (score: ${v.score ?? v.val})`)
+    .join('\n');
+
+  const sheetsPayload = {
+    action: 'log_result',
+    timestamp:        new Date().toISOString(),
+    // Lead data
+    name:             userData.name,
+    email:            userData.email || '',
+    whatsapp:         userData.wa || '',
+    age:              userData.age || '',
+    role:             userData.role || '',
+    city:             userData.city || '',
+    // Income & gap
+    income_current:   current,
+    income_potential: potential,
+    gap_monthly:      isZeroInc || isOverEarner ? '' : gap,
+    gap_percentage:   isZeroInc || isOverEarner ? '' : gapPct.toFixed(1),
+    is_over_earner:   isOverEarner ? 'Ya' : 'Tidak',
+    // Tier & scores
+    tier,
+    score_system:     result.scores?.system ?? '',
+    score_capability: result.scores?.capability ?? '',
+    score_leverage:   result.scores?.leverage ?? '',
+    score_bargaining: result.scores?.bargaining ?? '',
+    constraint:       result.constraint || '',
+    // Narrative
+    narrative:        result.narrative || '',
+    diagnosis:        result.diagnosis || '',
+    strategy:         result.strategy || '',
+    // Industry/market context
+    industry:         answers.industry_govt?.text || answers.industry_finance?.text || answers.industry_consulting?.text || answers.industry?.text || '',
+    market_scope:     answers.market_scope?.text || '',
+    ownership:        answers.ownership?.text || '',
+    side_income:      answers.side_income?.text || '',
+    // Raw answers
+    raw_open_answers: rawOpen,
+    raw_mcq_answers:  rawMcq
+  };
+
+  await fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(sheetsPayload)
+  });
 }
 
 // ── PROMPT BUILDER ────────────────────────────────────
@@ -1745,6 +1826,13 @@ document.getElementById('btnStart').onclick     = () => showScreen('screen-intro
 document.getElementById('btnIntroPrev').onclick = () => showScreen('screen-landing');
 document.getElementById('btnIntroNext').onclick = () => {
   currentQ = 0; answers = {};
+  showScreen('screen-quiz');
+  loadQuestion();
+  updatePrevBtn();
+};
+document.getElementById('btnLeadPrev').onclick = () => {
+  const activeQs = getActiveQuestions();
+  currentQ = activeQs.length - 1;
   showScreen('screen-quiz');
   loadQuestion();
   updatePrevBtn();
