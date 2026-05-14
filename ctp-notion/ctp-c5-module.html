@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C5 — Career Operating System — Forward Momentum | Phase C — CAPTURE | Passion Hax</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ox:#E8893A;--ox-bright:#F5A04A;--ox-dim:rgba(232,137,58,0.10);--ox-mid:rgba(232,137,58,0.28);
+  --ox-glow:rgba(232,137,58,0.18);
+  --bg:#09090B;--bg2:#0F0F12;--bg3:#141418;--bg4:#1A1A20;--bg5:#202028;
+  --border:rgba(255,255,255,0.06);--border-hi:rgba(232,137,58,0.35);--border-mid:rgba(255,255,255,0.10);
+  --text:#F5F3EE;--text2:#9A9A9F;--text3:#55555F;--text4:#3E3E46;
+  --font:'Plus Jakarta Sans',sans-serif;
+  --radius:14px;--radius-sm:10px;--radius-xs:6px;
+  --phase:#22c55e;--phase-rgb:34,197,94;
+  --amber:#E8893A;--blue:#3b82f6;--green:#22c55e;--red:#ef4444;--purple:#8b5cf6;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:14px;line-height:1.8}
+body::before{content:'';position:fixed;inset:0;background-image:
+  linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:32px 0;position:relative;z-index:2}
+.header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(circle,rgba(34,197,94,0.06) 0%,transparent 70%);pointer-events:none}
+.tag{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ox);display:flex;align-items:center;gap:8px}
+.tag::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ox);box-shadow:0 0 6px rgba(232,137,58,0.5)}
+h1{font-family:var(--font);font-size:clamp(22px,4vw,28px);font-weight:800;margin-top:12px;letter-spacing:-0.02em}
+.sub{font-size:12px;color:var(--text3);margin-top:6px;font-weight:300}
+.video-embed-wrap{margin:24px 0 28px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--bg2);position:relative}
+.video-embed-wrap iframe{width:100%;aspect-ratio:16/9;display:block;border:none}
+.video-placeholder{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,var(--bg3),var(--bg2));cursor:default}
+.video-placeholder .play-icon{width:56px;height:56px;border-radius:50%;background:rgba(34,197,94,0.15);border:1.5px solid rgba(34,197,94,0.3);display:flex;align-items:center;justify-content:center;color:var(--phase);font-size:20px;transition:all 0.2s}
+.video-placeholder:hover .play-icon{background:rgba(34,197,94,0.25);border-color:rgba(34,197,94,0.5);transform:scale(1.05)}
+.video-placeholder span{font-size:12px;color:var(--text3);font-weight:500;letter-spacing:0.04em}
+h2{font-family:var(--font);font-size:15px;font-weight:700;margin:32px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-0.01em}
+h3{font-size:13px;font-weight:700;margin:22px 0 8px;color:var(--ox)}
+p{color:var(--text2);margin-bottom:12px;font-size:13px;font-weight:300}
+p strong{color:var(--text);font-weight:600}
+.card{padding:22px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2);margin:18px 0;box-shadow:0 0 0 1px rgba(255,255,255,0.02) inset}
+.card-title{font-family:var(--font);font-weight:700;margin-bottom:10px;font-size:14px}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:12px}
+th{background:var(--bg3);color:var(--ox);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:left;border:1px solid rgba(255,255,255,0.06)}
+td{padding:11px 14px;border:1px solid rgba(255,255,255,0.04);color:var(--text2);vertical-align:top;font-weight:300}
+tr:nth-child(even) td{background:rgba(255,255,255,0.012)}
+tr:hover td{background:rgba(232,137,58,0.02)}
+.callout{padding:18px;border-radius:var(--radius-sm);margin:18px 0;font-size:13px;line-height:1.7;font-weight:300}
+.callout strong{color:var(--text);font-weight:600}
+.callout-blue{background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18)}
+.callout-amber{background:rgba(232,137,58,0.06);border:1px solid rgba(232,137,58,0.18)}
+.callout-green{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.18)}
+.callout-red{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18)}
+.callout-purple{background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.18)}
+.example{padding:18px;border-left:2px solid var(--ox);background:rgba(232,137,58,0.04);margin:14px 0;border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.example-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ox);margin-bottom:8px}
+.context-box{padding:22px;border:1px solid rgba(34,197,94,0.25);border-radius:var(--radius);background:rgba(34,197,94,0.035);margin:0 0 28px;box-shadow:0 0 20px rgba(34,197,94,0.04)}
+.context-box h3{color:var(--phase);margin-top:0;font-size:14px}
+.context-box p{margin-bottom:8px}.context-box p:last-child{margin-bottom:0}
+.footer{padding:36px 0;text-align:center;font-size:11px;color:var(--text4);border-top:1px solid var(--border);position:relative;z-index:2;font-weight:300}
+/* RESOURCE LINKS */
+.resources{margin:40px 0 20px;padding:28px;border:1px solid rgba(34,197,94,0.2);border-radius:var(--radius);background:var(--bg2)}
+.resources-title{font-family:var(--font);font-size:13px;font-weight:700;color:var(--phase);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.resources-title::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--phase);box-shadow:0 0 6px rgba(34,197,94,0.5)}
+.res-group{margin-bottom:16px}
+.res-group:last-child{margin-bottom:0}
+.res-group-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
+.res-link{display:flex;align-items:center;gap:10px;padding:10px 14px;margin-bottom:6px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-xs);color:var(--text2);font-size:13px;font-weight:400;text-decoration:none;transition:all 0.2s}
+.res-link:hover{border-color:rgba(34,197,94,0.3);color:var(--text);background:var(--bg4);transform:translateX(3px)}
+.res-link .res-icon{font-size:14px;flex-shrink:0;opacity:0.6}
+.res-link .res-arrow{margin-left:auto;font-size:12px;color:var(--text3);transition:color 0.2s}
+.res-link:hover .res-arrow{color:var(--phase)}
+@media(max-width:640px){
+  .header{padding:24px 0}
+  table{font-size:11px}
+  th,td{padding:8px 10px}
+}
+/* LIGHT THEME VARIABLES & TOGGLE */
+[data-theme="light"] {
+  --bg: #ffffff; --bg2: #f8fafc; --bg3: #f1f5f9; --bg4: #e2e8f0; --bg5: #cbd5e1;
+  --border: rgba(0,0,0,0.08); --border-hi: rgba(232,137,58,0.4); --border-mid: rgba(0,0,0,0.12);
+  --text: #1e293b; --text2: #475569; --text3: #64748b; --text4: #94a3b8;
+  --ox-glow: rgba(232,137,58,0.25);
+}
+[data-theme="light"] body::after {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='black' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+.theme-toggle {
+  position: absolute;
+  top: -6px;
+  right: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+}
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.1);
+  color: var(--text);
+  transform: scale(1.05);
+}
+[data-theme="light"] .theme-toggle {
+  background: rgba(0,0,0,0.04);
+}
+[data-theme="light"] .theme-toggle:hover {
+  background: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .sun-icon { display: none; }
+[data-theme="light"] .moon-icon { display: block !important; }
+@media(max-width:640px) {
+  .theme-toggle { top: -2px; right: 20px; width: 32px; height: 32px; }
+  .theme-toggle svg { width: 16px; height: 16px; }
+}
+
+/* LOGO CSS */
+.header-logo {
+  height: 28px;
+  margin-bottom: 18px;
+  display: block;
+  content: url("../favicon-dark.png");
+}
+[data-theme="light"] .header-logo {
+  content: url("../favicon-light.png");
+}
+
+/* SVG LIGHT THEME FIX */
+[data-theme="light"] svg rect[fill^="rgba(255"] { fill: rgba(0,0,0,0.03) !important; stroke: rgba(0,0,0,0.08) !important; }
+[data-theme="light"] svg text[fill^="rgba(255"] { fill: rgba(0,0,0,0.45) !important; }
+[data-theme="light"] svg line[stroke^="rgba(255"] { stroke: rgba(0,0,0,0.15) !important; }
+[data-theme="light"] svg polygon[fill^="rgba(255"] { fill: rgba(0,0,0,0.15) !important; }
+</style>
+<link id="favicon" rel="icon" type="image/png" href="../favicon-dark.png">
+<script>
+  // Anti-Direct Access & Embed Protection
+  const isIframe = window.self !== window.top;
+  const urlParams = new URLSearchParams(window.location.search);
+  const isCreatorBypass = urlParams.get('mode') === 'creator';
+  
+  if (!isIframe && !isCreatorBypass) {
+    document.documentElement.innerHTML = '<div style="font-family: sans-serif; text-align: center; padding: 50px; color: white; background: #09090B; height: 100vh;"><h2>Akses Ditolak</h2><p>Modul ini eksklusif dan hanya dapat diakses melalui Client Portal Anda di Notion.</p></div>';
+    throw new Error('Direct access prevented');
+  }
+</script>
+</head>
+<body>
+
+<div class="header">
+<div class="wrap">
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
+    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
+  <img class="header-logo" alt="Passion Hax">
+  <div class="tag">Passion Hax · ARC Framework · Phase C — CAPTURE</div>
+  <h1>C5 — Career Operating System — Forward Momentum</h1>
+  <div class="sub">Standalone Module · Materi Teks + Video + Exercise</div>
+</div>
+</div>
+
+<div class="wrap">
+<div class="mat active" id="m5">
+<div class="video-embed-wrap" id="video-m5">
+    <div class="video-placeholder">
+      <div class="play-icon">▶</div>
+      <span>Video akan ditambahkan — ganti URL di bawah</span>
+    </div>
+    <!-- 
+      INSTRUKSI: Ganti seluruh div.video-placeholder di atas dengan iframe YouTube:
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+    -->
+  </div>
+
+  <div class="context-box">
+    <h3>Gambaran Besar</h3>
+<svg width="100%" viewBox="0 0 756 160" xmlns="http://www.w3.org/2000/svg" style="margin:18px 0 8px;display:block">
+    
+    <rect x="0" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+    <text x="122.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">AUDIT</text>
+    <text x="122.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">6 modul · Week 1–3</text>
+    <rect x="256" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+    <text x="378.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">REPOSITION</text>
+    <text x="378.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">10 modul · Week 4–9</text>
+    <rect x="512" y="0" width="244" height="52" rx="8" fill="rgba(34,197,94,0.12)" stroke="rgba(34,197,94,0.35)" stroke-width="1"/>
+    <text x="634.0" y="20" text-anchor="middle" fill="#22c55e" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">CAPTURE</text>
+    <text x="634.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">5 modul · Week 10–12</text>
+    
+    <line x1="248.0" y1="26" x2="260.0" y2="26" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <polygon points="260.0,22 260.0,30 264.0,26" fill="rgba(255,255,255,0.12)"/>
+    <line x1="504.0" y1="26" x2="516.0" y2="26" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <polygon points="516.0,22 516.0,30 520.0,26" fill="rgba(255,255,255,0.12)"/>
+    
+    <circle cx="314.0" cy="76" r="4" fill="#22c55e" opacity="0.4"/>
+    <circle cx="346.0" cy="76" r="4" fill="#22c55e" opacity="0.4"/>
+    <circle cx="378.0" cy="76" r="4" fill="#22c55e" opacity="0.4"/>
+    <circle cx="410.0" cy="76" r="4" fill="#22c55e" opacity="0.4"/>
+    <circle cx="442.0" cy="76" r="6" fill="#22c55e" opacity="1"/>
+    <circle cx="442.0" cy="76" r="10" fill="none" stroke="#22c55e" stroke-width="1" opacity="0.3"/>
+    <text x="378.0" y="98" text-anchor="middle" fill="#22c55e" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul C5 dari 5</text>
+    
+    <rect x="10.0" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="80.4" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Interview skill</text>
+    <line x1="151.8" y1="132" x2="157.8" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="158.8" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="229.20000000000002" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Differentiators</text>
+    <line x1="300.6" y1="132" x2="306.6" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="307.6" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="378.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Negosiasi</text>
+    <line x1="449.40000000000003" y1="132" x2="455.40000000000003" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="456.40000000000003" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="526.8000000000001" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Evaluasi offer</text>
+    <line x1="598.2" y1="132" x2="604.2" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="605.2" y="116" width="140.8" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
+    <text x="675.6" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Forward plan</text>
+  </svg>
+
+    <p>Program 90 hari ini berakhir. Tapi career management tidak pernah berakhir. Perbedaan antara profesional yang naik sekali lalu stuck lagi, dan yang terus naik? Yang kedua punya <strong>operating system</strong> — kebiasaan, review cycle, dan awareness yang berjalan terus.</p>
+    <p>Modul terakhir ini mencakup tiga hal: (1) <strong>Exit Playbook</strong> — cara resign yang profesional dan membangun reputasi jangka panjang. (2) <strong>Entry Playbook</strong> — cara memulai di posisi baru dengan tepat. (3) <strong>Career Operating System</strong> — quarterly review dan monthly habits yang menjaga 4 faktor tetap bergerak ke arah yang benar.</p>
+    <p><strong>Setelah modul ini:</strong> Anda punya sistem yang bisa dijalankan secara mandiri — tidak tergantung program atau coach — untuk memastikan Anda terus bergerak.</p>
+    <p><strong>Exercise terkait:</strong> C5 — 6-Month Forward Plan + Program Review</p>
+  </div>
+
+  <h2>Exit Playbook</h2>
+  <p>Cara Anda keluar dari posisi lama mempengaruhi reputasi jangka panjang. Indonesia itu kecil — industri lebih kecil lagi. Orang yang Anda tinggalkan hari ini bisa menjadi referensi, klien, atau kolaborator 5 tahun ke depan.</p>
+  <table>
+    <tr><th>Aspek</th><th>Yang Harus Dilakukan</th><th>Yang Harus Dihindari</th></tr>
+    <tr><td><strong>Timing</strong></td><td>Resign setelah offer letter ditandatangani — bukan setelah verbal offer</td><td>Resign sebelum ada written offer. Terlalu tergesa setelah konflik.</td></tr>
+    <tr><td><strong>Cara menyampaikan</strong></td><td>Langsung ke atasan langsung. Tatap muka kalau memungkinkan. Tone: grateful dan professional.</td><td>Melalui HR sebelum ke atasan. Lewat pesan teks atau email tanpa pemberitahuan dulu.</td></tr>
+    <tr><td><strong>Script</strong></td><td>"Saya ingin memberitahu bahwa saya telah memutuskan mengambil opportunity baru. Saya sangat menghargai pengalaman di sini dan ingin memastikan transisi yang sebaik mungkin."</td><td>Bercerita panjang tentang alasan pindah. Triumph. Atau terlalu defensive.</td></tr>
+    <tr><td><strong>Notice period</strong></td><td>Penuhi sesuai kontrak. Buat handover yang baik.</td><td>Shortcut kecuali kedua pihak setuju. Pergi tanpa dokumentasi.</td></tr>
+    <tr><td><strong>Handover</strong></td><td>Dokumentasikan semua. Buat semudah mungkin untuk pengganti. Minta reference letter sebelum pergi.</td><td>Meninggalkan chaos. Atau tidak minta reference saat hubungan masih hangat.</td></tr>
+  </table>
+
+  <div class="callout callout-amber"><strong>Template yang tersedia untuk exit:</strong> Gunakan <strong>Template_Letter_of_Resignation.docx</strong> untuk surat pengunduran diri. Kalau Anda menghadapi situasi PHK atau restrukturisasi dan perlu menegosiasikan paket pesangon, gunakan <strong>Template_Request_for_Severance.docx</strong> — surat ini membantu Anda menyusun argumen berbasis kontribusi dan value, bukan emosi.</div>
+
+  <h2>Entry Playbook — 30 Hari Pertama</h2>
+  <p>Aturan dasar: <strong>dengar lebih banyak dari berbicara di 30 hari pertama.</strong> Godaan untuk langsung "prove yourself" dengan inisiatif besar itu kuat — tapi Anda belum paham landscape. Yang terlihat seperti solusi dari luar bisa ternyata sudah dicoba dan gagal karena alasan yang tidak terlihat.</p>
+  <table>
+    <tr><th>Timeline</th><th>Fokus</th><th>Output</th></tr>
+    <tr><td><strong>Day 1-7</strong></td><td>Temui semua stakeholder kunci. Dengarkan. Pahami prioritas dan cara kerja.</td><td>Stakeholder map. Pemahaman konteks.</td></tr>
+    <tr><td><strong>Day 8-14</strong></td><td>Identifikasi quick wins — hal kecil yang bisa deliver cepat tanpa disruption besar.</td><td>Shortlist 2-3 quick wins yang realistis.</td></tr>
+    <tr><td><strong>Day 15-30</strong></td><td>Deliver 1-2 quick wins. Build trust. Set ekspektasi yang realistis.</td><td>Bukti early impact. Kepercayaan awal terbangun.</td></tr>
+  </table>
+  <p><strong>Satu hal yang sering terlewat:</strong> Set working hours dari awal. Kalau Anda membangun presedan "selalu tersedia" di bulan pertama, itu menjadi ekspektasi permanen. Lebih mudah mulai dengan boundary yang jelas daripada mencoba mengubahnya nanti.</p>
+
+  <h2>Career Operating System — Quarterly Review</h2>
+  <p>Setiap 3 bulan, luangkan 30-45 menit untuk menjawab 4 pertanyaan ini. Ini yang membedakan profesional yang naik sekali vs yang terus naik.</p>
+  <table>
+    <tr><th>Pertanyaan</th><th>Kalau Jawaban Mengkhawatirkan</th></tr>
+    <tr><td><strong>1. Apakah System saya masih di ceiling yang cukup?</strong> Industri berubah, organisasi berubah. Apa yang cukup 6 bulan lalu mungkin tidak lagi cukup.</td><td>Research: apakah industri/organisasi masih growth? Kalau stagnan — mulai migration plan.</td></tr>
+    <tr><td><strong>2. Apakah Capability saya masih langka?</strong> Skill yang langka hari ini bisa jadi komoditas dalam 2-3 tahun.</td><td>Cek: berapa orang di pasar sekarang punya skill yang sama? Kalau mulai banyak — add new dimension.</td></tr>
+    <tr><td><strong>3. Apakah Leverage saya meningkat?</strong> Apakah % high-impact work naik, atau sudah kembali ke pola "semua tergantung saya langsung"?</td><td>Gunakan output Leverage Sprint (Exercise R6) sebagai baseline: apakah aset yang dibangun saat itu masih aktif dan memberikan return? Kalau sudah mati atau tidak berkembang — buat sprint baru: automate, delegate, atau create IP.</td></tr>
+    <tr><td><strong>4. Apakah Bargaining saya terjaga?</strong> Masih punya 2+ opsi realistis? LinkedIn masih aktif? Masih visible ke pasar?</td><td>Re-activate: posting di LinkedIn, network outreach, mulai conversations lagi.</td></tr>
+  </table>
+
+  <h2>Monthly Leverage Habits</h2>
+  <p>15 menit per hari. Ini bukan "extra work" — ini investasi yang compound over time.</p>
+  <table>
+    <tr><th>Habit</th><th>Frekuensi</th><th>Estimasi Waktu</th></tr>
+    <tr><td>Buat 1 konten yang membangun authority (LinkedIn post, artikel, insight)</td><td>Mingguan</td><td>30-45 menit/minggu</td></tr>
+    <tr><td>Dokumentasikan 1 methodology/proses/template yang replicable</td><td>Bulanan</td><td>1-2 jam/bulan</td></tr>
+    <tr><td>Automate 1 task repetitif</td><td>Bulanan</td><td>1-2 jam/bulan</td></tr>
+    <tr><td>Nurture 5 relasi di network (komentar, pesan, kopi)</td><td>Mingguan</td><td>15 menit/hari</td></tr>
+    <tr><td>Review tren industri dan update skill assessment</td><td>Bulanan</td><td>30 menit/bulan</td></tr>
+  </table>
+
+  <div class="callout callout-green">
+    <strong>Pikiran Akhir:</strong> Program ini memberikan bahasa, tools, dan struktur. Tapi yang membuat perbedaan jangka panjang adalah apakah quarterly review dan monthly habits dijalankan secara konsisten. Career management bukan event — ini operating system. Sistem, bukan keberuntungan. Itu prinsip Passion Hax.
+  </div>
+
+  <div class="callout callout-amber">
+    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise C5 — re-evaluasi 4 faktor (before vs after), ukur gap yang sudah tertutup, dan buat 6-Month Forward Plan. Set reminder quarterly review di kalender sekarang juga, sebelum program selesai secara resmi.
+  </div>
+
+<div class="resources">
+  <div class="resources-title">Materi Pendukung — C5</div>
+  <div class="res-group">
+    <div class="res-group-label">Exercise</div>
+    <a class="res-link" href="#LINK_EXERCISE_C5" target="_blank"><span class="res-icon">📝</span>Exercise C5 — 6-Month Forward Plan + Program Review<span class="res-arrow">→</span></a>
+  </div>
+  <div class="res-group">
+    <div class="res-group-label">Template</div>
+    <a class="res-link" href="#LINK_TEMPLATE_RESIGNATION" target="_blank"><span class="res-icon">📄</span>Template Letter of Resignation<span class="res-arrow">→</span></a>
+    <a class="res-link" href="#LINK_TEMPLATE_SEVERANCE" target="_blank"><span class="res-icon">📄</span>Template Request for Severance<span class="res-arrow">→</span></a>
+  </div>
+  <div class="res-group">
+    <div class="res-group-label">Sample Document</div>
+    <a class="res-link" href="#LINK_SAMPLE_RESIGN_SINTA" target="_blank"><span class="res-icon">📋</span>Sample Resignation Letter — Sinta Rahayu<span class="res-arrow">→</span></a>
+    <a class="res-link" href="#LINK_SAMPLE_RESIGN_RIKO" target="_blank"><span class="res-icon">📋</span>Sample Resignation Letter — Riko Pratama<span class="res-arrow">→</span></a>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="footer">
+  Passion Hax · Career Tier Positioning · ARC Framework · C5<br>
+  Confidential — program materials
+</div>
+
+<script>
+  // Light/Dark Mode Logic
+  const themeToggle = document.getElementById('theme-toggle');
+  const htmlElement = document.documentElement;
+  const favicon = document.getElementById('favicon');
+  
+  function updateFavicon() {
+    if (favicon) {
+      favicon.href = htmlElement.getAttribute('data-theme') === 'light' ? '../favicon-light.png' : '../favicon-dark.png';
+    }
+  }
+
+  // Check local storage or system preference
+  const savedTheme = localStorage.getItem('ctp-theme');
+  const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  
+  if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
+    htmlElement.setAttribute('data-theme', 'light');
+  }
+  updateFavicon();
+  
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      if (htmlElement.getAttribute('data-theme') === 'light') {
+        htmlElement.removeAttribute('data-theme');
+        localStorage.setItem('ctp-theme', 'dark');
+      } else {
+        htmlElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('ctp-theme', 'light');
+      }
+      updateFavicon();
+    });
+  }
+</script>
+</body>
+</html>
