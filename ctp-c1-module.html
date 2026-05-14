@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C1 — Interview sebagai Value Demonstration | Phase C — CAPTURE | Passion Hax</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ox:#E8893A;--ox-bright:#F5A04A;--ox-dim:rgba(232,137,58,0.10);--ox-mid:rgba(232,137,58,0.28);
+  --ox-glow:rgba(232,137,58,0.18);
+  --bg:#09090B;--bg2:#0F0F12;--bg3:#141418;--bg4:#1A1A20;--bg5:#202028;
+  --border:rgba(255,255,255,0.06);--border-hi:rgba(232,137,58,0.35);--border-mid:rgba(255,255,255,0.10);
+  --text:#F5F3EE;--text2:#9A9A9F;--text3:#55555F;--text4:#3E3E46;
+  --font:'Plus Jakarta Sans',sans-serif;
+  --radius:14px;--radius-sm:10px;--radius-xs:6px;
+  --phase:#22c55e;--phase-rgb:34,197,94;
+  --amber:#E8893A;--blue:#3b82f6;--green:#22c55e;--red:#ef4444;--purple:#8b5cf6;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:14px;line-height:1.8}
+body::before{content:'';position:fixed;inset:0;background-image:
+  linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:32px 0;position:relative;z-index:2}
+.header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(circle,rgba(34,197,94,0.06) 0%,transparent 70%);pointer-events:none}
+.tag{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ox);display:flex;align-items:center;gap:8px}
+.tag::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ox);box-shadow:0 0 6px rgba(232,137,58,0.5)}
+h1{font-family:var(--font);font-size:clamp(22px,4vw,28px);font-weight:800;margin-top:12px;letter-spacing:-0.02em}
+.sub{font-size:12px;color:var(--text3);margin-top:6px;font-weight:300}
+.video-embed-wrap{margin:24px 0 28px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--bg2);position:relative}
+.video-embed-wrap iframe{width:100%;aspect-ratio:16/9;display:block;border:none}
+.video-placeholder{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,var(--bg3),var(--bg2));cursor:default}
+.video-placeholder .play-icon{width:56px;height:56px;border-radius:50%;background:rgba(34,197,94,0.15);border:1.5px solid rgba(34,197,94,0.3);display:flex;align-items:center;justify-content:center;color:var(--phase);font-size:20px;transition:all 0.2s}
+.video-placeholder:hover .play-icon{background:rgba(34,197,94,0.25);border-color:rgba(34,197,94,0.5);transform:scale(1.05)}
+.video-placeholder span{font-size:12px;color:var(--text3);font-weight:500;letter-spacing:0.04em}
+h2{font-family:var(--font);font-size:15px;font-weight:700;margin:32px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-0.01em}
+h3{font-size:13px;font-weight:700;margin:22px 0 8px;color:var(--ox)}
+p{color:var(--text2);margin-bottom:12px;font-size:13px;font-weight:300}
+p strong{color:var(--text);font-weight:600}
+.card{padding:22px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2);margin:18px 0;box-shadow:0 0 0 1px rgba(255,255,255,0.02) inset}
+.card-title{font-family:var(--font);font-weight:700;margin-bottom:10px;font-size:14px}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:12px}
+th{background:var(--bg3);color:var(--ox);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:left;border:1px solid rgba(255,255,255,0.06)}
+td{padding:11px 14px;border:1px solid rgba(255,255,255,0.04);color:var(--text2);vertical-align:top;font-weight:300}
+tr:nth-child(even) td{background:rgba(255,255,255,0.012)}
+tr:hover td{background:rgba(232,137,58,0.02)}
+.callout{padding:18px;border-radius:var(--radius-sm);margin:18px 0;font-size:13px;line-height:1.7;font-weight:300}
+.callout strong{color:var(--text);font-weight:600}
+.callout-blue{background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18)}
+.callout-amber{background:rgba(232,137,58,0.06);border:1px solid rgba(232,137,58,0.18)}
+.callout-green{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.18)}
+.callout-red{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18)}
+.callout-purple{background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.18)}
+.example{padding:18px;border-left:2px solid var(--ox);background:rgba(232,137,58,0.04);margin:14px 0;border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.example-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ox);margin-bottom:8px}
+.context-box{padding:22px;border:1px solid rgba(34,197,94,0.25);border-radius:var(--radius);background:rgba(34,197,94,0.035);margin:0 0 28px;box-shadow:0 0 20px rgba(34,197,94,0.04)}
+.context-box h3{color:var(--phase);margin-top:0;font-size:14px}
+.context-box p{margin-bottom:8px}.context-box p:last-child{margin-bottom:0}
+.footer{padding:36px 0;text-align:center;font-size:11px;color:var(--text4);border-top:1px solid var(--border);position:relative;z-index:2;font-weight:300}
+/* RESOURCE LINKS */
+.resources{margin:40px 0 20px;padding:28px;border:1px solid rgba(34,197,94,0.2);border-radius:var(--radius);background:var(--bg2)}
+.resources-title{font-family:var(--font);font-size:13px;font-weight:700;color:var(--phase);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.resources-title::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--phase);box-shadow:0 0 6px rgba(34,197,94,0.5)}
+.res-group{margin-bottom:16px}
+.res-group:last-child{margin-bottom:0}
+.res-group-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
+.res-link{display:flex;align-items:center;gap:10px;padding:10px 14px;margin-bottom:6px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-xs);color:var(--text2);font-size:13px;font-weight:400;text-decoration:none;transition:all 0.2s}
+.res-link:hover{border-color:rgba(34,197,94,0.3);color:var(--text);background:var(--bg4);transform:translateX(3px)}
+.res-link .res-icon{font-size:14px;flex-shrink:0;opacity:0.6}
+.res-link .res-arrow{margin-left:auto;font-size:12px;color:var(--text3);transition:color 0.2s}
+.res-link:hover .res-arrow{color:var(--phase)}
+@media(max-width:640px){
+  .header{padding:24px 0}
+  table{font-size:11px}
+  th,td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+<div class="wrap">
+  <div class="tag">Passion Hax · ARC Framework · Phase C — CAPTURE</div>
+  <h1>C1 — Interview sebagai Value Demonstration</h1>
+  <div class="sub">Standalone Module · Materi Teks + Video + Exercise</div>
+</div>
+</div>
+
+<div class="wrap">
+<div class="mat active" id="m1">
+<div class="video-embed-wrap" id="video-m1">
+    <div class="video-placeholder">
+      <div class="play-icon">▶</div>
+      <span>Video akan ditambahkan — ganti URL di bawah</span>
+    </div>
+    <!-- 
+      INSTRUKSI: Ganti seluruh div.video-placeholder di atas dengan iframe YouTube:
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+    -->
+  </div>
+
+  <div class="context-box">
+    <h3>Gambaran Besar</h3>
+<svg width="100%" viewBox="0 0 756 160" xmlns="http://www.w3.org/2000/svg" style="margin:18px 0 8px;display:block">
+    
+    <rect x="0" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+    <text x="122.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">AUDIT</text>
+    <text x="122.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">6 modul · Week 1–3</text>
+    <rect x="256" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+    <text x="378.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">REPOSITION</text>
+    <text x="378.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">10 modul · Week 4–9</text>
+    <rect x="512" y="0" width="244" height="52" rx="8" fill="rgba(34,197,94,0.12)" stroke="rgba(34,197,94,0.35)" stroke-width="1"/>
+    <text x="634.0" y="20" text-anchor="middle" fill="#22c55e" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">CAPTURE</text>
+    <text x="634.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">5 modul · Week 10–12</text>
+    
+    <line x1="248.0" y1="26" x2="260.0" y2="26" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <polygon points="260.0,22 260.0,30 264.0,26" fill="rgba(255,255,255,0.12)"/>
+    <line x1="504.0" y1="26" x2="516.0" y2="26" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <polygon points="516.0,22 516.0,30 520.0,26" fill="rgba(255,255,255,0.12)"/>
+    
+    <circle cx="314.0" cy="76" r="6" fill="#22c55e" opacity="1"/>
+    <circle cx="314.0" cy="76" r="10" fill="none" stroke="#22c55e" stroke-width="1" opacity="0.3"/>
+    <circle cx="346.0" cy="76" r="4" fill="#22c55e" opacity="0.15"/>
+    <circle cx="378.0" cy="76" r="4" fill="#22c55e" opacity="0.15"/>
+    <circle cx="410.0" cy="76" r="4" fill="#22c55e" opacity="0.15"/>
+    <circle cx="442.0" cy="76" r="4" fill="#22c55e" opacity="0.15"/>
+    <text x="378.0" y="98" text-anchor="middle" fill="#22c55e" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul C1 dari 5</text>
+    
+    <rect x="10.0" y="116" width="140.8" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
+    <text x="80.4" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Interview skill</text>
+    <line x1="151.8" y1="132" x2="157.8" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="158.8" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="229.20000000000002" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Differentiators</text>
+    <line x1="300.6" y1="132" x2="306.6" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="307.6" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="378.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Negosiasi</text>
+    <line x1="449.40000000000003" y1="132" x2="455.40000000000003" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="456.40000000000003" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="526.8000000000001" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Evaluasi offer</text>
+    <line x1="598.2" y1="132" x2="604.2" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="605.2" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="675.6" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Forward plan</text>
+  </svg>
+
+    <p>Pipeline dari Phase R sudah aktif. Interview akan datang — dan persiapan yang dilakukan sekarang, sebelum undangan masuk, yang menentukan hasilnya. Kebanyakan kandidat masuk interview dengan mindset "menjawab pertanyaan dengan benar." Ini mindset yang salah.</p>
+    <p><strong>Reframe yang kritis:</strong> Interview bukan ujian. Interview adalah platform di mana Anda mendemonstrasikan bahwa value yang bisa Anda ciptakan sesuai dengan kebutuhan organisasi. Setiap jawaban harus mengandung satu hal: bukti bahwa Anda bisa create value.</p>
+    <p>Modul ini memberikan framework per tipe pertanyaan, bank pertanyaan yang sering muncul, dan panduan pertanyaan strategis yang membuat Anda tampak sebagai thinker — bukan hanya responder.</p>
+    <p><strong>Setelah modul ini:</strong> Anda punya framework untuk menjawab setiap kategori pertanyaan, dan bisa membedakan antara jawaban yang sekedar menjawab vs jawaban yang mendemonstrasikan value.</p>
+    <p><strong>Exercise terkait:</strong> C1 — Interview Simulation (rekam, review, refine)</p>
+  </div>
+
+  <h2>Prinsip Dasar: Setiap Jawaban = Evidence of Value</h2>
+  <p>Murid yang mengerjakan ujian berusaha "benar." Profesional yang mendemonstrasikan value berusaha "relevan dan terbukti." Perbedaannya konkret: murid menjawab pertanyaan "Apa kelemahan Anda?" dengan teori. Profesional menjawab dengan evidence — apa kelemahannya, apa yang sudah dilakukan untuk mengatasinya, dan apa hasilnya yang terukur.</p>
+  <p>Setiap jawaban harus terstruktur: <strong>konteks → aksi spesifik yang Anda ambil → hasil yang terukur.</strong> Ini berlaku untuk semua kategori pertanyaan, bukan hanya behavioral.</p>
+
+  <h2>Framework Jawaban per Pertanyaan Umum</h2>
+  <table>
+    <tr><th style="width:30%">Pertanyaan</th><th>Framework Jawaban</th><th style="width:20%">Kesalahan Umum</th></tr>
+    <tr><td><strong>"Ceritakan tentang diri Anda."</strong></td><td>Opening statement: Hook → 3 alasan kenapa great fit → kenapa perusahaan INI. Maksimal 2 menit. Bukan bio kronologis. Ambil langsung dari R10.</td><td>Mulai dari "Saya lahir di..." atau cerita dari awal karir</td></tr>
+    <tr><td><strong>"Kenapa Anda mau pindah?"</strong></td><td>Positive framing: "Saya mencari [opportunity spesifik yang ada di sini] yang selaras dengan [arah karir saya]." Tidak perlu cerita panjang. Tidak boleh komplain tentang tempat lama.</td><td>Komplain tentang atasan/perusahaan lama. Atau terlalu defensive.</td></tr>
+    <tr><td><strong>"Apa kekuatan terbesar Anda?"</strong></td><td>Pilih 1 yang paling relevan dengan JD → STAR story sebagai bukti. Bukan adjektif ("saya pekerja keras") tapi demonstrable capability dengan angka.</td><td>Menyebut sifat umum tanpa bukti</td></tr>
+    <tr><td><strong>"Apa kelemahan Anda?"</strong></td><td>Acknowledge → Context → Action → Evidence of improvement. Jujur tapi tunjukkan growth. Pilih kelemahan yang genuine tapi bukan dealbreaker untuk role ini.</td><td>Humble-brag: "Saya terlalu perfeksionis." Atau kelemahan yang critical untuk role.</td></tr>
+    <tr><td><strong>"Kenapa kami harus hire Anda?"</strong></td><td>CVS + 2 evidence points yang langsung address kebutuhan mereka. "Karena saya [CVS], dan spesifiknya saya sudah [achievement 1 — angka] dan [achievement 2 — angka] yang directly relevant untuk [challenge mereka]."</td><td>Generic: "Saya pekerja keras dan berdedikasi."</td></tr>
+    <tr><td><strong>"Di mana Anda dalam 5 tahun?"</strong></td><td>Tunjukkan ambisi yang realistis + alignment dengan company growth. "Saya ingin berkembang ke [level/domain], dan saya melihat [company] sebagai tempat yang memungkinkan itu karena [alasan spesifik]."</td><td>Terlalu ambisius (CEO dalam 2 tahun) atau terlalu pasif (tidak tahu)</td></tr>
+    <tr><td><strong>"Berapa ekspektasi gaji Anda?"</strong></td><td>Kalau bisa, deflect dulu: "Saya ingin memahami scope role-nya dulu — bisa share range budget?" Kalau harus jawab: berikan range (bukan angka tunggal). Bottom of range = target Anda, bukan minimum.</td><td>Menyebut angka terlalu rendah, atau mengatakan "terserah."</td></tr>
+  </table>
+
+  <h2>Behavioral Questions — Framework STAR (Value Version)</h2>
+  <p>STAR standar: Situation → Task → Action → Result. Versi Passion Hax: Result WAJIB mengandung angka atau impact terukur. Tanpa itu, cerita Anda sama dengan semua kandidat lain.</p>
+  <table>
+    <tr><th>Kategori</th><th>Contoh Pertanyaan</th><th>Yang Harus Ada di Jawaban</th></tr>
+    <tr><td><strong>Leadership</strong></td><td>"Ceritakan saat Anda memimpin tim melalui situasi sulit." / "Bagaimana Anda handle anggota tim yang underperform?"</td><td>Konteks tantangan + aksi spesifik Anda (bukan "tim kami") + outcome terukur (retention, performance, project delivered)</td></tr>
+    <tr><td><strong>Problem-Solving</strong></td><td>"Masalah paling kompleks yang pernah Anda solve?" / "Bagaimana Anda approach situasi tanpa data yang cukup?"</td><td>Kompleksitas masalah + metodologi berpikir + solusi yang Anda rancang + impact kuantitatif</td></tr>
+    <tr><td><strong>Conflict</strong></td><td>"Ceritakan saat tidak setuju dengan atasan." / "Bagaimana Anda handle konflik antar tim?"</td><td>Situasi yang objektif + perspektif Anda + cara penyelesaian + outcome relasional/bisnis</td></tr>
+    <tr><td><strong>Initiative</strong></td><td>"Ceritakan saat Anda identify opportunity tanpa diminta." / "Proyek apa yang Anda mulai sendiri?"</td><td>Gap yang Anda lihat + mengapa penting + aksi tanpa diminta + dampak yang dihasilkan</td></tr>
+    <tr><td><strong>Kegagalan</strong></td><td>"Ceritakan kegagalan terbesar Anda." / "Apa yang Anda lakukan berbeda kalau bisa mengulang?"</td><td>Kegagalan yang genuine (bukan direkayasa terlihat positif) + learning konkret + bagaimana learning itu diaplikasikan</td></tr>
+    <tr><td><strong>Adaptabilitas</strong></td><td>"Ceritakan saat prioritas berubah drastis." / "Bagaimana Anda adjust saat situasi tidak sesuai rencana?"</td><td>Perubahan yang terjadi + cara berpikir ulang + eksekusi yang adjusted + outcome</td></tr>
+  </table>
+
+  <h2>Pertanyaan Strategis untuk Interviewer</h2>
+  <p>Pertanyaan yang Anda ajukan = evidence dari kedalaman berpikir Anda. Jangan tanyakan hal yang bisa di-Google. Jangan tanyakan soal kompensasi di interview awal. Tanyakan sesuatu yang menunjukkan Anda sudah berpikir tentang bagaimana berkontribusi.</p>
+  <table>
+    <tr><th>Kategori</th><th>Contoh Pertanyaan Kuat</th><th>Mengapa Efektif</th></tr>
+    <tr><td><strong>Strategic</strong></td><td>"Apa tantangan terbesar yang tim ini hadapi dalam 6 bulan ke depan, dan bagaimana role ini berkontribusi untuk mengatasinya?" / "Bagaimana perusahaan mengukur keberhasilan di posisi ini?"</td><td>Menunjukkan Anda berpikir tentang kontribusi, bukan sekadar mendapat pekerjaan</td></tr>
+    <tr><td><strong>Role-specific</strong></td><td>"Apa yang membedakan top performer di role ini dari yang average?" / "Apa yang diharapkan dari orang di posisi ini di 90 hari pertama?"</td><td>Menunjukkan Anda ingin tahu standar sukses yang konkret</td></tr>
+    <tr><td><strong>Team/Culture</strong></td><td>"Bagaimana keputusan biasanya dibuat di tim ini?" / "Apa yang membuat Anda sendiri bertahan dan berkembang di sini?"</td><td>Menunjukkan Anda mengevaluasi fit, bukan desperate</td></tr>
+    <tr><td><strong>Growth</strong></td><td>"Bagaimana career progression untuk orang di role ini, berdasarkan contoh nyata?" / "Apakah ada anggaran untuk pengembangan profesional?"</td><td>Menunjukkan orientasi jangka panjang</td></tr>
+  </table>
+
+  <div class="callout callout-amber">
+    <strong>Satu aturan tentang pertanyaan:</strong> Selalu tutup setiap interview dengan pertanyaan ini: "Apakah ada hal dari background atau pengalaman saya yang membuat Anda ragu bahwa saya fit untuk role ini?" Ini memberi Anda kesempatan untuk address keberatan sebelum Anda keluar dari ruangan.
+  </div>
+
+  <div class="callout callout-green">
+    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise C1 — rekam diri menjawab 5 pertanyaan inti. Review recording. Perhatikan: filler words, eye contact, panjang jawaban, dan apakah setiap jawaban mengandung angka/impact. Bawa recording ke coaching call.
+  </div>
+
+<div class="resources">
+  <div class="resources-title">Materi Pendukung — C1</div>
+  <div class="res-group">
+    <div class="res-group-label">Exercise</div>
+    <a class="res-link" href="#LINK_EXERCISE_C1" target="_blank"><span class="res-icon">📝</span>Exercise C1 — Interview Simulation<span class="res-arrow">→</span></a>
+  </div>
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+  Passion Hax · Career Tier Positioning · ARC Framework · C1<br>
+  Confidential — program materials
+</div>
+
+</body>
+</html>
