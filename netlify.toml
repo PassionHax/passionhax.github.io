@@ -1,0 +1,7 @@
+[build]
+  publish = "ctp-modules"
+ 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "ALLOWALL"
