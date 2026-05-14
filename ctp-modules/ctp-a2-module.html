@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A2 — Membaca Hasil Audit — Scoring Interpretation Guide | Phase A — AUDIT | Passion Hax</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ox:#E8893A;--ox-bright:#F5A04A;--ox-dim:rgba(232,137,58,0.10);--ox-mid:rgba(232,137,58,0.28);
+  --ox-glow:rgba(232,137,58,0.18);
+  --bg:#09090B;--bg2:#0F0F12;--bg3:#141418;--bg4:#1A1A20;--bg5:#202028;
+  --border:rgba(255,255,255,0.06);--border-hi:rgba(232,137,58,0.35);--border-mid:rgba(255,255,255,0.10);
+  --text:#F5F3EE;--text2:#9A9A9F;--text3:#55555F;--text4:#3E3E46;
+  --font:'Plus Jakarta Sans',sans-serif;
+  --radius:14px;--radius-sm:10px;--radius-xs:6px;
+  --phase:#8b5cf6;--phase-rgb:139,92,246;
+  --amber:#E8893A;--blue:#3b82f6;--green:#22c55e;--red:#ef4444;--purple:#8b5cf6;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:14px;line-height:1.8}
+body::before{content:'';position:fixed;inset:0;background-image:
+  linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:32px 0;position:relative;z-index:2}
+.header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(circle,rgba(139,92,246,0.06) 0%,transparent 70%);pointer-events:none}
+.tag{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ox);display:flex;align-items:center;gap:8px}
+.tag::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ox);box-shadow:0 0 6px rgba(232,137,58,0.5)}
+h1{font-family:var(--font);font-size:clamp(22px,4vw,28px);font-weight:800;margin-top:12px;letter-spacing:-0.02em}
+.sub{font-size:12px;color:var(--text3);margin-top:6px;font-weight:300}
+.video-embed-wrap{margin:24px 0 28px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--bg2);position:relative}
+.video-embed-wrap iframe{width:100%;aspect-ratio:16/9;display:block;border:none}
+.video-placeholder{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,var(--bg3),var(--bg2));cursor:default}
+.video-placeholder .play-icon{width:56px;height:56px;border-radius:50%;background:rgba(139,92,246,0.15);border:1.5px solid rgba(139,92,246,0.3);display:flex;align-items:center;justify-content:center;color:var(--phase);font-size:20px;transition:all 0.2s}
+.video-placeholder:hover .play-icon{background:rgba(139,92,246,0.25);border-color:rgba(139,92,246,0.5);transform:scale(1.05)}
+.video-placeholder span{font-size:12px;color:var(--text3);font-weight:500;letter-spacing:0.04em}
+h2{font-family:var(--font);font-size:15px;font-weight:700;margin:32px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-0.01em}
+h3{font-size:13px;font-weight:700;margin:22px 0 8px;color:var(--ox)}
+p{color:var(--text2);margin-bottom:12px;font-size:13px;font-weight:300}
+p strong{color:var(--text);font-weight:600}
+.card{padding:22px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2);margin:18px 0;box-shadow:0 0 0 1px rgba(255,255,255,0.02) inset}
+.card-title{font-family:var(--font);font-weight:700;margin-bottom:10px;font-size:14px}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:12px}
+th{background:var(--bg3);color:var(--ox);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:left;border:1px solid rgba(255,255,255,0.06)}
+td{padding:11px 14px;border:1px solid rgba(255,255,255,0.04);color:var(--text2);vertical-align:top;font-weight:300}
+tr:nth-child(even) td{background:rgba(255,255,255,0.012)}
+tr:hover td{background:rgba(232,137,58,0.02)}
+.callout{padding:18px;border-radius:var(--radius-sm);margin:18px 0;font-size:13px;line-height:1.7;font-weight:300}
+.callout strong{color:var(--text);font-weight:600}
+.callout-blue{background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18)}
+.callout-amber{background:rgba(232,137,58,0.06);border:1px solid rgba(232,137,58,0.18)}
+.callout-green{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.18)}
+.callout-red{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18)}
+.callout-purple{background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.18)}
+.example{padding:18px;border-left:2px solid var(--ox);background:rgba(232,137,58,0.04);margin:14px 0;border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.example-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ox);margin-bottom:8px}
+.context-box{padding:22px;border:1px solid rgba(139,92,246,0.25);border-radius:var(--radius);background:rgba(139,92,246,0.035);margin:0 0 28px;box-shadow:0 0 20px rgba(139,92,246,0.04)}
+.context-box h3{color:var(--phase);margin-top:0;font-size:14px}
+.context-box p{margin-bottom:8px}.context-box p:last-child{margin-bottom:0}
+.footer{padding:36px 0;text-align:center;font-size:11px;color:var(--text4);border-top:1px solid var(--border);position:relative;z-index:2;font-weight:300}
+/* RESOURCE LINKS */
+.resources{margin:40px 0 20px;padding:28px;border:1px solid rgba(139,92,246,0.2);border-radius:var(--radius);background:var(--bg2)}
+.resources-title{font-family:var(--font);font-size:13px;font-weight:700;color:var(--phase);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.resources-title::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--phase);box-shadow:0 0 6px rgba(139,92,246,0.5)}
+.res-group{margin-bottom:16px}
+.res-group:last-child{margin-bottom:0}
+.res-group-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
+.res-link{display:flex;align-items:center;gap:10px;padding:10px 14px;margin-bottom:6px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-xs);color:var(--text2);font-size:13px;font-weight:400;text-decoration:none;transition:all 0.2s}
+.res-link:hover{border-color:rgba(139,92,246,0.3);color:var(--text);background:var(--bg4);transform:translateX(3px)}
+.res-link .res-icon{font-size:14px;flex-shrink:0;opacity:0.6}
+.res-link .res-arrow{margin-left:auto;font-size:12px;color:var(--text3);transition:color 0.2s}
+.res-link:hover .res-arrow{color:var(--phase)}
+@media(max-width:640px){
+  .header{padding:24px 0}
+  table{font-size:11px}
+  th,td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+<div class="wrap">
+  <div class="tag">Passion Hax · ARC Framework · Phase A — AUDIT</div>
+  <h1>A2 — Membaca Hasil Audit — Scoring Interpretation Guide</h1>
+  <div class="sub">Standalone Module · Materi Teks + Video + Exercise</div>
+</div>
+</div>
+
+<div class="wrap">
+<div class="mat active" id="m2">
+<div class="video-embed-wrap" id="video-m2">
+    <div class="video-placeholder">
+      <div class="play-icon">▶</div>
+      <span>Video akan ditambahkan — ganti URL di bawah</span>
+    </div>
+    <!-- 
+      INSTRUKSI: Ganti seluruh div.video-placeholder di atas dengan iframe YouTube:
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+    -->
+  </div>
+
+  <div class="context-box">
+    <h3>Gambaran Besar</h3>
+<svg width="100%" viewBox="0 0 756 160" xmlns="http://www.w3.org/2000/svg" style="margin:18px 0 8px;display:block">
+    
+    <rect x="0" y="0" width="244" height="52" rx="8" fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.35)" stroke-width="1"/>
+    <text x="122.0" y="20" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">AUDIT</text>
+    <text x="122.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">6 modul · Week 1–3</text>
+    <rect x="256" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+    <text x="378.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">REPOSITION</text>
+    <text x="378.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">10 modul · Week 4–9</text>
+    <rect x="512" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+    <text x="634.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">CAPTURE</text>
+    <text x="634.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">5 modul · Week 10–12</text>
+    
+    <line x1="248.0" y1="26" x2="260.0" y2="26" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <polygon points="260.0,22 260.0,30 264.0,26" fill="rgba(255,255,255,0.12)"/>
+    <line x1="504.0" y1="26" x2="516.0" y2="26" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <polygon points="516.0,22 516.0,30 520.0,26" fill="rgba(255,255,255,0.12)"/>
+    
+    <circle cx="298.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="330.0" cy="76" r="6" fill="#8b5cf6" opacity="1"/>
+    <circle cx="330.0" cy="76" r="10" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+    <circle cx="362.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <circle cx="394.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <circle cx="426.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <circle cx="458.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <text x="378.0" y="98" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul A2 dari 6</text>
+    
+    <rect x="10.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="68.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Pahami model</text>
+    <line x1="127.0" y1="132" x2="133.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="134.0" y="116" width="116.0" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
+    <text x="192.0" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Baca skor</text>
+    <line x1="251.0" y1="132" x2="257.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="258.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="316.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Diagnosa constraint</text>
+    <line x1="375.0" y1="132" x2="381.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="382.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="440.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Ukur gap</text>
+    <line x1="499.0" y1="132" x2="505.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="506.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="564.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Audit skill</text>
+    <line x1="623.0" y1="132" x2="629.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="630.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="688.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Arah reposisi</text>
+  </svg>
+
+    <p>Setelah memahami 4 faktor Career Value di modul sebelumnya, sekarang saatnya <strong>membaca data Audit Anda sendiri</strong>. Career Tier Audit sudah memberikan skor 1-10 untuk setiap faktor. Tapi angka tanpa konteks tidak berguna — modul ini membantu Anda menerjemahkan setiap skor ke dalam implikasi karir yang spesifik.</p>
+    <p>Tujuannya bukan sekadar tahu "skor saya berapa," tapi memahami <strong>apa arti skor itu untuk langkah selanjutnya</strong>. Skor System 4 punya implikasi yang sangat berbeda dari skor System 7 — dan strategi yang dibutuhkan juga berbeda.</p>
+    <p><strong>Setelah modul ini:</strong> Anda bisa menginterpretasi setiap skor Audit di konteks karir Anda sendiri, mengidentifikasi area yang perlu ditantang, dan mulai melihat pola constraint.</p>
+    <p><strong>Exercise terkait:</strong> A2 — Audit Interpretation Sheet (tulis interpretasi personal per skor)</p>
+  </div>
+
+  <h2>Cara Baca Skor Audit</h2>
+  <p>Skor Audit bukan rapor. Tidak ada skor yang "baik" atau "buruk" — yang ada hanya data yang menunjukkan posisi saat ini. Skor rendah bukan berarti gagal. Skor tinggi bukan berarti aman. Yang penting: <strong>apa implikasinya untuk strategi repositioning?</strong></p>
+
+  <h2>System Score (1–10)</h2>
+  <table>
+    <tr><th style="width:12%">Range</th><th style="width:25%">Kategori Industri</th><th>Arti & Implikasi</th></tr>
+    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Sektor publik reguler, NGO, manufaktur tradisional kecil</td><td>Ceiling sangat terbatas. Bahkan posisi paling senior di sistem ini kemungkinan tidak mencapai target income. <strong>Implikasi:</strong> Kalau target ≥ Rp 20jt, migrasi kemungkinan diperlukan.</td></tr>
+    <tr><td style="color:var(--red)"><strong>3.5–5</strong></td><td>BUMN, instansi "sultan", regulator, banking retail, manufaktur besar</td><td>Ceiling moderat. Ada ruang growth tapi terbatas di level tertentu. <strong>Implikasi:</strong> Mungkin cukup untuk target Rp 15-20jt tapi sulit lebih dari itu tanpa pindah ke sistem yang lebih tinggi.</td></tr>
+    <tr><td style="color:var(--amber)"><strong>5.5–7</strong></td><td>Banking korporat, consulting mid-market, consumer goods multinasional, healthcare</td><td>Ceiling lumayan. Revenue proximity lebih tinggi. <strong>Implikasi:</strong> Bisa capai Rp 20-30jt di level senior. Optimasi di dalam sistem mungkin cukup.</td></tr>
+    <tr><td style="color:var(--green)"><strong>7.5–9</strong></td><td>Top consulting, fintech, digital, e-commerce scaled</td><td>Ceiling tinggi. Revenue proximity kuat. <strong>Implikasi:</strong> Rp 30-80jt realistis di senior/director level. Fokus ke Capability, Leverage, Bargaining.</td></tr>
+    <tr><td style="color:var(--green)"><strong>9–10</strong></td><td>Tech/SaaS global, AI, venture-backed unicorn</td><td>Ceiling sangat tinggi. <strong>Implikasi:</strong> Rp 50jt+ realistis. System bukan constraint — kalau income masih rendah, pasti faktor lain yang menahan.</td></tr>
+  </table>
+
+  <h2>Capability Score (1–10)</h2>
+  <table>
+    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
+    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Skill umum, banyak substitusi di pasar</td><td>Mudah digantikan. Tidak punya diferensiator yang jelas. <strong>Implikasi:</strong> Perlu deepening atau menemukan kombinasi langka. Jangan fokus ke banyak hal — fokus ke irisan yang bernilai tinggi.</td></tr>
+    <tr><td style="color:var(--amber)"><strong>4–6</strong></td><td>Kompeten, punya beberapa skill yang di-demand</td><td>Sudah punya fondasi. Tapi belum cukup langka untuk punya pricing power signifikan. <strong>Implikasi:</strong> Cari kombinasi skill yang membentuk Capability Moat.</td></tr>
+    <tr><td style="color:var(--green)"><strong>7–8</strong></td><td>Kombinasi langka, sulit digantikan</td><td>Punya pricing power. Perusahaan akan kesulitan cari pengganti. <strong>Implikasi:</strong> Capability bukan constraint utama — fokus ke Leverage dan Bargaining untuk menangkap value.</td></tr>
+    <tr><td style="color:var(--green)"><strong>9–10</strong></td><td>Sangat langka, hampir tidak ada substitusi</td><td>Top-tier capability. <strong>Implikasi:</strong> Value sudah tinggi — pertanyaannya apakah sudah ditangkap (Bargaining) dan di-scale (Leverage).</td></tr>
+  </table>
+
+  <h2>Leverage Score (1–10)</h2>
+  <table>
+    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
+    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Fully manual. 100% output tergantung kehadiran langsung</td><td>Kalau sakit sehari, output berhenti. Posisi paling rentan dan paling melelahkan. <strong>Implikasi:</strong> Income di-cap oleh jam kerja fisik. Perlu mulai build sistem, delegasi, atau konten.</td></tr>
+    <tr><td style="color:var(--amber)"><strong>4–5</strong></td><td>Ada sedikit sistem, mungkin tim kecil, tapi belum bisa jalan tanpa kehadiran</td><td>Sudah mulai delegate, tapi masih micromanage. <strong>Implikasi:</strong> Ada fondasi — perlu diperkuat jadi autonomous systems.</td></tr>
+    <tr><td style="color:var(--green)"><strong>6–7</strong></td><td>Sistem atau tim nyata yang mengamplifikasi output</td><td>Mulai bisa "tidak hadir" beberapa hari dan output tetap jalan. <strong>Implikasi:</strong> Tinggal diperkuat dan diskalakan.</td></tr>
+    <tr><td style="color:var(--green)"><strong>8–10</strong></td><td>Sistem berjalan tanpa kehadiran aktif</td><td>Territory platform, IP, atau organisasi self-sustaining. <strong>Implikasi:</strong> Leverage bukan constraint — fokus ke faktor lain.</td></tr>
+  </table>
+
+  <h2>Bargaining Score (1–10)</h2>
+  <table>
+    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
+    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Hampir tidak punya opsi. Terikat satu employer, tidak dikenal di luar organisasi</td><td>Kalau di-offer gaji segitu, terima karena tidak ada alternatif. <strong>Implikasi:</strong> Ini constraint paling actionable dan paling sering ditemui. LinkedIn rebuild, network activation, dan pipeline building bisa dimulai minggu ini.</td></tr>
+    <tr><td style="color:var(--amber)"><strong>4–5</strong></td><td>Beberapa opsi tapi terbatas. Bisa pindah kalau mau, tapi belum punya reputasi eksternal kuat</td><td>Ada mobilitas, tapi belum optimal. <strong>Implikasi:</strong> Sedikit push di visibility bisa unlock peningkatan signifikan.</td></tr>
+    <tr><td style="color:var(--green)"><strong>6–7</strong></td><td>Mulai dikenal di luar organisasi. Network yang bisa diaktivasi</td><td>Cukup mudah pindah. <strong>Implikasi:</strong> Bargaining sudah decent — tapi bisa diperkuat dengan pipeline aktif.</td></tr>
+    <tr><td style="color:var(--green)"><strong>8–10</strong></td><td>Personal brand kuat, banyak opsi aktif, sering di-approach</td><td>Negosiasi dari posisi kuat karena punya banyak alternatif. <strong>Implikasi:</strong> Bargaining bukan constraint. Fokus ke Leverage atau System.</td></tr>
+  </table>
+
+  <h2>Menentukan Constraint Utama dari Skor</h2>
+  <p>Constraint utama <strong>bukan selalu yang paling rendah skornya</strong>. Kadang faktor yang paling menahan bukan yang paling rendah. Contoh: seorang profesional dengan Capability 7 dan Bargaining 2 — Capability-nya bagus, tapi karena Bargaining sangat rendah, ia tidak menangkap value yang diciptakan. Bargaining yang jadi bottleneck, bukan Capability.</p>
+  <p>Beberapa profesional punya dua constraint yang sama kuatnya. Dalam kasus ini, prioritaskan berdasarkan: (1) mana yang paling quick-win, (2) mana yang paling blocking. Biasanya: perbaiki Bargaining dulu (quick-win) → lalu address System atau Leverage (longer play).</p>
+
+  <div class="callout callout-purple">
+    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise A2 — tulis interpretasi untuk setiap skor di konteks karir Anda sendiri. Bukan generic, tapi spesifik. Coach akan menantang area yang paling sering menjadi blind spot: seberapa mudah Anda digantikan (Capability) dan berapa opsi yang benar-benar Anda punya (Bargaining).
+  </div>
+
+<div class="resources">
+  <div class="resources-title">Materi Pendukung — A2</div>
+  <div class="res-group">
+    <div class="res-group-label">Exercise</div>
+    <a class="res-link" href="#LINK_EXERCISE_A2" target="_blank"><span class="res-icon">📝</span>Exercise A2 — Audit Interpretation Sheet<span class="res-arrow">→</span></a>
+  </div>
+</div>
+</div>
+
+<!-- MATERI A3 -->
+</div>
+
+<div class="footer">
+  Passion Hax · Career Tier Positioning · ARC Framework · A2<br>
+  Confidential — program materials
+</div>
+
+</body>
+</html>
