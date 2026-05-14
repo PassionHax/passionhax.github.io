@@ -4,4 +4,4 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "frame-ancestors 'self' https://*.notion.so https://*.notion.site;"
+    Content-Security-Policy = "frame-ancestors 'self' https://*.notion.so https://*.notion.site notion: applewebdata: capacitor: file:;"

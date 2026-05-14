@@ -147,8 +147,9 @@ tr:hover td{background:rgba(232,137,58,0.02)}
   const isIframe = window.self !== window.top;
   const urlParams = new URLSearchParams(window.location.search);
   const isCreatorBypass = urlParams.get('mode') === 'creator';
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   
-  if (!isIframe && !isCreatorBypass) {
+  if (!isIframe && !isCreatorBypass && !isIOS) {
     document.documentElement.innerHTML = '<div style="font-family: sans-serif; text-align: center; padding: 50px; color: white; background: #09090B; height: 100vh;"><h2>Akses Ditolak</h2><p>Modul ini eksklusif dan hanya dapat diakses melalui Client Portal Anda di Notion.</p></div>';
     throw new Error('Direct access prevented');
   }
