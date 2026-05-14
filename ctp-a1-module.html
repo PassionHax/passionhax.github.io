@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1 — Career Value Model — 4 Faktor Penentu Income | Phase A — AUDIT | Passion Hax</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ox:#E8893A;--ox-bright:#F5A04A;--ox-dim:rgba(232,137,58,0.10);--ox-mid:rgba(232,137,58,0.28);
+  --ox-glow:rgba(232,137,58,0.18);
+  --bg:#09090B;--bg2:#0F0F12;--bg3:#141418;--bg4:#1A1A20;--bg5:#202028;
+  --border:rgba(255,255,255,0.06);--border-hi:rgba(232,137,58,0.35);--border-mid:rgba(255,255,255,0.10);
+  --text:#F5F3EE;--text2:#9A9A9F;--text3:#55555F;--text4:#3E3E46;
+  --font:'Plus Jakarta Sans',sans-serif;
+  --radius:14px;--radius-sm:10px;--radius-xs:6px;
+  --phase:#8b5cf6;--phase-rgb:139,92,246;
+  --amber:#E8893A;--blue:#3b82f6;--green:#22c55e;--red:#ef4444;--purple:#8b5cf6;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:14px;line-height:1.8}
+body::before{content:'';position:fixed;inset:0;background-image:
+  linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:32px 0;position:relative;z-index:2}
+.header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(circle,rgba(139,92,246,0.06) 0%,transparent 70%);pointer-events:none}
+.tag{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ox);display:flex;align-items:center;gap:8px}
+.tag::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ox);box-shadow:0 0 6px rgba(232,137,58,0.5)}
+h1{font-family:var(--font);font-size:clamp(22px,4vw,28px);font-weight:800;margin-top:12px;letter-spacing:-0.02em}
+.sub{font-size:12px;color:var(--text3);margin-top:6px;font-weight:300}
+.video-embed-wrap{margin:24px 0 28px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--bg2);position:relative}
+.video-embed-wrap iframe{width:100%;aspect-ratio:16/9;display:block;border:none}
+.video-placeholder{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,var(--bg3),var(--bg2));cursor:default}
+.video-placeholder .play-icon{width:56px;height:56px;border-radius:50%;background:rgba(139,92,246,0.15);border:1.5px solid rgba(139,92,246,0.3);display:flex;align-items:center;justify-content:center;color:var(--phase);font-size:20px;transition:all 0.2s}
+.video-placeholder:hover .play-icon{background:rgba(139,92,246,0.25);border-color:rgba(139,92,246,0.5);transform:scale(1.05)}
+.video-placeholder span{font-size:12px;color:var(--text3);font-weight:500;letter-spacing:0.04em}
+h2{font-family:var(--font);font-size:15px;font-weight:700;margin:32px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-0.01em}
+h3{font-size:13px;font-weight:700;margin:22px 0 8px;color:var(--ox)}
+p{color:var(--text2);margin-bottom:12px;font-size:13px;font-weight:300}
+p strong{color:var(--text);font-weight:600}
+.card{padding:22px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2);margin:18px 0;box-shadow:0 0 0 1px rgba(255,255,255,0.02) inset}
+.card-title{font-family:var(--font);font-weight:700;margin-bottom:10px;font-size:14px}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:12px}
+th{background:var(--bg3);color:var(--ox);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:left;border:1px solid rgba(255,255,255,0.06)}
+td{padding:11px 14px;border:1px solid rgba(255,255,255,0.04);color:var(--text2);vertical-align:top;font-weight:300}
+tr:nth-child(even) td{background:rgba(255,255,255,0.012)}
+tr:hover td{background:rgba(232,137,58,0.02)}
+.callout{padding:18px;border-radius:var(--radius-sm);margin:18px 0;font-size:13px;line-height:1.7;font-weight:300}
+.callout strong{color:var(--text);font-weight:600}
+.callout-blue{background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18)}
+.callout-amber{background:rgba(232,137,58,0.06);border:1px solid rgba(232,137,58,0.18)}
+.callout-green{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.18)}
+.callout-red{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18)}
+.callout-purple{background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.18)}
+.example{padding:18px;border-left:2px solid var(--ox);background:rgba(232,137,58,0.04);margin:14px 0;border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.example-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ox);margin-bottom:8px}
+.context-box{padding:22px;border:1px solid rgba(139,92,246,0.25);border-radius:var(--radius);background:rgba(139,92,246,0.035);margin:0 0 28px;box-shadow:0 0 20px rgba(139,92,246,0.04)}
+.context-box h3{color:var(--phase);margin-top:0;font-size:14px}
+.context-box p{margin-bottom:8px}.context-box p:last-child{margin-bottom:0}
+.footer{padding:36px 0;text-align:center;font-size:11px;color:var(--text4);border-top:1px solid var(--border);position:relative;z-index:2;font-weight:300}
+/* RESOURCE LINKS */
+.resources{margin:40px 0 20px;padding:28px;border:1px solid rgba(139,92,246,0.2);border-radius:var(--radius);background:var(--bg2)}
+.resources-title{font-family:var(--font);font-size:13px;font-weight:700;color:var(--phase);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.resources-title::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--phase);box-shadow:0 0 6px rgba(139,92,246,0.5)}
+.res-group{margin-bottom:16px}
+.res-group:last-child{margin-bottom:0}
+.res-group-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
+.res-link{display:flex;align-items:center;gap:10px;padding:10px 14px;margin-bottom:6px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-xs);color:var(--text2);font-size:13px;font-weight:400;text-decoration:none;transition:all 0.2s}
+.res-link:hover{border-color:rgba(139,92,246,0.3);color:var(--text);background:var(--bg4);transform:translateX(3px)}
+.res-link .res-icon{font-size:14px;flex-shrink:0;opacity:0.6}
+.res-link .res-arrow{margin-left:auto;font-size:12px;color:var(--text3);transition:color 0.2s}
+.res-link:hover .res-arrow{color:var(--phase)}
+@media(max-width:640px){
+  .header{padding:24px 0}
+  table{font-size:11px}
+  th,td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+<div class="wrap">
+  <div class="tag">Passion Hax · ARC Framework · Phase A — AUDIT</div>
+  <h1>A1 — Career Value Model — 4 Faktor Penentu Income</h1>
+  <div class="sub">Standalone Module · Materi Teks + Video + Exercise</div>
+</div>
+</div>
+
+<div class="wrap">
+<div class="mat active" id="m1">
+<div class="video-embed-wrap" id="video-m1">
+    <div class="video-placeholder">
+      <div class="play-icon">▶</div>
+      <span>Video akan ditambahkan — ganti URL di bawah</span>
+    </div>
+    <!-- 
+      INSTRUKSI: Ganti seluruh div.video-placeholder di atas dengan iframe YouTube:
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+    -->
+  </div>
+
+  <div class="context-box">
+    <h3>Gambaran Besar</h3>
+<svg width="100%" viewBox="0 0 756 160" xmlns="http://www.w3.org/2000/svg" style="margin:18px 0 8px;display:block">
+    
+    <rect x="0" y="0" width="244" height="52" rx="8" fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.35)" stroke-width="1"/>
+    <text x="122.0" y="20" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">AUDIT</text>
+    <text x="122.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">6 modul · Week 1–3</text>
+    <rect x="256" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+    <text x="378.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">REPOSITION</text>
+    <text x="378.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">10 modul · Week 4–9</text>
+    <rect x="512" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+    <text x="634.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">CAPTURE</text>
+    <text x="634.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">5 modul · Week 10–12</text>
+    
+    <line x1="248.0" y1="26" x2="260.0" y2="26" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <polygon points="260.0,22 260.0,30 264.0,26" fill="rgba(255,255,255,0.12)"/>
+    <line x1="504.0" y1="26" x2="516.0" y2="26" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <polygon points="516.0,22 516.0,30 520.0,26" fill="rgba(255,255,255,0.12)"/>
+    
+    <circle cx="298.0" cy="76" r="6" fill="#8b5cf6" opacity="1"/>
+    <circle cx="298.0" cy="76" r="10" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+    <circle cx="330.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <circle cx="362.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <circle cx="394.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <circle cx="426.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <circle cx="458.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <text x="378.0" y="98" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul A1 dari 6</text>
+    
+    <rect x="10.0" y="116" width="116.0" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
+    <text x="68.0" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Pahami model</text>
+    <line x1="127.0" y1="132" x2="133.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="134.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="192.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Baca skor</text>
+    <line x1="251.0" y1="132" x2="257.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="258.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="316.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Diagnosa constraint</text>
+    <line x1="375.0" y1="132" x2="381.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="382.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="440.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Ukur gap</text>
+    <line x1="499.0" y1="132" x2="505.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="506.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="564.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Audit skill</text>
+    <line x1="623.0" y1="132" x2="629.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="630.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="688.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Arah reposisi</text>
+  </svg>
+
+    <p>Ini adalah modul pertama dari program 90 hari. Sebelum menyusun strategi, memperbarui resume, atau memperluas network — Anda perlu memahami <strong>mengapa income Anda berada di angka saat ini</strong>. Bukan dari perspektif motivasi, tapi dari perspektif ekonomi karir.</p>
+    <p>Kebanyakan profesional yang merasa stuck menyalahkan dua hal: kurang kerja keras, atau kurang skill. Keduanya seringkali keliru. Modul ini akan menunjukkan bahwa income ditentukan oleh <strong>empat faktor struktural</strong> yang bekerja sebagai multiplier — dan bahwa memahami struktur ini adalah langkah pertama untuk menggeser posisi Anda secara strategis.</p>
+    <p><strong>Setelah modul ini:</strong> Anda akan bisa membedakan antara masalah effort dan masalah struktur, mengenali keempat faktor, dan mulai menebak di mana bottleneck utama Anda berada.</p>
+    <p><strong>Exercise terkait:</strong> A1 — Career Value Self-Map (self-assessment sebelum melihat data Audit)</p>
+  </div>
+
+  <h2>Prinsip Dasar: Struktur Mengalahkan Effort</h2>
+  <p>Income seorang profesional ditentukan oleh empat faktor struktural. Bukan oleh seberapa keras ia bekerja — effort adalah konstanta. Hampir semua profesional yang serius sudah bekerja keras. Yang membedakan outcome adalah <strong>struktur</strong>: di mana ia bermain, apa yang ia bisa, seberapa scalable output-nya, dan seberapa kuat posisi tawarnya.</p>
+  <p>Keempat faktor ini bekerja sebagai multiplier — artinya, kalau satu faktor sangat rendah, ia membatasi dampak dari faktor lain yang sudah tinggi. Seorang profesional yang sangat kompeten (Capability tinggi) tapi berada di industri yang salah (System rendah) akan tetap terbatas. Ini bukan soal adil atau tidak — ini soal cara ekonomi karir bekerja.</p>
+
+  <div class="callout callout-blue">
+    <strong>Persamaan Career Value (konseptual):</strong> Income ≈ Created Value × Capture Rate. Di mana Created Value dipengaruhi oleh System, Capability, dan Leverage — sementara Capture Rate ditentukan oleh Bargaining. Keempatnya saling mengalikan, bukan menjumlahkan.
+  </div>
+
+  <h2>Faktor 1: System</h2>
+  <h3>Definisi</h3>
+  <p>System adalah lingkungan ekonomi tempat Anda bekerja — industri, organisasi, market, dan model bisnis perusahaan. System menentukan <strong>ceiling</strong> income — batas atas yang tidak bisa dilampaui, seberapa pun jago-nya seseorang.</p>
+
+  <h3>Mengapa System penting?</h3>
+  <p>Perusahaan hanya bisa membayar sebanyak yang bisa mereka hasilkan. Sebuah SaaS company dengan 50 karyawan bisa melayani jutaan pengguna — revenue per employee sangat tinggi. Manufaktur lokal dengan 500 karyawan mungkin punya revenue per employee yang jauh lebih rendah. Ini menentukan berapa yang bisa dibayarkan ke setiap orang.</p>
+
+  <h3>Variabel utama System</h3>
+  <table>
+    <tr><th>Variabel</th><th>Artinya</th><th>Contoh Indonesia</th></tr>
+    <tr><td><strong>Industry Growth Rate</strong></td><td>Industri yang tumbuh = opportunity baru, budget baru. Stagnan = zero-sum game.</td><td>Fintech tumbuh 20-30%/tahun vs manufaktur tekstil tumbuh 2-3%</td></tr>
+    <tr><td><strong>Revenue Proximity</strong></td><td>Seberapa dekat role Anda ke proses menghasilkan revenue</td><td>Sales/Product (dekat) vs Admin/Compliance (jauh)</td></tr>
+    <tr><td><strong>Business Scalability</strong></td><td>Apakah model bisnis bisa scale tanpa proporsional menambah orang</td><td>Platform digital (scale) vs jasa konsultasi per-project (linear)</td></tr>
+    <tr><td><strong>Org Structure</strong></td><td>Flat (cepat naik, banyak decision power) vs hierarchical (lambat, terbatas)</td><td>Startup (flat) vs BUMN (hierarchical)</td></tr>
+    <tr><td><strong>Market Scope</strong></td><td>Lokal, nasional, regional, atau global</td><td>Warung (lokal) vs Gojek (regional) vs Google (global)</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-label">Contoh Nyata</div>
+    <p style="margin:0"><strong>Rina, Finance Manager.</strong> Di manufaktur lokal: gaji Rp 14 juta. Di fintech: gaji Rp 28 juta. Skill identik — System berbeda. Manufaktur punya revenue/employee Rp 500 juta/tahun. Fintech punya Rp 2 miliar/tahun. Ini bukan soal Rina — ini soal di mana Rina bermain.</p>
+  </div>
+
+  <h2>Faktor 2: Capability</h2>
+  <h3>Definisi</h3>
+  <p>Capability bukan daftar skill di CV. Capability adalah <strong>seberapa langka kombinasi skill Anda di pasar yang mau membayar untuk itu.</strong> Satu skill tunggal jarang langka. Tapi kombinasi 2-3 skill yang spesifik bisa sangat langka — dan kelangkaan itulah yang menciptakan pricing power.</p>
+
+  <h3>Prinsip Kelangkaan</h3>
+  <p>Setiap skill tambahan mengurangi jumlah kompetitor secara eksponensial. Project Management = 100.000 orang. PM + Healthcare domain = 5.000. PM + Healthcare + Bahasa Mandarin = 50. Semakin sedikit orang yang bisa melakukan apa yang Anda bisa, semakin tinggi pricing power Anda.</p>
+
+  <h3>Capability Moat</h3>
+  <p>Ini istilah untuk kombinasi unik skill yang membuat seseorang susah digantikan. Kebanyakan profesional <strong>sudah punya Capability Moat</strong> — mereka hanya tidak sadar atau tidak bisa mengartikulasikannya. Exercise A5 akan membantu menemukannya.</p>
+
+  <div class="callout callout-green">
+    <strong>Perbedaan penting:</strong> Capability ≠ sertifikasi. MBA dipegang ribuan orang. CFA dipegang ribuan orang. Sertifikasi menambah credibility, tapi bukan pengganti kelangkaan kombinasi skill.
+  </div>
+
+  <h2>Faktor 3: Leverage</h2>
+  <h3>Definisi</h3>
+  <p>Leverage mengukur seberapa scalable output Anda. Pertanyaan kuncinya: <strong>kalau Anda tidak masuk kerja besok, apakah output Anda berhenti?</strong> Kalau ya — leverage rendah. Output di-cap oleh jam kerja fisik.</p>
+
+  <h3>4 Tipe Leverage</h3>
+  <table>
+    <tr><th>Tipe</th><th>Cara Kerja</th><th>Contoh</th></tr>
+    <tr><td><strong>Automation & Systems</strong></td><td>Tools/workflow yang melakukan kerja tanpa kehadiran langsung</td><td>Dashboard auto-update, email sequences, reporting template</td></tr>
+    <tr><td><strong>Team</strong></td><td>Orang yang bisa execute tanpa micromanage</td><td>Tim junior yang handle operasional, delegation playbook</td></tr>
+    <tr><td><strong>Content & IP</strong></td><td>Sesuatu yang dibuat sekali, dipakai berulang</td><td>Methodology, framework, training material, artikel</td></tr>
+    <tr><td><strong>Distribution & Platform</strong></td><td>Akses ke audience yang amplify reach</td><td>LinkedIn following, komunitas, mailing list</td></tr>
+  </table>
+
+  <div class="callout callout-amber">
+    <strong>Mengapa Leverage sering jadi bottleneck:</strong> Profesional usia 28-35 di Indonesia biasanya kuat di Capability tapi lemah di Leverage. Mereka makin jago — tapi semua tergantung mereka langsung. Hasilnya: makin capek, income plateauing, dan merasa stuck. Ini bukan masalah skill. Ini masalah Leverage.
+  </div>
+
+  <h2>Faktor 4: Bargaining</h2>
+  <h3>Definisi</h3>
+  <p>Bargaining adalah posisi tawar di pasar. Ini menentukan <strong>berapa proporsi dari value yang diciptakan yang benar-benar ditangkap sebagai income.</strong> Dua profesional yang create value identik bisa dibayar berbeda 30-40% — karena posisi tawar mereka berbeda.</p>
+
+  <h3>3 Komponen Bargaining</h3>
+  <table>
+    <tr><th>Komponen</th><th>Artinya</th><th>Indikator</th></tr>
+    <tr><td><strong>Optionality</strong></td><td>Apakah punya alternatif realistis</td><td>Jumlah tawaran/peluang yang bisa di-pursue</td></tr>
+    <tr><td><strong>Visibility</strong></td><td>Apakah pasar tahu Anda ada dan apa value-nya</td><td>LinkedIn presence, reputasi industri, network reach</td></tr>
+    <tr><td><strong>Negotiation Skill</strong></td><td>Apakah bisa menegosiasikan terms yang fair</td><td>Track record negosiasi, data market yang dimiliki</td></tr>
+  </table>
+
+  <div class="callout callout-red">
+    <strong>Fakta yang sering di-miss:</strong> Bargaining adalah faktor paling actionable dalam jangka pendek. System butuh waktu pindah. Capability butuh waktu build. Leverage butuh waktu setup. Tapi Bargaining — LinkedIn, network, visibility — bisa mulai dibangun <em>hari ini</em>.
+  </div>
+
+  <h2>Bagaimana Keempat Faktor Bekerja Bersama</h2>
+  <p>Keempat faktor ini bekerja sebagai multiplier, bukan penjumlahan. Artinya: satu faktor yang sangat rendah bisa membatasi dampak dari semua faktor lain. Profesional yang System-nya 9 dan Capability-nya 9 tapi Bargaining-nya sangat rendah tetap tidak menangkap value yang diciptakan. Sebaliknya, profesional yang meningkatkan Bargaining dari rendah ke sedang bisa langsung melihat peningkatan income — meskipun faktor lain tidak berubah.</p>
+  <p><strong>Implikasi strategis:</strong> fokus pada constraint utama — faktor yang paling menahan. Bukan yang paling tinggi. Bukan yang paling menarik. Yang paling menahan. Ini prinsip dasar diagnosis yang akan digunakan di seluruh program.</p>
+
+  <div class="callout callout-purple">
+    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise A1 (Career Value Self-Map) — plot posisi diri di setiap faktor sebelum melihat data Audit. Gap antara persepsi dan data = informasi berharga yang akan dibahas di coaching call.
+  </div>
+
+<div class="resources">
+  <div class="resources-title">Materi Pendukung — A1</div>
+  <div class="res-group">
+    <div class="res-group-label">Exercise</div>
+    <a class="res-link" href="#LINK_EXERCISE_A1" target="_blank"><span class="res-icon">📝</span>Exercise A1 — Career Value Self-Map<span class="res-arrow">→</span></a>
+  </div>
+</div>
+</div>
+
+<!-- MATERI A2 -->
+</div>
+
+<div class="footer">
+  Passion Hax · Career Tier Positioning · ARC Framework · A1<br>
+  Confidential — program materials
+</div>
+
+</body>
+</html>
