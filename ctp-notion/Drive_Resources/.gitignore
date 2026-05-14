@@ -1,0 +1,4 @@
+# Abaikan semua file di folder ini agar tidak terupload ke GitHub/Netlify
+*
+# Jangan abaikan file gitignore ini
+!.gitignore
