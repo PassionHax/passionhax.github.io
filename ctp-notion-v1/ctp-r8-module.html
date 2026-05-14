@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A2 — Membaca Hasil Audit — Scoring Interpretation Guide | Phase A — AUDIT | Passion Hax</title>
+<title>R8 — Pipeline Tracker + Weekly Review Protocol | Phase R — REPOSITION | Passion Hax</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -147,10 +147,10 @@ tr:hover td{background:rgba(232,137,58,0.02)}
   const isIframe = window.self !== window.top;
   const urlParams = new URLSearchParams(window.location.search);
   const isCreatorBypass = urlParams.get('mode') === 'creator';
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   
-  if (!isIframe && !isCreatorBypass) {
-    window.stop();
-    document.write('<div style="font-family: sans-serif; text-align: center; padding: 50px; color: white; background: #09090B; height: 100vh;"><h2>Akses Ditolak</h2><p>Modul ini eksklusif dan hanya dapat diakses melalui Client Portal Anda di Notion.</p></div>');
+  if (!isIframe && !isCreatorBypass && !isIOS) {
+    document.documentElement.innerHTML = '<div style="font-family: sans-serif; text-align: center; padding: 50px; color: white; background: #09090B; height: 100vh;"><h2>Akses Ditolak</h2><p>Modul ini eksklusif dan hanya dapat diakses melalui Client Portal Anda di Notion.</p></div>';
     throw new Error('Direct access prevented');
   }
 </script>
@@ -164,15 +164,15 @@ tr:hover td{background:rgba(232,137,58,0.02)}
     <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
   </button>
   <img class="header-logo" alt="Passion Hax">
-  <div class="tag">Passion Hax · ARC Framework · Phase A — AUDIT</div>
-  <h1>A2 — Membaca Hasil Audit — Scoring Interpretation Guide</h1>
+  <div class="tag">Passion Hax · ARC Framework · Phase R — REPOSITION</div>
+  <h1>R8 — Pipeline Tracker + Weekly Review Protocol</h1>
   <div class="sub">Standalone Module · Materi Teks + Video + Exercise</div>
 </div>
 </div>
 
 <div class="wrap">
-<div class="mat active" id="m2">
-<div class="video-embed-wrap" id="video-m2">
+<div class="mat active" id="m8">
+<div class="video-embed-wrap" id="video-m8">
     <div class="video-placeholder">
       <div class="play-icon">▶</div>
       <span>Video akan ditambahkan — ganti URL di bawah</span>
@@ -187,12 +187,12 @@ tr:hover td{background:rgba(232,137,58,0.02)}
     <h3>Gambaran Besar</h3>
 <svg width="100%" viewBox="0 0 756 160" xmlns="http://www.w3.org/2000/svg" style="margin:18px 0 8px;display:block">
     
-    <rect x="0" y="0" width="244" height="52" rx="8" fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.35)" stroke-width="1"/>
-    <text x="122.0" y="20" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">AUDIT</text>
-    <text x="122.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">6 modul · Week 1–3</text>
-    <rect x="256" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
-    <text x="378.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">REPOSITION</text>
-    <text x="378.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">10 modul · Week 4–9</text>
+    <rect x="0" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+    <text x="122.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">AUDIT</text>
+    <text x="122.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">6 modul · Week 1–3</text>
+    <rect x="256" y="0" width="244" height="52" rx="8" fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.35)" stroke-width="1"/>
+    <text x="378.0" y="20" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">REPOSITION</text>
+    <text x="378.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">10 modul · Week 4–9</text>
     <rect x="512" y="0" width="244" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
     <text x="634.0" y="20" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" letter-spacing="0.08em">CAPTURE</text>
     <text x="634.0" y="38" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">5 modul · Week 10–12</text>
@@ -202,102 +202,99 @@ tr:hover td{background:rgba(232,137,58,0.02)}
     <line x1="504.0" y1="26" x2="516.0" y2="26" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
     <polygon points="516.0,22 516.0,30 520.0,26" fill="rgba(255,255,255,0.12)"/>
     
+    <circle cx="234.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="266.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
     <circle cx="298.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
-    <circle cx="330.0" cy="76" r="6" fill="#8b5cf6" opacity="1"/>
-    <circle cx="330.0" cy="76" r="10" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
-    <circle cx="362.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <circle cx="394.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <circle cx="426.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <circle cx="458.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <text x="378.0" y="98" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul A2 dari 6</text>
+    <circle cx="330.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="362.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="394.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="426.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="458.0" cy="76" r="6" fill="#8b5cf6" opacity="1"/>
+    <circle cx="458.0" cy="76" r="10" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+    <circle cx="490.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <circle cx="522.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <text x="378.0" y="98" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul R8 dari 10</text>
     
-    <rect x="10.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-    <text x="68.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Pahami model</text>
-    <line x1="127.0" y1="132" x2="133.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="134.0" y="116" width="116.0" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
-    <text x="192.0" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Baca skor</text>
-    <line x1="251.0" y1="132" x2="257.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="258.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-    <text x="316.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Diagnosa constraint</text>
-    <line x1="375.0" y1="132" x2="381.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="382.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-    <text x="440.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Ukur gap</text>
-    <line x1="499.0" y1="132" x2="505.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="506.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-    <text x="564.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Audit skill</text>
-    <line x1="623.0" y1="132" x2="629.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="630.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-    <text x="688.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Arah reposisi</text>
+    <rect x="10.0" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="80.4" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Collateral</text>
+    <line x1="151.8" y1="132" x2="157.8" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="158.8" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="229.20000000000002" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Leverage sprint</text>
+    <line x1="300.6" y1="132" x2="306.6" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="307.6" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="378.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Network</text>
+    <line x1="449.40000000000003" y1="132" x2="455.40000000000003" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="456.40000000000003" y="116" width="140.8" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
+    <text x="526.8000000000001" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Pipeline</text>
+    <line x1="598.2" y1="132" x2="604.2" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="605.2" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="675.6" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Interview prep</text>
   </svg>
 
-    <p>Setelah memahami 4 faktor Career Value di modul sebelumnya, sekarang saatnya <strong>membaca data Audit Anda sendiri</strong>. Career Tier Audit sudah memberikan skor 1-10 untuk setiap faktor. Tapi angka tanpa konteks tidak berguna — modul ini membantu Anda menerjemahkan setiap skor ke dalam implikasi karir yang spesifik.</p>
-    <p>Tujuannya bukan sekadar tahu "skor saya berapa," tapi memahami <strong>apa arti skor itu untuk langkah selanjutnya</strong>. Skor System 4 punya implikasi yang sangat berbeda dari skor System 7 — dan strategi yang dibutuhkan juga berbeda.</p>
-    <p><strong>Setelah modul ini:</strong> Anda bisa menginterpretasi setiap skor Audit di konteks karir Anda sendiri, mengidentifikasi area yang perlu ditantang, dan mulai melihat pola constraint.</p>
-    <p><strong>Exercise terkait:</strong> A2 — Audit Interpretation Sheet (tulis interpretasi personal per skor)</p>
+    <p>Pipeline = optionality. Optionality = posisi tawar. Tanpa pipeline yang terstruktur, job search berubah menjadi spray-and-pray yang melelahkan dan tidak efektif. Modul ini memberikan <strong>sistem untuk melacak, mengukur, dan menyesuaikan</strong> seluruh aktivitas job search.</p>
+    <p><strong>Setelah modul ini:</strong> Anda punya pipeline tracker (spreadsheet) yang terupdate, dan kebiasaan review mingguan.</p>
+    <p><strong>Exercise terkait:</strong> R8 — Pipeline Builder (target list 20 companies + tracker setup)</p>
   </div>
 
-  <h2>Cara Baca Skor Audit</h2>
-  <p>Skor Audit bukan rapor. Tidak ada skor yang "baik" atau "buruk" — yang ada hanya data yang menunjukkan posisi saat ini. Skor rendah bukan berarti gagal. Skor tinggi bukan berarti aman. Yang penting: <strong>apa implikasinya untuk strategi repositioning?</strong></p>
+  <h2>Pipeline Stages</h2>
+  <table><tr><th>Stage</th><th>Definisi</th><th>Action</th></tr>
+  <tr><td><strong>Identified</strong></td><td>Perusahaan ada di target list, belum ada action</td><td>Riset perusahaan, cari kontak di dalam</td></tr>
+  <tr><td><strong>Reached Out</strong></td><td>Outreach terkirim, menunggu respons</td><td>Follow-up cadence (Day 4, 10)</td></tr>
+  <tr><td><strong>Conversation</strong></td><td>Respons diterima, dialog aktif</td><td>Jadwalkan meeting, siapkan talking points</td></tr>
+  <tr><td><strong>Interview</strong></td><td>Proses interview formal dimulai</td><td>Full interview prep (materi Phase C)</td></tr>
+  <tr><td><strong>Offer</strong></td><td>Offer diterima</td><td>Evaluasi dengan CVM framework (Phase C)</td></tr>
+  <tr><td><strong>Decision</strong></td><td>Accept/decline</td><td>Transition management</td></tr></table>
 
-  <h2>System Score (1–10)</h2>
+  <h2>Weekly Review Protocol (10 menit setiap Jumat)</h2>
+  <p><strong>1.</strong> Buka tracker. Update semua status. <strong>2.</strong> Hitung: berapa di setiap stage? <strong>3.</strong> Untuk setiap opportunity: apa next action? Kapan? <strong>4.</strong> Pipeline health: Green (3+ active interview) / Yellow (1-2) / Red (0). <strong>5.</strong> Kalau Red/Yellow: apa adjustment yang diperlukan minggu depan? <strong>6.</strong> Bawa ke coaching call.</p>
+
+  <div class="callout callout-purple"><strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise R8 — buat target list 20 perusahaan, map kontak per perusahaan, setup tracking sheet. Pipeline mulai aktif sekarang.</div>
+
+  <h2>Lanskap Job Boards & Platform Karir Indonesia</h2>
+  <p>Di mana lowongan ada, mana yang worth it, dan bagaimana menggunakannya secara strategis.</p>
+
+  <h3>Platform Utama — Prioritas Tinggi</h3>
   <table>
-    <tr><th style="width:12%">Range</th><th style="width:25%">Kategori Industri</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Sektor publik reguler, NGO, manufaktur tradisional kecil</td><td>Ceiling sangat terbatas. Bahkan posisi paling senior di sistem ini kemungkinan tidak mencapai target income. <strong>Implikasi:</strong> Kalau target ≥ Rp 20jt, migrasi kemungkinan diperlukan.</td></tr>
-    <tr><td style="color:var(--red)"><strong>3.5–5</strong></td><td>BUMN, instansi "sultan", regulator, banking retail, manufaktur besar</td><td>Ceiling moderat. Ada ruang growth tapi terbatas di level tertentu. <strong>Implikasi:</strong> Mungkin cukup untuk target Rp 15-20jt tapi sulit lebih dari itu tanpa pindah ke sistem yang lebih tinggi.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>5.5–7</strong></td><td>Banking korporat, consulting mid-market, consumer goods multinasional, healthcare</td><td>Ceiling lumayan. Revenue proximity lebih tinggi. <strong>Implikasi:</strong> Bisa capai Rp 20-30jt di level senior. Optimasi di dalam sistem mungkin cukup.</td></tr>
-    <tr><td style="color:var(--green)"><strong>7.5–9</strong></td><td>Top consulting, fintech, digital, e-commerce scaled</td><td>Ceiling tinggi. Revenue proximity kuat. <strong>Implikasi:</strong> Rp 30-80jt realistis di senior/director level. Fokus ke Capability, Leverage, Bargaining.</td></tr>
-    <tr><td style="color:var(--green)"><strong>9–10</strong></td><td>Tech/SaaS global, AI, venture-backed unicorn</td><td>Ceiling sangat tinggi. <strong>Implikasi:</strong> Rp 50jt+ realistis. System bukan constraint — kalau income masih rendah, pasti faktor lain yang menahan.</td></tr>
+    <tr><th>Platform</th><th>Kekuatan</th><th>Kelemahan</th><th>Tips Penggunaan</th></tr>
+    <tr><td><strong>LinkedIn Jobs</strong></td><td>Dominan untuk mid-senior professional. Banyak MNC dan startup tech. Fitur "Easy Apply" mempercepat proses. Langsung terhubung ke profil.</td><td>Kompetisi tinggi — ratusan aplikan per posting. Banyak "ghost postings" (lowongan yang sudah terisi).</td><td>Jangan hanya apply — combine dengan outreach langsung ke hiring manager via DM LinkedIn. Set job alert harian untuk target roles.</td></tr>
+    <tr><td><strong>Jobstreet (SEEK)</strong></td><td>Masih platform terbesar di Indonesia dari sisi volume. Coverage luas — dari junior hingga senior. Banyak perusahaan lokal dan nasional.</td><td>Banyak lowongan entry-level. Interface kurang modern. Beberapa posting outdated.</td><td>Gunakan filter "Senior Level" dan "Manager." Set alert. Fokus pada perusahaan yang aktif posting — itu sinyal mereka sedang grow.</td></tr>
+    <tr><td><strong>Glints</strong></td><td>Fokus tech, startup, dan digital. UI modern. Fitur salary range transparan di banyak posting. Growing fast di Indonesia.</td><td>Masih lebih kuat di entry-mid level. Coverage di non-tech kurang lengkap.</td><td>Bagus untuk pipeline di fintech, e-commerce, SaaS. Filter by salary range — ini menghemat waktu.</td></tr>
   </table>
 
-  <h2>Capability Score (1–10)</h2>
+  <h3>Platform Sekunder — Worth Monitoring</h3>
   <table>
-    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Skill umum, banyak substitusi di pasar</td><td>Mudah digantikan. Tidak punya diferensiator yang jelas. <strong>Implikasi:</strong> Perlu deepening atau menemukan kombinasi langka. Jangan fokus ke banyak hal — fokus ke irisan yang bernilai tinggi.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>4–6</strong></td><td>Kompeten, punya beberapa skill yang di-demand</td><td>Sudah punya fondasi. Tapi belum cukup langka untuk punya pricing power signifikan. <strong>Implikasi:</strong> Cari kombinasi skill yang membentuk Capability Moat.</td></tr>
-    <tr><td style="color:var(--green)"><strong>7–8</strong></td><td>Kombinasi langka, sulit digantikan</td><td>Punya pricing power. Perusahaan akan kesulitan cari pengganti. <strong>Implikasi:</strong> Capability bukan constraint utama — fokus ke Leverage dan Bargaining untuk menangkap value.</td></tr>
-    <tr><td style="color:var(--green)"><strong>9–10</strong></td><td>Sangat langka, hampir tidak ada substitusi</td><td>Top-tier capability. <strong>Implikasi:</strong> Value sudah tinggi — pertanyaannya apakah sudah ditangkap (Bargaining) dan di-scale (Leverage).</td></tr>
+    <tr><th>Platform</th><th>Best For</th><th>Notes</th></tr>
+    <tr><td><strong>Kalibrr</strong></td><td>Tech, startup, digital — mirip Glints. Punya fitur assessment built-in.</td><td>Basis pengguna lebih kecil. Worth cek mingguan, bukan harian.</td></tr>
+    <tr><td><strong>Indeed Indonesia</strong></td><td>Agregator — mengambil posting dari banyak sumber. Coverage luas.</td><td>Banyak duplikasi. Gunakan sebagai backup search, bukan primary.</td></tr>
+    <tr><td><strong>Techinasia Jobs</strong></td><td>Startup tech dan venture-backed companies di Asia Tenggara.</td><td>Niche. Tapi kalau target Anda di tech — ini wajib dicek.</td></tr>
+    <tr><td><strong>Karir.com / KitaLulus</strong></td><td>Perusahaan nasional dan BUMN. Coverage di kota-kota tier 2.</td><td>Fokus entry-mid level. Kurang relevan untuk target audience Passion Hax kecuali untuk posisi di BUMN.</td></tr>
   </table>
 
-  <h2>Leverage Score (1–10)</h2>
+  <h3>Channel Non-Platform yang Sering Dilewatkan</h3>
   <table>
-    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Fully manual. 100% output tergantung kehadiran langsung</td><td>Kalau sakit sehari, output berhenti. Posisi paling rentan dan paling melelahkan. <strong>Implikasi:</strong> Income di-cap oleh jam kerja fisik. Perlu mulai build sistem, delegasi, atau konten.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>4–5</strong></td><td>Ada sedikit sistem, mungkin tim kecil, tapi belum bisa jalan tanpa kehadiran</td><td>Sudah mulai delegate, tapi masih micromanage. <strong>Implikasi:</strong> Ada fondasi — perlu diperkuat jadi autonomous systems.</td></tr>
-    <tr><td style="color:var(--green)"><strong>6–7</strong></td><td>Sistem atau tim nyata yang mengamplifikasi output</td><td>Mulai bisa "tidak hadir" beberapa hari dan output tetap jalan. <strong>Implikasi:</strong> Tinggal diperkuat dan diskalakan.</td></tr>
-    <tr><td style="color:var(--green)"><strong>8–10</strong></td><td>Sistem berjalan tanpa kehadiran aktif</td><td>Territory platform, IP, atau organisasi self-sustaining. <strong>Implikasi:</strong> Leverage bukan constraint — fokus ke faktor lain.</td></tr>
+    <tr><th>Channel</th><th>Cara Akses</th><th>Mengapa Penting</th></tr>
+    <tr><td><strong>Halaman Karir Perusahaan</strong></td><td>Langsung ke website perusahaan target → "Careers" page</td><td>Banyak lowongan di-post di halaman karir sebelum (atau tanpa) di-post ke platform publik. Untuk 20 target companies di pipeline, cek langsung mingguan.</td></tr>
+    <tr><td><strong>Grup WhatsApp/Telegram Industri</strong></td><td>Minta akses dari network. Cari di komunitas profesional LinkedIn.</td><td>Banyak lowongan di-share secara informal di grup industri — terutama untuk mid-senior roles. "Hidden job market."</td></tr>
+    <tr><td><strong>Komunitas Profesional</strong></td><td>AISEC alumni, kampus alumni networks, komunitas per fungsi (Product Community, HR Community Indonesia, dll)</td><td>Lowongan yang di-share di sini sering datang dengan referral built-in — response rate jauh lebih tinggi.</td></tr>
   </table>
 
-  <h2>Bargaining Score (1–10)</h2>
-  <table>
-    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Hampir tidak punya opsi. Terikat satu employer, tidak dikenal di luar organisasi</td><td>Kalau di-offer gaji segitu, terima karena tidak ada alternatif. <strong>Implikasi:</strong> Ini constraint paling actionable dan paling sering ditemui. LinkedIn rebuild, network activation, dan pipeline building bisa dimulai minggu ini.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>4–5</strong></td><td>Beberapa opsi tapi terbatas. Bisa pindah kalau mau, tapi belum punya reputasi eksternal kuat</td><td>Ada mobilitas, tapi belum optimal. <strong>Implikasi:</strong> Sedikit push di visibility bisa unlock peningkatan signifikan.</td></tr>
-    <tr><td style="color:var(--green)"><strong>6–7</strong></td><td>Mulai dikenal di luar organisasi. Network yang bisa diaktivasi</td><td>Cukup mudah pindah. <strong>Implikasi:</strong> Bargaining sudah decent — tapi bisa diperkuat dengan pipeline aktif.</td></tr>
-    <tr><td style="color:var(--green)"><strong>8–10</strong></td><td>Personal brand kuat, banyak opsi aktif, sering di-approach</td><td>Negosiasi dari posisi kuat karena punya banyak alternatif. <strong>Implikasi:</strong> Bargaining bukan constraint. Fokus ke Leverage atau System.</td></tr>
-  </table>
-
-  <h2>Menentukan Constraint Utama dari Skor</h2>
-  <p>Constraint utama <strong>bukan selalu yang paling rendah skornya</strong>. Kadang faktor yang paling menahan bukan yang paling rendah. Contoh: seorang profesional dengan Capability 7 dan Bargaining 2 — Capability-nya bagus, tapi karena Bargaining sangat rendah, ia tidak menangkap value yang diciptakan. Bargaining yang jadi bottleneck, bukan Capability.</p>
-  <p>Beberapa profesional punya dua constraint yang sama kuatnya. Dalam kasus ini, prioritaskan berdasarkan: (1) mana yang paling quick-win, (2) mana yang paling blocking. Biasanya: perbaiki Bargaining dulu (quick-win) → lalu address System atau Leverage (longer play).</p>
-
-  <div class="callout callout-purple">
-    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise A2 — tulis interpretasi untuk setiap skor di konteks karir Anda sendiri. Bukan generic, tapi spesifik. Coach akan menantang area yang paling sering menjadi blind spot: seberapa mudah Anda digantikan (Capability) dan berapa opsi yang benar-benar Anda punya (Bargaining).
+  <div class="callout callout-amber">
+    <strong>Strategi optimal:</strong> Jangan spray-and-pray di semua platform. Set up job alerts di LinkedIn + Jobstreet + 1 niche platform (Glints/Techinasia/Kalibrr sesuai industri). Cek halaman karir 20 target companies mingguan. Dan prioritaskan referral channel di atas semuanya — 80% placement terjadi melalui jaringan, bukan platform publik.
   </div>
 
 <div class="resources">
-  <div class="resources-title">Materi Pendukung — A2</div>
+  <div class="resources-title">Materi Pendukung — R8</div>
   <div class="res-group">
     <div class="res-group-label">Exercise</div>
-    <a class="res-link" href="#LINK_EXERCISE_A2" target="_blank"><span class="res-icon">📝</span>Exercise A2 — Audit Interpretation Sheet<span class="res-arrow">→</span></a>
+    <a class="res-link" href="#LINK_EXERCISE_R8" target="_blank"><span class="res-icon">📝</span>Exercise R8 — Pipeline Builder<span class="res-arrow">→</span></a>
   </div>
 </div>
 </div>
 
-<!-- MATERI A3 -->
 </div>
 
 <div class="footer">
-  Passion Hax · Career Tier Positioning · ARC Framework · A2<br>
+  Passion Hax · Career Tier Positioning · ARC Framework · R8<br>
   Confidential — program materials
 </div>
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A2 — Membaca Hasil Audit — Scoring Interpretation Guide | Phase A — AUDIT | Passion Hax</title>
+<title>A5 — Capability Rarity Map + Leverage Types & Strategies | Phase A — AUDIT | Passion Hax</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -147,10 +147,10 @@ tr:hover td{background:rgba(232,137,58,0.02)}
   const isIframe = window.self !== window.top;
   const urlParams = new URLSearchParams(window.location.search);
   const isCreatorBypass = urlParams.get('mode') === 'creator';
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   
-  if (!isIframe && !isCreatorBypass) {
-    window.stop();
-    document.write('<div style="font-family: sans-serif; text-align: center; padding: 50px; color: white; background: #09090B; height: 100vh;"><h2>Akses Ditolak</h2><p>Modul ini eksklusif dan hanya dapat diakses melalui Client Portal Anda di Notion.</p></div>');
+  if (!isIframe && !isCreatorBypass && !isIOS) {
+    document.documentElement.innerHTML = '<div style="font-family: sans-serif; text-align: center; padding: 50px; color: white; background: #09090B; height: 100vh;"><h2>Akses Ditolak</h2><p>Modul ini eksklusif dan hanya dapat diakses melalui Client Portal Anda di Notion.</p></div>';
     throw new Error('Direct access prevented');
   }
 </script>
@@ -165,14 +165,14 @@ tr:hover td{background:rgba(232,137,58,0.02)}
   </button>
   <img class="header-logo" alt="Passion Hax">
   <div class="tag">Passion Hax · ARC Framework · Phase A — AUDIT</div>
-  <h1>A2 — Membaca Hasil Audit — Scoring Interpretation Guide</h1>
+  <h1>A5 — Capability Rarity Map + Leverage Types & Strategies</h1>
   <div class="sub">Standalone Module · Materi Teks + Video + Exercise</div>
 </div>
 </div>
 
 <div class="wrap">
-<div class="mat active" id="m2">
-<div class="video-embed-wrap" id="video-m2">
+<div class="mat active" id="m5">
+<div class="video-embed-wrap" id="video-m5">
     <div class="video-placeholder">
       <div class="play-icon">▶</div>
       <span>Video akan ditambahkan — ganti URL di bawah</span>
@@ -203,19 +203,19 @@ tr:hover td{background:rgba(232,137,58,0.02)}
     <polygon points="516.0,22 516.0,30 520.0,26" fill="rgba(255,255,255,0.12)"/>
     
     <circle cx="298.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
-    <circle cx="330.0" cy="76" r="6" fill="#8b5cf6" opacity="1"/>
-    <circle cx="330.0" cy="76" r="10" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
-    <circle cx="362.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <circle cx="394.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <circle cx="426.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
+    <circle cx="330.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="362.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="394.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="426.0" cy="76" r="6" fill="#8b5cf6" opacity="1"/>
+    <circle cx="426.0" cy="76" r="10" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
     <circle cx="458.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <text x="378.0" y="98" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul A2 dari 6</text>
+    <text x="378.0" y="98" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul A5 dari 6</text>
     
     <rect x="10.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
     <text x="68.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Pahami model</text>
     <line x1="127.0" y1="132" x2="133.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="134.0" y="116" width="116.0" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
-    <text x="192.0" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Baca skor</text>
+    <rect x="134.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="192.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Baca skor</text>
     <line x1="251.0" y1="132" x2="257.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
     <rect x="258.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
     <text x="316.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Diagnosa constraint</text>
@@ -223,81 +223,86 @@ tr:hover td{background:rgba(232,137,58,0.02)}
     <rect x="382.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
     <text x="440.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Ukur gap</text>
     <line x1="499.0" y1="132" x2="505.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="506.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-    <text x="564.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Audit skill</text>
+    <rect x="506.0" y="116" width="116.0" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
+    <text x="564.0" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Audit skill</text>
     <line x1="623.0" y1="132" x2="629.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
     <rect x="630.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
     <text x="688.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Arah reposisi</text>
   </svg>
 
-    <p>Setelah memahami 4 faktor Career Value di modul sebelumnya, sekarang saatnya <strong>membaca data Audit Anda sendiri</strong>. Career Tier Audit sudah memberikan skor 1-10 untuk setiap faktor. Tapi angka tanpa konteks tidak berguna — modul ini membantu Anda menerjemahkan setiap skor ke dalam implikasi karir yang spesifik.</p>
-    <p>Tujuannya bukan sekadar tahu "skor saya berapa," tapi memahami <strong>apa arti skor itu untuk langkah selanjutnya</strong>. Skor System 4 punya implikasi yang sangat berbeda dari skor System 7 — dan strategi yang dibutuhkan juga berbeda.</p>
-    <p><strong>Setelah modul ini:</strong> Anda bisa menginterpretasi setiap skor Audit di konteks karir Anda sendiri, mengidentifikasi area yang perlu ditantang, dan mulai melihat pola constraint.</p>
-    <p><strong>Exercise terkait:</strong> A2 — Audit Interpretation Sheet (tulis interpretasi personal per skor)</p>
+    <p>Dua dari empat faktor Career Value — Capability dan Leverage — membutuhkan pemahaman yang lebih dalam sebelum masuk ke tahap aksi. Modul ini memberikan <strong>data dan framework praktis</strong> untuk mengaudit keduanya.</p>
+    <p>Bagian pertama membantu Anda menilai seberapa langka skill Anda di pasar Indonesia — bukan berdasarkan perasaan, tapi berdasarkan benchmark pasar dan prinsip kelangkaan. Bagian kedua mengukur seberapa scalable output Anda saat ini dan memberikan opsi konkret untuk membangun leverage.</p>
+    <p><strong>Setelah modul ini:</strong> Anda tahu persis Capability Moat Anda (kombinasi skill unik yang membuat Anda sulit digantikan), Leverage Ratio Anda (seberapa besar output yang tergantung kehadiran langsung), dan 3 area yang bisa di-leverage sebagai quick win.</p>
+    <p><strong>Exercise terkait:</strong> A5 — Capability Rarity Assessment + Leverage Audit</p>
   </div>
 
-  <h2>Cara Baca Skor Audit</h2>
-  <p>Skor Audit bukan rapor. Tidak ada skor yang "baik" atau "buruk" — yang ada hanya data yang menunjukkan posisi saat ini. Skor rendah bukan berarti gagal. Skor tinggi bukan berarti aman. Yang penting: <strong>apa implikasinya untuk strategi repositioning?</strong></p>
+  <h2>Bagian 1: Skill Rarity di Pasar Indonesia</h2>
+  <p>Kelangkaan skill bukan absolut — ia relatif terhadap pasar target. Skill yang langka di Jakarta belum tentu langka secara global. Skill yang langka di fintech belum tentu langka di manufaktur. Gunakan tabel di bawah sebagai panduan, lalu sesuaikan dengan target pasar Anda di Exercise A5.</p>
 
-  <h2>System Score (1–10)</h2>
+  <h3>Oversupplied Skills (Rarity 1-4)</h3>
+  <p>Skill yang dimiliki banyak orang di pasar Indonesia. <strong>Bukan berarti tidak berguna</strong> — tapi tidak bisa jadi diferensiator sendirian.</p>
   <table>
-    <tr><th style="width:12%">Range</th><th style="width:25%">Kategori Industri</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Sektor publik reguler, NGO, manufaktur tradisional kecil</td><td>Ceiling sangat terbatas. Bahkan posisi paling senior di sistem ini kemungkinan tidak mencapai target income. <strong>Implikasi:</strong> Kalau target ≥ Rp 20jt, migrasi kemungkinan diperlukan.</td></tr>
-    <tr><td style="color:var(--red)"><strong>3.5–5</strong></td><td>BUMN, instansi "sultan", regulator, banking retail, manufaktur besar</td><td>Ceiling moderat. Ada ruang growth tapi terbatas di level tertentu. <strong>Implikasi:</strong> Mungkin cukup untuk target Rp 15-20jt tapi sulit lebih dari itu tanpa pindah ke sistem yang lebih tinggi.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>5.5–7</strong></td><td>Banking korporat, consulting mid-market, consumer goods multinasional, healthcare</td><td>Ceiling lumayan. Revenue proximity lebih tinggi. <strong>Implikasi:</strong> Bisa capai Rp 20-30jt di level senior. Optimasi di dalam sistem mungkin cukup.</td></tr>
-    <tr><td style="color:var(--green)"><strong>7.5–9</strong></td><td>Top consulting, fintech, digital, e-commerce scaled</td><td>Ceiling tinggi. Revenue proximity kuat. <strong>Implikasi:</strong> Rp 30-80jt realistis di senior/director level. Fokus ke Capability, Leverage, Bargaining.</td></tr>
-    <tr><td style="color:var(--green)"><strong>9–10</strong></td><td>Tech/SaaS global, AI, venture-backed unicorn</td><td>Ceiling sangat tinggi. <strong>Implikasi:</strong> Rp 50jt+ realistis. System bukan constraint — kalau income masih rendah, pasti faktor lain yang menahan.</td></tr>
+    <tr><th>Skill</th><th>Mengapa Oversupplied</th><th>Cara Meningkatkan Rarity</th></tr>
+    <tr><td>Social media management</td><td>Low barrier to entry. Puluhan ribu orang bisa.</td><td>Kombinasikan dengan: data analytics + industri spesifik</td></tr>
+    <tr><td>MS Office / Google Suite "advance"</td><td>Ini expected skill, bukan diferensiator</td><td>Tidak bisa di-leverage untuk rarity. Move on.</td></tr>
+    <tr><td>Project management (generic)</td><td>Banyak sertifikasi PM, banyak orang.</td><td>Kombinasikan dengan: domain spesifik + technical PM</td></tr>
+    <tr><td>Content writing (general)</td><td>Banyak freelancer dan fresh grad bisa.</td><td>Kombinasikan dengan: SEO + conversion copywriting + data</td></tr>
+    <tr><td>Admin / customer service</td><td>Tingkat substitusi tinggi.</td><td>Butuh spesialisasi lebih dalam untuk meningkatkan value.</td></tr>
   </table>
 
-  <h2>Capability Score (1–10)</h2>
+  <h3>In-Demand Skills (Rarity 5-7)</h3>
+  <p>Skill yang dibutuhkan pasar tapi tidak semua orang punya. Punya pricing power kalau dikombinasikan dengan tepat.</p>
   <table>
-    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Skill umum, banyak substitusi di pasar</td><td>Mudah digantikan. Tidak punya diferensiator yang jelas. <strong>Implikasi:</strong> Perlu deepening atau menemukan kombinasi langka. Jangan fokus ke banyak hal — fokus ke irisan yang bernilai tinggi.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>4–6</strong></td><td>Kompeten, punya beberapa skill yang di-demand</td><td>Sudah punya fondasi. Tapi belum cukup langka untuk punya pricing power signifikan. <strong>Implikasi:</strong> Cari kombinasi skill yang membentuk Capability Moat.</td></tr>
-    <tr><td style="color:var(--green)"><strong>7–8</strong></td><td>Kombinasi langka, sulit digantikan</td><td>Punya pricing power. Perusahaan akan kesulitan cari pengganti. <strong>Implikasi:</strong> Capability bukan constraint utama — fokus ke Leverage dan Bargaining untuk menangkap value.</td></tr>
-    <tr><td style="color:var(--green)"><strong>9–10</strong></td><td>Sangat langka, hampir tidak ada substitusi</td><td>Top-tier capability. <strong>Implikasi:</strong> Value sudah tinggi — pertanyaannya apakah sudah ditangkap (Bargaining) dan di-scale (Leverage).</td></tr>
+    <tr><th>Skill</th><th>Sumber Demand</th><th>Kombinasikan Dengan (untuk Rarity 8+)</th></tr>
+    <tr><td>Data analytics / visualization</td><td>Semua industri butuh data-driven decision</td><td>Domain industri spesifik (FMCG, healthcare, fintech)</td></tr>
+    <tr><td>Performance marketing</td><td>Growth = prioritas di semua startup/digital</td><td>Marketing automation + attribution modeling</td></tr>
+    <tr><td>Financial modeling</td><td>Investment, banking, corporate finance</td><td>Industry-specific knowledge + deal origination</td></tr>
+    <tr><td>UX/UI design</td><td>Tech, digital, e-commerce</td><td>User research + front-end development</td></tr>
+    <tr><td>Supply chain management</td><td>E-commerce boom, logistics tech</td><td>Data analytics + automation + cross-border</td></tr>
   </table>
 
-  <h2>Leverage Score (1–10)</h2>
+  <h3>Rare Skills (Rarity 8-10)</h3>
+  <p>Skill atau kombinasi yang sangat langka di pasar Indonesia. Punya pricing power signifikan.</p>
   <table>
-    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Fully manual. 100% output tergantung kehadiran langsung</td><td>Kalau sakit sehari, output berhenti. Posisi paling rentan dan paling melelahkan. <strong>Implikasi:</strong> Income di-cap oleh jam kerja fisik. Perlu mulai build sistem, delegasi, atau konten.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>4–5</strong></td><td>Ada sedikit sistem, mungkin tim kecil, tapi belum bisa jalan tanpa kehadiran</td><td>Sudah mulai delegate, tapi masih micromanage. <strong>Implikasi:</strong> Ada fondasi — perlu diperkuat jadi autonomous systems.</td></tr>
-    <tr><td style="color:var(--green)"><strong>6–7</strong></td><td>Sistem atau tim nyata yang mengamplifikasi output</td><td>Mulai bisa "tidak hadir" beberapa hari dan output tetap jalan. <strong>Implikasi:</strong> Tinggal diperkuat dan diskalakan.</td></tr>
-    <tr><td style="color:var(--green)"><strong>8–10</strong></td><td>Sistem berjalan tanpa kehadiran aktif</td><td>Territory platform, IP, atau organisasi self-sustaining. <strong>Implikasi:</strong> Leverage bukan constraint — fokus ke faktor lain.</td></tr>
+    <tr><th>Skill/Kombinasi</th><th>Mengapa Langka</th><th>Demand</th></tr>
+    <tr><td>AI/ML engineering + domain expertise</td><td>Sedikit yang punya keduanya</td><td>Sangat tinggi — tech, fintech, healthcare</td></tr>
+    <tr><td>Product management + technical depth</td><td>PM biasanya non-technical atau sebaliknya</td><td>Tinggi — tech, SaaS</td></tr>
+    <tr><td>Enterprise sales + industry domain</td><td>Sales skill + deep domain = rare</td><td>Tinggi — B2B SaaS, consulting</td></tr>
+    <tr><td>Regulatory/compliance + tech literacy</td><td>Regulasi + teknologi biasanya silo</td><td>Tinggi — fintech, healthtech</td></tr>
+    <tr><td>Strategic consulting + execution ability</td><td>Konsultan biasa tapi bisa execute = sangat langka</td><td>Sangat tinggi — semua industri</td></tr>
   </table>
 
-  <h2>Bargaining Score (1–10)</h2>
+  <h2>Bagian 2: Leverage Types & Strategies per Level Karir</h2>
   <table>
-    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Hampir tidak punya opsi. Terikat satu employer, tidak dikenal di luar organisasi</td><td>Kalau di-offer gaji segitu, terima karena tidak ada alternatif. <strong>Implikasi:</strong> Ini constraint paling actionable dan paling sering ditemui. LinkedIn rebuild, network activation, dan pipeline building bisa dimulai minggu ini.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>4–5</strong></td><td>Beberapa opsi tapi terbatas. Bisa pindah kalau mau, tapi belum punya reputasi eksternal kuat</td><td>Ada mobilitas, tapi belum optimal. <strong>Implikasi:</strong> Sedikit push di visibility bisa unlock peningkatan signifikan.</td></tr>
-    <tr><td style="color:var(--green)"><strong>6–7</strong></td><td>Mulai dikenal di luar organisasi. Network yang bisa diaktivasi</td><td>Cukup mudah pindah. <strong>Implikasi:</strong> Bargaining sudah decent — tapi bisa diperkuat dengan pipeline aktif.</td></tr>
-    <tr><td style="color:var(--green)"><strong>8–10</strong></td><td>Personal brand kuat, banyak opsi aktif, sering di-approach</td><td>Negosiasi dari posisi kuat karena punya banyak alternatif. <strong>Implikasi:</strong> Bargaining bukan constraint. Fokus ke Leverage atau System.</td></tr>
+    <tr><th>Tipe Leverage</th><th>Cocok untuk Level</th><th>Cara Membangun</th><th>Timeline</th></tr>
+    <tr><td><strong>Automation & Systems</strong></td><td>Semua level. Bisa dimulai dari junior.</td><td>Identifikasi 3 task repetitif → automate/template-kan. Tools: spreadsheet automation, Zapier, scripts, reporting dashboards.</td><td>2-4 minggu per automation</td></tr>
+    <tr><td><strong>Team Leverage</strong></td><td>Mid-senior (punya direct reports atau bisa propose).</td><td>Develop 1-2 anggota tim untuk bisa execute tanpa supervisi konstan. Buat delegation playbook. Definisikan kriteria "done" yang jelas.</td><td>1-3 bulan development</td></tr>
+    <tr><td><strong>Content & IP</strong></td><td>Semua level. Powerful untuk Bargaining juga.</td><td>Dokumentasikan methodology/framework yang reusable. Tulis di LinkedIn. Buat internal knowledge base. Record how-to videos.</td><td>1 konten/minggu × 4 minggu = fondasi</td></tr>
+    <tr><td><strong>Distribution & Platform</strong></td><td>Mid-senior. Butuh credibility dulu.</td><td>Build LinkedIn presence. Bergabung/buat professional communities. Speaking at events. Newsletter.</td><td>3-6 bulan untuk momentum</td></tr>
   </table>
 
-  <h2>Menentukan Constraint Utama dari Skor</h2>
-  <p>Constraint utama <strong>bukan selalu yang paling rendah skornya</strong>. Kadang faktor yang paling menahan bukan yang paling rendah. Contoh: seorang profesional dengan Capability 7 dan Bargaining 2 — Capability-nya bagus, tapi karena Bargaining sangat rendah, ia tidak menangkap value yang diciptakan. Bargaining yang jadi bottleneck, bukan Capability.</p>
-  <p>Beberapa profesional punya dua constraint yang sama kuatnya. Dalam kasus ini, prioritaskan berdasarkan: (1) mana yang paling quick-win, (2) mana yang paling blocking. Biasanya: perbaiki Bargaining dulu (quick-win) → lalu address System atau Leverage (longer play).</p>
+  <div class="callout callout-amber">
+    <strong>Quick Win Leverage:</strong> Untuk profesional 28-35 yang stuck, leverage paling cepat dibangun biasanya adalah Content & IP (tulis di LinkedIn, dokumentasikan methodology) karena ini secara bersamaan membangun Leverage DAN Bargaining. Dua constraint digeser sekaligus.
+  </div>
 
   <div class="callout callout-purple">
-    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise A2 — tulis interpretasi untuk setiap skor di konteks karir Anda sendiri. Bukan generic, tapi spesifik. Coach akan menantang area yang paling sering menjadi blind spot: seberapa mudah Anda digantikan (Capability) dan berapa opsi yang benar-benar Anda punya (Bargaining).
+    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise A5 — list semua skill, rate kelangkaannya, temukan Capability Moat. Lalu breakdown minggu kerja tipikal, hitung Leverage Ratio, dan identifikasi 3 area yang bisa di-leverage. Bawa ke coaching call untuk validasi.
   </div>
 
 <div class="resources">
-  <div class="resources-title">Materi Pendukung — A2</div>
+  <div class="resources-title">Materi Pendukung — A5</div>
   <div class="res-group">
     <div class="res-group-label">Exercise</div>
-    <a class="res-link" href="#LINK_EXERCISE_A2" target="_blank"><span class="res-icon">📝</span>Exercise A2 — Audit Interpretation Sheet<span class="res-arrow">→</span></a>
+    <a class="res-link" href="#LINK_EXERCISE_A5" target="_blank"><span class="res-icon">📝</span>Exercise A5 — Capability & Leverage Audit<span class="res-arrow">→</span></a>
   </div>
 </div>
 </div>
 
-<!-- MATERI A3 -->
+<!-- MATERI A6 -->
 </div>
 
 <div class="footer">
-  Passion Hax · Career Tier Positioning · ARC Framework · A2<br>
+  Passion Hax · Career Tier Positioning · ARC Framework · A5<br>
   Confidential — program materials
 </div>
 

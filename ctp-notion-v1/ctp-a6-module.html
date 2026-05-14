@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A2 — Membaca Hasil Audit — Scoring Interpretation Guide | Phase A — AUDIT | Passion Hax</title>
+<title>A6 — Repositioning Direction — Tier Progression Playbook | Phase A — AUDIT | Passion Hax</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -147,10 +147,10 @@ tr:hover td{background:rgba(232,137,58,0.02)}
   const isIframe = window.self !== window.top;
   const urlParams = new URLSearchParams(window.location.search);
   const isCreatorBypass = urlParams.get('mode') === 'creator';
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   
-  if (!isIframe && !isCreatorBypass) {
-    window.stop();
-    document.write('<div style="font-family: sans-serif; text-align: center; padding: 50px; color: white; background: #09090B; height: 100vh;"><h2>Akses Ditolak</h2><p>Modul ini eksklusif dan hanya dapat diakses melalui Client Portal Anda di Notion.</p></div>');
+  if (!isIframe && !isCreatorBypass && !isIOS) {
+    document.documentElement.innerHTML = '<div style="font-family: sans-serif; text-align: center; padding: 50px; color: white; background: #09090B; height: 100vh;"><h2>Akses Ditolak</h2><p>Modul ini eksklusif dan hanya dapat diakses melalui Client Portal Anda di Notion.</p></div>';
     throw new Error('Direct access prevented');
   }
 </script>
@@ -165,14 +165,14 @@ tr:hover td{background:rgba(232,137,58,0.02)}
   </button>
   <img class="header-logo" alt="Passion Hax">
   <div class="tag">Passion Hax · ARC Framework · Phase A — AUDIT</div>
-  <h1>A2 — Membaca Hasil Audit — Scoring Interpretation Guide</h1>
+  <h1>A6 — Repositioning Direction — Tier Progression Playbook</h1>
   <div class="sub">Standalone Module · Materi Teks + Video + Exercise</div>
 </div>
 </div>
 
 <div class="wrap">
-<div class="mat active" id="m2">
-<div class="video-embed-wrap" id="video-m2">
+<div class="mat active" id="m6">
+<div class="video-embed-wrap" id="video-m6">
     <div class="video-placeholder">
       <div class="play-icon">▶</div>
       <span>Video akan ditambahkan — ganti URL di bawah</span>
@@ -203,19 +203,19 @@ tr:hover td{background:rgba(232,137,58,0.02)}
     <polygon points="516.0,22 516.0,30 520.0,26" fill="rgba(255,255,255,0.12)"/>
     
     <circle cx="298.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
-    <circle cx="330.0" cy="76" r="6" fill="#8b5cf6" opacity="1"/>
-    <circle cx="330.0" cy="76" r="10" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
-    <circle cx="362.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <circle cx="394.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <circle cx="426.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <circle cx="458.0" cy="76" r="4" fill="#8b5cf6" opacity="0.15"/>
-    <text x="378.0" y="98" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul A2 dari 6</text>
+    <circle cx="330.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="362.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="394.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="426.0" cy="76" r="4" fill="#8b5cf6" opacity="0.4"/>
+    <circle cx="458.0" cy="76" r="6" fill="#8b5cf6" opacity="1"/>
+    <circle cx="458.0" cy="76" r="10" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+    <text x="378.0" y="98" text-anchor="middle" fill="#8b5cf6" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul A6 dari 6</text>
     
     <rect x="10.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
     <text x="68.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Pahami model</text>
     <line x1="127.0" y1="132" x2="133.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="134.0" y="116" width="116.0" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
-    <text x="192.0" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Baca skor</text>
+    <rect x="134.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="192.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Baca skor</text>
     <line x1="251.0" y1="132" x2="257.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
     <rect x="258.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
     <text x="316.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Diagnosa constraint</text>
@@ -226,78 +226,104 @@ tr:hover td{background:rgba(232,137,58,0.02)}
     <rect x="506.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
     <text x="564.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Audit skill</text>
     <line x1="623.0" y1="132" x2="629.0" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="630.0" y="116" width="116.0" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-    <text x="688.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Arah reposisi</text>
+    <rect x="630.0" y="116" width="116.0" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
+    <text x="688.0" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Arah reposisi</text>
   </svg>
 
-    <p>Setelah memahami 4 faktor Career Value di modul sebelumnya, sekarang saatnya <strong>membaca data Audit Anda sendiri</strong>. Career Tier Audit sudah memberikan skor 1-10 untuk setiap faktor. Tapi angka tanpa konteks tidak berguna — modul ini membantu Anda menerjemahkan setiap skor ke dalam implikasi karir yang spesifik.</p>
-    <p>Tujuannya bukan sekadar tahu "skor saya berapa," tapi memahami <strong>apa arti skor itu untuk langkah selanjutnya</strong>. Skor System 4 punya implikasi yang sangat berbeda dari skor System 7 — dan strategi yang dibutuhkan juga berbeda.</p>
-    <p><strong>Setelah modul ini:</strong> Anda bisa menginterpretasi setiap skor Audit di konteks karir Anda sendiri, mengidentifikasi area yang perlu ditantang, dan mulai melihat pola constraint.</p>
-    <p><strong>Exercise terkait:</strong> A2 — Audit Interpretation Sheet (tulis interpretasi personal per skor)</p>
+    <p>Ini modul terakhir Phase A — dan menghasilkan <strong>deliverable terpenting dari seluruh fase diagnostik</strong>: Repositioning Direction Brief. Satu halaman yang menjadi north star selama 9 minggu ke depan.</p>
+    <p>Semua diagnosis dari A1-A5 ditarik menjadi satu rencana yang jelas: dari mana, ke mana, constraint apa yang digeser, tiga langkah utama, dan bagaimana mengukur keberhasilan. Brief ini bukan wishful thinking — ini commitment berdua antara Anda dan coach.</p>
+    <p>Modul ini juga memberikan Tier Progression Playbook — pattern dari profesional yang berhasil melakukan transisi serupa. Bukan resep universal, tapi data point yang bisa jadi input strategi.</p>
+    <p><strong>Setelah modul ini:</strong> Anda punya 1-page brief yang clear, validated oleh coach, dan siap dieksekusi di Phase R.</p>
+    <p><strong>Exercise terkait:</strong> A6 — Repositioning Direction Brief (WAJIB difinalisasi bersama coach)</p>
   </div>
 
-  <h2>Cara Baca Skor Audit</h2>
-  <p>Skor Audit bukan rapor. Tidak ada skor yang "baik" atau "buruk" — yang ada hanya data yang menunjukkan posisi saat ini. Skor rendah bukan berarti gagal. Skor tinggi bukan berarti aman. Yang penting: <strong>apa implikasinya untuk strategi repositioning?</strong></p>
+  <h2>Tier Progression Playbook</h2>
+  <p>Identifikasi tier saat ini dan target tier. Lalu lihat: untuk constraint utama Anda, apa typical moves yang dibutuhkan? Ini bukan resep — ini pattern dari profesional yang berhasil melakukan transisi serupa.</p>
 
-  <h2>System Score (1–10)</h2>
+  <h2>Tier 1→2 (Starter → Executor): &lt; Rp 10jt → Rp 10-20jt</h2>
+  <div class="callout callout-blue">
+    <strong>Catatan:</strong> Transisi ini bukan fokus utama program CTP (target audience sudah di Tier 2-3). Tapi playbook ini berguna sebagai context untuk memahami progression.
+  </div>
   <table>
-    <tr><th style="width:12%">Range</th><th style="width:25%">Kategori Industri</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Sektor publik reguler, NGO, manufaktur tradisional kecil</td><td>Ceiling sangat terbatas. Bahkan posisi paling senior di sistem ini kemungkinan tidak mencapai target income. <strong>Implikasi:</strong> Kalau target ≥ Rp 20jt, migrasi kemungkinan diperlukan.</td></tr>
-    <tr><td style="color:var(--red)"><strong>3.5–5</strong></td><td>BUMN, instansi "sultan", regulator, banking retail, manufaktur besar</td><td>Ceiling moderat. Ada ruang growth tapi terbatas di level tertentu. <strong>Implikasi:</strong> Mungkin cukup untuk target Rp 15-20jt tapi sulit lebih dari itu tanpa pindah ke sistem yang lebih tinggi.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>5.5–7</strong></td><td>Banking korporat, consulting mid-market, consumer goods multinasional, healthcare</td><td>Ceiling lumayan. Revenue proximity lebih tinggi. <strong>Implikasi:</strong> Bisa capai Rp 20-30jt di level senior. Optimasi di dalam sistem mungkin cukup.</td></tr>
-    <tr><td style="color:var(--green)"><strong>7.5–9</strong></td><td>Top consulting, fintech, digital, e-commerce scaled</td><td>Ceiling tinggi. Revenue proximity kuat. <strong>Implikasi:</strong> Rp 30-80jt realistis di senior/director level. Fokus ke Capability, Leverage, Bargaining.</td></tr>
-    <tr><td style="color:var(--green)"><strong>9–10</strong></td><td>Tech/SaaS global, AI, venture-backed unicorn</td><td>Ceiling sangat tinggi. <strong>Implikasi:</strong> Rp 50jt+ realistis. System bukan constraint — kalau income masih rendah, pasti faktor lain yang menahan.</td></tr>
+    <tr><th>Constraint</th><th>Typical Move</th></tr>
+    <tr><td style="color:var(--blue)"><strong>System</strong></td><td>Masuk ke organisasi/industri yang punya struktur karir (dari informal ke formal). Dari freelance ke corporate. Dari sektor yang tidak terstruktur ke yang ada career path.</td></tr>
+    <tr><td style="color:var(--green)"><strong>Capability</strong></td><td>Build foundational skills yang dibutuhkan market. Dari generalist ke punya 1-2 core skill yang demonstrable. Ambil pengalaman yang build track record.</td></tr>
+    <tr><td style="color:var(--amber)"><strong>Leverage</strong></td><td>Belum relevan di tier ini. Fokus di System dan Capability dulu.</td></tr>
+    <tr><td style="color:var(--red)"><strong>Bargaining</strong></td><td>Build basic professional presence. Resume yang proper. LinkedIn yang exist. Mulai build network kecil tapi targeted.</td></tr>
   </table>
 
-  <h2>Capability Score (1–10)</h2>
+
+
+  <h3>Tier 2→3 (Executor → Specialist): Rp 10-20jt → Rp 20-40jt</h3>
+  <div class="callout callout-green">
+    <strong>Ini transisi paling umum untuk klien program ini.</strong> Mayoritas target audience berada di transisi ini.
+  </div>
   <table>
-    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Skill umum, banyak substitusi di pasar</td><td>Mudah digantikan. Tidak punya diferensiator yang jelas. <strong>Implikasi:</strong> Perlu deepening atau menemukan kombinasi langka. Jangan fokus ke banyak hal — fokus ke irisan yang bernilai tinggi.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>4–6</strong></td><td>Kompeten, punya beberapa skill yang di-demand</td><td>Sudah punya fondasi. Tapi belum cukup langka untuk punya pricing power signifikan. <strong>Implikasi:</strong> Cari kombinasi skill yang membentuk Capability Moat.</td></tr>
-    <tr><td style="color:var(--green)"><strong>7–8</strong></td><td>Kombinasi langka, sulit digantikan</td><td>Punya pricing power. Perusahaan akan kesulitan cari pengganti. <strong>Implikasi:</strong> Capability bukan constraint utama — fokus ke Leverage dan Bargaining untuk menangkap value.</td></tr>
-    <tr><td style="color:var(--green)"><strong>9–10</strong></td><td>Sangat langka, hampir tidak ada substitusi</td><td>Top-tier capability. <strong>Implikasi:</strong> Value sudah tinggi — pertanyaannya apakah sudah ditangkap (Bargaining) dan di-scale (Leverage).</td></tr>
+    <tr><th>Constraint</th><th>Typical Move</th><th>Timeline Realistis</th></tr>
+    <tr><td style="color:var(--blue)"><strong>System</strong></td><td>Pindah dari industri ceiling-rendah ke ceiling-tinggi. Contoh: manufaktur → logistics tech. Banking retail → fintech. Atau: pindah dari organisasi kecil ke yang lebih besar di industri sama.</td><td>3-6 bulan</td></tr>
+    <tr><td style="color:var(--green)"><strong>Capability</strong></td><td>Dari generalist ke specialist. Build Capability Moat: kombinasikan 2-3 skill yang langka di pasar target. Deepenkan domain knowledge. Dari "bisa semua sedikit" ke "expert di irisan tertentu."</td><td>3-6 bulan positioning + ongoing</td></tr>
+    <tr><td style="color:var(--amber)"><strong>Leverage</strong></td><td>Mulai build leverage kecil: dokumentasikan methodology, automate repetitive tasks, mulai delegasi. Dari "semua saya yang kerjain" ke "saya fokus di high-impact, sisanya ada yang handle."</td><td>1-3 bulan sprint</td></tr>
+    <tr><td style="color:var(--red)"><strong>Bargaining</strong></td><td>LinkedIn overhaul. Resume reposition. Network activation. Pipeline 20+ target companies. Negosiasi salary dari posisi kuat (punya data + alternatif). Ini move paling quick-win untuk Tier 2→3.</td><td>4-8 minggu untuk dampak awal</td></tr>
   </table>
 
-  <h2>Leverage Score (1–10)</h2>
+  <h3>Tier 3→4 (Specialist → Strategist): Rp 20-40jt → Rp 40-80jt</h3>
   <table>
-    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Fully manual. 100% output tergantung kehadiran langsung</td><td>Kalau sakit sehari, output berhenti. Posisi paling rentan dan paling melelahkan. <strong>Implikasi:</strong> Income di-cap oleh jam kerja fisik. Perlu mulai build sistem, delegasi, atau konten.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>4–5</strong></td><td>Ada sedikit sistem, mungkin tim kecil, tapi belum bisa jalan tanpa kehadiran</td><td>Sudah mulai delegate, tapi masih micromanage. <strong>Implikasi:</strong> Ada fondasi — perlu diperkuat jadi autonomous systems.</td></tr>
-    <tr><td style="color:var(--green)"><strong>6–7</strong></td><td>Sistem atau tim nyata yang mengamplifikasi output</td><td>Mulai bisa "tidak hadir" beberapa hari dan output tetap jalan. <strong>Implikasi:</strong> Tinggal diperkuat dan diskalakan.</td></tr>
-    <tr><td style="color:var(--green)"><strong>8–10</strong></td><td>Sistem berjalan tanpa kehadiran aktif</td><td>Territory platform, IP, atau organisasi self-sustaining. <strong>Implikasi:</strong> Leverage bukan constraint — fokus ke faktor lain.</td></tr>
+    <tr><th>Constraint</th><th>Typical Move</th><th>Timeline Realistis</th></tr>
+    <tr><td style="color:var(--blue)"><strong>System</strong></td><td>Masuk ke organisasi yang punya scope untuk strategic impact. Dari mid-size ke enterprise. Dari lokal ke regional/global. Role yang influence business outcomes, bukan sekadar execute tasks.</td><td>3-12 bulan</td></tr>
+    <tr><td style="color:var(--green)"><strong>Capability</strong></td><td>Dari domain expert ke strategic thinker. Bisa menghubungkan technical expertise ke business outcomes. Dari "saya tahu cara solve problem ini" ke "saya tahu problem mana yang paling worth solving."</td><td>6-12 bulan development</td></tr>
+    <tr><td style="color:var(--amber)"><strong>Leverage</strong></td><td>Build tim yang genuinely autonomous. Create systems/IP yang scale. Dari individual contributor ke leader of leaders. Output diukur bukan oleh apa yang dikerjakan, tapi apa yang tim hasilkan.</td><td>3-6 bulan</td></tr>
+    <tr><td style="color:var(--red)"><strong>Bargaining</strong></td><td>Industry reputation. Board/advisory positions. Speaking at industry events. Headhunters yang approach — bukan Anda yang apply. Personal brand yang dikenal di circle profesional.</td><td>6-12 bulan building</td></tr>
   </table>
 
-  <h2>Bargaining Score (1–10)</h2>
-  <table>
-    <tr><th style="width:12%">Range</th><th>Profil</th><th>Arti & Implikasi</th></tr>
-    <tr><td style="color:var(--red)"><strong>1–3</strong></td><td>Hampir tidak punya opsi. Terikat satu employer, tidak dikenal di luar organisasi</td><td>Kalau di-offer gaji segitu, terima karena tidak ada alternatif. <strong>Implikasi:</strong> Ini constraint paling actionable dan paling sering ditemui. LinkedIn rebuild, network activation, dan pipeline building bisa dimulai minggu ini.</td></tr>
-    <tr><td style="color:var(--amber)"><strong>4–5</strong></td><td>Beberapa opsi tapi terbatas. Bisa pindah kalau mau, tapi belum punya reputasi eksternal kuat</td><td>Ada mobilitas, tapi belum optimal. <strong>Implikasi:</strong> Sedikit push di visibility bisa unlock peningkatan signifikan.</td></tr>
-    <tr><td style="color:var(--green)"><strong>6–7</strong></td><td>Mulai dikenal di luar organisasi. Network yang bisa diaktivasi</td><td>Cukup mudah pindah. <strong>Implikasi:</strong> Bargaining sudah decent — tapi bisa diperkuat dengan pipeline aktif.</td></tr>
-    <tr><td style="color:var(--green)"><strong>8–10</strong></td><td>Personal brand kuat, banyak opsi aktif, sering di-approach</td><td>Negosiasi dari posisi kuat karena punya banyak alternatif. <strong>Implikasi:</strong> Bargaining bukan constraint. Fokus ke Leverage atau System.</td></tr>
-  </table>
+  <h2>Komponen Repositioning Direction Brief</h2>
+  <div class="card">
+    <div class="card-title">5 Komponen Brief — 1 Halaman</div>
+    <p><strong>1. Current State Summary.</strong> Di mana Anda sekarang — tier, income, constraint utama, gap. Recap dari semua diagnosis A1-A5.</p>
+    <p><strong>2. Target State.</strong> Ke mana bergerak. Target yang realistis berdasarkan data Audit. Role target, industry target, income target, tier target.</p>
+    <p><strong>3. Primary Constraint & Strategy.</strong> Constraint utama dan strategi utama untuk menggesernya.</p>
+    <p><strong>4. Three Strategic Moves.</strong> Tiga aksi utama yang akan dieksekusi di Phase R. Bukan 10, bukan 20 — tiga. Fokus mengalahkan volume.</p>
+    <p><strong>5. Success Metrics.</strong> Bagaimana mengukur keberhasilan? Bukan feeling — tapi indikator terukur. Contoh: "3 interview dalam 6 minggu", "LinkedIn reach naik 5x", "offer di atas Rp X."</p>
+  </div>
 
-  <h2>Menentukan Constraint Utama dari Skor</h2>
-  <p>Constraint utama <strong>bukan selalu yang paling rendah skornya</strong>. Kadang faktor yang paling menahan bukan yang paling rendah. Contoh: seorang profesional dengan Capability 7 dan Bargaining 2 — Capability-nya bagus, tapi karena Bargaining sangat rendah, ia tidak menangkap value yang diciptakan. Bargaining yang jadi bottleneck, bukan Capability.</p>
-  <p>Beberapa profesional punya dua constraint yang sama kuatnya. Dalam kasus ini, prioritaskan berdasarkan: (1) mana yang paling quick-win, (2) mana yang paling blocking. Biasanya: perbaiki Bargaining dulu (quick-win) → lalu address System atau Leverage (longer play).</p>
-
+  <h2>Pattern yang Konsisten</h2>
   <div class="callout callout-purple">
-    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise A2 — tulis interpretasi untuk setiap skor di konteks karir Anda sendiri. Bukan generic, tapi spesifik. Coach akan menantang area yang paling sering menjadi blind spot: seberapa mudah Anda digantikan (Capability) dan berapa opsi yang benar-benar Anda punya (Bargaining).
+    <p><strong>1. Semakin tinggi tier, semakin penting Leverage dan Bargaining.</strong> Di Tier 1-2, System dan Capability dominan. Di Tier 3-4, Leverage dan Bargaining jadi pembeda utama.</p>
+    <p><strong>2. Setiap transisi butuh "reframe" — bukan hanya skill baru.</strong> Dari Executor ke Specialist bukan cuma "belajar lebih banyak" tapi "reposisi cara Anda dilihat pasar." Ini yang akan dikerjakan di Phase R.</p>
+    <p><strong>3. Bargaining selalu bisa dimulai sekarang.</strong> Regardless tier mana saat ini, membangun Bargaining bisa dimulai hari ini dan memberikan return paling cepat.</p>
+    <p><strong>4. Jangan lompat tier.</strong> Tier 2 → Tier 4 dalam satu langkah itu tidak realistis. Fokus ke satu transisi yang jelas dan achievable.</p>
+  </div>
+
+  <h2>Opsi Non-Corporate — Consulting, Freelancing, Portfolio Career</h2>
+  <p>Mayoritas klien Passion Hax akan bergerak dalam jalur employment — pindah ke sistem, role, atau organisasi yang lebih baik. Tapi ada sebagian kecil yang constraint-nya justru paling efisien diselesaikan di luar jalur corporate. Bagian ini memberikan gambaran kapan opsi ini masuk akal dan kapan tidak.</p>
+
+  <h3>Kapan Opsi Non-Corporate Worth Dipertimbangkan</h3>
+  <table>
+    <tr><th>Situasi</th><th>Opsi</th><th>Cocok Kalau</th><th>Tidak Cocok Kalau</th></tr>
+    <tr><td><strong>Leverage constraint parah + Capability sangat tinggi</strong></td><td>Independent consulting / advisory</td><td>Punya network yang sudah bisa menghasilkan 2-3 klien tanpa cold outreach. Domain expertise yang langka dan bisa di-package sebagai service.</td><td>Tidak punya runway finansial 6 bulan. Atau tidak punya jaringan yang bisa langsung dikonversi menjadi klien.</td></tr>
+    <tr><td><strong>System constraint + Capability niche</strong></td><td>Freelance / contract work</td><td>Skill yang on-demand di pasar global (tech, design, content). Punya portfolio yang kuat. Tidak butuh stabilitas income bulanan tetap.</td><td>Punya tanggungan besar. Atau skill yang lebih bernilai di dalam organisasi (management, operations).</td></tr>
+    <tr><td><strong>Semua constraint rendah, sudah di Tier 4+</strong></td><td>Portfolio career (advisory + consulting + board + content)</td><td>Sudah punya reputasi industri yang kuat. Beberapa sumber income. Network yang sangat luas.</td><td>Masih butuh membangun credibility. Masih di Tier 2-3.</td></tr>
+  </table>
+
+  <div class="callout callout-red">
+    <strong>Penting:</strong> Untuk target audience utama Passion Hax (usia 28-35, Tier 2→3), opsi non-corporate biasanya BUKAN jalur optimal. Alasannya: di tahap ini, employment masih memberikan Leverage terbaik (tim, budget, sistem perusahaan) dan Bargaining terbaik (brand name, title, network). Setelah Tier 4, opsi non-corporate menjadi jauh lebih viable. Diskusikan dengan coach sebelum memutuskan jalur ini.
+  </div>
+
+  <div class="callout callout-red">
+    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise A6 (Repositioning Direction Brief). Ini deliverable terpenting Phase A. <strong>WAJIB difinalisasi bersama coach.</strong> Brief yang disepakati = commitment berdua. Setelah final, brief ini tidak berubah kecuali ada data baru yang signifikan. Phase A selesai setelah brief di-sign off.
   </div>
 
 <div class="resources">
-  <div class="resources-title">Materi Pendukung — A2</div>
+  <div class="resources-title">Materi Pendukung — A6</div>
   <div class="res-group">
     <div class="res-group-label">Exercise</div>
-    <a class="res-link" href="#LINK_EXERCISE_A2" target="_blank"><span class="res-icon">📝</span>Exercise A2 — Audit Interpretation Sheet<span class="res-arrow">→</span></a>
+    <a class="res-link" href="#LINK_EXERCISE_A6" target="_blank"><span class="res-icon">📝</span>Exercise A6 — Repositioning Direction Brief<span class="res-arrow">→</span></a>
   </div>
 </div>
 </div>
-
-<!-- MATERI A3 -->
 </div>
 
 <div class="footer">
-  Passion Hax · Career Tier Positioning · ARC Framework · A2<br>
+  Passion Hax · Career Tier Positioning · ARC Framework · A6<br>
   Confidential — program materials
 </div>
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C2 — Interview Differentiators | Phase C — CAPTURE | Passion Hax</title>
+<title>C3 — Negosiasi Gaji — Playbook Lengkap | Phase C — CAPTURE | Passion Hax</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -147,10 +147,10 @@ tr:hover td{background:rgba(232,137,58,0.02)}
   const isIframe = window.self !== window.top;
   const urlParams = new URLSearchParams(window.location.search);
   const isCreatorBypass = urlParams.get('mode') === 'creator';
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   
-  if (!isIframe && !isCreatorBypass) {
-    window.stop();
-    document.write('<div style="font-family: sans-serif; text-align: center; padding: 50px; color: white; background: #09090B; height: 100vh;"><h2>Akses Ditolak</h2><p>Modul ini eksklusif dan hanya dapat diakses melalui Client Portal Anda di Notion.</p></div>');
+  if (!isIframe && !isCreatorBypass && !isIOS) {
+    document.documentElement.innerHTML = '<div style="font-family: sans-serif; text-align: center; padding: 50px; color: white; background: #09090B; height: 100vh;"><h2>Akses Ditolak</h2><p>Modul ini eksklusif dan hanya dapat diakses melalui Client Portal Anda di Notion.</p></div>';
     throw new Error('Direct access prevented');
   }
 </script>
@@ -165,14 +165,14 @@ tr:hover td{background:rgba(232,137,58,0.02)}
   </button>
   <img class="header-logo" alt="Passion Hax">
   <div class="tag">Passion Hax · ARC Framework · Phase C — CAPTURE</div>
-  <h1>C2 — Interview Differentiators</h1>
+  <h1>C3 — Negosiasi Gaji — Playbook Lengkap</h1>
   <div class="sub">Standalone Module · Materi Teks + Video + Exercise</div>
 </div>
 </div>
 
 <div class="wrap">
-<div class="mat active" id="m2">
-<div class="video-embed-wrap" id="video-m2">
+<div class="mat active" id="m3">
+<div class="video-embed-wrap" id="video-m3">
     <div class="video-placeholder">
       <div class="play-icon">▶</div>
       <span>Video akan ditambahkan — ganti URL di bawah</span>
@@ -203,21 +203,21 @@ tr:hover td{background:rgba(232,137,58,0.02)}
     <polygon points="516.0,22 516.0,30 520.0,26" fill="rgba(255,255,255,0.12)"/>
     
     <circle cx="314.0" cy="76" r="4" fill="#22c55e" opacity="0.4"/>
-    <circle cx="346.0" cy="76" r="6" fill="#22c55e" opacity="1"/>
-    <circle cx="346.0" cy="76" r="10" fill="none" stroke="#22c55e" stroke-width="1" opacity="0.3"/>
-    <circle cx="378.0" cy="76" r="4" fill="#22c55e" opacity="0.15"/>
+    <circle cx="346.0" cy="76" r="4" fill="#22c55e" opacity="0.4"/>
+    <circle cx="378.0" cy="76" r="6" fill="#22c55e" opacity="1"/>
+    <circle cx="378.0" cy="76" r="10" fill="none" stroke="#22c55e" stroke-width="1" opacity="0.3"/>
     <circle cx="410.0" cy="76" r="4" fill="#22c55e" opacity="0.15"/>
     <circle cx="442.0" cy="76" r="4" fill="#22c55e" opacity="0.15"/>
-    <text x="378.0" y="98" text-anchor="middle" fill="#22c55e" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul C2 dari 5</text>
+    <text x="378.0" y="98" text-anchor="middle" fill="#22c55e" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="600">Modul C3 dari 5</text>
     
     <rect x="10.0" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
     <text x="80.4" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Interview skill</text>
     <line x1="151.8" y1="132" x2="157.8" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="158.8" y="116" width="140.8" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
-    <text x="229.20000000000002" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Differentiators</text>
+    <rect x="158.8" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+    <text x="229.20000000000002" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Differentiators</text>
     <line x1="300.6" y1="132" x2="306.6" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-    <rect x="307.6" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-    <text x="378.0" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Negosiasi</text>
+    <rect x="307.6" y="116" width="140.8" height="32" rx="6" fill="rgba(232,137,58,0.08)" stroke="rgba(232,137,58,0.25)" stroke-width="0.5"/>
+    <text x="378.0" y="136" text-anchor="middle" fill="#E8893A" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600">Negosiasi</text>
     <line x1="449.40000000000003" y1="132" x2="455.40000000000003" y2="132" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
     <rect x="456.40000000000003" y="116" width="140.8" height="32" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
     <text x="526.8000000000001" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Evaluasi offer</text>
@@ -226,60 +226,107 @@ tr:hover td{background:rgba(232,137,58,0.02)}
     <text x="675.6" y="136" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="300">Forward plan</text>
   </svg>
 
-    <p>99% kandidat datang ke interview dengan: resume + jawaban verbal. Itu baseline — bukan diferensiator. Modul ini membahas tiga tools tambahan yang bisa membuat Anda menonjol secara tangible: Professional Dossier, Skills Mindmap, dan 90-Day Plan.</p>
-    <p>Kritis untuk dipahami: <strong>tools ini bukan selalu digunakan.</strong> Timing yang salah bisa terasa overconfident atau desperate. Modul ini memberikan panduan kapan menggunakannya, bukan hanya bagaimana membuatnya.</p>
-    <p>Professional Dossier sudah tersedia sebagai template DOCX terpisah. 90-Day Plan juga sudah ada templatenya.</p>
-    <p><strong>Setelah modul ini:</strong> Anda memilih 1-2 tools yang paling sesuai profil dan target, membuatnya lengkap, dan tahu persis kapan akan dikeluarkan.</p>
-    <p><strong>Exercise terkait:</strong> C2 — Build Your Differentiator (pilih 1-2 tools, build complete)</p>
+    <p>Dari semua hal yang bisa dilakukan untuk menaikkan income, negosiasi punya dampak paling langsung dan paling besar per jam waktu yang diinvestasikan. Gaji awal yang dinegosiasikan Rp 3 juta lebih tinggi per bulan = Rp 180 juta+ dalam 5 tahun, belum termasuk compound effect ke bonus dan kenaikan persentase.</p>
+    <p>Sebagian besar profesional Indonesia tidak negosiasi karena budaya — "sudah syukur," "nanti dianggap serakah," atau takut offer di-rescind. Modul ini membongkar mitos-mitos itu dan memberikan framework serta script yang bisa langsung digunakan.</p>
+    <p><strong>Penting:</strong> Persiapan negosiasi dilakukan SEBELUM ada offer — bukan saat offer sudah di tangan. Exercise C3 harus dikerjakan sekarang, bukan nanti.</p>
+    <p><strong>Setelah modul ini:</strong> Anda punya market data, BATNA yang jelas, anchor yang sudah dihitung, dan script untuk 4 skenario negosiasi yang paling umum.</p>
+    <p><strong>Exercise terkait:</strong> C3 — Negotiation Prep Document</p>
   </div>
 
-  <h2>Professional Dossier — Kapan dan Bagaimana</h2>
-  <p>Dossier = 2-3 halaman yang mengkompilasi bukti value Anda: ringkasan profil, key achievements (dengan angka), testimonials/recommendations, dan expertise areas. <strong>Gunakan Template_Professional_Dossier.docx yang sudah disediakan.</strong></p>
+  <h2>Market Data Sources — Indonesia</h2>
   <table>
-    <tr><th>Kapan Gunakan</th><th>Kapan Jangan Gunakan</th></tr>
-    <tr><td>Final round interview</td><td>Phone screening pertama</td></tr>
-    <tr><td>Pertemuan dengan C-level executive</td><td>Saat interviewer belum tertarik</td></tr>
-    <tr><td>Referral introduction ke senior exec</td><td>Sebagai pengganti resume di aplikasi online</td></tr>
-    <tr><td>Situasi di mana Anda diminta "ceritakan lebih"</td><td>Di semua interview tanpa pertimbangan timing</td></tr>
+    <tr><th>Sumber</th><th>Coverage</th><th>Akses</th><th>Reliabilitas</th></tr>
+    <tr><td><strong>Michael Page Salary Guide</strong></td><td>Annual report. Per industri dan fungsi. Indonesia-specific.</td><td>PDF gratis (download di website)</td><td>Tinggi — methodology rigor</td></tr>
+    <tr><td><strong>Robert Walters Salary Survey</strong></td><td>Annual. Fokus professional & executive roles.</td><td>PDF gratis (download di website)</td><td>Tinggi</td></tr>
+    <tr><td><strong>Glassdoor</strong></td><td>Per company & role. User-submitted. Sample size varies.</td><td>Gratis (perlu akun)</td><td>Medium — self-reported</td></tr>
+    <tr><td><strong>LinkedIn Salary Insights</strong></td><td>Data dari LinkedIn users. Masih terbatas di Indonesia.</td><td>LinkedIn Premium</td><td>Medium</td></tr>
+    <tr><td><strong>Network / peers</strong></td><td>Paling akurat untuk konteks spesifik. Tanya langsung ke trusted contacts.</td><td>Gratis — butuh relasi</td><td>Sangat tinggi untuk konteks spesifik</td></tr>
+    <tr><td><strong>Job postings dengan salary</strong></td><td>Beberapa posting Jobstreet/LinkedIn mencantumkan range.</td><td>Gratis</td><td>Terbatas (hanya role yang aktif hiring)</td></tr>
   </table>
-  <p><strong>Cara present:</strong> "Saya sudah menyiapkan ringkasan singkat yang mengkompilasi background dan kontribusi utama saya — apakah ini berguna untuk Anda?" Jangan paksa. Tawarkan. Kalau mereka mau, walk through highlight saja (2-3 menit). Kalau tidak — tinggalkan salinan.</p>
 
-  <h2>Skills Mindmap — Visual Positioning</h2>
-  <p>Mindmap = visualisasi kemampuan Anda dalam format yang mudah di-scan. Powerful karena visual — otak manusia memproses visual 60.000x lebih cepat dari teks.</p>
+  <h2>Total Compensation Breakdown — Konteks Indonesia</h2>
+  <p>Negosiasi bukan hanya soal gaji pokok. Ini semua komponen yang bisa dinegosiasikan:</p>
   <table>
-    <tr><th>Elemen</th><th>Isi</th></tr>
-    <tr><td><strong>Center</strong></td><td>Nama + Career Value Statement</td></tr>
-    <tr><td><strong>3-5 Branches</strong></td><td>Domain expertise areas utama</td></tr>
-    <tr><td><strong>Sub-branches per branch</strong></td><td>Specific skills + 1 angka sebagai evidence</td></tr>
-    <tr><td><strong>Visual style</strong></td><td>Color-coded, clean, whitespace cukup. Buat di PowerPoint atau Canva.</td></tr>
+    <tr><th>Komponen</th><th>Range Tipikal</th><th>Bisa Dinegosiasikan?</th><th>Catatan</th></tr>
+    <tr><td><strong>Gaji pokok (base)</strong></td><td>60-80% total comp</td><td>Ya — target utama</td><td>Ini yang paling berdampak jangka panjang</td></tr>
+    <tr><td><strong>THR</strong></td><td>1x gaji (mandatori hukum)</td><td>Tidak</td><td>Ditetapkan UU</td></tr>
+    <tr><td><strong>Performance bonus</strong></td><td>0-6x gaji/tahun</td><td>Ya — struktur dan target</td><td>Negosiasikan formula dan threshold, bukan hanya angka</td></tr>
+    <tr><td><strong>Signing bonus</strong></td><td>1-3x gaji</td><td>Ya — terutama kalau sacrifice bonus lama</td><td>Argumen kuat: "Saya akan kehilangan bonus Q4 di tempat lama"</td></tr>
+    <tr><td><strong>Tunjangan transport/komunikasi</strong></td><td>Rp 500K - 5 juta/bulan</td><td>Ya — sering lebih mudah dari gaji pokok</td><td>Tidak masuk hitungan pajak penghasilan di beberapa struktur</td></tr>
+    <tr><td><strong>Asuransi kesehatan</strong></td><td>BPJS + swasta (sangat bervariasi)</td><td>Kadang — level coverage</td><td>Apakah cover keluarga? Level coverage?</td></tr>
+    <tr><td><strong>Cuti tahunan</strong></td><td>12-20 hari (12 hari minimum UU)</td><td>Ya — hari di atas minimum hukum</td><td>Sering lebih mudah dinegosiasikan dari gaji</td></tr>
+    <tr><td><strong>Fleksibilitas/WFH</strong></td><td>0-5 hari/minggu</td><td>Ya — semakin umum post-2020</td><td>Minta specific arrangement, bukan generic</td></tr>
+    <tr><td><strong>Training/education budget</strong></td><td>Rp 0 - 50 juta/tahun</td><td>Ya — terutama level senior</td><td>Ini investasi yang perusahaan sering setuju karena terlihat sebagai "pengembangan aset"</td></tr>
+    <tr><td><strong>Salary review timeline</strong></td><td>Biasanya 12 bulan</td><td>Ya — negosiasikan jadi 6 bulan</td><td>Argumen: "Saya ingin membuktikan diri dan minta review di 6 bulan"</td></tr>
   </table>
-  <p><strong>Kapan gunakan:</strong> Saat interviewer bertanya "walk me through your skillset" atau "what makes you unique." Keluarkan mindmap, walk through: "Berikut bagaimana kemampuan saya saling terhubung..."</p>
 
-  <h2>90-Day Plan — Differentiator Paling Kuat</h2>
-  <p>Ini senjata paling powerful — dan paling jarang dipakai. Anda membuat rencana konkret: apa yang akan dilakukan di 30-60-90 hari pertama di role ini. Ini sekaligus mendemonstrasikan tiga hal: Anda sudah riset perusahaan, Anda bisa berpikir strategis, dan Anda serius. <strong>Gunakan Template_90_Day_Plan.docx yang sudah disediakan.</strong></p>
+  <h2>Framework Negosiasi: 4 Langkah</h2>
+  <p><strong>Langkah 1 — Express Enthusiasm.</strong> Jangan langsung counter. Tunjukkan Anda mau role ini. "Terima kasih untuk offer-nya. Saya sangat excited dengan opportunity ini dan yakin bisa berkontribusi signifikan ke [area spesifik]."</p>
+  <p><strong>Langkah 2 — Anchor.</strong> Sebutkan angka yang 10-15% di atas target Anda. Mereka akan counter down — jadi berikan ruang. "Berdasarkan market data untuk role serupa dan kontribusi yang sudah saya demonstrasikan — [reference achievement spesifik dari interview] — saya berharap kita bisa mendiskusikan kompensasi di range Rp [anchor]."</p>
+  <p><strong>Langkah 3 — Justify with Value.</strong> Ini bukan arguing. Ini presenting evidence. "Secara spesifik, di posisi terakhir saya [achievement 1 — angka] dan [achievement 2 — angka]. Saya yakin bisa membawa hasil serupa ke [company]."</p>
+  <p><strong>Langkah 4 — Handle Counter.</strong> Mereka akan counter. Tiga respons yang efektif: (a) pindah ke komponen lain (signing bonus, review timeline), (b) negosiasikan structure bonus yang tied ke results, (c) minta salary review di 6 bulan berdasarkan performance.</p>
+
+  <h2>Scripts per Skenario</h2>
+  <h3>Script 1: Merespons Offer Awal</h3>
+  <div class="example">
+    <div class="example-label">Script</div>
+    <p style="margin:0">"Terima kasih banyak untuk offer-nya. Saya sangat excited dengan kesempatan ini — khususnya [aspek spesifik yang genuinely menarik]. Sebelum saya finalisasi, boleh saya minta waktu 48 jam untuk mereview semua terms-nya secara menyeluruh?"</p>
+  </div>
+
+  <h3>Script 2: Counter-Offer</h3>
+  <div class="example">
+    <div class="example-label">Script</div>
+    <p style="margin:0">"Saya sudah review offer-nya dan tetap sangat tertarik. Berdasarkan market data untuk role serupa dan kontribusi yang sudah saya demonstrasikan — spesifiknya [achievement 1] dan [achievement 2] — saya berharap kita bisa mendiskusikan gaji pokok di range Rp [anchor]. Saya yakin ini mencerminkan nilai yang fair untuk apa yang bisa saya bawa ke [company]."</p>
+  </div>
+
+  <h3>Script 3: Merespons "Ini Penawaran Terbaik Kami"</h3>
+  <div class="example">
+    <div class="example-label">Script</div>
+    <p style="margin:0">"Saya sangat menghargai transparansi ini dan memahami keterbatasan budget. Kalau gaji pokok sudah final di [angka mereka], apakah ada fleksibilitas di area lain? Spesifiknya saya tertarik mendiskusikan [signing bonus / structure performance bonus / salary review di 6 bulan / tunjangan tambahan]. Saya ingin memastikan total package mencerminkan nilai bersama."</p>
+  </div>
+
+  <h3>Script 4: Menerima Offer</h3>
+  <div class="example">
+    <div class="example-label">Script</div>
+    <p style="margin:0">"Saya dengan senang hati menerima offer ini. Terima kasih untuk diskusi yang konstruktif. Bisakah offer letter final dengan semua terms yang sudah disepakati dikirimkan secara tertulis? Saya ingin memastikan semuanya terdokumentasi. Sangat menantikan untuk bergabung dengan [company] dan berkontribusi ke [area spesifik]."</p>
+  </div>
 
   <div class="callout callout-red">
-    <strong>Aturan Timing — Ini Kritis:</strong> Salah timing = backfire parah.
-    <br>• Phone screen: tidak ada extra materials, hanya jawaban yang bagus
-    <br>• Round 2: dossier kalau situasi tepat dan interviewer enthusiastic
-    <br>• Final round: 90-Day Plan atau interview deck
-    <br><br>Jangan keluarkan 90-Day Plan di interview pertama — terkesan presumptuous. Di final round dengan interviewer yang sudah enthusiastic — ini bisa menjadi penentu.
+    <strong>Yang tidak boleh dilakukan:</strong> (1) Menyebut "ini minimum saya" — itu ultimatum, bukan negosiasi. (2) Bawa alasan personal (cicilan, kebutuhan hidup) — perusahaan tidak peduli dan itu melemahkan posisi. (3) Berbohong tentang offer lain — kalau terbukas, kepercayaan hancur. (4) Menerima di tempat — selalu minta 24-48 jam. (5) Negosiasi via pesan teks kalau bisa dilakukan via telepon atau tatap muka.
+  </div>
+
+  <h2>Script Negosiasi dalam Bahasa Indonesia Natural</h2>
+  <p>Script negosiasi di atas sudah solid secara framework. Tapi bahasa negosiasi di Indonesia punya nuansa tersendiri — lebih indirect, lebih sopan, dan tetap tegas tanpa terasa confrontational. Berikut versi yang sudah disesuaikan untuk konteks budaya kerja Indonesia.</p>
+
+  <h3>Skenario 1: Merespons Offer Awal (Versi Indonesia)</h3>
+  <div class="example"><div class="example-label">Script Bahasa Indonesia</div><p style="margin:0">"Terima kasih banyak Pak/Bu [nama] atas tawarannya. Saya sangat senang dan antusias dengan kesempatan ini — terutama [sebutkan aspek spesifik yang genuinely menarik, misalnya: kesempatan memimpin tim growth di fase ekspansi ini]. Kalau berkenan, boleh saya minta waktu dua hari untuk mempelajari detailnya secara menyeluruh? Saya ingin memastikan semua aspek sudah saya pahami dengan baik sebelum memberikan respons."</p></div>
+
+  <h3>Skenario 2: Counter-Offer (Versi Indonesia)</h3>
+  <div class="example"><div class="example-label">Script Bahasa Indonesia</div><p style="margin:0">"Pak/Bu [nama], terima kasih sudah memberikan waktu untuk saya review. Saya tetap sangat tertarik dengan posisi ini dan yakin bisa memberikan kontribusi signifikan — khususnya berdasarkan pengalaman saya di [achievement spesifik, misalnya: men-scale tim dan men-deliver penghematan Rp 32 miliar untuk klien]. Berdasarkan riset market dan mempertimbangkan scope tanggung jawab di posisi ini, saya berharap kita bisa mendiskusikan kompensasi di kisaran Rp [anchor]. Saya yakin angka ini mencerminkan nilai yang fair untuk kontribusi yang bisa saya berikan."</p></div>
+
+  <h3>Skenario 3: Merespons "Ini Sudah Angka Terbaik Kami" (Versi Indonesia)</h3>
+  <div class="example"><div class="example-label">Script Bahasa Indonesia</div><p style="margin:0">"Saya sangat menghargai transparansi Bapak/Ibu dan memahami bahwa ada batasan budget. Kalau untuk gaji pokok memang sudah di angka tersebut, boleh saya tanyakan — apakah ada ruang untuk mendiskusikan komponen lain? Misalnya, mengingat saya akan meninggalkan bonus tahunan di posisi saat ini, mungkin bisa dipertimbangkan signing bonus sebagai kompensasi transisi. Atau alternatif lain, review gaji di bulan ke-6 berdasarkan pencapaian target — saya sangat percaya diri bisa deliver, jadi ini juga mengurangi risiko dari sisi perusahaan."</p></div>
+
+  <h3>Skenario 4: Saat Ditanya "Berapa Ekspektasi Gaji?" di Awal Proses (Versi Indonesia)</h3>
+  <div class="example"><div class="example-label">Script Bahasa Indonesia</div><p style="margin:0">"Terima kasih atas pertanyaannya. Sejujurnya saya ingin memahami lebih dalam tentang scope tanggung jawab dan ekspektasi di posisi ini sebelum bicara angka spesifik — supaya kita bisa memastikan ada keselarasan. Tapi untuk memastikan kita di kisaran yang sama, boleh saya tahu range budget yang sudah ditetapkan untuk posisi ini?"</p></div>
+  <p><strong>Kalau mereka insist:</strong> "Baik — berdasarkan riset market dan pengalaman saya, kisaran yang realistis untuk posisi dengan scope seperti ini ada di range Rp [bawah target] sampai Rp [atas target]. Tentunya ini bisa kita diskusikan lebih lanjut setelah saya lebih memahami detailnya."</p>
+
+  <h3>Skenario 5: Menerima Offer (Versi Indonesia)</h3>
+  <div class="example"><div class="example-label">Script Bahasa Indonesia</div><p style="margin:0">"Pak/Bu [nama], saya dengan senang hati menerima tawaran ini. Terima kasih atas diskusi yang konstruktif — saya menghargai keterbukaan dan fleksibilitas yang ditunjukkan. Bisakah offer letter final dengan semua terms yang sudah kita sepakati dikirimkan secara tertulis? Saya ingin memastikan semuanya terdokumentasi dengan baik. Saya sangat menantikan untuk bergabung dan berkontribusi di [company]."</p></div>
+
+  <div class="callout callout-red">
+    <strong>Nuansa penting untuk konteks Indonesia:</strong> (1) Gunakan "Bapak/Ibu" kalau bicara dengan HR atau hiring manager Indonesia — lebih sopan dan menunjukkan profesionalisme. (2) Jangan terlalu direct — "Saya berharap kita bisa mendiskusikan..." lebih efektif dari "Saya minta..." (3) Selalu frame sebagai "diskusi bersama" bukan "permintaan sepihak." (4) Sebutkan bahwa keputusan ini "untuk kebaikan bersama" — framing mutual benefit sangat kuat di budaya Indonesia. (5) Kalau bicara dengan hiring manager ekspat/MNC — bisa lebih direct, switch ke script English di atas.
   </div>
 
   <div class="callout callout-green">
-    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise C2 — pilih 1-2 tools yang paling sesuai profil dan target, build complete. Minimal 1 differentiator siap deploy sebelum interview terjadi.
+    <strong>Apa yang harus dilakukan sekarang:</strong> Kerjakan Exercise C3 — research market rate, define BATNA, hitung anchor, siapkan 3 counter-offer scenarios, dan practice script. Bawa ke coaching call untuk role-play kalau ada live offer yang sedang berjalan.
   </div>
 
 <div class="resources">
-  <div class="resources-title">Materi Pendukung — C2</div>
+  <div class="resources-title">Materi Pendukung — C3</div>
   <div class="res-group">
     <div class="res-group-label">Exercise</div>
-    <a class="res-link" href="#LINK_EXERCISE_C2" target="_blank"><span class="res-icon">📝</span>Exercise C2 — Build Your Differentiator<span class="res-arrow">→</span></a>
-  </div>
-  <div class="res-group">
-    <div class="res-group-label">Template</div>
-    <a class="res-link" href="#LINK_TEMPLATE_PROFESSIONAL_DOSSIER" target="_blank"><span class="res-icon">📄</span>Template Professional Dossier<span class="res-arrow">→</span></a>
-    <a class="res-link" href="#LINK_TEMPLATE_90DAY_PLAN" target="_blank"><span class="res-icon">📄</span>Template 90-Day Plan<span class="res-arrow">→</span></a>
+    <a class="res-link" href="#LINK_EXERCISE_C3" target="_blank"><span class="res-icon">📝</span>Exercise C3 — Negotiation Prep Document<span class="res-arrow">→</span></a>
   </div>
 </div>
 </div>
@@ -287,7 +334,7 @@ tr:hover td{background:rgba(232,137,58,0.02)}
 </div>
 
 <div class="footer">
-  Passion Hax · Career Tier Positioning · ARC Framework · C2<br>
+  Passion Hax · Career Tier Positioning · ARC Framework · C3<br>
   Confidential — program materials
 </div>
 
