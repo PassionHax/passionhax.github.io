@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Finder AI — Passion Hax</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ox:#E8893A;--ox-bright:#F5A04A;--ox-dim:rgba(232,137,58,0.10);--ox-mid:rgba(232,137,58,0.28);
+  --ox-glow:rgba(232,137,58,0.18);
+  --bg:#09090B;--bg2:#0F0F12;--bg3:#141418;--bg4:#1A1A20;--bg5:#202028;
+  --border:rgba(255,255,255,0.06);--border-hi:rgba(232,137,58,0.35);--border-mid:rgba(255,255,255,0.10);
+  --text:#F5F3EE;--text2:#7A7A82;--text3:#3E3E46;--text-muted:#55555F;
+  --font-head:'Plus Jakarta Sans',sans-serif;--font-body:'Plus Jakarta Sans',sans-serif;
+  --radius:14px;--radius-sm:10px;--radius-xs:6px;
+  --green:#4ade80;--red:#f87171;--blue:#60a5fa;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:
+  linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:0;opacity:1}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:1}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(9,9,11,0.90);backdrop-filter:blur(20px) saturate(1.4)}
+.nav-logo-img{height:30px;width:auto;display:block}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-badge{font-size:10px;font-weight:600;letter-spacing:0.14em;color:var(--text2);text-transform:uppercase;border:1px solid var(--border-mid);padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.03)}
+.lang-toggle{display:flex;border:1px solid var(--border-mid);border-radius:20px;overflow:hidden;background:rgba(255,255,255,0.03)}
+.lang-btn{font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--text3);padding:4px 12px;cursor:pointer;border:none;background:transparent;transition:all 0.15s;font-family:var(--font-head)}
+.lang-btn.active{color:var(--ox);background:var(--ox-dim)}
+
+.screen{display:none;min-height:100vh;padding-top:80px;position:relative;z-index:2}
+.screen.active{display:flex;flex-direction:column}
+
+/* LANDING */
+#screen-landing{align-items:center;justify-content:center;position:relative;overflow:hidden}
+.landing-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(232,137,58,0.055) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;filter:blur(40px)}
+.landing-inner{max-width:680px;width:100%;padding:60px 40px;position:relative;z-index:2}
+.eyebrow{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:0.22em;color:var(--ox);text-transform:uppercase;margin-bottom:24px;display:block;opacity:0.9}
+.landing-title{font-family:var(--font-head);font-size:clamp(34px,5vw,52px);font-weight:800;line-height:1.08;letter-spacing:-0.025em;color:var(--text);margin-bottom:24px}
+.landing-title em{font-style:normal;background:linear-gradient(135deg,var(--ox),var(--ox-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.landing-desc{font-size:15px;line-height:1.75;color:var(--text2);max-width:520px;margin-bottom:48px;font-weight:300}
+.benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:48px}
+.benefit-item{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;color:var(--text2);line-height:1.5;transition:border-color 0.25s,background 0.25s}
+.benefit-item:hover{border-color:rgba(232,137,58,0.2);background:rgba(232,137,58,0.03)}
+.benefit-item .dot{width:5px;height:5px;background:var(--ox);border-radius:50%;flex-shrink:0;margin-top:6px;box-shadow:0 0 6px rgba(232,137,58,0.5)}
+.benefit-item strong{color:var(--text);font-weight:500;display:block}
+.btn-primary{background:linear-gradient(135deg,#E8893A,#F5A04A);color:#0C0A07;border:none;padding:16px 32px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(232,137,58,0.25)}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.1),transparent);pointer-events:none}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,137,58,0.35)}
+.landing-cta-row{display:flex;align-items:center;gap:20px}
+.cta-note{font-size:12px;color:var(--text3);font-weight:300}
+
+/* FORM SCREEN */
+.card-screen-wrap{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px}
+.card-screen{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:48px;width:100%;max-width:660px;position:relative;animation:cardIn 0.35s cubic-bezier(0.16,1,0.3,1);box-shadow:0 0 0 1px rgba(255,255,255,0.03),0 24px 48px rgba(0,0,0,0.4)}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.step-label{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:0.2em;color:var(--ox);text-transform:uppercase;display:block;margin-bottom:24px;opacity:0.85}
+.card-title{font-family:var(--font-head);font-size:22px;font-weight:700;line-height:1.22;letter-spacing:-0.015em;color:var(--text);margin-bottom:10px}
+.card-hint{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:28px;font-weight:300}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-grid.full{grid-template-columns:1fr}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-label{font-size:10px;font-weight:700;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase;font-family:var(--font-head)}
+.form-input,.form-select{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;font-family:var(--font-body);font-size:14px;color:var(--text);transition:border-color 0.18s,box-shadow 0.18s;width:100%;font-weight:300}
+.form-input::placeholder{color:var(--text3)}
+.form-input:focus,.form-select:focus{outline:none;border-color:rgba(232,137,58,0.4);background:var(--bg4);box-shadow:0 0 0 3px rgba(232,137,58,0.07)}
+.form-select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A4A50' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+.form-select option{background:var(--bg3);color:var(--text)}
+
+.error-msg{font-size:13px;color:#f87171;padding:12px 16px;background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.18);border-radius:var(--radius-sm);margin-top:12px;display:none}
+
+.field-hint{font-size:11px;color:var(--text3);margin-top:4px;line-height:1.5;font-weight:300}.field-hint em{color:var(--text-muted)}.cvm-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.08em;color:var(--ox);background:var(--ox-dim);padding:1px 6px;border-radius:3px;margin-left:4px;vertical-align:middle}
+.other-input{margin-top:8px;display:none}.other-input.show{display:block}
+.nav-row{display:flex;gap:10px;margin-top:24px}
+.btn-prev{flex:0 0 44px;background:var(--bg3);border:1px solid var(--border);color:var(--text3);height:48px;border-radius:var(--radius-sm);font-size:18px;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center}.btn-prev:hover{border-color:rgba(232,137,58,0.3);color:var(--text2);background:var(--bg4)}
+.btn-submit{flex:1;background:linear-gradient(135deg,#E8893A,#F5A04A);border-color:transparent;color:#0C0A07;padding:14px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;border:none;box-shadow:0 4px 20px rgba(232,137,58,0.25)}
+.btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(232,137,58,0.35)}
+.btn-submit:disabled{opacity:0.3;cursor:not-allowed;transform:none}
+.job-score-bar{height:2px;background:var(--bg5);border-radius:2px;margin-top:6px;overflow:hidden}.job-score-bar-fill{height:100%;border-radius:2px;background:var(--text3);transition:width 0.8s cubic-bezier(0.4,0,0.2,1)}.job-score.is-best .job-score-bar-fill{background:linear-gradient(90deg,var(--ox),var(--ox-bright))}.job-score.is-constraint .job-score-bar-fill{background:var(--red)}
+.job-score.is-constraint{border-color:rgba(248,113,113,0.25)}.job-score.is-best{border-color:rgba(232,137,58,0.25)}
+.job-detail-toggle{font-size:11px;color:var(--text3);cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:6px 0;transition:color 0.15s;font-family:var(--font-head);font-weight:600;letter-spacing:0.04em;border:none;background:none}.job-detail-toggle:hover{color:var(--text2)}.job-detail{display:none;margin-top:14px;padding:16px 18px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm)}.job-detail.open{display:block}.job-detail-row{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}.job-detail-row:last-child{margin-bottom:0}.job-detail-factor{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--ox);text-transform:uppercase;min-width:80px;flex-shrink:0;padding-top:2px}.job-detail-text{font-size:12px;color:var(--text2);line-height:1.6;font-weight:300}
+.job-link-label{font-size:10px;color:var(--text3);font-weight:300;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);margin-bottom:6px}.job-links{display:flex;gap:8px;flex-wrap:wrap}.job-link{font-size:11px;font-weight:600;color:var(--text3);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:var(--radius-xs);transition:all 0.15s;font-family:var(--font-head);letter-spacing:0.03em}.job-link:hover{border-color:rgba(232,137,58,0.3);color:var(--text2);background:rgba(232,137,58,0.04)}
+
+
+/* LOADING */
+#screen-loading{align-items:center;justify-content:center}
+.loading-inner{text-align:center;max-width:420px;padding:40px}
+.loading-spinner{width:44px;height:44px;border:1.5px solid var(--border);border-top-color:var(--ox);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 32px;box-shadow:0 0 16px var(--ox-glow)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-title{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px}
+.loading-sub{font-size:13px;color:var(--text3);font-weight:300;margin-bottom:24px}
+.loading-steps{display:flex;flex-direction:column;gap:8px;text-align:left}
+.loading-step{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text3);padding:10px 14px;border-radius:var(--radius-sm);background:var(--bg3);transition:all 0.3s}
+.loading-step.active{color:var(--text);background:var(--bg4);border:1px solid rgba(232,137,58,0.2)}
+.loading-step.done{color:var(--text2)}
+.step-dot{width:6px;height:6px;border-radius:50%;background:var(--text3);flex-shrink:0;transition:background 0.3s}
+.loading-step.active .step-dot{background:var(--ox)}
+.loading-step.done .step-dot{background:#4CAF50}
+
+/* PREVIEW SCREEN */
+#screen-preview{display:none;flex-direction:column}
+#screen-preview.active{display:flex}
+.preview-wrap{max-width:640px;width:100%;margin:0 auto;padding:48px 40px 80px}
+.preview-header{margin-bottom:32px}
+.preview-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.2em;color:var(--ox);text-transform:uppercase;font-family:var(--font-head);margin-bottom:12px;display:block}
+.preview-title{font-family:var(--font-head);font-size:24px;font-weight:800;letter-spacing:-0.02em;color:var(--text);margin-bottom:8px;line-height:1.2}
+.preview-sub{font-size:14px;color:var(--text2);font-weight:300;line-height:1.6}
+
+/* PROFILE SUMMARY CARD */
+.profile-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}
+.profile-card-label{font-size:10px;font-weight:700;letter-spacing:0.14em;color:var(--ox);text-transform:uppercase;font-family:var(--font-head);margin-bottom:16px}
+.profile-tags{display:flex;flex-wrap:wrap;gap:8px}
+.profile-tag{font-size:12px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);padding:5px 12px;border-radius:20px;font-weight:400}
+.profile-tag strong{color:var(--text);font-weight:600}
+
+/* CVM METHODOLOGY */
+.methodology-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}
+.methodology-label{font-size:10px;font-weight:700;letter-spacing:0.14em;color:var(--ox);text-transform:uppercase;font-family:var(--font-head);margin-bottom:8px}
+.methodology-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:300;margin-bottom:20px}
+.cvm-factors{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.cvm-factor{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 12px;text-align:center;position:relative;overflow:hidden;transition:border-color 0.3s}
+.cvm-factor.highlight{border-color:rgba(232,137,58,0.35);background:rgba(232,137,58,0.04)}
+.cvm-factor-name{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--ox);letter-spacing:0.06em;margin-bottom:6px}
+.cvm-factor-desc{font-size:11px;color:var(--text3);font-weight:300;line-height:1.4}
+.cvm-factor-bar{height:3px;background:var(--bg5);border-radius:3px;margin-top:10px;overflow:hidden}
+.cvm-factor-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--ox),var(--ox-bright));width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+.constraint-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--ox);background:var(--ox-dim);border:1px solid rgba(232,137,58,0.25);padding:5px 12px;border-radius:20px;font-family:var(--font-head);letter-spacing:0.05em}
+
+/* EMAIL GATE */
+.email-gate{background:linear-gradient(135deg,rgba(232,137,58,0.07),rgba(232,137,58,0.02));border:1px solid rgba(232,137,58,0.25);border-radius:var(--radius);padding:32px 28px;margin-bottom:20px;position:relative;overflow:hidden}
+.email-gate::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(232,137,58,0.08) 0%,transparent 70%);pointer-events:none}
+.email-gate-title{font-family:var(--font-head);font-size:18px;font-weight:800;color:var(--text);margin-bottom:8px;line-height:1.25;position:relative}
+.email-gate-desc{font-size:13px;color:var(--text2);font-weight:300;line-height:1.65;margin-bottom:24px;position:relative}
+.email-gate-desc strong{color:var(--text);font-weight:500}
+.email-input-row{display:flex;gap:10px;position:relative}
+.email-input-row input{flex:1;background:var(--bg3);border:1px solid var(--border-mid);border-radius:var(--radius-sm);padding:13px 16px;font-family:var(--font-body);font-size:14px;color:var(--text);transition:border-color 0.18s,box-shadow 0.18s;font-weight:300}
+.email-input-row input:focus{outline:none;border-color:rgba(232,137,58,0.5);box-shadow:0 0 0 3px rgba(232,137,58,0.08)}
+.email-input-row input::placeholder{color:var(--text3)}
+.email-input-row button{flex-shrink:0;background:linear-gradient(135deg,#E8893A,#F5A04A);color:#0C0A07;border:none;padding:13px 22px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:0.08em;cursor:pointer;transition:all 0.15s;text-transform:uppercase;white-space:nowrap}
+.email-input-row button:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,137,58,0.3)}
+.email-input-row button:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.email-privacy{font-size:11px;color:var(--text3);margin-top:10px;font-weight:300}
+.email-error{font-size:12px;color:var(--red);margin-top:8px;display:none}
+
+/* SUCCESS SCREEN */
+#screen-success{align-items:center;justify-content:center}
+.success-inner{text-align:center;max-width:480px;padding:40px}
+.success-icon{width:56px;height:56px;border-radius:50%;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;font-size:22px}
+.success-title{font-family:var(--font-head);font-size:24px;font-weight:800;color:var(--text);margin-bottom:12px;letter-spacing:-0.02em}
+.success-desc{font-size:14px;color:var(--text2);line-height:1.7;font-weight:300;margin-bottom:32px}
+.success-email-display{display:inline-block;font-size:13px;color:var(--ox);font-weight:600;background:var(--ox-dim);border:1px solid rgba(232,137,58,0.2);padding:6px 16px;border-radius:20px;margin-bottom:24px}
+.success-steps{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;text-align:left}
+.success-step{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.success-step-num{width:20px;height:20px;border-radius:50%;background:var(--ox-dim);border:1px solid rgba(232,137,58,0.3);color:var(--ox);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-family:var(--font-head)}
+.success-step-text{font-size:13px;color:var(--text2);font-weight:300;line-height:1.5}
+.success-step-text strong{color:var(--text);font-weight:500}
+.btn-cta-success{display:block;background:linear-gradient(135deg,#E8893A,#F5A04A);color:#0C0A07;padding:15px 32px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 20px rgba(232,137,58,0.25);margin-bottom:12px}
+.btn-cta-success:hover{box-shadow:0 8px 32px rgba(232,137,58,0.4);transform:translateY(-2px)}
+.btn-restart{background:transparent;border:1px solid var(--border);color:var(--text3);padding:12px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.18s;width:100%}
+.btn-restart:hover{border-color:var(--border-mid);color:var(--text2)}
+
+/* CLIENT MODE */
+.client-note{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px;display:none}
+.client-note p{font-size:13px;color:var(--text2);font-weight:300;line-height:1.6}
+.client-note strong{color:var(--text);font-weight:500}
+
+@media(max-width:640px){
+  .nav{padding:16px 20px}.landing-inner{padding:40px 20px}.card-screen{padding:28px 20px}
+  .preview-wrap{padding:28px 20px 60px}.cvm-factors{grid-template-columns:1fr 1fr}
+  .email-input-row{flex-direction:column}.profile-tags{gap:6px}
+  .success-inner{padding:28px 20px}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <img src="Logo_Passion_Hax_Main_White_No_BG.png" alt="Passion Hax" class="nav-logo-img">
+  <div class="nav-right">
+    <div class="nav-badge">Job Finder AI</div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="id">ID</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- LANDING -->
+<div class="screen active" id="screen-landing">
+  <div class="landing-glow"></div>
+  <div class="landing-inner">
+    <span class="eyebrow">Passion Hax™ — Career Diagnostic System</span>
+    <h1 class="landing-title" data-i18n="landing_title">Cari lowongan yang<br><em>match profil karir Anda.</em></h1>
+    <p class="landing-desc" data-i18n="landing_desc">Bukan sekadar job board biasa. Tool ini menganalisis kecocokan struktural antara profil Anda dengan setiap lowongan — berdasarkan 4 faktor karir yang menentukan pertumbuhan income jangka panjang.</p>
+
+    <div class="benefit-grid">
+      <div class="benefit-item"><div class="dot"></div><div><strong data-i18n="b1_title">Matching Struktural</strong><span data-i18n="b1_desc">Setiap lowongan di-score berdasarkan 4 faktor karir</span></div></div>
+      <div class="benefit-item"><div class="dot"></div><div><strong data-i18n="b2_title">AI-Powered Analysis</strong><span data-i18n="b2_desc">Analisis mendalam per lowongan — bukan sekadar keyword match</span></div></div>
+      <div class="benefit-item"><div class="dot"></div><div><strong data-i18n="b3_title">Next Step yang Jelas</strong><span data-i18n="b3_desc">Rekomendasi aksi spesifik per lowongan</span></div></div>
+      <div class="benefit-item"><div class="dot"></div><div><strong data-i18n="b4_title">Pasar Indonesia</strong><span data-i18n="b4_desc">Benchmark berdasarkan data pasar kerja Indonesia</span></div></div>
+    </div>
+
+    <div class="landing-cta-row">
+      <button class="btn-primary" id="btnStart" data-i18n="btn_start">Mulai Pencarian →</button>
+      <span class="cta-note" data-i18n="cta_note">Gratis · tanpa registrasi · ~2 menit</span>
+    </div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="screen" id="screen-form">
+  <div class="card-screen-wrap">
+    <div class="card-screen">
+      <span class="step-label" data-i18n="form_step">Profil Pencarian</span>
+      <h2 class="card-title" data-i18n="form_title">Ceritakan apa yang Anda cari.</h2>
+      <p class="card-hint" data-i18n="form_hint">Semakin spesifik, semakin akurat hasilnya.</p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" data-i18n="lbl_role">Target Role / Jabatan</label>
+          <input class="form-input" id="inRole" type="text" placeholder="misal: Product Manager, Data Analyst" data-ph-id="misal: Product Manager, Data Analyst" data-ph-en="e.g. Product Manager, Data Analyst">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="lbl_industry">Target Industry</label>
+          <select class="form-select" id="inIndustry">
+            <option value="">— Pilih —</option>
+            <option value="govt">Lembaga dan instansi pemerintah</option>
+            <option value="manufacturing">Industri dan manufaktur</option>
+            <option value="consumer">Perdagangan dan distribusi</option>
+            <option value="finance">Keuangan dan investasi</option>
+            <option value="consulting">Konsultasi dan jasa profesional</option>
+            <option value="digital">Media, kreator, dan konten</option>
+            <option value="tech">Teknologi dan platform digital</option>
+            <option value="healthcare">Kesehatan dan farmasi</option>
+            <option value="other">Lainnya (ketik sendiri)</option>
+          </select>
+          <input class="form-input other-input" id="inIndustryOther" type="text" placeholder="Tulis industri target Anda">
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" data-i18n="lbl_location">Lokasi</label>
+          <select class="form-select" id="inLocation">
+            <option value="jakarta">Jakarta</option>
+            <option value="surabaya">Surabaya</option>
+            <option value="bandung">Bandung</option>
+            <option value="medan">Medan</option>
+            <option value="semarang">Semarang</option>
+            <option value="yogyakarta">Yogyakarta</option>
+            <option value="makassar">Makassar</option>
+            <option value="bali">Bali</option>
+            <option value="remote">Remote / WFH</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="other">Lainnya (ketik sendiri)</option>
+          </select>
+          <input class="form-input other-input" id="inLocationOther" type="text" placeholder="Tulis lokasi target Anda">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="lbl_level">Situasi Karir Saat Ini</label>
+          <select class="form-select" id="inLevel">
+            <option value="starting">Baru mulai karir profesional (0–2 tahun)</option>
+            <option value="growing">Sudah berjalan, ingin naik level (3–6 tahun)</option>
+            <option value="repositioning">Senior, mau repositioning (7–12 tahun)</option>
+            <option value="leadership">Mau masuk level leadership (10+ tahun)</option>
+            <option value="executive">Executive / sudah di level atas</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" data-i18n="lbl_income">Income Target (Rp / bulan)</label>
+          <input class="form-input" id="inIncome" type="number" placeholder="20000000" min="0">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="lbl_experience">Tahun Pengalaman</label>
+          <input class="form-input" id="inExperience" type="number" placeholder="5" min="0" max="40">
+        </div>
+      </div>
+      <div class="form-grid full">
+        <div class="form-group">
+          <label class="form-label" data-i18n="lbl_moat">Capability Moat</label>
+          <input class="form-input" id="inMoat" type="text" placeholder="misal: data modeling + storytelling, full-stack + UX" data-ph-id="misal: data modeling + storytelling, full-stack + UX" data-ph-en="e.g. data modeling + storytelling, full-stack + UX">
+          <div class="field-hint" data-i18n="hint_moat">Kombinasi skill langka yang membedakan Anda dari profesional lain di bidang yang sama. Bukan daftar skill umum — tapi <em>intersection</em> yang sulit ditiru. <span class="cvm-tag">CVM: Capability</span></div>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" data-i18n="lbl_constraint">Hambatan Utama Saat Ini</label>
+          <select class="form-select" id="inConstraint">
+            <option value="system">Industri/tempat kerja saya membatasi pertumbuhan</option>
+            <option value="capability">Saya perlu upgrade skill untuk bisa naik level</option>
+            <option value="leverage">Kerja keras saya tidak menghasilkan impact yang sepadan</option>
+            <option value="bargaining">Value saya tinggi tapi income tidak mencerminkan itu</option>
+            <option value="unsure">Belum tahu / tidak yakin</option>
+          </select>
+          <div class="field-hint" data-i18n="hint_constraint">Pilih yang paling menggambarkan situasi Anda saat ini. Ini membantu AI memprioritaskan lowongan yang bisa mengatasi hambatan spesifik Anda. <span class="cvm-tag" id="constraintTag">CVM: System</span></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="lbl_keywords">Keywords Tambahan</label>
+          <input class="form-input" id="inKeywords" type="text" placeholder="misal: AI, growth, B2B, SaaS" data-ph-id="misal: AI, growth, B2B, SaaS" data-ph-en="e.g. AI, growth, B2B, SaaS">
+        </div>
+      </div>
+
+      <div class="error-msg" id="formError" data-i18n="form_error">Mohon isi minimal Target Role dan Industry.</div>
+      <div class="nav-row">
+        <button class="btn-prev" id="btnBack" title="Kembali">←</button>
+        <button class="btn-submit" id="btnSearch" data-i18n="btn_search">Cari Lowongan yang Match →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- LOADING -->
+<div class="screen" id="screen-loading">
+  <div class="loading-inner">
+    <div class="loading-spinner"></div>
+    <div class="loading-title" data-i18n="loading_title">Membaca profil Anda</div>
+    <p class="loading-sub" data-i18n="loading_sub">Sedang menyiapkan analisis karir Anda</p>
+    <div class="loading-steps" id="loadingSteps">
+      <div class="loading-step active" data-step="0"><div class="step-dot"></div><span data-i18n="ls0">Membaca profil pencarian</span></div>
+      <div class="loading-step" data-step="1"><div class="step-dot"></div><span data-i18n="ls1">Mengidentifikasi constraint utama</span></div>
+      <div class="loading-step" data-step="2"><div class="step-dot"></div><span data-i18n="ls2">Menyiapkan parameter pencarian</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW (methodology + email gate) -->
+<div class="screen" id="screen-preview">
+  <div class="preview-wrap">
+
+    <div class="preview-header">
+      <span class="preview-eyebrow" data-i18n="preview_eyebrow">Job Finder AI — Analisis Profil</span>
+      <h2 class="preview-title" id="previewTitle">Profil Anda sudah terbaca.</h2>
+      <p class="preview-sub" data-i18n="preview_sub">Ini adalah analisis struktural profil karir Anda. Lowongan dari LinkedIn sedang kami carikan berdasarkan profil Anda — hasilnya dikirim ke email Anda.</p>
+    </div>
+
+    <!-- Profile summary -->
+    <div class="profile-card">
+      <div class="profile-card-label" data-i18n="profile_label">Profil yang Anda Masukkan</div>
+      <div class="profile-tags" id="profileTags"></div>
+    </div>
+
+    <!-- CVM methodology -->
+    <div class="methodology-card">
+      <div class="methodology-label" data-i18n="method_label">Cara Kami Menilai Setiap Lowongan</div>
+      <div class="methodology-desc" data-i18n="method_desc">Setiap lowongan yang ditemukan akan di-score berdasarkan <strong>Career Value Model</strong> — 4 faktor struktural yang menentukan pertumbuhan income jangka panjang. Lowongan dengan skor tinggi bukan sekadar "cocok keyword" — tapi secara struktural memposisikan Anda untuk naik tier.</div>
+      <div class="cvm-factors" id="cvmFactors">
+        <div class="cvm-factor" id="cf-system">
+          <div class="cvm-factor-name">System</div>
+          <div class="cvm-factor-desc" data-i18n="cf_system">Seberapa besar pasar & organisasi tempat Anda bekerja</div>
+          <div class="cvm-factor-bar"><div class="cvm-factor-fill" id="fill-system" style="width:0%"></div></div>
+        </div>
+        <div class="cvm-factor" id="cf-capability">
+          <div class="cvm-factor-name">Capability</div>
+          <div class="cvm-factor-desc" data-i18n="cf_cap">Seberapa langka & relevan kombinasi skill Anda</div>
+          <div class="cvm-factor-bar"><div class="cvm-factor-fill" id="fill-capability" style="width:0%"></div></div>
+        </div>
+        <div class="cvm-factor" id="cf-leverage">
+          <div class="cvm-factor-name">Leverage</div>
+          <div class="cvm-factor-desc" data-i18n="cf_lev">Apakah output Anda bisa multiply tanpa tambah jam kerja</div>
+          <div class="cvm-factor-bar"><div class="cvm-factor-fill" id="fill-leverage" style="width:0%"></div></div>
+        </div>
+        <div class="cvm-factor" id="cf-bargaining">
+          <div class="cvm-factor-name">Bargaining</div>
+          <div class="cvm-factor-desc" data-i18n="cf_bar">Seberapa kuat posisi tawar Anda dalam negosiasi</div>
+          <div class="cvm-factor-bar"><div class="cvm-factor-fill" id="fill-bargaining" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div id="constraintSummary"></div>
+    </div>
+
+    <!-- Client note (hidden for non-clients) -->
+    <div class="client-note" id="clientNote">
+      <p data-i18n="client_note">Sebagai klien aktif Passion Hax, hasil pencarian ini akan dibahas di coaching call berikutnya. <strong>Coach Anda akan membantu prioritaskan lowongan berdasarkan Repositioning Brief Anda.</strong></p>
+    </div>
+
+    <!-- Email gate -->
+    <div class="email-gate" id="emailGate">
+      <div class="email-gate-title" data-i18n="gate_title">Lowongan yang cocok dikirim langsung ke email Anda</div>
+      <div class="email-gate-desc" data-i18n="gate_desc">AI kami sedang mencarikan lowongan yang paling cocok berdasarkan profil Anda. Setiap lowongan akan di-score per 4 faktor CVM — plus analisis personal constraint Anda. Semua dikirim ke inbox dalam <strong>~5 menit</strong>.</div>
+      <div class="email-input-row">
+        <input type="email" id="inEmail" placeholder="email@anda.com" data-ph-id="email@anda.com" data-ph-en="your@email.com">
+        <button id="btnSubmitEmail" data-i18n="btn_send">Kirim Hasil →</button>
+      </div>
+      <input type="tel" id="inPhone" placeholder="No. WhatsApp (opsional)" data-ph-id="No. WhatsApp (opsional)" data-ph-en="WhatsApp number (optional)" style="width:100%;margin-top:10px;background:var(--bg3);border:1px solid var(--border-mid);border-radius:var(--radius-sm);padding:13px 16px;font-family:var(--font-body);font-size:14px;color:var(--text);font-weight:300">
+      <div class="email-error" id="emailError" data-i18n="email_err">Masukkan alamat email yang valid.</div>
+      <div class="email-privacy" data-i18n="email_privacy">Tidak ada spam. Email hanya digunakan untuk mengirim hasil pencarian ini.</div>
+    </div>
+
+    <button class="btn-restart" id="btnRestart" data-i18n="btn_restart">← Ubah Profil Pencarian</button>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="screen" id="screen-success">
+  <div class="success-inner">
+    <div class="success-icon">✓</div>
+    <div class="success-title" data-i18n="success_title">Pencarian sedang berjalan</div>
+    <div class="success-email-display" id="successEmail">—</div>
+    <div class="success-desc" data-i18n="success_desc">Kami sedang mencari lowongan dari LinkedIn, men-score setiap lowongan berdasarkan Career Value Model, dan menyiapkan analisis personal untuk Anda.</div>
+    <div class="success-steps">
+      <div class="success-step">
+        <div class="success-step-num">1</div>
+        <div class="success-step-text" data-i18n="sstep1"><strong>Scraping LinkedIn Jobs</strong> — mencari lowongan yang relevan dengan role dan lokasi Anda</div>
+      </div>
+      <div class="success-step">
+        <div class="success-step-num">2</div>
+        <div class="success-step-text" data-i18n="sstep2"><strong>CVM Scoring</strong> — setiap lowongan di-analisis per 4 faktor karir</div>
+      </div>
+      <div class="success-step">
+        <div class="success-step-num">3</div>
+        <div class="success-step-text" data-i18n="sstep3"><strong>Analisis personal</strong> — breakdown constraint Anda + rekomendasi strategi</div>
+      </div>
+    </div>
+    <a href="https://calendly.com/passionhax/careerdiagnostic" target="_blank" class="btn-cta-success" id="ctaBtn" data-i18n="btn_strategy">Book Strategy Call Gratis →</a>
+    <button class="btn-restart" id="btnRestartFromSuccess" data-i18n="btn_new_search">Mulai Pencarian Baru</button>
+  </div>
+</div>
+
+<script>
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxiCRc9LmRaLZGV1Z-Kl1-OWyZiMDj1bSLQXdFFyr3asTdS6tUAmkrJ4rM2z3RWsBzk8Q/exec';
+let LANG = 'id';
+const isClient = new URLSearchParams(location.search).get('client') === 'true';
+let lastFormData = null;
+
+const INDUSTRY_MAP = {govt:'Lembaga dan instansi pemerintah',manufacturing:'Industri dan manufaktur',consumer:'Perdagangan dan distribusi',finance:'Keuangan dan investasi',consulting:'Konsultasi dan jasa profesional',digital:'Media, kreator, dan konten',tech:'Teknologi dan platform digital',healthcare:'Kesehatan dan farmasi'};
+const LEVEL_MAP = {starting:'Baru mulai karir (0–2 tahun)',growing:'Ingin naik level (3–6 tahun)',repositioning:'Senior, mau repositioning (7–12 tahun)',leadership:'Mau masuk level leadership (10+ tahun)',executive:'Executive / Director level'};
+const CONSTRAINT_MAP = {system:'System',capability:'Capability',leverage:'Leverage',bargaining:'Bargaining',unsure:'Belum diketahui'};
+const CONSTRAINT_LABEL = {
+  id:{system:'Industri/tempat kerja membatasi growth',capability:'Perlu upgrade skill untuk naik level',leverage:'Kerja keras tidak menghasilkan impact sepadan',bargaining:'Value tinggi tapi income tidak mencerminkan',unsure:'Belum teridentifikasi'},
+  en:{system:'Industry/workplace limits growth',capability:'Need skill upgrade to advance',leverage:'Hard work not producing proportional impact',bargaining:'High value but income doesn\'t reflect it',unsure:'Not yet identified'}
+};
+
+const T = {
+  id:{
+    landing_title:'Cari lowongan yang<br><em>match profil karir Anda.</em>',
+    landing_desc:'Bukan sekadar job board biasa. Tool ini menganalisis kecocokan struktural antara profil Anda dengan setiap lowongan dari LinkedIn — hasilnya dikirim langsung ke email.',
+    b1_title:'Dari LinkedIn Jobs',b1_desc:'Lowongan ditemukan berdasarkan profil pencarian Anda',
+    b2_title:'CVM Scoring',b2_desc:'Setiap lowongan di-score per 4 faktor karir struktural',
+    b3_title:'Analisis Personal',b3_desc:'Breakdown constraint Anda + rekomendasi per lowongan',
+    b4_title:'Dikirim ke Email',b4_desc:'Hasil lengkap di inbox dalam ~5 menit',
+    btn_start:'Mulai Pencarian →',cta_note:'Gratis · tanpa registrasi · ~2 menit',
+    form_step:'Profil Pencarian',form_title:'Ceritakan apa yang Anda cari.',form_hint:'Semakin spesifik, semakin akurat hasilnya.',
+    lbl_role:'Target Role / Jabatan',lbl_industry:'Target Industry',lbl_location:'Lokasi',lbl_level:'Situasi Karir Saat Ini',
+    lbl_income:'Income Target (Rp / bulan)',lbl_experience:'Tahun Pengalaman',lbl_moat:'Capability Moat',
+    lbl_constraint:'Hambatan Utama Saat Ini',lbl_keywords:'Keywords Tambahan',
+    hint_moat:'Kombinasi skill langka yang membedakan Anda dari profesional lain di bidang yang sama. Bukan daftar skill umum — tapi <em>intersection</em> yang sulit ditiru.',
+    hint_constraint:'Pilih yang paling menggambarkan situasi Anda saat ini.',
+    form_error:'Mohon isi minimal Target Role dan Industry.',btn_search:'Analisis Profil Saya →',
+    loading_title:'Membaca profil Anda',loading_sub:'Sedang menyiapkan analisis karir Anda',
+    ls0:'Membaca profil pencarian',ls1:'Mengidentifikasi constraint utama',ls2:'Menyiapkan parameter pencarian',
+    preview_eyebrow:'Job Finder AI — Analisis Profil',
+    preview_sub:'Ini adalah analisis struktural profil karir Anda. Lowongan dari LinkedIn sedang kami carikan berdasarkan profil Anda — hasilnya dikirim ke email Anda.',
+    profile_label:'Profil yang Anda Masukkan',
+    method_label:'Cara Kami Menilai Setiap Lowongan',
+    method_desc:'Setiap lowongan yang ditemukan akan di-score berdasarkan <strong>Career Value Model</strong> — 4 faktor struktural yang menentukan pertumbuhan income jangka panjang.',
+    cf_system:'Seberapa besar pasar & organisasi tempat Anda bekerja',
+    cf_cap:'Seberapa langka & relevan kombinasi skill Anda',
+    cf_lev:'Apakah output Anda bisa multiply tanpa tambah jam kerja',
+    cf_bar:'Seberapa kuat posisi tawar Anda dalam negosiasi',
+    client_note:'Sebagai klien aktif Passion Hax, hasil pencarian ini akan dibahas di coaching call berikutnya.',
+    gate_title:'Lowongan yang cocok dikirim langsung ke email Anda',
+    gate_desc:'AI kami sedang mencarikan lowongan yang paling cocok berdasarkan profil Anda. Setiap lowongan akan di-score per 4 faktor CVM — plus analisis personal constraint Anda. Semua dikirim ke inbox dalam <strong>~5 menit</strong>.',
+    btn_send:'Kirim Hasil →',email_err:'Masukkan alamat email yang valid.',
+    email_privacy:'Tidak ada spam. Email hanya digunakan untuk mengirim hasil pencarian ini.',
+    btn_restart:'← Ubah Profil Pencarian',
+    success_title:'Pencarian sedang berjalan',
+    success_desc:'Kami sedang mencari lowongan dari LinkedIn, men-score setiap lowongan berdasarkan Career Value Model, dan menyiapkan analisis personal untuk Anda. <br><br><strong style="color:#E8893A">⏱️ Estimasi Waktu: 5–10 menit</strong> tergantung kompleksitas profil dan jumlah lowongan yang dianalisis oleh AI. Hasilnya akan langsung dikirim ke inbox Anda.',
+    sstep1:'<strong>Scraping LinkedIn Jobs</strong> — mencari lowongan yang relevan dengan role dan lokasi Anda',
+    sstep2:'<strong>CVM Scoring</strong> — setiap lowongan di-analisis per 4 faktor karir',
+    sstep3:'<strong>Analisis personal</strong> — breakdown constraint Anda + rekomendasi strategi',
+    btn_strategy:'Book Strategy Call Gratis →',btn_new_search:'Mulai Pencarian Baru',
+    constraint_prefix:'Constraint utama terdeteksi:',
+    preview_title_tpl:'Profil Anda sudah terbaca, {name}.'
+  },
+  en:{
+    landing_title:'Find jobs that<br><em>match your career profile.</em>',
+    landing_desc:'Not just another job board. This tool analyzes structural fit between your profile and LinkedIn jobs — ranked results sent directly to your email.',
+    b1_title:'From LinkedIn Jobs',b1_desc:'Jobs found based on your specific search profile',
+    b2_title:'CVM Scoring',b2_desc:'Each job scored on 4 structural career factors',
+    b3_title:'Personal Analysis',b3_desc:'Your constraint breakdown + recommendations per job',
+    b4_title:'Sent to Email',b4_desc:'Full results in your inbox in ~5 minutes',
+    btn_start:'Start Search →',cta_note:'Free · no registration · ~2 minutes',
+    form_step:'Search Profile',form_title:'Tell us what you\'re looking for.',form_hint:'The more specific, the more accurate.',
+    lbl_role:'Target Role / Position',lbl_industry:'Target Industry',lbl_location:'Location',lbl_level:'Current Career Situation',
+    lbl_income:'Income Target (Rp / month)',lbl_experience:'Years of Experience',lbl_moat:'Capability Moat',
+    lbl_constraint:'Primary Constraint',lbl_keywords:'Additional Keywords',
+    hint_moat:'The rare skill combination that sets you apart. Not a generic list — the <em>intersection</em> that\'s hard to replicate.',
+    hint_constraint:'Pick what best describes your current situation.',
+    form_error:'Please fill in at least Target Role and Industry.',btn_search:'Analyze My Profile →',
+    loading_title:'Reading your profile',loading_sub:'Preparing your career analysis',
+    ls0:'Reading search profile',ls1:'Identifying primary constraint',ls2:'Preparing search parameters',
+    preview_eyebrow:'Job Finder AI — Profile Analysis',
+    preview_sub:'This is a structural analysis of your career profile. LinkedIn jobs are being searched based on the parameters below — results sent to your email.',
+    profile_label:'Your Profile',
+    method_label:'How We Score Each Job',
+    method_desc:'Every job found is scored using the <strong>Career Value Model</strong> — 4 structural factors that determine long-term income growth.',
+    cf_system:'How large the market & organization you work in is',
+    cf_cap:'How rare & relevant your skill combination is',
+    cf_lev:'Whether your output can multiply without more hours',
+    cf_bar:'How strong your negotiating position is',
+    client_note:'As an active Passion Hax client, these results will be discussed in your next coaching call.',
+    gate_title:'Matching jobs delivered to your email',
+    gate_desc:'Our AI is searching for the most relevant jobs based on your profile. Every job will be scored on 4 CVM factors — plus a personal constraint analysis. All delivered to your inbox in <strong>~5 minutes</strong>.',
+    btn_send:'Send Results →',email_err:'Please enter a valid email address.',
+    email_privacy:'No spam. Email is only used to send these search results.',
+    btn_restart:'← Change Search Profile',
+    success_title:'Search is running',
+    success_desc:'We are finding LinkedIn jobs, scoring each on the Career Value Model, and preparing your personal analysis. <br><br><strong style="color:#E8893A">⏱️ Estimated Time: 5–10 minutes</strong> depending on your profile complexity and the number of jobs analyzed. The final report will be sent straight to your inbox.',
+    sstep1:'<strong>Scraping LinkedIn Jobs</strong> — finding listings matching your role and location',
+    sstep2:'<strong>CVM Scoring</strong> — each job analyzed on 4 career factors',
+    sstep3:'<strong>Personal analysis</strong> — your constraint breakdown + strategy recommendations',
+    btn_strategy:'Book Free Strategy Call →',btn_new_search:'Start New Search',
+    constraint_prefix:'Primary constraint detected:',
+    preview_title_tpl:'Your profile has been read.'
+  }
+};
+
+function t(k){return(T[LANG]||{})[k]||T.id[k]||k}
+function applyLang(){
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.dataset.i18n;if(T[LANG][k])el.innerHTML=T[LANG][k]});
+  document.querySelectorAll('[data-ph-'+LANG+']').forEach(function(el){el.placeholder=el.getAttribute('data-ph-'+LANG)});
+  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===LANG)});
+}
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// Init
+document.getElementById('btnStart').addEventListener('click',function(){showScreen('screen-form')});
+document.getElementById('btnBack').addEventListener('click',function(){showScreen('screen-landing')});
+document.getElementById('btnRestart').addEventListener('click',function(){showScreen('screen-form')});
+document.getElementById('btnRestartFromSuccess').addEventListener('click',function(){showScreen('screen-form')});
+document.querySelectorAll('.lang-btn').forEach(function(btn){btn.addEventListener('click',function(){LANG=btn.dataset.lang;applyLang()})});
+document.getElementById('inIndustry').addEventListener('change',function(){document.getElementById('inIndustryOther').classList.toggle('show',this.value==='other')});
+document.getElementById('inLocation').addEventListener('change',function(){document.getElementById('inLocationOther').classList.toggle('show',this.value==='other')});
+document.getElementById('inConstraint').addEventListener('change',function(){var tag=document.getElementById('constraintTag');if(tag)tag.textContent='CVM: '+(CONSTRAINT_MAP[this.value]||'\u2014')});
+if(isClient){document.getElementById('clientNote').style.display='block';document.getElementById('ctaBtn').style.display='none'}
+
+// Form submit → show loading → show preview
+document.getElementById('btnSearch').addEventListener('click',function(){
+  var role=document.getElementById('inRole').value.trim(),iv=document.getElementById('inIndustry').value;
+  if(!role||!iv){document.getElementById('formError').style.display='block';return}
+  document.getElementById('formError').style.display='none';
+  var industry=iv==='other'?document.getElementById('inIndustryOther').value.trim():(INDUSTRY_MAP[iv]||iv);
+  var lv=document.getElementById('inLocation').value;
+  var location=lv==='other'?document.getElementById('inLocationOther').value.trim():lv.charAt(0).toUpperCase()+lv.slice(1);
+  lastFormData={
+    role:role,industry:industry,location:location,
+    level:LEVEL_MAP[document.getElementById('inLevel').value]||'',
+    income:document.getElementById('inIncome').value||'0',
+    experience:document.getElementById('inExperience').value||'0',
+    moat:document.getElementById('inMoat').value.trim(),
+    constraint:CONSTRAINT_MAP[document.getElementById('inConstraint').value]||'Belum diketahui',
+    constraintRaw:document.getElementById('inConstraint').value,
+    constraintLabel:(CONSTRAINT_LABEL[LANG]||CONSTRAINT_LABEL.id)[document.getElementById('inConstraint').value]||'',
+    keywords:document.getElementById('inKeywords').value.trim(),
+    lang:LANG
+  };
+  showScreen('screen-loading');
+  animateLoading(function(){buildPreview(lastFormData);showScreen('screen-preview')});
+});
+
+function animateLoading(cb){
+  var steps=document.querySelectorAll('#loadingSteps .loading-step');
+  steps.forEach(function(s){s.classList.remove('active','done')});
+  steps[0].classList.add('active');
+  var c=0;
+  var iv=setInterval(function(){
+    if(c>0)steps[c-1].classList.replace('active','done');
+    c++;
+    if(c<steps.length){steps[c].classList.add('active')}
+    else{clearInterval(iv);setTimeout(cb,400)}
+  },900);
+}
+
+function buildPreview(d){
+  // Title
+  var titleEl=document.getElementById('previewTitle');
+  titleEl.textContent=LANG==='id'?'Profil Anda sudah terbaca.':'Your profile has been read.';
+
+  // Profile tags
+  var tags=document.getElementById('profileTags');
+  tags.innerHTML='';
+  var fields=[
+    {label:LANG==='id'?'Role':'Role',val:d.role},
+    {label:LANG==='id'?'Industry':'Industry',val:d.industry},
+    {label:LANG==='id'?'Lokasi':'Location',val:d.location},
+    {label:LANG==='id'?'Situasi':'Situation',val:d.level},
+    d.income&&d.income!=='0'?{label:LANG==='id'?'Target income':'Income target',val:'Rp '+Number(d.income).toLocaleString('id-ID')+'/bln'}:null,
+    d.moat?{label:'Capability Moat',val:d.moat}:null,
+    {label:LANG==='id'?'Hambatan':'Constraint',val:d.constraintLabel||d.constraint},
+    d.keywords?{label:'Keywords',val:d.keywords}:null
+  ].filter(Boolean);
+  fields.forEach(function(f){
+    var tag=document.createElement('div');tag.className='profile-tag';
+    tag.innerHTML='<strong>'+f.label+':</strong> '+f.val;
+    tags.appendChild(tag);
+  });
+
+  // CVM factor bars — weights from constraint
+  var weights={system:65,capability:75,leverage:60,bargaining:70};
+  if(d.constraintRaw==='system')weights.system=90;
+  else if(d.constraintRaw==='capability')weights.capability=90;
+  else if(d.constraintRaw==='leverage')weights.leverage=90;
+  else if(d.constraintRaw==='bargaining')weights.bargaining=90;
+  setTimeout(function(){
+    Object.keys(weights).forEach(function(k){
+      var fill=document.getElementById('fill-'+k);
+      var factor=document.getElementById('cf-'+k);
+      if(fill)fill.style.width=weights[k]+'%';
+      if(factor&&d.constraintRaw===k)factor.classList.add('highlight');
+    });
+  },300);
+
+  // Constraint summary badge
+  var cs=document.getElementById('constraintSummary');
+  if(d.constraintRaw&&d.constraintRaw!=='unsure'){
+    cs.innerHTML='<div style="margin-top:4px"><span class="constraint-badge">'+
+      (LANG==='id'?'Constraint utama terdeteksi':'Primary constraint detected')+
+      ': '+d.constraint+
+      '</span></div>';
+  }else{cs.innerHTML=''}
+}
+
+// Email submit → trigger Apify async + show success
+document.getElementById('btnSubmitEmail').addEventListener('click',async function(){
+  var email=document.getElementById('inEmail').value.trim();
+  var errEl=document.getElementById('emailError');
+  if(!email||!email.includes('@')||!email.includes('.')){errEl.style.display='block';return}
+  errEl.style.display='none';
+  var phone=document.getElementById('inPhone').value.trim();
+  if(lastFormData)lastFormData.whatsapp=phone;
+  this.disabled=true;this.textContent=LANG==='id'?'Mengirim...':'Sending...';
+
+  try{
+    await fetch(APPS_SCRIPT_URL,{
+      method:'POST',
+      body:JSON.stringify({action:'job_finder_request',email:email,formData:lastFormData})
+    });
+  }catch(e){console.warn('Request error:',e.message)}
+
+  this.disabled=false;
+  this.textContent=LANG==='id'?'Kirim Hasil →':'Send Results →';
+
+  document.getElementById('successEmail').textContent=email;
+  showScreen('screen-success');
+});
+
+applyLang();
+</script>
+</body>
+</html>
