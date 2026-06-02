@@ -164,6 +164,15 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .btn-cta-success:hover{box-shadow:0 8px 32px rgba(232,137,58,0.4);transform:translateY(-2px)}
 .btn-restart{background:transparent;border:1px solid var(--border);color:var(--text3);padding:12px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.18s;width:100%}
 .btn-restart:hover{border-color:var(--border-mid);color:var(--text2)}
+.xpromo{margin-top:32px;padding-top:28px;border-top:1px solid var(--border);width:100%}
+.xpromo-title{font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--text3);text-transform:uppercase;margin-bottom:16px;font-family:var(--font-head)}
+.xpromo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.xpromo-card{display:block;text-decoration:none;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 10px;text-align:center;transition:all .2s}
+.xpromo-card:hover{border-color:rgba(232,137,58,0.3);background:var(--bg4);transform:translateY(-2px)}
+.xpromo-icon{font-size:20px}
+.xpromo-name{font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--text);letter-spacing:0.04em;margin-top:8px}
+.xpromo-desc{font-size:10px;color:var(--text3);line-height:1.4;margin-top:4px;font-weight:300}
+@media(max-width:640px){.xpromo-grid{grid-template-columns:1fr}}
 
 /* CLIENT MODE */
 .client-note{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px;display:none}
@@ -419,6 +428,16 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       </div>
     </div>
     <a href="https://calendly.com/passionhax/careerdiagnostic" target="_blank" class="btn-cta-success" id="ctaBtn" data-i18n="btn_strategy">Book Strategy Call Gratis →</a>
+
+    <div class="xpromo">
+      <div class="xpromo-title">Sambil nunggu hasil, cek juga</div>
+      <div class="xpromo-grid">
+        <a href="https://passionhax.github.io/career-audit-v18.3.html" target="_blank" class="xpromo-card"><div class="xpromo-icon">🔍</div><div class="xpromo-name">Career Audit</div><div class="xpromo-desc">Diagnosa constraint karir kamu</div></a>
+        <a href="https://passionhax.github.io/passion-hax-simulasi-v7.html" target="_blank" class="xpromo-card"><div class="xpromo-icon">📊</div><div class="xpromo-name">Simulasi Income</div><div class="xpromo-desc">Proyeksi stay vs reposisi</div></a>
+        <a href="#" class="xpromo-card"><div class="xpromo-icon">📘</div><div class="xpromo-name">Guide</div><div class="xpromo-desc">Rekaman sesi coaching nyata</div></a>
+      </div>
+    </div>
+
     <button class="btn-restart" id="btnRestartFromSuccess" data-i18n="btn_new_search">Mulai Pencarian Baru</button>
   </div>
 </div>
