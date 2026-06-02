@@ -1,5 +1,5 @@
 // Backend endpoint (isi URL deployment Apps Script Simulasi)
-const APPS_SCRIPT_URL = 'PASTE_URL_DEPLOYMENT_APPS_SCRIPT_SIMULASI_DI_SINI';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxiCRc9LmRaLZGV1Z-Kl1-OWyZiMDj1bSLQXdFFyr3asTdS6tUAmkrJ4rM2z3RWsBzk8Q/exec';
 
 // DOM Elements
 const screens = document.querySelectorAll('.screen');
