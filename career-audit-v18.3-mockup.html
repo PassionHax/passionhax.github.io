@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Tier Audit — Passion Hax</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* Premium amber-gold accent instead of flat orange */
+  --ox:#E8893A;--ox-bright:#F5A04A;--ox-dim:rgba(232,137,58,0.10);--ox-mid:rgba(232,137,58,0.28);
+  --ox-glow:rgba(232,137,58,0.18);
+  /* Deeper, richer dark backgrounds with subtle warm tint */
+  --bg:#09090B;--bg2:#0F0F12;--bg3:#141418;--bg4:#1A1A20;--bg5:#202028;
+  /* Borders with warm hint */
+  --border:rgba(255,255,255,0.06);--border-hi:rgba(232,137,58,0.35);--border-mid:rgba(255,255,255,0.10);
+  /* Text with warm cream top */
+  --text:#F5F3EE;--text2:#7A7A82;--text3:#3E3E46;--text-muted:#55555F;
+  --font-head:'Plus Jakarta Sans',sans-serif;--font-body:'Plus Jakarta Sans',sans-serif;
+  --radius:14px;--radius-sm:10px;--radius-xs:6px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* Subtle grid pattern for depth */
+body::before{content:'';position:fixed;inset:0;background-image:
+  linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:0;opacity:1}
+/* Noise grain overlay */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:1}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(9,9,11,0.90);backdrop-filter:blur(20px) saturate(1.4)}
+.nav-logo-img{height:30px;width:auto;display:block}
+.nav-badge{font-size:10px;font-weight:600;letter-spacing:0.14em;color:var(--text2);text-transform:uppercase;border:1px solid var(--border-mid);padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.03)}
+
+/* SCREENS */
+.screen{display:none;min-height:100vh;padding-top:80px;position:relative;z-index:2}
+.screen.active{display:flex;flex-direction:column}
+
+/* PROGRESS */
+.progress-wrap{position:fixed;top:57px;left:0;right:0;z-index:99;height:1.5px;background:rgba(255,255,255,0.05)}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--ox),var(--ox-bright));width:0%;transition:width 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:0 0 8px var(--ox-glow)}
+
+/* LANDING */
+#screen-landing{align-items:center;justify-content:center;position:relative;overflow:hidden}
+/* Ambient light blob */
+.landing-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(232,137,58,0.055) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;filter:blur(40px)}
+.landing-inner{max-width:680px;width:100%;padding:60px 40px;position:relative;z-index:2}
+.eyebrow{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:0.22em;color:var(--ox);text-transform:uppercase;margin-bottom:24px;display:block;opacity:0.9}
+.landing-title{font-family:var(--font-head);font-size:clamp(38px,5.5vw,60px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--text);margin-bottom:24px}
+.landing-title em{font-style:normal;background:linear-gradient(135deg,var(--ox),var(--ox-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.landing-desc{font-size:15px;line-height:1.75;color:var(--text2);max-width:520px;margin-bottom:48px;font-weight:300}
+.benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:48px}
+.benefit-item{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;color:var(--text2);line-height:1.5;transition:border-color 0.25s,background 0.25s}
+.benefit-item:hover{border-color:rgba(232,137,58,0.2);background:rgba(232,137,58,0.03)}
+.benefit-item .dot{width:5px;height:5px;background:var(--ox);border-radius:50%;flex-shrink:0;margin-top:6px;box-shadow:0 0 6px rgba(232,137,58,0.5)}
+.benefit-item strong{color:var(--text);font-weight:500;display:block}
+.landing-cta-row{display:flex;align-items:center;gap:20px}
+.btn-primary{background:linear-gradient(135deg,#E8893A,#F5A04A);color:#0C0A07;border:none;padding:16px 32px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(232,137,58,0.25)}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.1),transparent);pointer-events:none}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,137,58,0.35)}
+.btn-primary:active{transform:translateY(0)}
+.cta-note{font-size:12px;color:var(--text3);font-weight:300}
+.equation-strip{display:flex;align-items:center;margin-top:60px;padding-top:40px;border-top:1px solid var(--border);overflow-x:auto;flex-wrap:wrap;gap:8px}
+.eq-block{display:flex;flex-direction:column;gap:4px;flex-shrink:0}
+.eq-label{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--ox);letter-spacing:0.06em}
+.eq-sub{font-size:11px;color:var(--text3);letter-spacing:0.03em}
+.eq-sep{font-family:var(--font-head);font-size:18px;color:var(--text3);padding:0 16px;flex-shrink:0}
+
+/* ── HERO ANIMATED HEADING ────────────────────────── */
+.hero-wrap{
+  position:relative;
+  margin-bottom:32px;
+  /* fixed height prevents layout shift — clamp based on heading size */
+  min-height:clamp(180px, 32vw, 290px);
+}
+.hero-heading{
+  /* typography matching old .landing-title */
+  font-family:var(--font-head);
+  font-size:clamp(38px,5.5vw,60px);
+  font-weight:800;
+  line-height:1.08;
+  letter-spacing:-0.025em;
+  color:var(--text);
+  /* positioning */
+  position:absolute;top:0;left:0;width:100%;
+  /* default: hidden */
+  opacity:0;
+  filter:blur(14px);
+  transform:translateY(12px) scale(0.98);
+  pointer-events:none;
+  transition:
+    opacity 1.1s cubic-bezier(0.16,1,0.3,1),
+    filter  1.1s cubic-bezier(0.16,1,0.3,1),
+    transform 1.1s cubic-bezier(0.16,1,0.3,1);
+}
+.hero-heading em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--ox),var(--ox-bright));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  display:block;
+  font-size:clamp(22px,3.2vw,36px);
+  font-weight:300;
+  letter-spacing:-0.01em;
+  color:var(--text2);
+  margin-top:6px;
+  font-style:italic;
+}
+/* active state: fully visible */
+.hero-heading--active{
+  opacity:1;
+  filter:blur(0px);
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+/* exit state: fades out upward with blur */
+.hero-heading--exit{
+  opacity:0;
+  filter:blur(10px);
+  transform:translateY(-10px) scale(1.01);
+  transition:
+    opacity 0.8s cubic-bezier(0.4,0,1,1),
+    filter  0.8s cubic-bezier(0.4,0,1,1),
+    transform 0.8s cubic-bezier(0.4,0,1,1);
+}
+
+/* ── ACCURACY BANNER ──────────────────────────────── */
+.accuracy-banner{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 18px;margin-bottom:28px;
+  background:rgba(232,137,58,0.055);
+  border:1px solid rgba(232,137,58,0.16);
+  border-radius:var(--radius-sm);
+}
+.accuracy-icon{font-size:17px;color:var(--ox);flex-shrink:0;margin-top:2px;line-height:1}
+.accuracy-text{font-size:13px;color:var(--text2);line-height:1.6;font-weight:300}
+.accuracy-text strong{color:var(--text);font-weight:600;display:block;margin-bottom:3px}
+
+/* ── LANDING DISCLAIMER ───────────────────────────── */
+.landing-disclaimer{
+  font-size:11px;color:var(--text3);line-height:1.65;
+  margin-top:20px;padding-top:18px;
+  border-top:1px solid var(--border);
+  font-weight:300;max-width:560px;
+}
+
+/* CARD SCREEN */
+.card-screen-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px}
+.card-screen{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:48px;width:100%;max-width:620px;position:relative;animation:cardIn 0.35s cubic-bezier(0.16,1,0.3,1);box-shadow:0 0 0 1px rgba(255,255,255,0.03),0 24px 48px rgba(0,0,0,0.4)}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.step-label{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:0.2em;color:var(--ox);text-transform:uppercase;display:block;margin-bottom:24px;opacity:0.85}
+.card-title{font-family:var(--font-head);font-size:25px;font-weight:700;line-height:1.22;letter-spacing:-0.015em;color:var(--text);margin-bottom:10px}
+.card-hint{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:32px;font-weight:300}
+
+/* OPTIONS */
+.options-list{display:flex;flex-direction:column;gap:8px}
+.opt-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:15px 18px;cursor:pointer;transition:all 0.18s cubic-bezier(0.16,1,0.3,1);display:flex;align-items:center;gap:14px;font-size:14px;color:var(--text2);line-height:1.4}
+.opt-card:hover{border-color:rgba(232,137,58,0.25);background:var(--bg4);color:var(--text);transform:translateX(2px)}
+.opt-card.selected{border-color:var(--ox);background:linear-gradient(135deg,rgba(232,137,58,0.1),rgba(232,137,58,0.06));color:var(--text);box-shadow:0 0 0 1px rgba(232,137,58,0.15) inset}
+.opt-indicator{width:17px;height:17px;border-radius:50%;border:1.5px solid var(--text3);flex-shrink:0;transition:all 0.18s;display:flex;align-items:center;justify-content:center}
+.opt-card.selected .opt-indicator{border-color:var(--ox);background:linear-gradient(135deg,var(--ox),var(--ox-bright));box-shadow:0 0 8px rgba(232,137,58,0.4)}
+.opt-card.selected .opt-indicator::after{content:'';width:5px;height:5px;background:#fff;border-radius:50%}
+/* Multi-select checkbox style */
+.opt-card.selected .opt-indicator[style*="border-radius:3px"]{background:linear-gradient(135deg,var(--ox),var(--ox-bright));border-color:var(--ox)}
+.opt-card.selected .opt-indicator[style*="border-radius:3px"]::after{content:'✓';width:auto;height:auto;background:none;border-radius:0;font-size:10px;font-weight:700;color:#fff;line-height:1}
+
+/* TEXTAREA */
+.answer-textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 20px;font-family:var(--font-body);font-size:14px;color:var(--text);line-height:1.65;resize:vertical;min-height:130px;transition:border-color 0.18s,box-shadow 0.18s;font-weight:300}
+.answer-textarea::placeholder{color:var(--text3)}
+.answer-textarea:focus{outline:none;border-color:rgba(232,137,58,0.4);background:var(--bg4);box-shadow:0 0 0 3px rgba(232,137,58,0.07)}
+.char-count{font-size:11px;color:var(--text3);text-align:right;margin-top:8px;display:block}
+.min-chars-hint{font-size:11px;color:var(--text3);margin-top:6px;display:block}
+.min-chars-hint.ok{color:#4ade80}
+
+/* BUTTONS */
+.nav-row{display:flex;gap:10px;margin-top:28px}
+.btn-prev{flex:0 0 44px;background:var(--bg3);border:1px solid var(--border);color:var(--text3);height:48px;border-radius:var(--radius-sm);font-size:18px;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center}
+.btn-prev:hover:not(:disabled){border-color:rgba(232,137,58,0.3);color:var(--text2);background:var(--bg4)}
+.btn-prev:disabled{opacity:0.2;cursor:not-allowed}
+.btn-next{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:14px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.18s}
+.btn-next:hover:not(:disabled){border-color:rgba(232,137,58,0.4);color:var(--ox)}
+.btn-next.ready{background:linear-gradient(135deg,#E8893A,#F5A04A);border-color:transparent;color:#0C0A07;box-shadow:0 4px 20px rgba(232,137,58,0.25)}
+.btn-next.ready:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(232,137,58,0.35)}
+.btn-next:disabled{opacity:0.3;cursor:not-allowed}
+
+/* INTERSTITIAL */
+.intro-equation{display:flex;flex-direction:column;gap:0;margin:32px 0;padding:24px 28px;background:var(--bg3);border:1px solid var(--border-mid);border-radius:var(--radius-sm);box-shadow:0 0 0 1px rgba(255,255,255,0.02) inset}
+.intro-eq-row{display:flex;align-items:baseline;gap:16px;padding:11px 0;border-bottom:1px solid var(--border)}
+.intro-eq-row:last-child{border-bottom:none}
+.intro-eq-label{font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--ox);letter-spacing:0.1em;min-width:120px;flex-shrink:0;text-transform:uppercase}
+.intro-eq-formula{font-size:13px;color:var(--text2);font-weight:300;letter-spacing:0.02em}
+
+/* LEAD FORM */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-grid.full{grid-template-columns:1fr}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-label{font-size:10px;font-weight:700;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase;font-family:var(--font-head)}
+.form-input,.form-select{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;font-family:var(--font-body);font-size:14px;color:var(--text);transition:border-color 0.18s,box-shadow 0.18s;width:100%;font-weight:300}
+.form-input::placeholder{color:var(--text3)}
+.form-input:focus,.form-select:focus{outline:none;border-color:rgba(232,137,58,0.4);background:var(--bg4);box-shadow:0 0 0 3px rgba(232,137,58,0.07)}
+.form-select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A4A50' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+.form-select option{background:var(--bg3);color:var(--text)}
+
+/* Income input hybrid */
+.income-input-wrap{position:relative}
+.income-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--text2);pointer-events:none;font-family:var(--font-head);font-weight:600}
+.income-direct{padding-left:52px !important}
+.income-toggle{display:flex;gap:8px;margin-bottom:10px}
+.income-toggle-btn{flex:1;padding:8px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text3);cursor:pointer;transition:all 0.15s;text-transform:uppercase}
+.income-toggle-btn.active{border-color:var(--ox);color:var(--ox);background:var(--ox-dim)}
+.income-accuracy-note{font-size:11px;color:#4ade80;margin-top:6px;display:none}
+.income-accuracy-note.show{display:block}
+
+/* LOADING */
+#screen-loading{align-items:center;justify-content:center}
+.loading-inner{text-align:center;max-width:400px;padding:40px}
+.loading-spinner{width:44px;height:44px;border:1.5px solid var(--border);border-top-color:var(--ox);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 32px;box-shadow:0 0 16px var(--ox-glow)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-title{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px}
+.loading-steps{display:flex;flex-direction:column;gap:8px;margin-top:24px;text-align:left}
+.loading-step{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text3);padding:10px 14px;border-radius:var(--radius-sm);background:var(--bg3);transition:all 0.3s}
+.loading-step.active{color:var(--text);background:var(--bg4);border:1px solid rgba(232,137,58,0.2)}
+.loading-step.done{color:var(--text2)}
+.step-dot{width:6px;height:6px;border-radius:50%;background:var(--text3);flex-shrink:0;transition:background 0.3s}
+.loading-step.active .step-dot{background:var(--ox)}
+.loading-step.done .step-dot{background:#4CAF50}
+
+/* RESULT */
+#screen-result{display:none;flex-direction:column}
+#screen-result.active{display:flex}
+.result-wrap{max-width:720px;width:100%;margin:0 auto;padding:48px 40px 80px}
+.result-header{margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+.result-for{font-size:11px;color:var(--text3);letter-spacing:0.14em;font-weight:600;text-transform:uppercase;font-family:var(--font-head);margin-bottom:8px}
+.result-title{font-family:var(--font-head);font-size:28px;font-weight:800;letter-spacing:-0.02em;color:var(--text);margin-bottom:4px}
+.result-date{font-size:12px;color:var(--text3)}
+.tier-badge-row{display:flex;align-items:center;gap:16px;margin-bottom:32px;flex-wrap:wrap}
+.tier-badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;background:linear-gradient(135deg,rgba(232,137,58,0.12),rgba(232,137,58,0.06));border:1px solid rgba(232,137,58,0.3);border-radius:40px;font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--ox);letter-spacing:0.05em}
+.tier-badge .tier-dot{width:7px;height:7px;background:var(--ox);border-radius:50%;box-shadow:0 0 6px rgba(232,137,58,0.6)}
+.next-tier-label{font-size:12px;color:var(--text3)}
+.next-tier-label span{color:var(--text2);font-weight:500}
+.result-narrative{font-size:15px;line-height:1.8;color:var(--text2);margin-bottom:40px;font-weight:300;padding:24px;background:var(--bg2);border:1px solid var(--border);border-left:2px solid var(--ox);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:32px}
+.metric-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:border-color 0.2s}
+.metric-card:hover{border-color:var(--border-mid)}
+.metric-label{font-size:10px;font-weight:700;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase;font-family:var(--font-head);margin-bottom:8px}
+.metric-value{font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--text);line-height:1;margin-bottom:4px}
+.metric-value.accent{background:linear-gradient(135deg,var(--ox),var(--ox-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.metric-sub{font-size:11px;color:var(--text3);font-weight:300}
+.scorecard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:24px}
+.scorecard-title{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--text3);text-transform:uppercase;margin-bottom:24px}
+.score-row{display:grid;grid-template-columns:100px 1fr 60px;align-items:center;gap:16px;margin-bottom:18px}
+.score-row:last-child{margin-bottom:0}
+.score-name{font-family:var(--font-head);font-size:13px;font-weight:600;color:var(--text2)}
+.score-name.constraint{color:var(--ox)}
+.score-bar-wrap{height:3px;background:var(--bg4);border-radius:4px;overflow:visible;position:relative}
+.score-bar-fill{height:100%;background:var(--text3);border-radius:4px;width:0%;transition:width 1s cubic-bezier(0.4,0,0.2,1)}
+.score-bar-fill.constraint{background:linear-gradient(90deg,var(--ox),var(--ox-bright));box-shadow:0 0 8px rgba(232,137,58,0.4)}
+.score-val{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text2);text-align:right}
+.score-val.constraint{color:var(--ox)}
+.gap-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:24px}
+.gap-section-title{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--text3);text-transform:uppercase;margin-bottom:20px}
+.income-compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+.income-item-label{font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;font-family:var(--font-head);margin-bottom:6px}
+.income-item-val{font-family:var(--font-head);font-size:20px;font-weight:800;color:var(--text);margin-bottom:8px}
+.income-item-val.potential{background:linear-gradient(135deg,var(--ox),var(--ox-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.income-bar-track{height:4px;background:var(--bg4);border-radius:6px;overflow:hidden}
+.income-bar{height:100%;border-radius:6px;width:0%;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+.income-bar.current{background:var(--text3)}
+.income-bar.potential{background:linear-gradient(90deg,var(--ox),var(--ox-bright))}
+.gap-meta{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--border)}
+.gap-label{font-size:13px;color:var(--text2)}
+.gap-score-badge{font-family:var(--font-head);font-size:13px;font-weight:700;padding:4px 12px;border-radius:20px;background:linear-gradient(135deg,rgba(232,137,58,0.12),rgba(232,137,58,0.06));border:1px solid rgba(232,137,58,0.3);color:var(--ox)}
+.tier-ladder-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:24px}
+.tier-ladder{display:flex;gap:8px;margin-top:32px}
+.tier-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative}
+.tier-step-bar{width:100%;height:3px;background:var(--bg4);border-radius:4px}
+.tier-step.active .tier-step-bar{background:linear-gradient(90deg,var(--ox),var(--ox-bright));box-shadow:0 0 8px rgba(232,137,58,0.4)}
+.tier-step.past .tier-step-bar{background:var(--text3)}
+.tier-step-label{font-size:10px;font-weight:600;color:var(--text3);letter-spacing:0.05em;text-transform:uppercase;font-family:var(--font-head);text-align:center}
+.tier-step.active .tier-step-label{color:var(--ox)}
+.tier-step.past .tier-step-label{color:var(--text2)}
+.tier-you-tag{position:absolute;top:-24px;font-size:10px;font-weight:700;color:var(--ox);font-family:var(--font-head);letter-spacing:0.05em;white-space:nowrap}
+.diagnosis-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:24px}
+.constraint-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:linear-gradient(135deg,rgba(232,137,58,0.12),rgba(232,137,58,0.06));border:1px solid rgba(232,137,58,0.3);border-radius:20px;font-size:12px;font-weight:700;color:var(--ox);font-family:var(--font-head);letter-spacing:0.05em;margin-bottom:16px}
+.diagnosis-text{font-size:14px;line-height:1.7;color:var(--text2);font-weight:300;margin-bottom:20px}
+.strategy-box{background:var(--bg3);border:1px solid var(--border);border-left:2px solid var(--ox);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:20px;margin-top:20px}
+.strategy-box-title{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:0.14em;color:var(--ox);text-transform:uppercase;margin-bottom:10px}
+.strategy-box-text{font-size:14px;line-height:1.7;color:var(--text2);font-weight:300}
+.trajectory-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:24px}
+.action-plan-box{background:var(--bg2);border:1px solid rgba(232,137,58,0.2);border-radius:var(--radius);padding:28px;margin-bottom:24px;position:relative;overflow:hidden}
+.action-plan-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ox),var(--ox-bright),transparent)}
+.action-plan-title{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--text3);text-transform:uppercase;margin-bottom:6px}
+.action-plan-subtitle{font-size:13px;color:var(--text2);font-weight:300;margin-bottom:24px;line-height:1.5}
+.week-rows{display:flex;flex-direction:column;gap:0}
+.phase-block{margin-bottom:20px}
+.phase-block-label{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:0.14em;color:var(--ox);text-transform:uppercase;padding:6px 0 8px 0;border-bottom:1px solid rgba(232,137,58,0.15);margin-bottom:0;display:flex;align-items:center;gap:8px}
+.phase-block-label::before{content:'';display:inline-block;width:3px;height:12px;background:var(--ox);border-radius:2px}
+.week-row{display:grid;grid-template-columns:72px 1fr;gap:0;border-bottom:1px solid var(--border);padding:12px 0}
+.week-row:last-child{border-bottom:none}
+.week-row-num{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;padding-top:2px}
+.week-row-body{}
+.week-row-action{font-size:12.5px;color:var(--text);line-height:1.6;font-weight:400;margin-bottom:5px}
+.week-row-pitfall{font-size:11.5px;color:#f87171;line-height:1.5;display:flex;gap:6px;align-items:flex-start}
+.week-row-pitfall::before{content:'⚠';font-size:10px;margin-top:1px;flex-shrink:0;opacity:0.8}
+.action-plan-cta{margin-top:20px;padding:16px 18px;background:rgba(232,137,58,0.06);border:1px solid rgba(232,137,58,0.18);border-radius:var(--radius-sm);font-size:12.5px;color:var(--text2);line-height:1.6}
+.action-plan-cta strong{color:var(--ox)}
+.trajectory-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:20px}
+.traj-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;font-family:var(--font-head);font-weight:600;margin-bottom:6px}
+.traj-value{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--text)}
+.traj-value.accent{background:linear-gradient(135deg,var(--ox),var(--ox-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* Premium CTA section */
+.cta-section{background:var(--bg2);border:1px solid rgba(232,137,58,0.2);border-radius:var(--radius);padding:36px;margin-bottom:24px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:240px;background:radial-gradient(circle,rgba(232,137,58,0.07) 0%,transparent 70%);pointer-events:none}
+.cta-title{font-family:var(--font-head);font-size:22px;font-weight:800;letter-spacing:-0.01em;color:var(--text);margin-bottom:10px}
+.cta-desc{font-size:14px;color:var(--text2);line-height:1.6;max-width:460px;margin:0 auto 28px;font-weight:300}
+.btn-cta{display:block;width:100%;background:linear-gradient(135deg,#E8893A,#F5A04A);color:#0C0A07;padding:16px 36px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;margin-bottom:10px;box-shadow:0 4px 20px rgba(232,137,58,0.25)}
+.btn-cta:hover{box-shadow:0 8px 32px rgba(232,137,58,0.4);transform:translateY(-2px)}
+.btn-reset{background:transparent;border:1px solid var(--border);color:var(--text3);padding:12px 24px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.18s;width:100%;margin-top:10px}
+.btn-reset:hover{border-color:var(--border-mid);color:var(--text2)}
+.disclaimer{font-size:11px;color:var(--text3);text-align:center;line-height:1.6;margin-top:32px;font-weight:300}
+.error-msg{font-size:13px;color:#f87171;padding:12px 16px;background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.18);border-radius:var(--radius-sm);margin-top:16px;display:none}
+
+/* AI SCORE DEBUG (hidden in prod) */
+.debug-box{display:none}
+
+@media(max-width:640px){
+  .nav{padding:16px 20px}
+  .landing-inner{padding:40px 20px}
+  .benefit-grid{grid-template-columns:1fr}
+  .card-screen{padding:28px 20px}
+  .metric-grid{grid-template-columns:1fr 1fr!important}
+  .result-wrap{padding:28px 20px 60px}
+  .income-compare{grid-template-columns:1fr!important}
+  .trajectory-grid{grid-template-columns:1fr;gap:12px}
+  .form-grid{grid-template-columns:1fr}
+  #gapCallout{flex-direction:column;gap:8px}
+  #gapCallout>div:last-child{text-align:left}
+}
+@media print{
+  .nav,.btn-cta,.btn-reset,.btn-primary,.progress-wrap{display:none!important}
+  body{background:#fff;color:#000}
+}
+
+.btn-download{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;border:1px solid var(--border);color:var(--text2);padding:12px 24px;border-radius:var(--radius-sm);font-family:var(--font-head);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.15s;width:100%;margin-top:10px}
+.btn-download:hover{border-color:var(--border-hi);color:var(--text)}
+@media print{
+  .nav-logo-img{content:url("Logo_Passion_Hax_Main_White_No_BG.png");height:28px!important}
+  .nav,.progress-wrap,.btn-cta,.btn-reset,.btn-download,.cta-section .btn-cta,#screen-landing,#screen-intro,#screen-quiz,#screen-lead,#screen-loading{display:none!important}
+  body{background:#fff!important;color:#000!important}
+  :root{--bg:#fff;--bg2:#fafafa;--bg3:#f4f4f4;--bg4:#eee;--border:rgba(0,0,0,0.1);--text:#111;--text2:#333;--text3:#666;--ox:#E86A2A}
+  .result-wrap{max-width:100%;padding:20px}
+  .metric-card,.scorecard,.gap-section,.tier-ladder-section,.diagnosis-box,.trajectory-box,.action-plan-box,.cta-section{background:#fafafa!important;border:1px solid #ddd!important;break-inside:avoid}
+  .result-narrative{background:#fafafa!important;border-color:#ddd!important;border-left:3px solid #E86A2A!important}
+  .strategy-box{background:#f0f0f0!important;border-left:3px solid #E86A2A!important}
+  .income-bar.current{background:#999!important}
+  .income-bar.potential,.score-bar-fill.constraint,.progress-fill{background:#E86A2A!important}
+  .score-bar-fill{background:#999!important}
+  .tier-step-bar{background:#ddd!important}
+  .tier-step.active .tier-step-bar,.tier-step.past .tier-step-bar{background:#E86A2A!important}
+  .tier-badge{background:#fff3ee!important;border:1px solid #E86A2A!important}
+  .constraint-tag{background:#fff3ee!important;border:1px solid #E86A2A!important}
+  .score-name.constraint,.score-val.constraint,.metric-value.accent,.traj-value.accent,.next-tier-label span{color:#E86A2A!important}
+  .gap-score-badge{background:#fff3ee!important;border:1px solid #E86A2A!important;color:#E86A2A!important}
+  h2,h3,.metric-value,.income-item-val{color:#111!important}
+  .metric-label,.score-name,.traj-label,.gap-label,.result-for,.result-date,.scorecard-title{color:#666!important}
+  .cta-section{display:none!important}
+  /* Fix teks terpotong di PDF */
+  .hero-wrap{display:none!important}
+  .result-wrap{padding:20px!important;max-width:100%!important}
+  .metric-grid{grid-template-columns:1fr 1fr!important;page-break-inside:avoid}
+  .scorecard,.gap-section,.diagnosis-box,.trajectory-box,.tier-ladder-section{page-break-inside:avoid;margin-bottom:16px!important}
+  .income-compare{grid-template-columns:1fr 1fr!important}
+  .trajectory-grid{grid-template-columns:1fr 1fr 1fr!important}
+  .result-narrative{-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:16px!important}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .gap-callout{page-break-inside:avoid}
+  * {-webkit-text-fill-color:unset!important}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <img src="Logo_Passion_Hax_Main_White_No_BG.png" alt="Passion Hax" class="nav-logo-img" id="navLogo">
+  <div class="nav-badge">Career Tier Audit</div>
+</nav>
+
+<div class="progress-wrap" id="progressWrap" style="display:none">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<!-- LANDING -->
+<div class="screen active" id="screen-landing">
+  <div class="landing-glow"></div>
+  <div class="landing-inner">
+    <span class="eyebrow">Passion Hax™ — Career Diagnostic System</span>
+
+    <!-- ── ANIMATED HEADING ── -->
+    <div class="hero-wrap" id="heroWrap" aria-live="polite">
+      <h1 class="hero-heading hero-heading--active" id="hero0">
+        You're creating<br>more value<br><em>than you're capturing.</em><br><span class="hero-sub">Let's prove it.</span>
+      </h1>
+      <h1 class="hero-heading" id="hero1">
+        Know your<br>career value.<br><em>Not only your salary.</em><br><span class="hero-sub">Your value.</span>
+      </h1>
+    </div>
+
+    <p class="landing-desc">Dua profesional dengan pengalaman yang sama bisa punya income yang sangat berbeda. Bukan karena effort — tapi karena struktur. Audit ini mengukur di mana kamu berdiri, seberapa besar nilai yang sudah kamu ciptakan, dan berapa yang benar-benar kamu capture.</p>
+
+    <div class="benefit-grid">
+      <div class="benefit-item"><div class="dot"></div><div><strong>Career Tier</strong>Posisi struktural kamu di pasar kerja Indonesia</div></div>
+      <div class="benefit-item"><div class="dot"></div><div><strong>Income Potential</strong>Estimasi income kalau hambatanmu dioptimalkan</div></div>
+      <div class="benefit-item"><div class="dot"></div><div><strong>Career Value Gap</strong>Selisih nyata antara posisimu sekarang dan potensimu</div></div>
+      <div class="benefit-item"><div class="dot"></div><div><strong>Primary Constraint</strong>Satu hal spesifik yang paling menahan pertumbuhanmu</div></div>
+    </div>
+
+    <!-- ── ACCURACY GUIDANCE ── -->
+    <div class="accuracy-banner">
+      <div class="accuracy-icon">◈</div>
+      <div class="accuracy-text">
+        <strong>Jawaban yang lebih detail = hasil yang lebih akurat.</strong>
+        Audit ini menggunakan AI untuk menginterpretasi cara kerja aktual kamu. Semakin spesifik jawabanmu — semakin presisi estimasi nilai karirmu.
+      </div>
+    </div>
+
+    <div class="landing-cta-row">
+      <button class="btn-primary" id="btnStart">Mulai Audit Gratis →</button>
+      <span class="cta-note">~5 menit · 12 pertanyaan · gratis</span>
+    </div>
+
+    <!-- ── DISCLAIMER ── -->
+    <p class="landing-disclaimer">
+      Hasil audit merupakan estimasi indikatif berdasarkan jawaban kamu dan benchmark pasar Indonesia (BPS 2025, Glassdoor Jakarta 2024–2025). Bukan penilaian formal dan tidak mengikat secara hukum maupun kontrak.
+    </p>
+
+    <div class="equation-strip">
+      <div class="eq-block"><span class="eq-label">INCOME</span><span class="eq-sub">≈ Captured Value</span></div>
+      <span class="eq-sep">=</span>
+      <div class="eq-block"><span class="eq-label">CREATED VALUE</span><span class="eq-sub">System × Capability × Leverage × Effort</span></div>
+      <span class="eq-sep">×</span>
+      <div class="eq-block"><span class="eq-label">CAPTURE RATE</span><span class="eq-sub">f(Bargaining, Ownership)</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- INTERSTITIAL -->
+<div class="screen" id="screen-intro">
+  <div class="card-screen-wrap">
+    <div class="card-screen">
+      <span class="step-label">Sebelum mulai</span>
+      <h2 class="card-title">Kenapa dua orang dengan kerja keras yang sama bisa punya income yang sangat berbeda?</h2>
+      <p class="card-hint">Jawabannya bukan di seberapa keras kamu bekerja. Tapi di <strong style="color:var(--text);font-weight:500">struktur ekonomi</strong> tempat kamu beroperasi.</p>
+      <div class="intro-equation">
+        <div class="intro-eq-row"><span class="intro-eq-label">INCOME</span><span class="intro-eq-formula">≈ Captured Value</span></div>
+        <div class="intro-eq-row"><span class="intro-eq-label">CAPTURED VALUE</span><span class="intro-eq-formula">= Created Value × Capture Rate</span></div>
+        <div class="intro-eq-row"><span class="intro-eq-label">CREATED VALUE</span><span class="intro-eq-formula">= System × Capability × Leverage × Effort</span></div>
+        <div class="intro-eq-row"><span class="intro-eq-label">CAPTURE RATE</span><span class="intro-eq-formula">= f(Bargaining Power, Ownership)</span></div>
+      </div>
+      <p class="card-hint" style="margin-bottom:0">Audit ini mengukur posisi kamu di setiap komponen — berdasarkan <strong style="color:var(--text);font-weight:500">cara kerja aktual kamu</strong>, bukan job desc atau title.</p>
+      <div class="nav-row" style="margin-top:28px">
+        <button class="btn-prev" id="btnIntroPrev" title="Kembali">←</button>
+        <button class="btn-next ready" id="btnIntroNext">Oke, aku siap →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="screen" id="screen-quiz">
+  <div class="card-screen-wrap">
+    <div class="card-screen" id="quizCard">
+      <span class="step-label" id="stepLabel">Pertanyaan 1 dari 12</span>
+      <h2 class="card-title" id="questionText"></h2>
+      <p class="card-hint" id="questionHint"></p>
+      <div id="answerArea"></div>
+      <div class="error-msg" id="errorMsg">Mohon pilih atau isi jawaban terlebih dahulu.</div>
+      <div class="nav-row">
+        <button class="btn-prev" id="btnPrev" disabled title="Kembali">←</button>
+        <button class="btn-next" id="btnNext" disabled>Lanjut →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LEAD FORM -->
+<div class="screen" id="screen-lead">
+  <div class="card-screen-wrap">
+    <div class="card-screen">
+      <span class="step-label">Hampir selesai</span>
+      <h2 class="card-title">Hasil audit siap.<br>Ke mana aku kirimkan?</h2>
+      <p class="card-hint">Data kamu tidak akan dibagikan ke pihak manapun.</p>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Nama</label>
+          <input class="form-input" id="inputName" type="text" placeholder="Nama kamu">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" id="inputEmail" type="email" placeholder="email@kamu.com">
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">No. WhatsApp <span style="font-weight:300;color:var(--text3)">(opsional)</span></label>
+          <input class="form-input" id="inputWA" type="tel" placeholder="08xxxxxxxxxx">
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">Untuk dapat ringkasan hasil audit langsung di WA</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Usia</label>
+          <input class="form-input" id="inputAge" type="number" placeholder="28" min="18" max="60">
+        </div>
+      </div>
+      <div class="form-grid full">
+        <div class="form-group">
+          <label class="form-label">Role / Jabatan saat ini</label>
+          <input class="form-input" id="inputRole" type="text" placeholder="misal: Marketing Manager, Software Engineer">
+        </div>
+      </div>
+      <div class="form-grid full">
+        <div class="form-group">
+          <label class="form-label">Kota domisili</label>
+          <input class="form-input" id="inputCity" type="text" placeholder="Jakarta, Surabaya, Bandung, dll">
+        </div>
+      </div>
+
+      <!-- STATUS PROFESIONAL -->
+      <div class="form-grid full">
+        <div class="form-group">
+          <label class="form-label">Status profesional kamu saat ini</label>
+          <select class="form-select" id="inputProfStatus">
+            <option value="">— Pilih status —</option>
+            <option value="employed">Karyawan tetap / kontrak</option>
+            <option value="freelance">Freelancer / konsultan</option>
+            <option value="entrepreneur">Pengusaha / self-employed</option>
+            <option value="transitioning">Sedang transisi / baru resign / gap</option>
+            <option value="not_working">Belum bekerja (mahasiswa / fresh grad)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- INCOME INPUT HYBRID -->
+      <div class="form-grid full">
+        <div class="form-group">
+          <label class="form-label" id="incomeLabelText">Income bulanan saat ini (IDR)</label>
+          <div class="income-toggle">
+            <button class="income-toggle-btn active" id="btnDirectIncome" type="button">Ketik langsung (lebih akurat)</button>
+            <button class="income-toggle-btn" id="btnRangeIncome" type="button">Pilih range</button>
+          </div>
+
+          <div id="incomeDirectWrap">
+            <div class="income-input-wrap">
+              <span class="income-prefix">Rp</span>
+              <div style="position:relative">
+                <input class="form-input income-direct" id="inputIncomeDirect" type="number" placeholder="8000000" min="0" max="1000000000" style="padding-right:130px">
+                <span id="incomePreview" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ox);font-family:var(--font-head);font-weight:600;pointer-events:none;opacity:0;transition:opacity 0.2s;white-space:nowrap"></span>
+              </div>
+            </div>
+            <span class="income-accuracy-note show">✓ Angka langsung menghasilkan Career Value Gap yang lebih presisi</span>
+          </div>
+
+          <div id="incomeRangeWrap" style="display:none">
+            <select class="form-select" id="inputIncomeRange">
+              <option value="">— Pilih range —</option>
+              <option value="3500000">Di bawah Rp 5 juta</option>
+              <option value="7500000">Rp 5 juta – 10 juta</option>
+              <option value="15000000">Rp 10 juta – 20 juta</option>
+              <option value="30000000">Rp 20 juta – 40 juta</option>
+              <option value="55000000">Rp 40 juta – 70 juta</option>
+              <option value="85000000">Di atas Rp 70 juta</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="error-msg" id="formError">Mohon lengkapi semua field yang diperlukan.</div>
+      <div class="nav-row" style="margin-top:20px">
+        <button class="btn-prev" id="btnLeadPrev" title="Kembali">←</button>
+        <button class="btn-next ready" id="btnSeeResult">Lihat Hasil Audit →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOADING -->
+<div class="screen" id="screen-loading">
+  <div class="loading-inner">
+    <div class="loading-spinner"></div>
+    <div class="loading-title">Menganalisis profil karirmu</div>
+    <p style="font-size:13px;color:var(--text3);font-weight:300;margin-bottom:4px">AI sedang membaca dan menginterpretasi jawabanmu</p>
+    <div class="loading-steps" id="loadingSteps">
+      <div class="loading-step active" data-step="0"><div class="step-dot"></div>Membaca jawaban deskriptif</div>
+      <div class="loading-step" data-step="1"><div class="step-dot"></div>Mengukur System, Capability, Leverage</div>
+      <div class="loading-step" data-step="2"><div class="step-dot"></div>Menghitung Career Value & Capture Rate</div>
+      <div class="loading-step" data-step="3"><div class="step-dot"></div>Menentukan Tier & Primary Constraint</div>
+      <div class="loading-step" data-step="4"><div class="step-dot"></div>Menyusun narasi personal</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div class="screen" id="screen-result">
+  <div class="result-wrap">
+    <div class="result-header">
+      <div class="result-for">Career Tier Audit Report</div>
+      <div class="result-title" id="resultName">—</div>
+      <div class="result-date" id="resultDate"></div>
+    </div>
+    <div class="tier-badge-row">
+      <div class="tier-badge"><div class="tier-dot"></div><span id="resultTierBadge">—</span></div>
+      <span class="next-tier-label">Next tier: <span id="resultNextTier">—</span></span>
+    </div>
+
+    <!-- Career Value Framing -->
+    <div id="careerValueFrame" style="margin:16px 0 20px;padding:18px 20px;background:linear-gradient(135deg,rgba(232,137,58,0.08),rgba(232,137,58,0.03));border:1px solid rgba(232,137,58,0.25);border-radius:var(--radius-sm)">
+      <div style="font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:0.15em;color:var(--ox);text-transform:uppercase;margin-bottom:6px">Career Value Kamu</div>
+      <div style="font-size:22px;font-weight:700;color:var(--text);font-family:var(--font-head)" id="careerValueAmount">—</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:4px" id="careerValuePercentile">—</div>
+    </div>
+
+    <div class="result-narrative" id="resultNarrative">—</div>
+
+    <!-- Over-earner warning -->
+    <div id="overEarnerWarn" style="display:none;margin-bottom:24px;padding:16px 20px;background:rgba(234,179,8,0.08);border:1px solid rgba(234,179,8,0.3);border-radius:var(--radius-sm)">
+      <div style="font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:0.1em;color:#ca8a04;text-transform:uppercase;margin-bottom:8px">&#9888; Catatan Penting</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.6;font-weight:300">Income kamu saat ini kemungkinan <strong style="color:var(--text)">di atas nilai pasar aktual</strong> untuk profil skill dan leverage yang kamu miliki. Ini bisa terjadi karena senioritas, loyalitas, atau konteks organisasi — bukan selalu karena nilai pasarmu setinggi itu. Posisi ini rentan jika kamu pindah atau ada perubahan di organisasi. Income potential di bawah menunjukkan nilai pasar yang lebih realistis.</div>
+    </div>
+
+    <!-- Zero income note -->
+    <div id="zeroIncomeNote" style="display:none;margin-bottom:24px;padding:16px 20px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.25);border-radius:var(--radius-sm)">
+      <div style="font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:0.1em;color:#818cf8;text-transform:uppercase;margin-bottom:8px">Kamu Sedang Dalam Transisi</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.6;font-weight:300">Karena kamu belum memiliki income aktif, angka di bawah menunjukkan <strong style="color:var(--text)">target income realistis</strong> yang bisa kamu capai berdasarkan profil skill dan leverage kamu.</div>
+    </div>
+
+    <div class="metric-grid" style="grid-template-columns:1fr 1fr">
+      <div class="metric-card">
+        <div class="metric-label">Income Sekarang</div>
+        <div class="metric-value" id="metricCurrent">—</div>
+        <div class="metric-sub">yang kamu terima saat ini</div>
+      </div>
+      <div class="metric-card" style="border-color:rgba(232,137,58,0.25)">
+        <div class="metric-label" style="color:var(--ox)">Income Potential</div>
+        <div class="metric-value accent" id="metricPotential">—</div>
+        <div class="metric-sub">kalau hambatan dioptimalkan</div>
+      </div>
+    </div>
+    <!-- hidden diagnostic anchor kept for AI lead scoring — not shown to user -->
+    <span id="metricDiag" style="display:none">—</span>
+    <!-- Career Value Gap callout -->
+    <div id="gapCallout" style="margin-bottom:24px;padding:18px 22px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase;font-family:var(--font-head);margin-bottom:4px">Career Value Gap</div>
+        <div style="font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--ox)" id="metricGap">—</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:13px;color:var(--text2)" id="metricGapSeverity">—</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:2px" id="metricGapDesc">—</div>
+      </div>
+    </div>
+    <div class="scorecard">
+      <div class="scorecard-title">Career Value Scorecard</div>
+      <div class="score-row">
+        <div class="score-name" id="sysName">System</div>
+        <div class="score-bar-wrap"><div class="score-bar-fill" id="sysBar"></div></div>
+        <div class="score-val" id="sysVal">—</div>
+      </div>
+      <div class="score-row">
+        <div class="score-name" id="capName">Capability</div>
+        <div class="score-bar-wrap"><div class="score-bar-fill" id="capBar"></div></div>
+        <div class="score-val" id="capVal">—</div>
+      </div>
+      <div class="score-row">
+        <div class="score-name" id="levName">Leverage</div>
+        <div class="score-bar-wrap"><div class="score-bar-fill" id="levBar"></div></div>
+        <div class="score-val" id="levVal">—</div>
+      </div>
+      <div class="score-row">
+        <div class="score-name" id="captureName">Capture</div>
+        <div class="score-bar-wrap"><div class="score-bar-fill" id="captureBar"></div></div>
+        <div class="score-val" id="captureVal">—</div>
+      </div>
+    </div>
+      <!-- hidden diagnostic for lead scoring -->
+      <span id="gapDiagVal" style="display:none">—</span>
+      <span id="gapDiagBar" style="display:none"></span>
+      <!-- hidden income bar IDs kept for JS compatibility -->
+      <span id="gapCurrentVal" style="display:none">—</span>
+      <span id="gapCurrentBar" style="display:none"></span>
+      <span id="gapPotentialVal" style="display:none">—</span>
+      <span id="gapPotentialBar" style="display:none"></span>
+      <span id="gapMonthly" style="display:none">—</span>
+      <span id="gapScoreBadge" style="display:none">—</span>
+    <div class="tier-ladder-section">
+      <div class="scorecard-title">Career Tier Ladder</div>
+      <div class="tier-ladder" id="tierLadder">
+        <div class="tier-step" data-tier="Starter"><div class="tier-step-bar"></div><div class="tier-step-label">Starter</div></div>
+        <div class="tier-step" data-tier="Executor"><div class="tier-step-bar"></div><div class="tier-step-label">Executor</div></div>
+        <div class="tier-step" data-tier="Specialist"><div class="tier-step-bar"></div><div class="tier-step-label">Specialist</div></div>
+        <div class="tier-step" data-tier="Strategist"><div class="tier-step-bar"></div><div class="tier-step-label">Strategist</div></div>
+        <div class="tier-step" data-tier="Architect"><div class="tier-step-bar"></div><div class="tier-step-label">Architect</div></div>
+      </div>
+    </div>
+    <div class="diagnosis-box">
+      <div class="scorecard-title">Diagnosis & Strategy</div>
+      <div class="constraint-tag">Primary Constraint: <span id="constraintLabel">—</span></div>
+      <div class="diagnosis-text" id="diagnosisText">—</div>
+      <div class="strategy-box">
+        <div class="strategy-box-title">Recommended Strategy</div>
+        <div class="strategy-box-text" id="strategyText">—</div>
+      </div>
+    </div>
+    <div class="trajectory-box">
+      <div class="scorecard-title">Career Trajectory Projection</div>
+      <div class="trajectory-grid">
+        <div class="traj-item"><div class="traj-label">Next Tier</div><div class="traj-value accent" id="trajTier">—</div></div>
+        <div class="traj-item"><div class="traj-label">Income Range</div><div class="traj-value" id="trajIncome">—</div></div>
+        <div class="traj-item"><div class="traj-label">Potential Upside</div><div class="traj-value accent" id="trajUpside">—</div></div>
+      </div>
+    </div>
+
+    <div class="action-plan-box" id="actionPlanBox">
+      <div class="action-plan-title">12-Week Action Plan</div>
+      <div class="action-plan-subtitle" id="actionPlanSubtitle">Roadmap personal menuju repositioning karier kamu.</div>
+      <div class="week-rows" id="weekRows">
+        <div style="text-align:center;padding:32px;color:var(--text3);font-size:13px">Memuat action plan...</div>
+      </div>
+      <div class="action-plan-cta" id="actionPlanCta"></div>
+    </div>
+
+    <div class="cta-section">
+      <div class="cta-title">Jadwalkan Career Tier Strategy Call</div>
+      <div class="cta-desc" id="ctaText">Diskusikan hasil audit ini secara personal dan temukan langkah konkret untuk mencapai tier berikutnya.</div>
+      <a href="https://calendly.com/passionhax/careerdiagnostic" target="_blank" class="btn-cta">Book 1-on-1 Free Strategy Call →</a>
+      <button class="btn-download" id="btnDownload">⬇ Download Hasil Audit (PDF)</button>
+      <button class="btn-reset" id="btnReset">Mulai ulang audit</button>
+    </div>
+
+    <div style="margin-top:8px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;color:#7A7A82;text-transform:uppercase;margin-bottom:16px;text-align:center;">Lanjutkan Perjalanan Kamu</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;">
+        <a href="https://passionhax.github.io/passion-hax-job-finder-ai.html" target="_blank" style="display:block;text-decoration:none;background:#141418;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:14px 10px;text-align:center;">
+          <div style="font-size:20px;">🤖</div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;color:#F5F3EE;letter-spacing:0.04em;margin-top:8px;">Job Finder AI</div>
+          <div style="font-size:10px;color:#7A7A82;line-height:1.4;margin-top:4px;">Cari lowongan yang cocok sama profil kamu</div>
+        </a>
+        <a href="https://passionhax.github.io/passion-hax-simulasi-v7.html" target="_blank" style="display:block;text-decoration:none;background:#141418;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:14px 10px;text-align:center;">
+          <div style="font-size:20px;">📊</div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;color:#F5F3EE;letter-spacing:0.04em;margin-top:8px;">Simulasi Income</div>
+          <div style="font-size:10px;color:#7A7A82;line-height:1.4;margin-top:4px;">Proyeksi income stay vs reposisi</div>
+        </a>
+        <div style="display:block;background:#141418;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:14px 10px;text-align:center;opacity:0.5;cursor:not-allowed;">
+          <div style="font-size:20px;">📘</div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;color:#F5F3EE;letter-spacing:0.04em;">Guide</span>
+            <span style="font-size:8px;font-weight:800;color:#E8893A;background:rgba(232,137,58,0.15);border:1px solid rgba(232,137,58,0.3);padding:1px 4px;border-radius:4px;text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap;width:fit-content;">Coming Soon</span>
+          </div>
+          <div style="font-size:10px;color:#7A7A82;line-height:1.4;margin-top:4px;">Rekaman sesi coaching nyata</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <strong style="color:var(--text2);display:block;margin-bottom:6px">Tentang hasil ini</strong>
+      Angka-angka di atas adalah estimasi indikatif berdasarkan jawaban kamu, model ekonomi Passion Hax, dan benchmark pasar Indonesia (BPS 2025, Glassdoor Jakarta, Michael Page Indonesia 2024–2025). <strong style="color:var(--text2)">Angka rendah di "Income Sekarang" mencerminkan constraint sistem tempat kamu bekerja — bukan penilaian atas kemampuan kamu.</strong> Hasil ini bukan penilaian formal dan tidak mengikat secara hukum maupun kontrak.
+    </div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════
+   PASSION HAX — CAREER TIER AUDIT v5.2
+   Architecture: Browser → Google Apps Script → Anthropic API
+   No API key in browser. No fallback template.
+   v5.2 changes:
+   - Action plan aligned to ARC internally, leads see Diagnosis/Repositioning/Eksekusi
+   - No internal jargon in action plan (CVS, BATNA, Leverage Sprint etc banned)
+   - Pitfall prefix: every pitfall starts with "Hindari:" for clarity
+   - Gibberish detection strengthened (word count per answer)
+   - Extreme income validation warning (>200jt confirmation)
+   - saveCurrentAnswer() bug fix (getActiveQuestions)
+   - Duplicate id="errorMsg" removed
+   ════════════════════════════════════════════════ */
+
+// ── CONFIG — ganti dengan URL Google Apps Script kamu ──
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyy6MAHHRadN82PrtJud36Q9ajVjoLCTbm9PZrk1fqTET-qduBmdIyLAFPrSaow_MaH1w/exec';
+
+/* ════════════════════════════════════════════════
+   PASSION HAX — CAREER TIER AUDIT v5.2
+   Fix: ARC-aligned action plan (Diagnosis/Repositioning/Eksekusi for leads)
+   Fix: No internal jargon in action plan — plain language for leads
+   Fix: Pitfall prefix "Hindari:" enforced in prompt + rendering
+   Fix: Leverage personal vs positional
+   Fix: Gibberish detection + word count
+   Fix: Extreme income validation
+   ════════════════════════════════════════════════ */
+
+// ── QUESTIONS ────────────────────────────────────────
+
+const QUESTIONS = [
+  {
+    id:'industry', type:'mcq', dimension:'system',
+    q:'Bidang mana yang paling menggambarkan tempat kamu bekerja saat ini?',
+    hint:'Pilih berdasarkan jenis organisasi dan model bisnisnya — bukan nama profesi atau jabatanmu.',
+    options:[
+      {text:'Lembaga dan instansi pemerintah', sub:'Kementerian, lembaga negara, BUMN, organisasi internasional, NGO',   val:'govt_family',       score:4,   hasFollowup:true},
+      {text:'Industri dan manufaktur',         sub:'Produksi, konstruksi, pertambangan, energi, agrikultur',              val:'manufacturing',     score:4.5, hasFollowup:false},
+      {text:'Perdagangan dan distribusi',      sub:'Retail, FMCG, logistik, properti, consumer goods',                   val:'consumer',          score:5,   hasFollowup:false},
+      {text:'Keuangan dan investasi',          sub:'Perbankan, asuransi, pasar modal, fintech, manajemen aset',           val:'finance_family',    score:6,   hasFollowup:true},
+      {text:'Konsultasi dan jasa profesional', sub:'Konsultasi, hukum, kesehatan, pendidikan, agensi, audit',             val:'consulting_family', score:7,   hasFollowup:true},
+      {text:'Media, kreator, dan konten',      sub:'Konten digital, entertainment, media, creative industry',             val:'digital',           score:7,   hasFollowup:false},
+      {text:'Teknologi dan platform digital',  sub:'Software, SaaS, marketplace, aplikasi, AI, startup',                 val:'tech',              score:8.5, hasFollowup:false},
+      {text:'Sedang transisi / baru resign',   sub:'Gap year, antara pekerjaan, atau baru saja meninggalkan pekerjaan sebelumnya', val:'transitioning', score:5, hasFollowup:true},
+      {text:'Belum bekerja',                   sub:'Mahasiswa, fresh grad, atau belum pernah bekerja secara formal',      val:'not_working',       score:5,   hasFollowup:true},
+    ]
+  },
+  // ── FOLLOWUP: Sedang transisi ──
+  {
+    id:'industry_transitioning', type:'mcq_followup', parentId:'industry', parentVal:'transitioning', dimension:'system',
+    q:'Bidang mana yang ingin kamu masuki selanjutnya?',
+    hint:'Pilih bidang tujuan kamu — ini membantu audit menghitung potensi income di sistem yang baru.',
+    options:[
+      {text:'Industri dan manufaktur',         sub:'Produksi, konstruksi, pertambangan, energi, agrikultur',              val:'manufacturing',     score:4.5},
+      {text:'Perdagangan dan distribusi',      sub:'Retail, FMCG, logistik, properti, consumer goods',                   val:'consumer',          score:5},
+      {text:'Keuangan dan investasi',          sub:'Perbankan, asuransi, pasar modal, fintech, manajemen aset',           val:'finance_family',    score:6},
+      {text:'Konsultasi dan jasa profesional', sub:'Konsultasi, hukum, kesehatan, pendidikan, agensi, audit',             val:'consulting_family', score:7},
+      {text:'Media, kreator, dan konten',      sub:'Konten digital, entertainment, media, creative industry',             val:'digital',           score:7},
+      {text:'Teknologi dan platform digital',  sub:'Software, SaaS, marketplace, aplikasi, AI, startup',                 val:'tech',              score:8.5},
+      {text:'Belum tahu / masih eksplorasi',   sub:'Sedang mempertimbangkan beberapa opsi',                               val:'exploring',         score:5.5},
+    ]
+  },
+  // ── FOLLOWUP: Belum bekerja ──
+  {
+    id:'industry_not_working', type:'mcq_followup', parentId:'industry', parentVal:'not_working', dimension:'system',
+    q:'Bidang mana yang ingin kamu masuki?',
+    hint:'Pilih bidang tujuan kamu — ini membantu audit menghitung potensi income yang realistis untukmu.',
+    options:[
+      {text:'Industri dan manufaktur',         sub:'Produksi, konstruksi, pertambangan, energi, agrikultur',              val:'manufacturing',     score:4.5},
+      {text:'Perdagangan dan distribusi',      sub:'Retail, FMCG, logistik, properti, consumer goods',                   val:'consumer',          score:5},
+      {text:'Keuangan dan investasi',          sub:'Perbankan, asuransi, pasar modal, fintech, manajemen aset',           val:'finance_family',    score:6},
+      {text:'Konsultasi dan jasa profesional', sub:'Konsultasi, hukum, kesehatan, pendidikan, agensi, audit',             val:'consulting_family', score:7},
+      {text:'Media, kreator, dan konten',      sub:'Konten digital, entertainment, media, creative industry',             val:'digital',           score:7},
+      {text:'Teknologi dan platform digital',  sub:'Software, SaaS, marketplace, aplikasi, AI, startup',                 val:'tech',              score:8.5},
+      {text:'Belum tahu / masih eksplorasi',   sub:'Sedang mempertimbangkan beberapa opsi',                               val:'exploring',         score:5.5},
+    ]
+  },
+  {
+    id:'industry_govt', type:'mcq_followup', parentId:'industry', parentVal:'govt_family', dimension:'system',
+    q:'Lebih spesifik, di mana kamu beroperasi?',
+    hint:'Pilih yang paling sesuai — ini mempengaruhi cara model menghitung nilai karirmu.',
+    options:[
+      {text:'Kementerian dan lembaga teknis',               sub:'Kemendikbud, Kemenkes, Kemendag, pemda, dan sejenisnya',        val:'government',       score:3},
+      {text:'Kementerian keuangan, fiskal, dan pengawasan', sub:'Kemenkeu, DJP, DJBC, BPKP, BPK, PUPR',                         val:'govt_sultan',      score:4.5},
+      {text:'Lembaga regulasi dan pengawasan sektor',       sub:'BI, OJK, LPS, PPATK, dan sejenisnya',                          val:'govt_regulator',   score:4},
+      {text:'Lembaga hukum, audit, dan kepatuhan negara',   sub:'KPK, Kejaksaan, Kepolisian, KY, dan sejenisnya',               val:'govt_enforcement', score:3.5},
+      {text:'Badan usaha milik negara',                     sub:'Pertamina, BRI, Mandiri, Telkom, PLN, Garuda, dan sejenisnya', val:'government_bumn',  score:4.8},
+    ]
+  },
+  // ── FOLLOWUP: Keuangan ──
+  {
+    id:'industry_finance', type:'mcq_followup', parentId:'industry', parentVal:'finance_family', dimension:'system',
+    q:'Lebih spesifik, di segmen mana kamu beroperasi?',
+    hint:'Segmen keuangan punya perbedaan signifikan dalam potensi nilai yang bisa diciptakan.',
+    options:[
+      {text:'Perbankan dan keuangan konvensional', sub:'Bank daerah, BPR, koperasi, asuransi konvensional, multifinance',    val:'banking_retail',    score:5},
+      {text:'Perbankan korporat dan pasar modal',  sub:'Bank swasta besar, investment banking, sekuritas, wealth management', val:'banking_corporate', score:6.5},
+      {text:'Teknologi keuangan dan platform',     sub:'Fintech, neobank, insurtech, platform investasi, kripto berlisensi',  val:'banking_fintech',   score:7.5},
+    ]
+  },
+  // ── FOLLOWUP: Konsultasi ──
+  {
+    id:'industry_consulting', type:'mcq_followup', parentId:'industry', parentVal:'consulting_family', dimension:'system',
+    q:'Lebih spesifik, di konteks apa kamu beroperasi?',
+    hint:'Lingkup klien yang dilayani sangat mempengaruhi potensi nilai yang bisa diciptakan.',
+    options:[
+      {text:'Praktik dan layanan profesional',    sub:'Konsultasi lokal, klinik, sekolah, agensi, firma hukum menengah',     val:'consulting',     score:6},
+      {text:'Firma konsultasi dan jasa korporat', sub:'Big 4, konsultan manajemen, firma hukum korporat, rumah sakit besar', val:'consulting_top', score:8},
+    ]
+  },
+  {
+    id:'market_scope', type:'mcq', dimension:'system',
+    get q() {
+      if (answers.industry?.val === 'not_working') return 'Seberapa luas jangkauan pasar yang ingin kamu targetkan untuk karir pertamamu?';
+      return 'Seberapa luas jangkauan pasar dari bisnis atau organisasi tempat kamu beroperasi?';
+    },
+    get hint() {
+      if (answers.industry?.val === 'not_working') return 'Pilih berdasarkan aspirasi karir kamu — pasar lokal, nasional, atau bahkan global?';
+      return 'Fokus pada di mana mayoritas value diciptakan dan siapa yang dilayani — bukan lokasi kantormu.';
+    },
+    options:[
+      {text:'Lokal',          sub:'Satu kota, satu wilayah, atau satu institusi',                       val:'local',         score:3},
+      {text:'Nasional',       sub:'Beroperasi atau melayani di seluruh Indonesia',                      val:'national',      score:5.5},
+      {text:'Internasional',  sub:'Sebagian klien, pasar, atau operasi di luar Indonesia',              val:'international', score:7.5},
+      {text:'Global digital', sub:'Pasar utama adalah internet tanpa batas geografis',                  val:'global',        score:9},
+    ]
+  },
+  {
+    id:'cap_skill', type:'open', dimension:'capability',
+    q:'Jelaskan keahlian atau kemampuan paling kuat yang kamu miliki saat ini — dan seberapa sulit orang lain bisa melakukan hal yang sama.',
+    hint:'Deskripsikan secara konkret. Semakin spesifik jawabanmu, semakin akurat penilaian AI.',
+  },
+  {
+    id:'cap_problem', type:'open', dimension:'capability',
+    get q() {
+      if (answers.industry?.val === 'not_working') return 'Masalah seperti apa yang biasanya kamu selesaikan dalam studi, proyek, atau organisasi yang kamu ikuti? Berikan satu contoh konkret dari 6 bulan terakhir.';
+      return 'Masalah seperti apa yang biasanya kamu selesaikan di pekerjaan? Berikan satu contoh konkret dari 6 bulan terakhir.';
+    },
+    get hint() {
+      if (answers.industry?.val === 'not_working') return 'Bisa dari tugas kuliah, proyek tim, lomba, magang, organisasi kampus, atau kegiatan sukarela. Ceritakan situasi nyata — bukan deskripsi peran formal.';
+      return 'Ceritakan situasi nyata — bukan deskripsi job desc atau kewajiban formal.';
+    },
+  },
+  {
+    id:'cap_demand', type:'open', dimension:'capability',
+    q:'Seberapa sering orang lain membutuhkan keahlianmu secara spesifik? Siapa yang biasanya membutuhkanmu dan untuk apa?',
+    get hint() {
+      if (answers.industry?.val === 'not_working') return 'Apakah orang mendatangi kamu secara personal karena kamu-nya, atau siapa pun dengan skill yang sama bisa menggantikanmu?';
+      return 'Apakah kamu diminta secara personal karena kamu-nya, atau siapapun bisa menggantikan posisimu?';
+    },
+  },
+  {
+    id:'lev_actual', type:'open', dimension:'leverage',
+    get q() {
+      if (answers.industry?.val === 'not_working') return 'Jelaskan cara kamu mengerjakan sesuatu dalam studi atau proyek — apakah ada sistem, metode, atau pendekatan yang kamu bangun sendiri yang membuat hasilmu lebih besar dari yang diharapkan?';
+      return 'Jelaskan cara kerja aktual kamu sehari-hari — bukan apa yang dituntut jabatanmu, tapi apa yang benar-benar kamu lakukan. Apakah ada sistem, otomasi, atau cara kerja yang kamu bangun sendiri yang membuat outputmu lebih besar dari yang diharapkan posisimu?';
+    },
+    get hint() {
+      if (answers.industry?.val === 'not_working') return 'Misalnya: cara belajar yang kamu rancang sendiri, tools yang kamu buat untuk bantu tim proyek, atau metode yang bikin tugas selesai lebih cepat. Jawab sejujur mungkin.';
+      return 'Ini pertanyaan kunci. Jawab sejujur mungkin — termasuk hal-hal yang tidak ada di job desc kamu.';
+    },
+  },
+  {
+    id:'lev_absence', type:'open', dimension:'leverage',
+    get q() {
+      if (answers.industry?.val === 'not_working') return 'Jika kamu tiba-tiba tidak bisa hadir selama satu minggu di proyek atau tim yang sedang kamu jalani, apa yang akan terjadi? Apakah semua berhenti, atau ada yang tetap berjalan tanpa kamu?';
+      return 'Jika kamu tidak masuk kerja selama satu minggu tanpa pemberitahuan, apa yang akan terjadi? Apakah ada pekerjaan yang tetap berjalan sendiri, atau semuanya berhenti?';
+    },
+    get hint() {
+      if (answers.industry?.val === 'not_working') return 'Ini mengukur seberapa besar kontribusimu bersifat sistemik vs bergantung pada kehadiran fisikmu — meskipun kamu belum bekerja formal.';
+      return 'Ini mengukur apakah value kamu bergantung pada kehadiranmu secara fisik atau pada sistem yang sudah kamu bangun.';
+    },
+  },
+  {
+    id:'lev_assets', type:'open', dimension:'leverage',
+    get q() {
+      if (answers.industry?.val === 'not_working') return 'Apakah kamu punya karya, konten, atau tools yang terus menghasilkan nilai meskipun kamu tidak sedang aktif mengerjakannya? Contoh: konten yang terus ditonton, tools/code yang dipakai orang lain, atau sistem yang kamu buat.';
+      return 'Apakah kamu punya aset produktif yang aktif menghasilkan nilai di luar jam kerja utamamu? Contoh: tim yang kamu kelola, konten yang terus ditonton, sistem yang berjalan otomatis, atau tools yang orang lain pakai karena kamu yang buat.';
+    },
+    get hint() {
+      const ind = getEffectiveIndustryVal();
+      if (ind === 'government') return 'Termasuk SOP yang kamu buat, tools yang dipakai rekan kerja, atau konten yang terus dikonsumsi publik. Meski di instansi pemerintah, aset ini tetap mencerminkan leverage nyata kamu.';
+      if (ind === 'tech' || ind === 'digital') return 'Contoh: codebase yang terus berjalan, sistem otomasi, konten/tutorial yang terus ditonton, atau produk yang terus dipakai user.';
+      return 'Termasuk hal kecil seperti template, SOP, atau tools yang orang lain pakai karena kamu yang buat.';
+    },
+  },
+  {
+    id:'cap_bargaining', type:'open', dimension:'capture',
+    get q() {
+      if (answers.industry?.val === 'not_working') return 'Seberapa yakin kamu bisa mendapat pekerjaan pertama yang sesuai dengan kemampuanmu dalam 3 bulan ke depan? Apa yang membuat kamu yakin — atau tidak yakin — akan hal itu?';
+      return 'Seberapa mudah menurutmu kamu bisa mendapat pekerjaan setara atau lebih baik dalam 3 bulan jika resign hari ini? Apa yang membuat kamu yakin — atau tidak yakin — akan hal itu?';
+    },
+    get hint() {
+      if (answers.industry?.val === 'not_working') return 'Jawab dengan jujur termasuk keraguan kamu. Ini mengukur seberapa siap kamu bersaing di pasar kerja berdasarkan apa yang sudah kamu bangun selama ini.';
+      return 'Jawab dengan jujur termasuk keraguan kamu. Ini mengukur kekuatan posisi negosiasimu di pasar.';
+    },
+  },
+  {
+    id:'cap_reputation', type:'open', dimension:'capture',
+    get q() {
+      if (answers.industry?.val === 'not_working') return 'Bagaimana kamu dikenal di lingkunganmu saat ini — oleh teman, dosen, komunitas, atau online? Apakah ada orang yang mengenalmu karena keahlian spesifik yang kamu punya?';
+      return 'Bagaimana kamu dikenal secara profesional — oleh siapa, di lingkup apa? Apakah ada orang di luar perusahaanmu yang tahu nilai keahlianmu?';
+    },
+    get hint() {
+      if (answers.industry?.val === 'not_working') return 'Reputasi bisa berbentuk dikenal sebagai "orang yang jago [X]" di kampus, punya following online karena konten yang kamu buat, atau jadi rujukan di komunitas tertentu.';
+      return 'Reputasi bisa berbentuk network personal, komunitas, brand online, atau dikenal di industri tertentu.';
+    },
+  },
+  {
+    id:'side_income', type:'mcq', dimension:'capture',
+    get q() {
+      if (answers.industry?.val === 'not_working') return 'Apakah kamu punya aktivitas yang sudah menghasilkan uang — meskipun kecil?';
+      return 'Di luar pekerjaan utamamu, apakah kamu punya aktivitas ekonomi lain yang aktif menghasilkan income?';
+    },
+    get hint() {
+      if (answers.industry?.val === 'not_working') return 'Termasuk freelance kecil, jualan online, konten berbayar, jasa titip, atau apapun yang menghasilkan uang — meskipun belum rutin.';
+      return 'Termasuk bisnis sampingan, klien berbayar, konten yang menghasilkan, coaching, freelance, properti, atau investasi aktif.';
+    },
+    get options() {
+      if (answers.industry?.val === 'not_working') return [
+        {text:'Tidak ada',                    sub:'Belum pernah menghasilkan uang sendiri',                        val:'none',      score:0,    sideInd:null},
+        {text:'Ada, masih kecil / baru mulai', sub:'Belum konsisten atau belum menghasilkan income rutin',          val:'small',     score:0.02, sideInd:null},
+        {text:'Ada, sudah rutin',              sub:'Sudah ada income rutin dari aktivitas sendiri',                  val:'active',    score:0.06, sideInd:'consulting'},
+        {text:'Ada, dan ini sumber utama',     sub:'Aktivitas mandiri sudah jadi sumber income terbesar',            val:'primary',   score:0.12, sideInd:'consulting'},
+      ];
+      return [
+        {text:'Tidak ada',                    sub:'Seluruh income berasal dari satu pekerjaan atau institusi utama', val:'none',      score:0,    sideInd:null},
+        {text:'Ada, masih kecil / baru mulai', sub:'Belum konsisten atau belum menghasilkan income rutin',           val:'small',     score:0.02, sideInd:null},
+        {text:'Ada, sudah rutin',              sub:'Sudah ada income rutin dari aktivitas di luar pekerjaan utama',  val:'active',    score:0.06, sideInd:'consulting'},
+        {text:'Ada, dan ini sumber utama',     sub:'Bisnis atau aktivitas mandiri sudah jadi sumber income terbesar', val:'primary',   score:0.12, sideInd:'consulting'},
+      ];
+    },
+  },
+  {
+    id:'ownership', type:'mcq_multi', dimension:'capture',
+    q:'Apakah kamu punya kepemilikan nyata atas aset, bisnis, atau ekuitas yang aktif menghasilkan nilai?',
+    hint:'Termasuk: bisnis sendiri, klien berbayar rutin, properti sewaan, saham di perusahaan tempat kerja, atau konten yang terus menghasilkan. Bukan sekadar "ada rencana" — sudah berjalan.',
+    options:[
+      {text:'Tidak ada',                 sub:'Murni gaji atau honorarium, tidak ada kepemilikan aset aktif',           val:'none',     score:0},
+      {text:'Variabel berbasis kinerja', sub:'Bonus, komisi, atau bagi hasil — tapi tidak ada kepemilikan aset',       val:'variable', score:0.02},
+      {text:'Equity atau saham',         sub:'Punya bagian dari perusahaan tempat bekerja atau investasi aktif',       val:'equity',   score:0.06},
+      {text:'Bisnis atau aset sendiri',  sub:'Punya bisnis, klien berbayar rutin, properti, atau konten yang aktif menghasilkan income', val:'owner', score:0.12},
+    ]
+  },
+  {
+    id:'sys_role', type:'open', dimension:'system',
+    get q() {
+      const ind = answers?.industry?.val || '';
+      // Sektor publik — 5 variant
+      if (ind === 'government') return 'Ceritakan peranmu di instansi ini. Seberapa langsung peranmu berdampak pada tujuan institusi? Apakah instansimu sedang tumbuh, stagnan, atau terkena efisiensi anggaran? Juga — apakah ada aktivitas ekonomi di luar instansi yang kamu jalankan?';
+      if (ind === 'govt_sultan') return 'Kamu berada di instansi dengan remunerasi tertinggi di sektor publik. Ceritakan peranmu dan level jabatanmu — apakah kamu sudah di level yang bisa menikmati tukin penuh, atau masih di tier bawah? Apakah ada aktivitas profesional di luar instansi?';
+      if (ind === 'govt_regulator') return 'Kamu berada di lembaga regulator independen dengan sistem remunerasi profesional. Ceritakan peranmu — apakah kamu di jalur teknis/analis, atau manajerial? Seberapa besar exposure kamu ke industri yang kamu regulasi? Apakah ada aktivitas di luar kantor?';
+      if (ind === 'govt_enforcement') return 'Ceritakan peranmu di lembaga penegakan hukum atau audit ini. Apakah peranmu lebih ke investigasi/teknis atau administratif? Seberapa transferable skill yang kamu bangun ke sektor swasta? Ada aktivitas ekonomi lain di luar instansi?';
+      if (ind === 'government_bumn') return 'Ceritakan peranmu di BUMN ini. Apakah kamu di jalur operasional, korporat, atau bisnis development? Seberapa kompetitif perusahaanmu dibanding swasta di industri yang sama? BUMN-nya sedang tumbuh atau stagnan?';
+      // Banking sub-tiers
+      if (ind === 'banking_retail') return 'Ceritakan peranmu di institusi keuangan ini. Apakah kamu di jalur retail (branch, teller, CS) atau sudah di level analis/officer? Seberapa besar exposure kamu ke keputusan keuangan yang kompleks? Institusimu sedang ekspansi atau konsolidasi?';
+      if (ind === 'banking_corporate') return 'Kamu berada di segmen keuangan korporat atau investasi — area dengan ceiling income tertinggi di perbankan. Ceritakan peranmu: apakah di deal-making, risk, research, atau operations? Seberapa besar deal/portfolio yang kamu tangani? Apakah kamu punya track record yang bisa dikuantifikasi?';
+      if (ind === 'banking_fintech') return 'Kamu berada di ekosistem fintech digital — potensi pertumbuhan tinggi tapi juga volatile. Ceritakan peranmu: apakah lebih ke product, growth, risk, atau engineering? Apakah perusahaanmu sudah profitable atau masih growth-mode? Ada equity/ESOP yang kamu punya?';
+      // Consulting sub-tiers
+      if (ind === 'consulting') return 'Ceritakan peranmu di firma atau praktik ini. Apakah kamu billing langsung ke klien, atau lebih ke internal support? Berapa klien yang kamu tangani sekarang, dan di industri apa? Firma atau praktikmu sedang tumbuh?';
+      if (ind === 'consulting_top') return 'Kamu di tier tertinggi jasa profesional — Big 4, MBB, atau firma hukum korporat. Ceritakan level dan spesialisasimu: apakah kamu sudah di level yang bisa originate client sendiri, atau masih delivery? Track record engagement apa yang paling impactful yang pernah kamu kerjakan?';
+      // Tech & digital
+      if (ind === 'tech' || ind === 'digital') return 'Ceritakan peranmu di perusahaan ini. Seberapa langsung peranmu berhubungan dengan pertumbuhan user atau revenue? Apakah perusahaanmu sedang tumbuh cepat, stabil, atau stagnan? Ada equity/ESOP?';
+      if (ind === 'not_working' || ind === 'exploring') return 'Ceritakan tentang dirimu — apa yang sedang kamu pelajari atau kuasai saat ini? Apakah kamu sedang kuliah, ikut bootcamp, belajar mandiri, atau aktif di organisasi/komunitas? Skill apa yang paling kamu banggakan sejauh ini?';
+      if (ind === 'transitioning') return 'Ceritakan tentang masa transisimu — apa yang memicu keputusan untuk resign/berhenti? Apa yang sedang kamu eksplorasi atau pelajari selama masa transisi ini? Apakah ada skill baru yang sedang kamu bangun?';
+      return 'Ceritakan peranmu di tempat kerjamu dan seberapa langsung peran itu berhubungan dengan pendapatan atau pertumbuhan. Apakah tempatmu bekerja sedang tumbuh, stabil, atau stagnan?';
+    },
+    get hint() {
+      if (answers.industry?.val === 'not_working') return 'Jawab dengan jujur tentang posisi kamu saat ini. Ini membantu kami mengukur starting point kamu — bukan menilai kamu.';
+      return 'Jawab jujur — ini mempengaruhi seberapa besar sistem tempat kamu bekerja bisa menghargai nilai yang kamu ciptakan.';
+    },
+  },
+];
+
+// ── CONSTANTS ─────────────────────────────────────────
+
+const INDUSTRY_MULT = {
+  // Sektor publik — 5 tier (validated vs BPS 2025, Glassdoor, Michael Page 2024-2025)
+  government:       0.40,  // Instansi reguler, tukin standar, THP 5–8jt
+  govt_sultan:      0.90,  // Kemenkeu/Pajak, BPKP, PUPR — tukin Perpres khusus, ceiling > banyak swasta
+  govt_regulator:   0.78,  // BI, OJK, LPS — remunerasi profesional, THP 15–22jt entry
+  govt_enforcement: 0.55,  // KPK, BPK, KY, Kejaksaan — tukin di atas reguler
+  government_bumn:  0.75,  // BUMN — base salary korporasi, bonus tidak dimasukkan
+  // Swasta & lainnya
+  manufacturing:    0.65,
+  consumer:         0.80,
+  banking_retail:   0.82,  // Bank daerah, koperasi, multifinance
+  banking:          0.90,  // legacy alias → treated as banking_corporate equivalent
+  banking_corporate:1.10,  // Investment banking, bank swasta besar, wealth
+  banking_fintech:  1.35,  // Fintech unicorn, neobank — skala digital + equity upside
+  consulting:       1.10,  // Mid-market consulting, hukum, akuntan, agensi
+  consulting_top:   1.55,  // Big 4, MBB, firma hukum korporat
+  digital:          1.45,
+  tech:             1.90,
+  exploring:        0.65,  // belum kerja + belum tahu → neutral, sedikit di atas govt reguler
+  not_working:      0.65,
+};
+
+const MARKET_MULT = {local:0.75, national:1.0, international:1.25, global:1.55};
+
+const TIER_RANGES = {
+  Starter:    {min:5000000,   max:9999999,   label:'Rp 5jt – 10jt'},
+  Executor:   {min:10000000,  max:19999999,  label:'Rp 10jt – 20jt'},
+  Specialist: {min:20000000,  max:39999999,  label:'Rp 20jt – 40jt'},
+  Strategist: {min:40000000,  max:79999999,  label:'Rp 40jt – 80jt'},
+  Architect:  {min:80000000,  max:250000000, label:'Rp 80jt+'}
+};
+
+const NEXT_TIER = {
+  Starter:'Executor', Executor:'Specialist', Specialist:'Strategist',
+  Strategist:'Architect', Architect:'Architect'
+};
+
+// ── STATE ─────────────────────────────────────────────
+let currentQ = 0;
+let answers  = {};
+let userData = {};
+let incomeMode = 'direct';
+
+// ── ACTIVE QUESTION SEQUENCE ──────────────────────────
+function getActiveQuestions() {
+  return QUESTIONS.filter(q => {
+    if (q.type !== 'mcq_followup') return true;
+    const parentAnswer = answers[q.parentId];
+    return parentAnswer && parentAnswer.val === q.parentVal;
+  });
+}
+
+function getEffectiveIndustryVal() {
+  if (answers.industry_govt)           return answers.industry_govt.val;
+  if (answers.industry_finance)        return answers.industry_finance.val;
+  if (answers.industry_consulting)     return answers.industry_consulting.val;
+  // Untuk transitioning dan not_working — gunakan jawaban followup bidang tujuan
+  if (answers.industry_transitioning)  {
+    const v = answers.industry_transitioning.val;
+    if (['finance_family','consulting_family'].includes(v)) return 'consulting';
+    if (v === 'exploring') return 'exploring';
+    return v;
+  }
+  if (answers.industry_not_working) {
+    const v = answers.industry_not_working.val;
+    if (v === 'exploring') return 'exploring';
+    if (['finance_family','consulting_family'].includes(v)) return 'consulting';
+    return v;
+  }
+  const base = answers.industry?.val || 'consulting';
+  // Kalau masih family val tanpa followup → fallback
+  if (['govt_family','finance_family','consulting_family','transitioning','not_working'].includes(base)) return 'consulting';
+  return base;
+}
+
+// ── INCOME TOGGLE ─────────────────────────────────────
+document.getElementById('btnDirectIncome').onclick = () => {
+  incomeMode = 'direct';
+  document.getElementById('btnDirectIncome').classList.add('active');
+  document.getElementById('btnRangeIncome').classList.remove('active');
+  document.getElementById('incomeDirectWrap').style.display = 'block';
+  document.getElementById('incomeRangeWrap').style.display  = 'none';
+};
+document.getElementById('btnRangeIncome').onclick = () => {
+  incomeMode = 'range';
+  document.getElementById('btnRangeIncome').classList.add('active');
+  document.getElementById('btnDirectIncome').classList.remove('active');
+  document.getElementById('incomeRangeWrap').style.display  = 'block';
+  document.getElementById('incomeDirectWrap').style.display = 'none';
+};
+
+// ── SCREEN ────────────────────────────────────────────
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  const showP = ['screen-quiz','screen-lead'].includes(id);
+  document.getElementById('progressWrap').style.display = showP ? 'block' : 'none';
+}
+
+function updateProgress() {
+  const pct = ((currentQ + 1) / (getActiveQuestions().length + 1)) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+// ── QUIZ ──────────────────────────────────────────────
+function loadQuestion() {
+  const activeQs = getActiveQuestions();
+  const q = activeQs[currentQ];
+  if (!q) return;
+  document.getElementById('stepLabel').textContent    = `Pertanyaan ${currentQ + 1} dari ${activeQs.length}`;
+  document.getElementById('questionText').textContent = q.q;
+  document.getElementById('questionHint').textContent = q.hint || '';
+  document.getElementById('errorMsg').style.display   = 'none';
+
+  const area = document.getElementById('answerArea');
+  area.innerHTML = '';
+
+  const btn = document.getElementById('btnNext');
+  btn.disabled   = true;
+  btn.className  = 'btn-next';
+
+  if (q.type === 'mcq_multi') {
+    // Multi-select: score = max of selected options
+    const list = document.createElement('div');
+    list.className = 'options-list';
+    const selectedVals = new Set(answers[q.id]?.vals || []);
+    q.options.forEach(opt => {
+      const card = document.createElement('div');
+      card.className = 'opt-card';
+      if (selectedVals.has(opt.val)) card.classList.add('selected');
+      card.innerHTML = `
+        <div class="opt-indicator" style="border-radius:3px"></div>
+        <div>
+          <div style="font-weight:500;color:var(--text);margin-bottom:3px">${opt.text}</div>
+          <div style="font-size:12px;color:var(--text3)">${opt.sub||''}</div>
+        </div>`;
+      card.onclick = () => {
+        const isSelected = card.classList.contains('selected');
+        // If clicking 'none', deselect everything else
+        if (opt.val === 'none') {
+          list.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+          if (!isSelected) card.classList.add('selected');
+        } else {
+          // Deselect 'none' if selecting something else
+          list.querySelectorAll('.opt-card').forEach((c, i) => {
+            if (q.options[i]?.val === 'none') c.classList.remove('selected');
+          });
+          card.classList.toggle('selected');
+        }
+        // Collect all selected, compute max score
+        const selected = [];
+        let maxScore = 0;
+        list.querySelectorAll('.opt-card').forEach((c, i) => {
+          if (c.classList.contains('selected')) {
+            selected.push(q.options[i].val);
+            maxScore = Math.max(maxScore, q.options[i].score || 0);
+          }
+        });
+        if (selected.length > 0) {
+          const labels = selected.map(v => q.options.find(o=>o.val===v)?.text).filter(Boolean);
+          answers[q.id] = {vals: selected, val: selected[0], text: labels.join(' + '), score: maxScore};
+          btn.disabled  = false;
+          btn.className = 'btn-next ready';
+        } else {
+          delete answers[q.id];
+          btn.disabled  = true;
+          btn.className = 'btn-next';
+        }
+        document.getElementById('errorMsg').style.display = 'none';
+      };
+      list.appendChild(card);
+    });
+    // Restore btn state if already answered
+    if (answers[q.id]?.vals?.length > 0) {
+      btn.disabled  = false;
+      btn.className = 'btn-next ready';
+    }
+    area.appendChild(list);
+  } else if (q.type === 'mcq' || q.type === 'mcq_followup') {
+    const list = document.createElement('div');
+    list.className = 'options-list';
+    q.options.forEach(opt => {
+      const card = document.createElement('div');
+      card.className = 'opt-card';
+      // Restore selection if user navigated back
+      if (answers[q.id] && answers[q.id].val === opt.val) {
+        card.classList.add('selected');
+        btn.disabled  = false;
+        btn.className = 'btn-next ready';
+      }
+      card.innerHTML = `
+        <div class="opt-indicator"></div>
+        <div>
+          <div style="font-weight:500;color:var(--text);margin-bottom:3px">${opt.text}</div>
+          <div style="font-size:12px;color:var(--text3)">${opt.sub||''}</div>
+        </div>`;
+      card.onclick = () => {
+        list.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        if (q.id === 'industry') {
+          delete answers.industry_govt;
+          delete answers.industry_finance;
+          delete answers.industry_consulting;
+        }
+        answers[q.id]  = opt;
+        btn.disabled   = false;
+        btn.className  = 'btn-next ready';
+        document.getElementById('errorMsg').style.display = 'none';
+      };
+      list.appendChild(card);
+    });
+    area.appendChild(list);
+  } else {
+    const saved = answers[q.id]?.text || '';
+    const ta = document.createElement('textarea');
+    ta.className   = 'answer-textarea';
+    ta.placeholder = 'Tulis jawabanmu di sini...';
+    ta.value       = saved;
+    ta.maxLength   = 700;
+
+    const cc = document.createElement('span');
+    cc.className   = 'char-count';
+    cc.textContent = `${ta.value.length} / 700`;
+
+    const hint = document.createElement('span');
+    hint.className = 'min-chars-hint';
+    hint.textContent = saved.length >= 20 ? '✓ Jawaban diterima' : 'Minimal 20 karakter untuk hasil yang akurat';
+    if (saved.length >= 20) hint.classList.add('ok');
+
+    ta.oninput = () => {
+      const len   = ta.value.length;
+      const valid = len >= 20;
+      cc.textContent    = `${len} / 700`;
+      hint.textContent  = valid ? '✓ Jawaban diterima' : `${20 - len} karakter lagi`;
+      hint.className    = valid ? 'min-chars-hint ok' : 'min-chars-hint';
+      btn.disabled      = !valid;
+      btn.className     = valid ? 'btn-next ready' : 'btn-next';
+      if (valid) document.getElementById('errorMsg').style.display = 'none';
+    };
+
+    if (saved.length >= 20) {
+      btn.disabled  = false;
+      btn.className = 'btn-next ready';
+    }
+
+    area.appendChild(ta);
+    area.appendChild(cc);
+    area.appendChild(hint);
+    setTimeout(() => ta.focus(), 100);
+  }
+
+  // Animate card
+  const card = document.getElementById('quizCard');
+  card.style.animation = 'none';
+  requestAnimationFrame(() => { card.style.animation = 'cardIn 0.3s ease'; });
+  updateProgress();
+  updatePrevBtn();
+}
+
+function saveCurrentAnswer() {
+  const activeQs = getActiveQuestions();
+  const q = activeQs[currentQ];
+  if (!q) return false;
+  if (q.type === 'open') {
+    const ta = document.querySelector('.answer-textarea');
+    if (ta && ta.value.trim().length >= 20) {
+      answers[q.id] = {text: ta.value.trim()};
+      return true;
+    }
+    return false;
+  }
+  return !!answers[q.id];
+}
+
+function updatePrevBtn() {
+  const btn = document.getElementById('btnPrev');
+  if (btn) btn.disabled = false; // Q0 goes back to intro, never disabled
+}
+
+document.getElementById('btnPrev').onclick = () => {
+  // Save current answer if valid before going back
+  const q = getActiveQuestions()[currentQ];
+  if (q && q.type === 'open') {
+    const ta = document.querySelector('.answer-textarea');
+    if (ta && ta.value.trim().length >= 20) {
+      answers[q.id] = {text: ta.value.trim()};
+    }
+  }
+  if (currentQ > 0) {
+    currentQ--;
+    loadQuestion();
+    updatePrevBtn();
+  } else {
+    // On Q1, go back to intro screen
+    showScreen('screen-intro');
+  }
+};
+
+document.getElementById('btnNext').onclick = () => {
+  const q = getActiveQuestions()[currentQ];
+  if (!q) return;
+  if (q.type === 'open') {
+    const ta = document.querySelector('.answer-textarea');
+    if (!ta || ta.value.trim().length < 20) {
+      document.getElementById('errorMsg').style.display = 'block';
+      return;
+    }
+    answers[q.id] = {text: ta.value.trim()};
+  } else {
+    if (!answers[q.id]) {
+      document.getElementById('errorMsg').style.display = 'block';
+      return;
+    }
+  }
+  currentQ++;
+  const activeQs = getActiveQuestions();
+  if (currentQ < activeQs.length) {
+    loadQuestion();
+    updatePrevBtn();
+  } else {
+    document.getElementById('progressFill').style.width = '95%';
+    showScreen('screen-lead');
+    // Sync income label dengan jawaban industri
+    const indVal = answers.industry?.val || '';
+    if (indVal === 'transitioning' || indVal === 'not_working') {
+      updateIncomeLabel(indVal);
+      // Pre-select dan lock dropdown — tidak bisa diubah manual
+      const sel = document.getElementById('inputProfStatus');
+      if (sel) {
+        sel.value = indVal;
+        sel.disabled = true;
+        sel.style.opacity = '0.6';
+        sel.style.cursor = 'not-allowed';
+        // Tambah note kecil di bawah dropdown
+        const existing = document.getElementById('profStatusNote');
+        if (!existing) {
+          const note = document.createElement('div');
+          note.id = 'profStatusNote';
+          note.style.cssText = 'font-size:11px;color:var(--text3);margin-top:4px;';
+          note.textContent = 'Ditentukan dari jawaban pertanyaan pertama';
+          sel.parentNode.appendChild(note);
+        }
+      }
+    }
+  }
+};
+
+// ── DYNAMIC INCOME LABEL ──────────────────────────────
+const INCOME_LABELS = {
+  employed:     'Income bulanan saat ini (IDR)',
+  freelance:    'Rata-rata income per bulan (estimasi, IDR)',
+  entrepreneur: 'Rata-rata income per bulan dari bisnis (IDR)',
+  transitioning:'Income terakhir sebelum resign / transisi (IDR)',
+  not_working:  'Budget / uang saku per bulan (IDR)'
+};
+function updateIncomeLabel(statusVal) {
+  const label = INCOME_LABELS[statusVal] || 'Income bulanan saat ini (IDR)';
+  document.getElementById('incomeLabelText').textContent = label;
+}
+document.getElementById('inputProfStatus').addEventListener('change', function() {
+  updateIncomeLabel(this.value);
+});
+
+// ── LEAD FORM ─────────────────────────────────────────
+document.getElementById('btnSeeResult').onclick = async () => {
+  const btn = document.getElementById('btnSeeResult');
+
+  const name           = document.getElementById('inputName').value.trim();
+  const email          = document.getElementById('inputEmail').value.trim();
+  const wa             = document.getElementById('inputWA').value.trim();
+  const age            = document.getElementById('inputAge').value.trim();
+  const role           = document.getElementById('inputRole').value.trim();
+  const city           = document.getElementById('inputCity').value.trim();
+  const profStatus     = document.getElementById('inputProfStatus').value;
+
+  let income = 0;
+  if (incomeMode === 'direct') {
+    income = Number(document.getElementById('inputIncomeDirect').value) || 0;
+  } else {
+    income = Number(document.getElementById('inputIncomeRange').value) || 0;
+  }
+
+  // Validasi dulu — baru disable tombol kalau lolos
+  const indAnsVal = answers.industry?.val || '';
+  const resolvedStatus = ['transitioning','not_working'].includes(indAnsVal)
+    ? indAnsVal : profStatus;
+
+  const missingFields = [];
+  if (!name)       missingFields.push('nama');
+  if (!email)      missingFields.push('email');
+  if (!profStatus) missingFields.push('status profesional');
+  if (!income && resolvedStatus !== 'not_working') missingFields.push('income');
+  if (missingFields.length > 0) {
+    const errEl = document.getElementById('formError');
+    errEl.textContent = `Mohon lengkapi: ${missingFields.join(', ')}.`;
+    errEl.style.display = 'block';
+    errEl.style.color = '';
+    return;
+  }
+
+  // Extreme income warning
+  if (income > 200000000 && resolvedStatus !== 'not_working') {
+    const errEl = document.getElementById('formError');
+    if (!btn.dataset.incomeConfirmed) {
+      errEl.textContent = `Income Rp ${(income/1000000).toFixed(0)} juta/bulan tergolong sangat tinggi. Kalau memang benar, klik "Lihat Hasil Audit" sekali lagi untuk konfirmasi.`;
+      errEl.style.display = 'block';
+      errEl.style.color = '#eab308';
+      btn.dataset.incomeConfirmed = '1';
+      return;
+    }
+  }
+
+  document.getElementById('formError').style.display = 'none';
+
+  // Lolos validasi — baru disable untuk cegah spam
+  btn.disabled = true;
+  btn.textContent = 'Memproses...';
+
+  userData = {name, email, wa, age, role, city, income, professionalStatus: resolvedStatus};
+  document.getElementById('progressFill').style.width = '100%';
+  showScreen('screen-loading');
+  animateLoadingSteps();
+
+  try {
+    const result = await analyzeWithAI();
+    renderResult(result);
+    showScreen('screen-result');
+    // Fire-and-forget: submit full result to Sheets (non-blocking)
+    submitToSheets(result).catch(err => console.warn('Sheets submit failed:', err));
+  } catch(e) {
+    console.error('AI error:', e);
+    showScreen('screen-lead');
+    // Re-enable button so user can retry
+    const btnRetry = document.getElementById('btnSeeResult');
+    if (btnRetry) { btnRetry.disabled = false; btnRetry.textContent = 'Lihat Hasil Audit →'; }
+    const errEl = document.getElementById('formError');
+    errEl.textContent = 'Analisis AI gagal. Pastikan koneksi internet kamu stabil dan coba lagi. (' + (e.message||'unknown error') + ')';
+    errEl.style.display = 'block';
+    errEl.style.color = '#f87171';
+  }
+};
+
+// ── LOADING ANIMATION ─────────────────────────────────
+function animateLoadingSteps() {
+  const steps = document.querySelectorAll('.loading-step');
+  let i = 0;
+  const iv = setInterval(() => {
+    if (i > 0) { steps[i-1].classList.remove('active'); steps[i-1].classList.add('done'); }
+    if (i < steps.length) { steps[i].classList.add('active'); i++; }
+    else clearInterval(iv);
+  }, 900);
+}
+
+// ── AI ANALYSIS VIA GOOGLE APPS SCRIPT ──────────────
+async function analyzeWithAI() {
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') {
+    throw new Error('Apps Script URL belum dikonfigurasi. Buka file HTML dan isi APPS_SCRIPT_URL.');
+  }
+
+  // Build context for AI
+  const industryVal   = getEffectiveIndustryVal();
+  const industryLabel = answers.industry_govt?.text
+                     || answers.industry_finance?.text
+                     || answers.industry_consulting?.text
+                     || answers.industry_transitioning?.text
+                     || answers.industry_not_working?.text
+                     || answers.industry?.text || 'tidak diisi';
+  const marketLabel   = answers.market_scope?.text || 'tidak diisi';
+  const ownershipLabel= answers.ownership?.text || 'tidak diisi';
+
+  // Dynamic context word based on industry
+  const ctxWord = {
+    government:        'instansi',
+    govt_sultan:       'instansi',
+    govt_regulator:    'lembaga',
+    govt_enforcement:  'lembaga',
+    government_bumn:   'perusahaan',
+    manufacturing:     'perusahaan',
+    consumer:          'perusahaan',
+    banking_retail:    'bank/institusi keuangan',
+    banking_corporate: 'bank/institusi keuangan',
+    banking_fintech:   'perusahaan fintech',
+    consulting:        'firma/tempat praktik',
+    consulting_top:    'firma',
+    digital:           'platform/agensi',
+    tech:              'startup/perusahaan tech',
+    exploring:         'dunia profesional',
+    not_working:       'dunia profesional'
+  }[industryVal] || 'tempat kerja';
+
+  const openA = Object.entries(answers)
+    .filter(([,v]) => v.text)
+    .map(([k,v]) => {
+      const q = QUESTIONS.find(q => q.id === k);
+      const wordCount = v.text.trim().split(/\s+/).length;
+      return `[${q.dimension.toUpperCase()} | ${q.id}] (${wordCount} kata)\nPertanyaan: ${q.q}\nJawaban: ${v.text}`;
+    }).join('\n\n');
+
+  const mcqA = Object.entries(answers)
+    .filter(([,v]) => v.val)
+    .map(([k,v]) => {
+      const q = QUESTIONS.find(q => q.id === k);
+      return `${q.id}: ${v.text} (val: ${v.val})`;
+    }).join('\n');
+
+  const prompt = buildPrompt(mcqA, openA, ctxWord);
+
+  // Side income: if active, use the higher multiplier for potential mode
+  const sideIncomeVal  = answers.side_income?.val || 'none';
+  const sideInd        = answers.side_income?.sideInd || null;
+  const sideActive     = ['active','primary'].includes(sideIncomeVal);
+  // For hybrid professionals, potential mode uses best of main or side industry
+  const sideMultiplier = sideActive && sideInd ? (INDUSTRY_MULT[sideInd] || 1.10) : null;
+
+  const payload = {
+    prompt,
+    userData: {
+      name: userData.name,
+      email: userData.email || '',
+      wa: userData.wa || '',
+      age: userData.age || '',
+      role: userData.role || '',
+      city: userData.city || '',
+      income: userData.income,
+      professionalStatus: userData.professionalStatus || '',
+      industryVal,
+      marketVal: answers.market_scope?.val || 'national',
+      ownershipScore: answers.ownership?.score || 0,  // mcq_multi: already set to max score
+      sideIncomeVal,
+      sideActive
+    }
+  };
+
+  const response = await fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    const errText = await response.text().catch(() => '');
+    throw new Error(`Apps Script error ${response.status}: ${errText.slice(0,200)}`);
+  }
+
+  const data = await response.json();
+  if (data.error) throw new Error(data.error);
+
+  const parsed = data.result;
+
+  // ══════════════════════════════════════════════════
+  // DUAL MODE INCOME CALCULATION — v5 (stress-tested)
+  // 12/12 scenarios validated against Indonesia market data
+  // ══════════════════════════════════════════════════
+  const { system: s, capability: c2, leverage: l, bargaining: b } = parsed.scores;
+  const oScore  = answers.ownership?.score || 0;
+  const effectiveInd = getEffectiveIndustryVal();
+  const iMult   = INDUSTRY_MULT[effectiveInd]            || 1.0;
+  const mMult   = MARKET_MULT[answers.market_scope?.val] || 1.0;
+  const isGovt  = ['government','govt_sultan','govt_regulator','govt_enforcement','government_bumn'].includes(effectiveInd);
+  const isNotWork = effectiveInd === 'not_working' || effectiveInd === 'exploring';
+
+  // ── MODE 1: DIAGNOSTIC ─────────────────────────────
+  // Uses actual system → determines current tier
+  const created_d = s * c2 * Math.pow(l, 1.1) * iMult * mMult;
+  const cp_d      = 2.5 * b + 4 * oScore;
+  const cr_d      = cp_d / (1 + cp_d);
+  const income_d  = Math.max(5e6, Math.min(250e6, created_d * cr_d * 120000));
+
+  // ── MODE 2: POTENTIAL ──────────────────────────────
+  // Uses optimal system → determines income potential
+  // How far can you realistically jump? (bargaining = market validation)
+  const maxJump = b >= 0.42 ? 3.5 : b >= 0.35 ? 2.5 : b >= 0.25 ? 1.8 : 1.2;
+  const s_raw   = c2 * 0.45 + l * 0.55;
+  const s_opt   = Math.max(s, Math.min(s + maxJump, s_raw));
+
+  // Skill floor: minimum system accessible based on capability/leverage
+  const skillFloor = (c2 >= 8.5 || l >= 8.5) ? 1.45
+                   : (c2 >= 7.0 || l >= 7.0) ? 1.10
+                   : (c2 >= 6.0 || l >= 6.0) ? 0.90
+                   : iMult;
+
+  // Bargaining ceiling: max system accessible based on market validation
+  // Government exception: low bargaining is structural, not skill-based
+  const bargCeil = isGovt ? Math.max(1.10, b >= 0.42 ? 1.90 : b >= 0.35 ? 1.45 : 1.10)
+                          : (b >= 0.42 ? 1.90 : b >= 0.35 ? 1.45 : b >= 0.25 ? 1.10 : 0.90);
+
+  // Government exception: iOpt always >= 1.10 (private market floor for PNS)
+  // Low bargaining in govt is structural, not a signal of low marketability
+  // Hybrid exception: if professional has active side income in higher-value industry,
+  // use the higher multiplier as the floor for potential mode
+  const hybridFloor = sideActive && sideMultiplier ? sideMultiplier : 0;
+  const iOptRaw = Math.min(Math.max(iMult, skillFloor, hybridFloor), bargCeil);
+  // Govt iOpt floor varies by tier:
+  // - Regulator (BI/OJK): min 1.10 (already market-compatible, can jump to consulting)
+  // - Sultan (Kemenkeu): min 1.10 (skills highly transferable to corporate)
+  // - Enforcement (KPK/BPK): min 1.10 (investigative skills valuable in private audit/consulting)
+  // - BUMN: min 1.10 (corporate environment, skills transferable)
+  // - Regular govt: min 1.10 (structural constraint, not skill constraint)
+  const iOpt = isGovt ? Math.max(1.10, iOptRaw) : iOptRaw;
+
+  // Portability: how much leverage transfers outside current context
+  // Non-workers have no current context anchoring them → full portability
+  const port = isNotWork ? 1.0
+             : isGovt   ? 0.72
+             : b >= 0.38 ? 0.88
+             : b >= 0.28 ? 0.78
+             : 0.68;
+
+  const cr_opt    = Math.min(0.62, cr_d * 1.35);
+  const income_o  = Math.max(5e6, Math.min(250e6,
+    s_opt * c2 * Math.pow(l * port, 1.1) * iOpt * mMult * cr_opt * 120000
+  ));
+
+  // ── CAPABILITY FLOOR ───────────────────────────────
+  // High-skill professionals should never get insulting estimates
+  const capFloor = c2 >= 9.0 ? 28e6 : c2 >= 8.5 ? 20e6 : c2 >= 7.5 ? 14e6
+                 : c2 >= 7.0 ? 10e6 : c2 >= 6.0 ?  7e6 : c2 >= 5.5 ?  6e6 : 5e6;
+
+  const income_potential = Math.max(capFloor, Math.max(income_d, income_o));
+
+  // ── OVER-EARNER DETECTION ──────────────────────────
+  const currentIncome = userData.income || 0;
+  const isOverEarner  = currentIncome > income_potential * 1.05;
+  // For over-earners: show TRUE market value (don't floor at current)
+  // UI will handle the warning narrative
+  const income = income_potential;
+
+  const captureDisp = Math.min(10, cr_d * 14);
+  return { ...parsed, income, income_diag: income_d, captureDisp, isOverEarner };
+}
+
+// ── SHEETS SUBMISSION ────────────────────────────────
+async function submitToSheets(result) {
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') return;
+
+  const current      = userData.income || 0;
+  const potential    = result.income || 0;
+  const gap          = Math.max(0, potential - current);
+  const gapPct       = potential > 0 ? Math.max(0, ((potential - current) / potential) * 100) : 0;
+  const isOverEarner = result.isOverEarner || false;
+  const isZeroInc    = current === 0;
+
+  // Tier
+  const incomeForTier = isOverEarner ? current : potential;
+  let tier = 'Starter';
+  if      (incomeForTier >= 80000000) tier = 'Architect';
+  else if (incomeForTier >= 40000000) tier = 'Strategist';
+  else if (incomeForTier >= 20000000) tier = 'Specialist';
+  else if (incomeForTier >= 10000000) tier = 'Executor';
+
+  // Raw answers: all open-ended
+  const rawOpen = Object.entries(answers)
+    .filter(([, v]) => v.text)
+    .map(([k, v]) => {
+      const q = QUESTIONS.find(q => q.id === k);
+      return `[${k}] ${q ? q.q : k}: ${v.text}`;
+    }).join('\n');
+
+  // Raw answers: all MCQ
+  const rawMcq = Object.entries(answers)
+    .filter(([, v]) => v.val !== undefined && !v.text)
+    .map(([k, v]) => `[${k}] ${v.text || v.val} (score: ${v.score ?? v.val})`)
+    .join('\n');
+
+  const sheetsPayload = {
+    action: 'log_result',
+    timestamp:        new Date().toISOString(),
+    // Lead data
+    name:             userData.name,
+    email:            userData.email || '',
+    whatsapp:         userData.wa || '',
+    age:              userData.age || '',
+    role:             userData.role || '',
+    city:             userData.city || '',
+    professional_status: userData.professionalStatus || '',
+    // Income & gap
+    income_current:   Math.round(current),
+    income_potential: Math.round(potential),
+    gap_monthly:      isZeroInc || isOverEarner ? '' : Math.round(gap),
+    gap_percentage:   isZeroInc || isOverEarner ? '' : gapPct.toFixed(1),
+    is_over_earner:   isOverEarner ? 'Ya' : 'Tidak',
+    // Tier & scores
+    tier,
+    score_system:     result.scores?.system ?? '',
+    score_capability: result.scores?.capability ?? '',
+    score_leverage:   result.scores?.leverage ?? '',
+    score_bargaining: result.scores?.bargaining ?? '',
+    constraint:       result.constraint || '',
+    // Narrative
+    narrative:        result.narrative || '',
+    diagnosis:        result.diagnosis || '',
+    strategy:         result.strategy || '',
+    // Industry/market context
+    industry:         answers.industry_govt?.text || answers.industry_finance?.text || answers.industry_consulting?.text || answers.industry?.text || '',
+    market_scope:     answers.market_scope?.text || '',
+    ownership:        answers.ownership?.text || '',
+    side_income:      answers.side_income?.text || '',
+    // Raw answers
+    raw_open_answers: rawOpen,
+    raw_mcq_answers:  rawMcq,
+    // Action plan (untuk PDF generation di Apps Script)
+    action_plan:      result.action_plan ? JSON.stringify(result.action_plan) : ''
+  };
+
+  await fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(sheetsPayload)
+  });
+}
+
+// ── PROMPT BUILDER ────────────────────────────────────
+function buildPrompt(mcqA, openA, ctxWord) {
+  const industryLabel = answers.industry_govt?.text
+                     || answers.industry_finance?.text
+                     || answers.industry_consulting?.text
+                     || answers.industry_transitioning?.text
+                     || answers.industry_not_working?.text
+                     || answers.industry?.text || '';
+  const marketLabel   = answers.market_scope?.text || '';
+
+  const industryVal = answers.industry?.val || '';
+  const isNotWorking    = industryVal === 'not_working';
+  const isTransitioning = industryVal === 'transitioning';
+  const targetIndustry  = answers.industry_not_working?.text || answers.industry_transitioning?.text || '';
+
+  const statusLabels = {
+    employed:     'Karyawan tetap / kontrak',
+    freelance:    'Freelancer / konsultan',
+    entrepreneur: 'Pengusaha / self-employed',
+    transitioning:'Sedang transisi / baru resign / gap',
+    not_working:  'Belum bekerja (mahasiswa / fresh grad)'
+  };
+  const profStatusVal = userData.professionalStatus || (isTransitioning ? 'transitioning' : isNotWorking ? 'not_working' : 'employed');
+  const statusLabel = statusLabels[profStatusVal] || 'Karyawan tetap / kontrak';
+
+  return `Kamu adalah Career Value Analyst untuk Passion Hax, career diagnostic system berbasis model ekonomi.
+
+KONTEKS PENGISI:
+- Nama: ${userData.name}
+- Status profesional: ${statusLabel}
+- Role/jabatan: ${userData.role || 'tidak diisi'}
+- Kota: ${userData.city || 'tidak diisi'}
+- Sektor utama: ${industryLabel} | Lingkup: ${marketLabel}
+- Aktivitas ekonomi di luar pekerjaan utama: ${answers.side_income?.text || 'tidak ada'}
+- Ownership / kepemilikan aset: ${answers.ownership?.text || 'tidak ada'} (score: ${answers.ownership?.score || 0})
+- Income saat ini: Rp ${Number(userData.income).toLocaleString('id-ID')}/bulan${isTransitioning ? ' (income terakhir sebelum transisi)' : isNotWorking ? ' (budget/uang saku)' : ''}
+- Kata konteks yang tepat untuk sektor ini: "${ctxWord}" (gunakan ini, bukan "organisasi" atau "bisnis")
+${isNotWorking ? `- CATATAN KHUSUS: Pengisi BELUM BEKERJA. Bidang yang ingin dimasuki: ${targetIndustry || 'belum ditentukan / masih eksplorasi'}.
+  * Fokus diagnosis pada STARTING POSITION — dari mana mereka harus masuk dan bagaimana memposisikan diri dari awal.
+  * Hindari framing "gap income saat ini". Gunakan framing "target income realistis yang bisa dicapai" dan "positioning awal yang strategis".
+  * System score: nilai aksesibilitas sistem entry-level yang bisa mereka masuki, BUKAN sistem hipotetis ideal.
+  * Capability score: nilai dari skill/proyek/portfolio yang sudah mereka bangun sejauh ini (kampus, bootcamp, organisasi, proyek mandiri).
+  * Narrative: tetap spesifik — sebut skill/proyek/aktivitas konkret dari jawaban mereka.
+  * Action plan: fokus fase Define dan Establish — mereka butuh memilih arah dulu sebelum expand.` : ''}
+${isTransitioning ? `- CATATAN KHUSUS: Pengisi sedang dalam masa transisi karir. Bidang tujuan: ${targetIndustry || 'belum ditentukan'}. Ini adalah momen kritis untuk repositioning. Tekankan URGENSI dan peluang untuk masuk ke sistem yang lebih tinggi dari sebelumnya.` : ''}
+${userData.professionalStatus === 'freelance' || userData.professionalStatus === 'entrepreneur' ? '- CATATAN KHUSUS: Pengisi adalah freelancer/pengusaha. Fokus capture rate dan bargaining power lebih relevan dari system multiplier. Ownership sangat penting untuk mereka.' : ''}
+- CATATAN PENTING: Tujuan audit ini adalah membantu user memahami nilai transferable capability mereka untuk PINDAH ke role/sistem yang lebih sesuai — bukan menilai mereka di sistem saat ini. Fokus diagnosis dan strategy pada: skill apa yang bisa ditransfer, ke industri/role apa, dan hambatan utama apa yang perlu diatasi.
+
+PRINSIP PENILAIAN — WAJIB DIIKUTI:
+1. Nilai berdasarkan CARA KERJA AKTUAL dari jawaban open-ended, BUKAN title jabatan
+2. Jika seseorang melakukan sesuatu yang lebih sophisticated dari job desc formalnya — nilai apa yang mereka LAKUKAN
+3. Leverage: automasi/sistem yang dibangun sendiri = Leverage TINGGI meski posisinya junior
+4. Capability: nilai kelangkaan KOMBINASI skill di pasar Indonesia, bukan satu skill tunggal
+5. Bargaining: network offline/komunitas di Indonesia sama validnya dengan public brand digital
+6. SKEPTIS terhadap klaim tanpa detail konkret — jika pengisi menyebut "punya banyak sistem" tapi tidak ada detail spesifik tools/proses/output, turunkan skor
+7. PROBING dari konteks lain — jika pengisi understate diri tapi jawaban lain menunjukkan sophistication tinggi, naikkan skor sesuai bukti
+8. DETEKSI JAWABAN TIDAK VALID: Jika jawaban open-ended berisi teks acak/gibberish, kata berulang tanpa makna, atau semua jawaban di bawah 5 kata — berikan skor RENDAH (System 3–4, Capability 3–4, Leverage 2–3, Bargaining 0.10–0.15) dan jelaskan di narrative bahwa analisis tidak akurat karena jawaban tidak memberikan informasi yang cukup. Cek jumlah kata per jawaban — kalau mayoritas jawaban di bawah 10 kata, ini sinyal low-effort.
+9. KONTEKS ACTION PLAN: Action plan menggunakan ARC Framework — fase: AUDIT (minggu 1-3), REPOSITION (minggu 4-9), CAPTURE (minggu 10-12). Istilah framework BOLEH digunakan tapi HARUS disertai penjelasan singkat saat pertama muncul — contoh: 'Value Language (cara menuliskan pengalaman sebagai dampak, bukan tugas)', 'Career Value Statement (satu kalimat yang merangkum value proposition kamu)', 'Capability Moat (kombinasi skill unik yang membuat kamu sulit digantikan)', 'Leverage Sprint (proyek 4 minggu membangun aset yang memperbesar output)'. Pembaca = leads yang belum pernah mendengar istilah ini. Istilah harus terasa eksklusif dan menarik — bukan membingungkan. Setiap pitfall WAJIB diawali 'Hindari:'. Dalam field action, BOLEH gunakan bullet points (• item 1 • item 2) kalau ada lebih dari satu deliverable/item yang harus disiapkan — ini memperjelas visual.
+
+FRAMEWORK:
+- Created Value = System × Capability × Leverage^1.1 × industryMult × marketMult
+- Capture Rate = (2.5×Bargaining + 4×Ownership) / (1 + 2.5×Bargaining + 4×Ownership)
+- Income ≈ Created × Capture Rate × 120,000 IDR
+
+RUBRIK SCORING:
+
+SYSTEM (1–10): Potensi value creation dari lingkungan ekonomi mereka.
+
+SEKTOR PUBLIK:
+1–3: Instansi reguler (kementerian teknis, pemda, NGO) — birokrasi, jauh dari revenue, THP 5–8jt
+3.5–4: Penegak hukum/audit (KPK, BPK, KY, Kejaksaan) — tukin di atas reguler tapi masih terbatas
+4–4.5: "Instansi sultan" (Kemenkeu/Pajak, BPKP, PUPR) — tukin Perpres khusus, ceiling sangat tinggi
+4–5: Regulator independen (BI, OJK, LPS) — remunerasi profesional, sistem lebih market-like
+4.5–5: BUMN (Pertamina, BRI, Telkom) — skema korporasi, base salary lebih kompetitif
+
+SWASTA:
+5–5.5: Banking retail, manufaktur, consumer — sistem terstruktur tapi ceiling terbatas
+6–7: Banking korporat, consulting mid-market, healthcare — revenue proximity lebih tinggi
+7–8: Fintech, consulting tier atas (Big 4/MBB), digital/media — skalabilitas lebih tinggi
+8–9: Tech startup tumbuh, SaaS, marketplace — value creation bisa eksponensial
+9–10: Tech/AI/startup global, market besar — potensi maksimal
+
+OVER-RATING SYSTEM — HINDARI:
+- Startup dengan label "tech" tapi pre-revenue atau tanpa model bisnis jelas → maksimal 7
+- "International" karena 1–2 klien luar negeri → bukan berarti market scope international
+- Perusahaan besar tapi role pengisi jauh dari revenue/keputusan strategis → turunkan 1–2 poin
+- Remote worker untuk perusahaan global tapi tanpa akses ke value creation sebenarnya → tetap nilai sistem lokal
+
+CATATAN SISTEM HYBRID: Jika pengisi punya side income aktif di industri lebih tinggi, pertimbangkan ini sebagai sinyal bahwa mereka sudah mulai beroperasi di sistem yang lebih tinggi — naikkan skor System 0.5–1.0 poin.
+CATATAN TUJUAN: Fokus penilaian pada transferable capability — seberapa mudah skill ini dihargai di sistem yang lebih tinggi, bukan hanya di sistem saat ini.
+
+CAPABILITY (1–10): Kelangkaan KOMBINASI skill aktual di pasar Indonesia yang akan menghargainya.
+1–3: Bisa dilakukan siapapun dengan training singkat (< 3 bulan)
+4–6: Butuh beberapa tahun, ada substitusi cukup banyak di pasar Indonesia
+7–8: Kombinasi yang tidak mudah direplikasi — langka di pasar Indonesia
+9–10: Sangat langka, kombinasi unik yang sulit ditemukan bahkan di Jakarta
+
+OVER-RATING CAPABILITY — HINDARI:
+- Bahasa asing tunggal (Arab, Mandarin, Inggris, dll) bukan otomatis langka — nilai hanya kalau dikombinasikan dengan skill teknis relevan dan ada demand pasar nyata untuk kombinasinya
+- Gelar/sertifikasi prestisius tapi umum di target market (MBA, CFA, PMP) → bukan sinyal kelangkaan sendiri
+- Skill teknis yang terdengar advanced tapi sudah komoditas (Excel lanjutan, basic Python, Canva, basic SQL)
+- Pengalaman bertahun-tahun di satu bidang → durasi bukan proxy kelangkaan, nilai sophistication aktualnya
+- Skill yang langka secara global tapi tidak ada demand di pasar Indonesia → nilai berdasarkan pasar Indonesia
+
+UNDER-RATING CAPABILITY — HINDARI:
+- Skill yang tidak disebutkan dengan nama teknis tapi praktiknya sophisticated → nilai dari deskripsi cara kerjanya
+- Kombinasi skill lintas domain yang tidak lazim → walaupun masing-masing biasa, kombinasinya bisa langka
+- Pengisi yang understate diri — kalau jawaban lain menunjukkan sophistication, percaya buktinya
+
+LEVERAGE (1–10): Scalability output AKTUAL — bukan ekspektasi jabatan atau rencana.
+1–3: Fully manual, semua output bergantung kehadiran fisik langsung
+4–5: Sebagian manual, sedikit sistem atau tim kecil yang belum bisa mandiri
+6–7: Ada sistem atau tim yang mengamplifikasi output secara nyata
+8–9: Sistem yang dibangun sendiri berjalan tanpa kehadiran aktif
+10: Platform atau aset independen berskala besar
+
+OVER-RATING LEVERAGE — HINDARI:
+- Punya tim tapi micromanage semua keputusan → bukan leverage sejati, maksimal 5
+- "Pakai AI/tools" tapi execution tetap manual dan bergantung kehadiran → maksimal 4
+- Punya konten tapi views/reach sangat kecil dan belum monetized → kontribusi leverage minimal
+- "Sistem" yang sebenarnya hanya checklist, template sederhana, atau SOP yang tidak berjalan tanpa pengawasan → maksimal 4
+- Jabatan manajer tapi tim tidak bisa bergerak tanpa approval tiap langkah → nilai leverage rendah
+
+UNDER-RATING LEVERAGE — HINDARI:
+- Network distribusi informal (komunitas WhatsApp besar, grup industri) yang genuine high-reach → ini leverage nyata
+- Sistem yang dibangun tapi dianggap biasa oleh pengisi — kalau ada detail konkret, nilai tinggi
+
+KRITIS: Siapapun yang menyebut membangun automasi/sistem sendiri dengan detail konkret → Leverage 6+ minimal
+
+BARGAINING (0.05–0.50): Kekuatan posisi negosiasi AKTUAL di pasar.
+0.05–0.15: Hampir tidak ada opsi, terikat satu employer, tidak dikenal di luar
+0.15–0.25: Beberapa opsi tapi terbatas, belum punya reputasi eksternal
+0.25–0.35: Mulai dikenal di luar organisasi, cukup mudah pindah kalau mau
+0.35–0.45: Reputasi industri yang nyata, network yang bisa diaktivasi
+0.45–0.50: Personal brand kuat, banyak opsi aktif, sering di-approach
+
+OVER-RATING BARGAINING — HINDARI:
+- Punya banyak kenalan di industri ≠ network yang bisa dimonetasi atau meningkatkan posisi negosiasi
+- Pernah di-approach recruiter 1–2 kali → bukan sinyal bargaining kuat secara struktural
+- Aktif di LinkedIn tapi engagement rendah dan tidak pernah dapat inbound opportunity
+- Jabatan senior tapi di perusahaan yang tidak dikenal di luar industri mereka sendiri
+- Pengusaha dengan revenue kecil dan tidak punya reputasi di luar circle sendiri
+
+UNDER-RATING BARGAINING — HINDARI:
+- Network offline yang kuat tapi tidak terlihat di CV/digital → tetap valid, nilai berdasarkan deskripsi
+- Pengusaha dengan revenue konsisten dan klien loyal → bargaining lebih tinggi dari yang terlihat
+- Profesional yang sering jadi rujukan/narasumber di komunitas meski tidak punya followers banyak
+
+DATA PILIHAN GANDA:
+${mcqA}
+
+JAWABAN DESKRIPTIF (BASIS UTAMA PENILAIAN):
+${openA}
+
+INSTRUKSI OUTPUT — SANGAT PENTING:
+- narrative: 2–3 kalimat yang 100% spesifik untuk orang ini. WAJIB menyebut minimal 2 hal konkret dari jawaban mereka (nama tools/metode yang disebutkan, situasi spesifik, cara kerja nyata). DILARANG kalimat yang bisa berlaku untuk siapapun. Pakai kata "${ctxWord}" bukan "organisasi". Gunakan "kamu". Bahasa Indonesia.
+- diagnosis: 1–2 kalimat sangat spesifik. Jelaskan MENGAPA dimensi ini jadi constraint berdasarkan situasi nyata mereka.
+- strategy: 2–3 kalimat rekomendasi KONKRET. Sebutkan langkah spesifik berdasarkan situasi mereka — bukan saran generik.
+- cta_text: 1 kalimat yang menyebut situasi spesifik mereka dan apa yang dibahas di Strategy Call.
+
+Output HANYA JSON berikut, tanpa teks lain:
+{
+  "scores": {
+    "system": <1.0–10.0>,
+    "capability": <1.0–10.0>,
+    "leverage": <1.0–10.0>,
+    "bargaining": <0.05–0.50>
+  },
+  "constraint": "<System|Capability|Leverage|Bargaining>",
+  "narrative": "<2–3 kalimat personal dan spesifik>",
+  "diagnosis": "<1–2 kalimat spesifik>",
+  "strategy": "<2–3 kalimat konkret>",
+  "cta_text": "<1 kalimat spesifik>",
+  "action_plan": {
+    "subtitle": "<1 kalimat spesifik: kondisi user sekarang → ke mana dalam 90 hari. Sebutkan situasi nyata mereka.>",
+    "weeks": [
+      {"week":"Minggu 1","phase":"AUDIT","action":"<1-2 kalimat + bullet points. Petakan posisi kamu di 4 faktor Career Value — System (di mana kamu bermain), Capability (seberapa langka skill kamu), Leverage (seberapa scalable output kamu), dan Bargaining (posisi tawar kamu di pasar). Sebutkan area mana yang kemungkinan jadi blind spot berdasarkan jawaban mereka. Boleh pakai bullets untuk itemnya.>","pitfall":"<Awali dengan 'Hindari:' — 1 kalimat jebakan spesifik untuk profil PERSIS mereka di tahap ini.>"},
+      {"week":"Minggu 2","phase":"AUDIT","action":"<1-2 kalimat + bullets. Diagnosa constraint utama — satu faktor yang paling menahan pertumbuhan income kamu. Evaluasi apakah industri/organisasi saat ini punya ceiling cukup untuk target. Sebutkan industri/role konkret dari jawaban. Gunakan bullets kalau ada multiple items.>","pitfall":"<Awali dengan 'Hindari:' — kesalahan diagnosis spesifik untuk profil mereka.>"},
+      {"week":"Minggu 3","phase":"AUDIT","action":"<1-2 kalimat + bullets. Finalisasi arah strategis: stay di industri sekarang, pindah ke organisasi yang lebih baik (lateral migration), atau cross-industry ke sistem yang lebih menghargai skill kamu. Tentukan 2-3 opsi role target dan 3 langkah utama. Spesifik ke profil mereka.>","pitfall":"<Awali dengan 'Hindari:' — kesalahan arah untuk constraint mereka.>"},
+      {"week":"Minggu 4","phase":"REPOSITION","action":"<1-2 kalimat + bullets. Rewrite semua pengalaman kerja — dari deskripsi tugas menjadi Value Language (Action → Impact → Scale, setiap poin punya angka). Lalu bangun Career Value Statement: satu kalimat yang merangkum value proposition kamu — ini akan jadi fondasi semua dokumen karir. Sebutkan skill/achievement konkret dari jawaban mereka.>","pitfall":"<Awali dengan 'Hindari:' — kesalahan value framing untuk background mereka.>"},
+      {"week":"Minggu 5","phase":"REPOSITION","action":"<1-2 kalimat + bullets. Rebuild resume dari nol dan overhaul LinkedIn — keduanya menggunakan Value Language dan Career Value Statement yang sudah dibangun. Sebutkan positioning angle terkuat untuk profil mereka. Boleh list items yang harus disiapkan.>","pitfall":"<Awali dengan 'Hindari:' — kesalahan collateral spesifik.>"},
+      {"week":"Minggu 6","phase":"REPOSITION","action":"<1-2 kalimat + bullets. Siapkan dokumen pendukung (cover letter, summary profesional) dan mulai Leverage Sprint — proyek 4 minggu untuk membangun satu aset yang memperbesar jangkauan tanpa kehadiran langsung: bisa berupa documented methodology, konten otoritatif, atau sistem/template reusable. Sebutkan tipe paling relevan untuk profil mereka.>","pitfall":"<Awali dengan 'Hindari:' — jebakan leverage building.>"},
+      {"week":"Minggu 7","phase":"REPOSITION","action":"<1-2 kalimat + bullets. Petakan 30 kontak di network kamu (decision makers, connectors, dan experts di bidang target), prioritaskan 10, dan kirim 5 outreach pertama menggunakan framework: Context → Specific Ask → Value Offer. Sebutkan tipe kontak dan channel paling relevan untuk target mereka.>","pitfall":"<Awali dengan 'Hindari:' — kesalahan networking.>"},
+      {"week":"Minggu 8","phase":"REPOSITION","action":"<1-2 kalimat + bullets. Bangun pipeline 20 target companies (scored berdasarkan System fit) dan mulai outreach sprint — target: 10 percakapan bermakna dalam 1-2 minggu. Track lewat pipeline tracker. Spesifik ke industri/role target mereka.>","pitfall":"<Awali dengan 'Hindari:' — kesalahan pipeline.>"},
+      {"week":"Minggu 9","phase":"REPOSITION","action":"<1-2 kalimat + bullets. Konsolidasi pipeline, siapkan 10 STAR stories (Situation → Task → Action → Result — setiap result WAJIB ada angka) dan opening statement 2 menit untuk interview. Sebutkan tipe cerita paling powerful berdasarkan achievement mereka.>","pitfall":"<Awali dengan 'Hindari:' — kesalahan persiapan interview.>"},
+      {"week":"Minggu 10","phase":"CAPTURE","action":"<1-2 kalimat + bullets. Rekam simulasi interview (5 pertanyaan inti), review recording, perbaiki kelemahan. Lalu bangun 1-2 interview differentiators — dokumen yang 99% kandidat tidak punya: bisa Professional Dossier (ringkasan bukti value), atau 90-Day Plan (rencana kontribusi konkret di role target). Sebutkan mana yang cocok untuk profil mereka.>","pitfall":"<Awali dengan 'Hindari:' — kesalahan interview.>"},
+      {"week":"Minggu 11","phase":"CAPTURE","action":"<1-2 kalimat + bullets. Persiapan negosiasi SEBELUM offer datang: riset gaji pasar, tentukan walk-away number (minimum), target number, dan anchor (10-15% di atas target). Siapkan skenario counter-offer dan script negosiasi. Sebutkan kekuatan/kelemahan posisi negosiasi mereka.>","pitfall":"<Awali dengan 'Hindari:' — kesalahan negosiasi.>"},
+      {"week":"Minggu 12","phase":"CAPTURE","action":"<1-2 kalimat + bullets. Evaluasi offer bukan hanya dari gaji — score setiap offer di 4 faktor Career Value (apakah System-nya upgrade, Capability akan berkembang, Leverage lebih scalable, Bargaining meningkat). Review kontrak detail, finalisasi keputusan, dan buat 6-month forward plan. Spesifik ke profil mereka.>","pitfall":"<Awali dengan 'Hindari:' — kesalahan evaluasi offer.>"}
+    ],
+    "closing_note": "<2 kalimat: (1) Sebutkan fase/minggu MANA yang paling kritis dan paling sering gagal tanpa pendampingan — spesifik ke constraint utama mereka. (2) Kenapa gagalnya bukan soal kurang kerja keras tapi salah membaca situasi. Jujur, bukan hard sell.>"
+  }
+}`;
+}
+
+
+// ── RENDER RESULT ─────────────────────────────────────
+function renderResult(data) {
+  const {scores, constraint, income, income_diag, narrative, diagnosis, strategy, cta_text, action_plan, captureDisp, isOverEarner} = data;
+  const current   = userData.income || 0;
+  const isZeroInc = current === 0;
+  const gap       = Math.max(0, income - current);
+  const gapScore  = isZeroInc ? 100 : (income > 0 ? Math.max(0, ((income - current) / income) * 100) : 0);
+  const diagIncome = income_diag || income; // fallback jika tidak ada
+
+  // Tier: over-earner uses CURRENT income for display tier
+  const incomeForTier = isOverEarner ? current : income;
+  let tier = 'Starter';
+  if      (incomeForTier >= 80000000) tier = 'Architect';
+  else if (incomeForTier >= 40000000) tier = 'Strategist';
+  else if (incomeForTier >= 20000000) tier = 'Specialist';
+  else if (incomeForTier >= 10000000) tier = 'Executor';
+
+  const nextTier = NEXT_TIER[tier];
+
+  document.getElementById('resultName').textContent = userData.name;
+  document.getElementById('resultDate').textContent = new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('resultTierBadge').textContent = `Tier — ${tier}`;
+  document.getElementById('resultNextTier').textContent  = nextTier;
+
+  // ── CAREER VALUE FRAMING ─────────────────────────────
+  // Percentile thresholds (estimasi benchmark pasar Indonesia urban)
+  // Akan diupdate dari data aktual setelah 100+ leads
+  const PERCENTILE_THRESHOLDS = {
+    p10: 6000000,   // ~10% profesional urban
+    p25: 10000000,  // ~25%
+    p50: 16000000,  // ~50% median
+    p75: 28000000,  // ~75%
+    p90: 45000000,  // ~90%
+    p95: 70000000,  // ~95%
+  };
+  function getPercentile(val) {
+    if (val >= PERCENTILE_THRESHOLDS.p95) return 95;
+    if (val >= PERCENTILE_THRESHOLDS.p90) return 90;
+    if (val >= PERCENTILE_THRESHOLDS.p75) return 75;
+    if (val >= PERCENTILE_THRESHOLDS.p50) return 50;
+    if (val >= PERCENTILE_THRESHOLDS.p25) return 25;
+    if (val >= PERCENTILE_THRESHOLDS.p10) return 10;
+    return 5;
+  }
+  const cvPercentile = getPercentile(income);
+  document.getElementById('careerValueAmount').textContent = `${formatIDR(income)} / bulan`;
+  document.getElementById('careerValuePercentile').textContent =
+    `Estimasi top ${100 - cvPercentile}% profesional urban Indonesia — berdasarkan benchmark pasar 2025`;
+  document.getElementById('resultNarrative').textContent = narrative;
+
+  // ── 3-COLUMN INCOME METRICS ─────────────────────────
+  document.getElementById('metricCurrent').textContent   = formatIDR(current);
+  document.getElementById('metricPotential').textContent  = formatIDR(income);
+  // diagnostic kept hidden for lead scoring
+  const diagEl = document.getElementById('metricDiag');
+  if (diagEl) diagEl.textContent = formatIDR(diagIncome);
+
+  // ── GAP CALLOUT ─────────────────────────────────────
+  let severity, gapDisplay, gapDesc;
+  if (isZeroInc) {
+    severity   = 'Target Income';
+    gapDisplay = 'Belum ada income aktif';
+    gapDesc    = 'Ini adalah target income realistis berdasarkan profil kamu';
+    document.getElementById('metricGap').textContent = formatIDR(income);
+  } else if (isOverEarner) {
+    severity   = '⚠️ Posisi rentan';
+    gapDisplay = severity;
+    gapDesc    = 'Income saat ini di atas nilai pasar struktural skill kamu — posisi ini rentan kalau sistem berubah';
+    document.getElementById('metricGap').textContent = '⚠️ Over';
+  } else {
+    severity   = gapScore < 20 ? 'Gap Kecil' : gapScore < 40 ? 'Gap Moderat' : gapScore < 70 ? 'Gap Tinggi' : 'Gap Ekstrem';
+    gapDisplay = severity;
+    gapDesc    = `Nilai yang belum ter-capture: ${formatIDR(gap)}/bulan`;
+    document.getElementById('metricGap').textContent = gapScore.toFixed(0) + '%';
+  }
+  document.getElementById('metricGapSeverity').textContent = gapDisplay;
+  document.getElementById('metricGapDesc').textContent     = gapDesc;
+
+  // Scorecard with constraint highlighting
+  const cMap = {System:'sys', Capability:'cap', Leverage:'lev', Bargaining:'capture'};
+  const cKey = cMap[constraint] || '';
+
+  setTimeout(() => {
+    [
+      {key:'sys',     score:scores.system},
+      {key:'cap',     score:scores.capability},
+      {key:'lev',     score:scores.leverage},
+      {key:'capture', score:captureDisp || Math.min(10,(scores.bargaining||0.2)*14)}
+    ].forEach(d => {
+      const isC = d.key === cKey;
+      ['Name','Bar','Val'].forEach(s => {
+        const el = document.getElementById(d.key + s);
+        if (el) { if(isC) el.classList.add('constraint'); else el.classList.remove('constraint'); }
+      });
+      const bar = document.getElementById(d.key + 'Bar');
+      const val = document.getElementById(d.key + 'Val');
+      if (bar) bar.style.width = (d.score * 10) + '%';
+      if (val) val.textContent = d.score.toFixed(1) + ' / 10';
+    });
+  }, 300);
+
+  // Income bars — 2 values
+  const maxI = Math.max(income, current) || 1;
+  setTimeout(() => {
+    document.getElementById('gapCurrentBar').style.width   = ((current/maxI)*100)+'%';
+    document.getElementById('gapPotentialBar').style.width  = ((income/maxI)*100)+'%';
+  }, 400);
+
+  document.getElementById('gapCurrentVal').textContent    = isZeroInc ? 'Belum ada income' : formatIDR(current);
+  document.getElementById('gapPotentialVal').textContent   = formatIDR(income);
+  // keep hidden diagnostic values for lead scoring
+  const diagValEl = document.getElementById('gapDiagVal');
+  if (diagValEl) diagValEl.textContent = formatIDR(diagIncome);
+  document.getElementById('gapMonthly').textContent        = isZeroInc ? '—' : (isOverEarner ? '⚠️ Lihat catatan' : formatIDR(gap));
+  document.getElementById('gapScoreBadge').textContent     = isZeroInc ? 'Target income' : isOverEarner ? 'Posisi rentan ⚠️' : `${severity} (${gapScore.toFixed(0)}%)`;
+
+  // Tier ladder
+  const tierOrder = ['Starter','Executor','Specialist','Strategist','Architect'];
+  document.querySelectorAll('.tier-step').forEach(step => {
+    const t   = step.dataset.tier;
+    const idx = tierOrder.indexOf(t);
+    const cur = tierOrder.indexOf(tier);
+    step.querySelector('.tier-you-tag')?.remove();
+    if      (idx < cur) step.className = 'tier-step past';
+    else if (idx === cur) {
+      step.className = 'tier-step active';
+      const tag = document.createElement('div');
+      tag.className   = 'tier-you-tag';
+      tag.textContent = '▼ KAMU';
+      step.appendChild(tag);
+    } else step.className = 'tier-step';
+  });
+
+  document.getElementById('constraintLabel').textContent = constraint;
+  document.getElementById('diagnosisText').textContent   = diagnosis;
+  document.getElementById('strategyText').textContent    = strategy;
+
+  // Show/hide edge case warnings
+  const oeWarn = document.getElementById('overEarnerWarn');
+  const ziNote = document.getElementById('zeroIncomeNote');
+  if (oeWarn) oeWarn.style.display = isOverEarner ? 'block' : 'none';
+  if (ziNote) ziNote.style.display = isZeroInc   ? 'block' : 'none';
+
+  const nr = TIER_RANGES[nextTier];
+  document.getElementById('trajTier').textContent   = nextTier;
+  document.getElementById('trajIncome').textContent = nr.label + '/bulan';
+  const uMin = Math.max(0, nr.min - current);
+  const uMax = Math.max(0, nr.max - current);
+  document.getElementById('trajUpside').textContent = '+ '+formatIDR(uMin)+' – '+formatIDR(uMax);
+  // ── CTA — berbeda per status profesional ──────────────
+  const isNotWorking = (answers.industry?.val === 'not_working') || (userData.professionalStatus === 'not_working');
+  if (isNotWorking) {
+    const ctaSection = document.querySelector('.cta-section');
+    if (ctaSection) {
+      ctaSection.innerHTML = `
+        <div class="cta-title">Mulai Dari Posisi yang Tepat</div>
+        <div class="cta-desc">${cta_text || 'Sebelum masuk ke dunia kerja, pahami dulu sistem mana yang paling menghargai capability kamu.'}</div>
+        <a href="https://www.youtube.com/@passionhax" target="_blank" class="btn-cta">Tonton Konten Gratis di YouTube →</a>
+        <a href="https://www.instagram.com/passionhax" target="_blank" class="btn-cta" style="margin-top:10px;background:transparent;border:1px solid var(--ox);color:var(--ox)">Atau follow Instagram Passion Hax</a>
+        <button class="btn-download" id="btnDownload">⬇ Download Hasil Audit (PDF)</button>
+        <button class="btn-reset" id="btnReset">Mulai ulang audit</button>
+      `;
+      // Re-attach event listeners setelah innerHTML diganti
+      document.getElementById('btnDownload')?.addEventListener('click', () => generatePDF());
+      document.getElementById('btnReset')?.addEventListener('click', () => location.reload());
+    }
+  } else {
+    document.getElementById('ctaText').textContent = cta_text;
+  }
+
+  // ── ACTION PLAN ──────────────────────────────────────
+  const ap = data.action_plan;
+  if (ap) {
+    const subtitleEl = document.getElementById('actionPlanSubtitle');
+    if (subtitleEl) subtitleEl.textContent = ap.subtitle || '';
+
+    const weekRowsEl = document.getElementById('weekRows');
+    if (weekRowsEl && Array.isArray(ap.weeks)) {
+      // Group weeks by phase
+      const phases = [];
+      let currentPhase = null;
+      ap.weeks.forEach(w => {
+        if (!currentPhase || currentPhase.phase !== w.phase) {
+          currentPhase = { phase: w.phase, weeks: [] };
+          phases.push(currentPhase);
+        }
+        currentPhase.weeks.push(w);
+      });
+
+      weekRowsEl.innerHTML = phases.map(ph => `
+        <div class="phase-block">
+          <div class="phase-block-label">${ph.phase}</div>
+          ${ph.weeks.map(w => {
+            // Format action text: convert newlines and bullet chars to HTML
+            const fmtAction = (w.action || '').replace(/\n/g, '<br>').replace(/•/g, '<br>•');
+            return `
+            <div class="week-row">
+              <div class="week-row-num">${w.week}</div>
+              <div class="week-row-body">
+                <div class="week-row-action">${fmtAction}</div>
+                ${w.pitfall ? `<div class="week-row-pitfall">${w.pitfall.startsWith('Hindari:') ? w.pitfall : 'Hindari: ' + w.pitfall}</div>` : ''}
+              </div>
+            </div>
+          `}).join('')}
+        </div>
+      `).join('');
+    }
+
+    const ctaEl = document.getElementById('actionPlanCta');
+    if (ctaEl && ap.closing_note) {
+      ctaEl.innerHTML = `<strong>Catatan:</strong> ${ap.closing_note}`;
+    }
+  }
+}
+
+// ── UTILS ─────────────────────────────────────────────
+function formatIDR(n) {
+  if (n >= 1000000000) return 'Rp '+(n/1000000000).toFixed(1)+'M';
+  if (n >= 1000000)    return 'Rp '+(n/1000000).toFixed(0)+' juta';
+  return 'Rp '+n.toLocaleString('id-ID');
+}
+
+// ── NAV ───────────────────────────────────────────────
+// ── INCOME PREVIEW FORMATTER ──────────────────────────
+(function() {
+  const inp = document.getElementById('inputIncomeDirect');
+  const prev = document.getElementById('incomePreview');
+  if (!inp || !prev) return;
+  inp.addEventListener('input', function() {
+    // Reset extreme income confirmation flag
+    const submitBtn = document.getElementById('btnSeeResult');
+    if (submitBtn) delete submitBtn.dataset.incomeConfirmed;
+    const n = Number(this.value);
+    if (n >= 100000) {
+      let display = '';
+      if (n >= 1000000000) display = 'Rp ' + (n/1000000000).toFixed(1) + ' miliar';
+      else if (n >= 1000000) display = 'Rp ' + (n/1000000).toFixed(1) + ' juta';
+      else display = 'Rp ' + n.toLocaleString('id-ID');
+      prev.textContent = display;
+      prev.style.opacity = '1';
+    } else {
+      prev.style.opacity = '0';
+    }
+  });
+})();
+
+document.getElementById('btnStart').onclick     = () => showScreen('screen-intro');
+document.getElementById('btnIntroPrev').onclick = () => showScreen('screen-landing');
+document.getElementById('btnIntroNext').onclick = () => {
+  currentQ = 0; answers = {};
+  showScreen('screen-quiz');
+  loadQuestion();
+  updatePrevBtn();
+};
+document.getElementById('btnLeadPrev').onclick = () => {
+  const activeQs = getActiveQuestions();
+  currentQ = activeQs.length - 1;
+  showScreen('screen-quiz');
+  loadQuestion();
+  updatePrevBtn();
+};
+document.getElementById('btnReset').onclick = () => {
+  currentQ = 0; answers = {}; userData = {}; incomeMode = 'direct';
+  showScreen('screen-landing');
+};
+
+// ── DOWNLOAD HANDLER ─────────────────────────────────
+document.getElementById('btnDownload').onclick = () => {
+  // Prepare print
+  const name = userData.name || 'Career Audit';
+  document.title = `Career Tier Audit — ${name} — Passion Hax`;
+
+  // Hide non-print elements temporarily handled by @media print CSS
+  window.print();
+
+  // Reset title after
+  setTimeout(() => { document.title = 'Career Tier Audit — Passion Hax'; }, 1000);
+};
+
+showScreen('screen-landing');
+
+// ── HERO HEADING ANIMATION ────────────────────────────
+(function initHeroAnimation() {
+  const headings = [
+    document.getElementById('hero0'),
+    document.getElementById('hero1'),
+  ];
+  if (!headings[0] || !headings[1]) return;
+
+  let current   = 0;
+  const HOLD    = 4200;  // ms each heading stays fully visible
+  const EXIT_MS = 800;   // matches CSS exit transition
+  const ENTER_DELAY = 600; // ms after exit starts before next enters
+
+  function cycle() {
+    const next = (current + 1) % headings.length;
+
+    // 1. Exit current: trigger exit class
+    headings[current].classList.remove('hero-heading--active');
+    headings[current].classList.add('hero-heading--exit');
+
+    // 2. Clean exit class after transition completes
+    const exitEl = headings[current];
+    setTimeout(() => {
+      exitEl.classList.remove('hero-heading--exit');
+    }, EXIT_MS + 100);
+
+    // 3. Enter next after short delay — smooth blur-in from below
+    setTimeout(() => {
+      headings[next].classList.add('hero-heading--active');
+      current = next;
+    }, ENTER_DELAY);
+  }
+
+  setInterval(cycle, HOLD);
+})();
+</script>
+</body>
+</html>
