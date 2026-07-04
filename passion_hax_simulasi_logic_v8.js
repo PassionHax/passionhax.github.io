@@ -7,6 +7,7 @@ const formatCurrency = (val) => new Intl.NumberFormat('id-ID', { style: 'currenc
 
 // State
 let userData = {
+  name: '',
   role: '',
   age: 28,
   income: 15000000,
@@ -56,6 +57,7 @@ function startLoading() {
   userData.age = parseInt(document.getElementById('inAge').value) || 28;
   userData.income = parseInt(inIncome.value) || 15000000;
   userData.target = parseInt(inTarget.value) || 50000000;
+  userData.name = ((document.getElementById('inName') || {}).value || '').trim();
   userData.email = document.getElementById('inEmail').value;
   userData.phone = (document.getElementById('inPhone') || {}).value || '';
 
@@ -82,6 +84,7 @@ function sendToBackend() {
   const yA = dataA.findIndex(v => v >= target);
   const payload = {
     action: 'simulasi_request',
+    name: userData.name,
     email: userData.email,
     whatsapp: userData.phone || '',
     role: userData.role,
