@@ -1,7 +1,10 @@
 [build]
   publish = "."
- 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Security-Policy = "frame-ancestors 'self' https://*.notion.so https://*.notion.site notion: applewebdata: capacitor: file:;"
+
+# Header Content-Security-Policy (frame-ancestors) sengaja dihapus.
+# Aturan lama memblokir embed di Notion Android: allowlist-nya hanya memuat
+# skema iOS (applewebdata:, capacitor:) dan tidak punya padanan untuk Android
+# WebView. Jangan ditambahkan kembali tanpa diuji di Notion Android.
+#
+# Proteksi akses langsung TIDAK bergantung pada header ini — dijaga oleh
+# pengecekan window.self !== window.top di tiap file ctp-notion/*-module.html.
